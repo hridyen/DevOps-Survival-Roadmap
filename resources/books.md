@@ -9,8 +9,3 @@
 | Docker Deep Dive | Nigel Poulton | Docker | ❌ Purchase |
 | Kubernetes Up & Running | Brendan Burns | Kubernetes | ❌ Purchase |
 
-## 📝 My Reading List
-<!-- Track your reading progress -->
-| Book | Started | Finished | Notes |
-|---|---|---|---|
-| | | | |
