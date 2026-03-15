@@ -253,6 +253,6 @@ Current Level              3 Months               6 Months
 
 *⭐ If this repo helped you, give it a star! It helps others find it too.*
 
-`Made with ❤️ during DevOps Industrial Training`
+`Made with ❤️ during DevOps Industrial Training - HRIDYEN PRASHAR`
 
 </div>
