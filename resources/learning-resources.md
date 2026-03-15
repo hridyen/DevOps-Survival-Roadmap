@@ -19,9 +19,9 @@
 
 | Resource | Type | Link |
 |---|---|---|
-| Cisco Networking Basics | Course | *[Add link]* |
+| Cisco Networking Basics | Course | |
 | Subnet calculator | Tool | https://www.subnet-calculator.com |
-| OSI Model explained | Article | *[Add link]* |
+| OSI Model explained | Article |  |
 
 ---
 
