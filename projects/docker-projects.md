@@ -55,8 +55,9 @@ The application enables transparent donations, volunteer coordination, and effic
 - Service 3:  MongoDB
 - Service 4:  React
 
-**docker-compose.yml:**
+**docker-compose.yml**
 
+```yaml
 services:
   backend:
     build:
@@ -111,6 +112,7 @@ volumes:
 networks:
   app_network:
     driver: bridge
+```
 
 ---
 
@@ -125,7 +127,9 @@ networks:
 4. Deployed a service with 3 replicas
 5. Scaled the service up and down
 
-**Commands used:**
+### Commands used
+
+```bash
 docker swarm init
 docker swarm init --advertise-addr <IP>
 
@@ -165,13 +169,7 @@ docker network create --driver overlay <NETWORK-NAME>
 docker config create <CONFIG-NAME> <FILE>
 docker config ls
 docker config rm <CONFIG-NAME>
-
-docker secret create <SECRET-NAME> <FILE>
-docker secret ls
-docker secret rm <SECRET-NAME>
-
----
-
+```
 ## 📝 Notes
 
 Will be adding more projects on the way
