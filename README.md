@@ -251,7 +251,12 @@ Current Level              3 Months               6 Months
 
 <div align="center">
 
-*⭐ If this repo helped you, give it a star! It helps others find it too.*
+*⚠️ Educational Repository
+
+This project is shared for learning purposes only.
+You are welcome to study the code and concepts.
+Please do not redistribute, sell, or present this work as your own.
+If you use ideas from this repository, kindly give credit.*
 
 `Made with ❤️ during DevOps Industrial Training - HRIDYEN PRASHAR`
 
