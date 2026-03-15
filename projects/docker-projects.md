@@ -4,37 +4,110 @@
 
 ---
 
-## Project 1: [Project Name]
+## Project 1:  MySQL with Docker Volume Persistence
 
-**Description:** <!-- What does this project do? -->
+**Description:**  hands-on DevOps project demonstrating how to run MySQL inside Docker with persistent storage using Docker Volumes.
 
-**Stack:** <!-- e.g., Python + MySQL -->
+This project proves that:
+
+Containers are temporary
+Volumes are persistent
+Database data survives container deletion
+
+**Stack:** Docker
+MySQL 8
+Named Volumes
+Git & GitHub
+
 
 **What I learned:**
-- <!-- Add learning points -->
+Understanding Docker volumes
+Data persistence in containers
+MySQL container configuration
+Infrastructure isolation principles
+Practical DevOps workflow
 
-**GitHub Repo:** <!-- Link to your pushed repo -->
+**GitHub Repo:** https://github.com/hridyen/docker-mysql-volume-persistence.git
 
 **Dockerfile snippet:**
-```dockerfile
-# Add your Dockerfile here
-```
+
+FROM mysql:8
+
+ENV MYSQL_ROOT_PASSWORD=1234
+ENV MYSQL_DATABASE=devopsdb
+
+EXPOSE 3306
+
 
 ---
 
 ## Project 2: Multi-Container App with Docker Compose
 
-**Description:** <!-- What does this project do? -->
+**Description:** ReliefCo is a full-stack disaster relief platform built to connect volunteers, donors, and administrators during times of crisis.
+
+The application enables transparent donations, volunteer coordination, and efficient relief management through a centralized system.
+
+
 
 **Services:**
-- Service 1: <!-- e.g., Nginx -->
-- Service 2: <!-- e.g., Node.js API -->
-- Service 3: <!-- e.g., PostgreSQL -->
+- Service 1:  Nginx 
+- Service 2:  Node.js API
+- Service 3:  MongoDB
+- Service 4:  React
 
 **docker-compose.yml:**
-```yaml
-# Add your compose file here
-```
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.backend
+    container_name: backend
+    restart: always  
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongo
+    networks:
+      - app_network
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.frontend 
+    container_name: frontend
+    restart: always 
+    networks:
+      - app_network
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    expose:
+      - "27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app_network
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app_network
+volumes:
+  mongo-data:
+networks:
+  app_network:
+    driver: bridge
+
 
 ---
 
@@ -50,12 +123,43 @@
 5. Scaled the service up and down
 
 **Commands used:**
-```bash
-# Add your Swarm commands here
-```
+docker swarm init
+docker swarm init --advertise-addr <IP>
+docker swarm join-token worker
+docker swarm join-token manager
+docker swarm join --token <TOKEN> <MANAGER-IP>:2377
+docker node ls
+docker node inspect <NODE-ID>
+docker node update --availability drain <NODE-ID>
+docker node promote <NODE-ID>
+docker node demote <NODE-ID>
+docker node rm <NODE-ID>
+docker swarm leave
+docker swarm leave --force
+docker service create --name <SERVICE-NAME> <IMAGE>
+docker service ls
+docker service ps <SERVICE-NAME>
+docker service inspect <SERVICE-NAME>
+docker service logs <SERVICE-NAME>
+docker service scale <SERVICE-NAME>=<REPLICAS>
+docker service update <SERVICE-NAME>
+docker service update --image <IMAGE> <SERVICE-NAME>
+docker service rm <SERVICE-NAME>
+docker stack deploy -c docker-compose.yml <STACK-NAME>
+docker stack ls
+docker stack services <STACK-NAME>
+docker stack ps <STACK-NAME>
+docker stack rm <STACK-NAME>
+docker network create --driver overlay <NETWORK-NAME>
+docker config create <CONFIG-NAME> <FILE>
+docker secret create <SECRET-NAME> <FILE>
+docker secret ls
+docker secret rm <SECRET-NAME>
+docker config ls
+docker config rm <CONFIG-NAME>
 
 ---
 
 ## 📝 Notes
 
-<!-- Add more projects as you complete them -->
+Will be adding more projects on the way
