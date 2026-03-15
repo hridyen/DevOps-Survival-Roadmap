@@ -2,7 +2,7 @@
 
 | Channel | Topics Covered | Link |
 |---|---|---|
-| TechWorld with Nana | Docker, Kubernetes, DevOps | *[Search on YouTube]* |
+| TechWorld with Nana | Docker, Kubernetes, DevOps | https://www.youtube.com/c/techworldwithnana |
 | NetworkChuck | Linux, Networking, Cloud | *[Search on YouTube]* |
 | Fireship | Quick tech concepts | *[Search on YouTube]* |
 | KodeKloud | DevOps courses | *[Search on YouTube]* |
