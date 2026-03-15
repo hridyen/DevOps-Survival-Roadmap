@@ -67,7 +67,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins
 
 ## 🗺️ Visual Learning Roadmap
 
-![Alt text for accessibility](charts/chart1.png)
+![Alt text for accessibility](charts/chart.png)
 
 
 **Simple path:**
