@@ -1,6 +1,6 @@
 # 🚀 DevOps Industrial Training Roadmap
 
-> **A complete, beginner-friendly documentation of my 7-week DevOps industrial training journey — from zero to CI/CD pipelines.**
+> **A complete, beginner-friendly documentation of my 7-week DevOps industrial training journey from zero to CI/CD pipelines.**
 
 ---
 
