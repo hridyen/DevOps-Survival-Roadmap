@@ -19,7 +19,7 @@
 
 This repo documents my **DevOps Industrial Training** that started on **20th January 2026**.
 
-It covers everything I learned week by week — from Linux basics all the way to Jenkins CI/CD pipelines, Docker containerization, and AWS cloud fundamentals.
+It covers everything I learned week by week from Linux basics all the way to Jenkins CI/CD pipelines, Docker containerization, and AWS cloud fundamentals.
 
 **This repository serves 4 purposes:**
 1. 📝 My personal training documentation
