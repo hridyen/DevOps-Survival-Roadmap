@@ -14,11 +14,64 @@
 
 **Jenkinsfile:**
 ```groovy
-// Add your Jenkinsfile here
+pipeline {
+
+    agent {
+        label 'ubuntu-agent'
+    }
+
+    parameters {
+        choice(
+            name: 'ACTION',
+            choices: ['DEPLOY', 'STOP'],
+            description: 'Choose what action to perform'
+        )
+    }
+
+    stages {
+
+        stage('Verify Docker') {
+            when {
+                expression { params.ACTION == 'DEPLOY' }
+            }
+            steps {
+                sh 'docker --version'
+                sh 'docker compose version'
+            }
+        }
+
+        stage('Build Containers') {
+            when {
+                expression { params.ACTION == 'DEPLOY' }
+            }
+            steps {
+                sh 'docker compose build'
+            }
+        }
+
+        stage('Start Application') {
+            when {
+                expression { params.ACTION == 'DEPLOY' }
+            }
+            steps {
+                sh 'docker compose up -d'
+            }
+        }
+
+        stage('Stop Application') {
+            when {
+                expression { params.ACTION == 'STOP' }
+            }
+            steps {
+                sh 'docker compose down'
+            }
+        }
+
+    }
+
+}
 ```
 
-**Challenges & solutions:**
-- <!-- What went wrong and how you fixed it -->
 
 ---
 
@@ -74,4 +127,37 @@ myproject/
 
 ## 📝 Notes
 
-<!-- Add more project details as you complete them -->
+Best Practices and tips for Jenkins Declarative
+Pipelines
+Keeping pipelines modular: Splitting complex pipelines into reusable
+components.
+Discuss techniques for defining shared libraries, functions, and templates to
+promote reusability.
+Highlight the benefits of modular pipelines in terms of maintainability and
+code organization.
+Interview question: How would you structure a pipeline to promote
+modularity and code reuse?
+Version control and code review: Leveraging version control systems and
+performing code reviews for pipeline scripts.
+Discuss the importance of storing pipeline scripts in a version control
+system for change tracking.
+Explain the benefits of code reviews to ensure best practices, identify
+errors, and improve pipeline quality.
+Interview question: How would you integrate Jenkins declarative pipelines
+with a version control system like Git?
+Error handling and recovery: Implementing error handling mechanisms and
+retry strategies in pipelines.
+Discuss techniques like try-catch blocks, error handling steps (e.g.,
+catchError, error, timeout), and retries.
+Highlight the importance of handling errors gracefully and recovering from
+failures in the pipeline.
+Interview question: How would you handle a failing step in a pipeline and
+ensure proper error reporting?
+Testing pipelines: Strategies for testing and validating pipeline changes before
+production deployment.
+Discuss techniques like unit testing pipeline components, running pipeline
+simulations, and using test environments.
+Explain the benefits of testing pipelines to catch errors, validate changes,
+and ensure expected behaviour.
+Interview question: How would you approach testing a complex Jenkins
+declarative pipeline?
