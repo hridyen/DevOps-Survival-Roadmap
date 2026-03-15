@@ -67,10 +67,3 @@
 
 ---
 
-## 📝 My Additional Resources
-
-<!-- Add links you found useful during your training -->
-
-| Resource | Topic | Link |
-|---|---|---|
-| | | |
