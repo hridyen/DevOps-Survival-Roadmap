@@ -244,8 +244,8 @@ Current Level              3 Months               6 Months
 
 - 🎓 DevOps Industrial Training — Jan 2026 to present
 - 📍 Learning path: Linux → Networking → Docker → Jenkins → Cloud
-- 🔗 GitHub: *[your GitHub profile link here]*
-- 💼 LinkedIn: *[your LinkedIn profile link here]*
+- 🔗 GitHub: https://github.com/hridyen
+- 💼 LinkedIn: https://www.linkedin.com/in/hridyen/
 
 ---
 
