@@ -63,19 +63,20 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.backend
     container_name: backend
-    restart: always  
+    restart: always
     env_file:
       - ./backend/.env
     depends_on:
       - mongo
     networks:
       - app_network
+
   frontend:
     build:
       context: .
-      dockerfile: Dockerfiles/Dockerfile.frontend 
+      dockerfile: Dockerfiles/Dockerfile.frontend
     container_name: frontend
-    restart: always 
+    restart: always
     networks:
       - app_network
 
@@ -89,6 +90,7 @@ services:
       - mongo-data:/data/db
     networks:
       - app_network
+
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -102,12 +104,13 @@ services:
       - backend
     networks:
       - app_network
+
 volumes:
   mongo-data:
+
 networks:
   app_network:
     driver: bridge
-
 
 ---
 
@@ -125,38 +128,47 @@ networks:
 **Commands used:**
 docker swarm init
 docker swarm init --advertise-addr <IP>
+
 docker swarm join-token worker
 docker swarm join-token manager
 docker swarm join --token <TOKEN> <MANAGER-IP>:2377
+
 docker node ls
 docker node inspect <NODE-ID>
 docker node update --availability drain <NODE-ID>
 docker node promote <NODE-ID>
 docker node demote <NODE-ID>
 docker node rm <NODE-ID>
+
 docker swarm leave
 docker swarm leave --force
+
 docker service create --name <SERVICE-NAME> <IMAGE>
 docker service ls
 docker service ps <SERVICE-NAME>
 docker service inspect <SERVICE-NAME>
 docker service logs <SERVICE-NAME>
+
 docker service scale <SERVICE-NAME>=<REPLICAS>
 docker service update <SERVICE-NAME>
 docker service update --image <IMAGE> <SERVICE-NAME>
 docker service rm <SERVICE-NAME>
+
 docker stack deploy -c docker-compose.yml <STACK-NAME>
 docker stack ls
 docker stack services <STACK-NAME>
 docker stack ps <STACK-NAME>
 docker stack rm <STACK-NAME>
+
 docker network create --driver overlay <NETWORK-NAME>
+
 docker config create <CONFIG-NAME> <FILE>
+docker config ls
+docker config rm <CONFIG-NAME>
+
 docker secret create <SECRET-NAME> <FILE>
 docker secret ls
 docker secret rm <SECRET-NAME>
-docker config ls
-docker config rm <CONFIG-NAME>
 
 ---
 
