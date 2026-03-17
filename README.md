@@ -1,15 +1,16 @@
 # 🚀 DevOps Industrial Training Roadmap
 
-> **A complete, beginner-friendly documentation of my 7-week DevOps industrial training journey from zero to CI/CD pipelines.**
+> **A complete, beginner-friendly documentation of my DevOps industrial training journey — from zero to CI/CD pipelines and DevSecOps.**
 
 ---
 
 <div align="center">
 
 ![DevOps](https://img.shields.io/badge/DevOps-Training-blue?style=for-the-badge)
-![Duration](https://img.shields.io/badge/Duration-7%20Weeks-green?style=for-the-badge)
+![Duration](https://img.shields.io/badge/Duration-8%20Weeks-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge)
 ![Start Date](https://img.shields.io/badge/Started-Jan%2020%2C%202026-purple?style=for-the-badge)
+![DevSecOps](https://img.shields.io/badge/Week%208-DevSecOps-red?style=for-the-badge)
 
 </div>
 
@@ -19,7 +20,7 @@
 
 This repo documents my **DevOps Industrial Training** that started on **20th January 2026**.
 
-It covers everything I learned week by week from Linux basics all the way to Jenkins CI/CD pipelines, Docker containerization, and AWS cloud fundamentals.
+It covers everything I learned week by week — from Linux basics all the way to Jenkins CI/CD pipelines, Docker containerization, AWS cloud fundamentals, and now **DevSecOps** with SonarQube, OWASP, and Trivy.
 
 **This repository serves 4 purposes:**
 1. 📝 My personal training documentation
@@ -41,27 +42,29 @@ It covers everything I learned week by week from Linux basics all the way to Jen
 | 🐳 **Docker** | Containers, Images, Volumes, Networks, Compose, Swarm |
 | ☁️ **AWS (Intro)** | EC2, VPC, Subnetting, Security Groups, Snapshots |
 | ⚙️ **Jenkins CI/CD** | Pipelines, Agents, Webhooks, Groovy, Jenkinsfile |
+| 🛡️ **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift Left Security |
 
 ---
 
 ## 📅 Training Timeline
 
 ```
-Jan 20 ──────────────────────────────────────────────── Mar 15
-  │         │          │          │          │         │    │
-Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7
-Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins
+Jan 20 ──────────────────────────────────────────────────────── Mar 16+
+  │         │          │          │          │         │    │       │
+Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8
+Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps
 ```
 
-| Week | Dates | Topic |
-|---|---|---|
-| Week 01 | Jan 20 – Jan 26 | Linux Fundamentals |
-| Week 02 | Jan 27 – Feb 02 | Networking |
-| Week 03 | Feb 03 – Feb 09 | Internet, Servers & Hardware |
-| Week 04 | Feb 10 – Feb 16 | Advanced Linux Tools |
-| Week 05 | Feb 17 – Feb 23 | Git & Version Control |
-| Week 06 | Feb 24 – Mar 09 | Docker & Containerization |
-| Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD |
+| Week | Dates | Topic | Status |
+|---|---|---|---|
+| Week 01 | Jan 20 – Jan 26 | Linux Fundamentals | ✅ Complete |
+| Week 02 | Jan 27 – Feb 02 | Networking | ✅ Complete |
+| Week 03 | Feb 03 – Feb 09 | Internet, Servers & Hardware | ✅ Complete |
+| Week 04 | Feb 10 – Feb 16 | Advanced Linux Tools | ✅ Complete |
+| Week 05 | Feb 17 – Feb 23 | Git & Version Control | ✅ Complete |
+| Week 06 | Feb 24 – Mar 09 | Docker & Containerization | ✅ Complete |
+| Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD | ✅ Complete |
+| Week 08 | Mar 16 – Ongoing | DevSecOps | 🟡 In Progress |
 
 ---
 
@@ -69,9 +72,8 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins
 
 ![Alt text for accessibility](charts/chart.png)
 
-
 **Simple path:**
-`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD`
+`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps`
 
 ---
 
@@ -118,6 +120,11 @@ devops-industrial-training-roadmap/
 │   ├── pipeline-examples.md
 │   └── resources.md
 │
+├── 📂 Week-08-DevSecOps/                ← 🆕 In Progress
+│   ├── notes.md                         ← DevSecOps concepts, SonarQube, OWASP, Trivy
+│   ├── commands.md                      ← Tool commands and pipeline examples
+│   └── resources.md                     ← Links and references
+│
 ├── 📂 projects/
 │   ├── docker-projects.md
 │   └── jenkins-projects.md
@@ -159,6 +166,9 @@ devops-industrial-training-roadmap/
 **Step 7 →** Complete [Week 07 - Jenkins](./Week-07-Jenkins-CI-CD/notes.md)
 > Build your first CI/CD pipeline. This ties everything together.
 
+**Step 8 →** Explore [Week 08 - DevSecOps](./Week-08-DevSecOps/notes.md) 🆕
+> Learn how to bake security into every stage of your pipeline. The future of DevOps.
+
 ---
 
 ## 🏗️ Projects Built
@@ -194,7 +204,8 @@ Current Level              3 Months               6 Months
 ✅ Networking          Helm Charts            Ansible
 ✅ Git/Docker          AWS Deep Dive          Monitoring (Prometheus)
 ✅ Jenkins             Prometheus/Grafana     Full CI/CD Pipelines
-🔜 AWS Advanced        ArgoCD (GitOps)        Cloud Certifications
+✅ DevSecOps (Intro)   ArgoCD (GitOps)        Cloud Certifications
+🔜 AWS Advanced        Advanced DevSecOps     Security Certifications
 ```
 
 👉 Full plan: [future-roadmap/3-month-plan.md](./future-roadmap/3-month-plan.md)
@@ -222,6 +233,9 @@ Current Level              3 Months               6 Months
 - Cron job timing syntax has **5 fields** — count them every time
 - A misconfigured security group in AWS will silently block all traffic
 - `EXPOSE` in Dockerfile is documentation only — use `-p` to actually publish
+- `trivy image` scan karo **before** pushing to Docker Hub — baad mein sharam aati hai 😅
+- SonarQube Quality Gate fail ho toh pipeline rok do — deploy mat karo
+- OWASP Top 10 sirf theory nahi hai — real attacks isi list se aate hain
 
 ---
 
@@ -237,13 +251,14 @@ Current Level              3 Months               6 Months
 | Git Commands | [Week-05/git-commands.md](./Week-05-Git-Version-Control/git-commands.md) |
 | Docker Commands | [Week-06/docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
 | Jenkins Pipelines | [Week-07/pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
+| DevSecOps Commands | [Week-08/commands.md](./Week-08-DevSecOps/commands.md) |
 
 ---
 
 ## 👤 About Me
 
 - 🎓 DevOps Industrial Training — Jan 2026 to present
-- 📍 Learning path: Linux → Networking → Docker → Jenkins → Cloud
+- 📍 Learning path: Linux → Networking → Docker → Jenkins → DevSecOps → Cloud
 - 🔗 GitHub: https://github.com/hridyen
 - 💼 LinkedIn: https://www.linkedin.com/in/hridyen/
 
@@ -251,12 +266,12 @@ Current Level              3 Months               6 Months
 
 <div align="center">
 
-*⚠️ Educational Repository
+*⚠️ Educational Repository*
 
-This project is shared for learning purposes only.
-You are welcome to study the code and concepts.
-Please do not redistribute, sell, or present this work as your own.
-If you use ideas from this repository, kindly give credit.*
+*This project is shared for learning purposes only.*
+*You are welcome to study the code and concepts.*
+*Please do not redistribute, sell, or present this work as your own.*
+*If you use ideas from this repository, kindly give credit.*
 
 `Made with ❤️ during DevOps Industrial Training - HRIDYEN PRASHAR`
 
