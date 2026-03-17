@@ -70,7 +70,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps
 
 ## 🗺️ Visual Learning Roadmap
 
-![Alt text for accessibility](charts/chart.png)
+![Alt text for accessibility](charts/flow.png)
 
 **Simple path:**
 `Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps`
