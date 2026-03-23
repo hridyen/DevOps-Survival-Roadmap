@@ -75,7 +75,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 ![Alt text for accessibility](charts/flow1.png)
 
 **Simple path:**
-`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps`
+`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps` → `Dynamic Pipelines`
 
 ---
 
