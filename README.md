@@ -72,7 +72,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 
 ## 🗺️ Visual Learning Roadmap
 
-![Alt text for accessibility](charts/flow1.png)
+![Alt text for accessibility](charts/flowchart.png)
 
 **Simple path:**
 `Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps` → `Dynamic Pipelines`
