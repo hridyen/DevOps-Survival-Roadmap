@@ -125,6 +125,35 @@ myproject/
 
 ---
 
+## Project 5: Dynamic Branch-Based Pipeline
+
+**Type:** Intelligent Declarative Pipeline
+
+**What it does:** Automatically detects the latest updated branch in Git, checks it out, and builds a Docker image with a tag format of `app:branch-buildnumber`. It then deploys to different ports based on the branch (80 for main, 8080 for dev).
+
+**Key Features:**
+- **`skipDefaultCheckout(true)`**: Control exactly when and how the code is pulled.
+- **Dynamic Branch Detection**: Uses a shell script to find the branch with the most recent commit.
+- **Conditional Deployment**: Uses Groovy `if-else` logic to target production vs staging environments.
+- **Per-Branch Tagging**: Ensures every branch has its own unique, traceable image.
+
+**Example Logic:**
+```groovy
+if (branch == 'main') {
+    // Deploy to Production (Port 80)
+} else if (branch == 'dev') {
+    // Deploy to Dev (Port 8080)
+} else {
+    // Feature branch - Run tests only
+}
+```
+
+**Repositories:**
+- [multi-branch-project](https://github.com/hridyen/multi-branch-project.git)
+- [multibranch](https://github.com/hridyen/multibranch.git)
+
+---
+
 ## 📝 Notes
 
 ## Best Practices and Tips for Jenkins Declarative Pipelines

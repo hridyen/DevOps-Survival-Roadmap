@@ -7,10 +7,10 @@
 <div align="center">
 
 ![DevOps](https://img.shields.io/badge/DevOps-Training-blue?style=for-the-badge)
-![Duration](https://img.shields.io/badge/Duration-8%20Weeks-green?style=for-the-badge)
+![Duration](https://img.shields.io/badge/Duration-9%20Weeks-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge)
 ![Start Date](https://img.shields.io/badge/Started-Jan%2020%2C%202026-purple?style=for-the-badge)
-![DevSecOps](https://img.shields.io/badge/Week%208-DevSecOps-red?style=for-the-badge)
+![Dynamic Pipelines](https://img.shields.io/badge/Week%209-Dynamic%20Pipelines-blue?style=for-the-badge)
 
 </div>
 
@@ -43,16 +43,17 @@ It covers everything I learned week by week — from Linux basics all the way to
 | ☁️ **AWS (Intro)** | EC2, VPC, Subnetting, Security Groups, Snapshots |
 | ⚙️ **Jenkins CI/CD** | Pipelines, Agents, Webhooks, Groovy, Jenkinsfile |
 | 🛡️ **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift Left Security |
+| 🔀 **Dynamic Pipelines** | Branch Detection, Dynamic Checkout, Multi-branch |
 
 ---
 
 ## 📅 Training Timeline
 
 ```
-Jan 20 ──────────────────────────────────────────────────────── Mar 16+
-  │         │          │          │          │         │    │       │
-Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8
-Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps
+Jan 20 ────────────────────────────────────────────────────────── Mar 23+
+  │         │          │          │          │         │    │       │      │
+Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8  Week 9
+Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dynamic
 ```
 
 | Week | Dates | Topic | Status |
@@ -64,7 +65,8 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps
 | Week 05 | Feb 17 – Feb 23 | Git & Version Control | ✅ Complete |
 | Week 06 | Feb 24 – Mar 09 | Docker & Containerization | ✅ Complete |
 | Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD | ✅ Complete |
-| Week 08 | Mar 16 – Ongoing | DevSecOps | 🟡 In Progress |
+| Week 08 | Mar 16 – Mar 22 | DevSecOps | ✅ Complete |
+| Week 09 | Mar 23 – Ongoing | Dynamic Jenkins Pipelines | 🟡 In Progress |
 
 ---
 
@@ -120,9 +122,14 @@ devops-industrial-training-roadmap/
 │   ├── pipeline-examples.md
 │   └── resources.md
 │
-├── 📂 Week-08-DevSecOps/                ← 🆕 In Progress
+├── 📂 Week-08-DevSecOps/
 │   ├── notes.md                         ← DevSecOps concepts, SonarQube, OWASP, Trivy
 │   ├── commands.md                      ← Tool commands and pipeline examples
+│   └── resources.md                     ← Links and references
+│
+├── 📂 Week-09-Dynamic-Jenkins-Pipelines/ ← 🆕 In Progress
+│   ├── notes.md                         ← Dynamic branch detection, Groovy logic
+│   ├── commands.md                      ← Git snippets and pipeline code
 │   └── resources.md                     ← Links and references
 │
 ├── 📂 projects/
@@ -166,8 +173,11 @@ devops-industrial-training-roadmap/
 **Step 7 →** Complete [Week 07 - Jenkins](./Week-07-Jenkins-CI-CD/notes.md)
 > Build your first CI/CD pipeline. This ties everything together.
 
-**Step 8 →** Explore [Week 08 - DevSecOps](./Week-08-DevSecOps/notes.md) 🆕
+**Step 8 →** Complete [Week 08 - DevSecOps](./Week-08-DevSecOps/notes.md)
 > Learn how to bake security into every stage of your pipeline. The future of DevOps.
+
+**Step 9 →** Explore [Week 09 - Dynamic Pipelines](./Week-09-Dynamic-Jenkins-Pipelines/notes.md) 🆕
+> Move beyond static CI/CD and build intelligent pipelines that react to Git automatically.
 
 ---
 
@@ -233,9 +243,11 @@ Current Level              3 Months               6 Months
 - Cron job timing syntax has **5 fields** — count them every time
 - A misconfigured security group in AWS will silently block all traffic
 - `EXPOSE` in Dockerfile is documentation only — use `-p` to actually publish
-- `trivy image` scan karo **before** pushing to Docker Hub — baad mein sharam aati hai 😅
-- SonarQube Quality Gate fail ho toh pipeline rok do — deploy mat karo
-- OWASP Top 10 sirf theory nahi hai — real attacks isi list se aate hain
+- Always run a `trivy image` scan **before** pushing to Docker Hub to avoid security vulnerabilities
+- If the SonarQube Quality Gate fails, stop the pipeline immediately — never deploy unverified code
+- The OWASP Top 10 is not just theoretical; most real-world attacks exploit these exact vulnerabilities
+- Jenkins doesn’t behave the same across pipeline types — things like `BRANCH_NAME`, default checkout, and execution context can silently break logic if not handled properly.
+- Running Jenkins inside Docker doesn’t mean Docker is available inside it — you need explicit access (like mounting the Docker socket), or your pipeline will fail at runtime.
 
 ---
 
@@ -252,6 +264,7 @@ Current Level              3 Months               6 Months
 | Docker Commands | [Week-06/docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
 | Jenkins Pipelines | [Week-07/pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
 | DevSecOps Commands | [Week-08/commands.md](./Week-08-DevSecOps/commands.md) |
+| Dynamic Pipelines | [Week-09/commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
 
 ---
 
