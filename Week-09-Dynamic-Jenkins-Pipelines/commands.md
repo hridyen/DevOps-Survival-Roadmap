@@ -175,12 +175,5 @@ pipeline {
 }
 ```
 
----
 
-## 📝 My Snippets
 
-<!-- Add your own working snippets here as you write them -->
-
-```groovy
-// Add your pipeline code here
-```
