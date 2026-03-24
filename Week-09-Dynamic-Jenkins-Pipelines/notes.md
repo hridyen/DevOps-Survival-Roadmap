@@ -605,9 +605,14 @@ No resources wasted ✅
 
 ## 📝 Personal Notes
 
-<!-- Add your own observations, errors, and aha moments here -->
+- **`BRANCH_NAME` Variable Pitfall**: Learned the hard way that `env.BRANCH_NAME` only exists in Multibranch pipelines. In standalone jobs, it returns `null`, and you have to detect the branch manually using Git commands.
+- **Git Push Rejections**: Encountered `non-fast-forward` errors when remote was ahead. The fix is to always `git pull --rebase` before pushing to keep history linear.
+- **Jenkinsfile Syncing**: Syncing `Jenkinsfile` across branches can lead to nasty merge conflicts if the logic diverges too much. It's better to use `if-else` blocks based on `BRANCH_NAME` within a single file.
+- **Docker in Jenkins**: Fixed the "docker: command not found" error by mounting the Docker socket (`/var/run/docker.sock`) into the Jenkins container and granting root permissions.
+- **Groovy Syntax**: One missing or misplaced bracket in a `Jenkinsfile` will cause the entire pipeline to fail parsing with cryptic errors. Indentation and careful bracket matching are life-savers!
 
-> 💬 *This week was more about debugging than building. Add what surprised you most.*
+> 💬 *This week was more about debugging than building. These lessons were hard-earned but make the pipelines much more robust.*
+
 
 ---
 
