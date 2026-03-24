@@ -1,8 +1,8 @@
 # ⚙️ Week 09 — Dynamic Jenkins Pipelines
 
-> **Duration:** Week 9 — Ongoing
+> **Duration:** Mar 23, 2026 – Ongoing
 > **Status:** 🟡 In Progress
-> **Goal:** Move beyond basic CI/CD and build intelligent, dynamic pipelines that react to your Git repository automatically.
+> **Goal:** Move beyond basic CI/CD and build a real-world, branch-aware deployment pipeline using Jenkins Multibranch and Docker.
 
 ---
 
@@ -10,7 +10,20 @@
 
 In Week 7, pipelines were **static** — you manually selected a branch, wrote fixed steps, and ran them.
 
-This week the goal was to make pipelines **dynamic** — the pipeline itself figures out what to do based on what changed in Git.
+This week the goal was to make pipelines **dynamic and branch-aware** — the pipeline itself reacts differently based on which Git branch triggered it.
+
+### 🏗️ What Was Actually Built
+
+A **Multibranch Jenkins Pipeline** handling 4 Git branches with different behavior:
+
+| Branch | What Happens |
+|---|---|
+| `dev` | ✅ Build triggered → Docker image built → Deploy to **dev environment** |
+| `prod` | ✅ Build triggered → Docker image built → Deploy to **production** |
+| `stg` | ⛔ Ignored at trigger level — no build, no deploy |
+| `uat` | ⛔ Ignored at trigger level — no build, no deploy |
+
+> 💡 **Key design decision:** `stg` and `uat` are ignored **at the trigger level**, not inside the pipeline with an `if` condition. This is cleaner — unnecessary builds never even start.
 
 ```
 Static Pipeline (Week 7):         Dynamic Pipeline (Week 9):
@@ -140,7 +153,63 @@ feature/*      →  Run tests only        (no deploy)
 
 ---
 
-### 5. Multibranch Pipeline vs Standalone Pipeline
+
+### 5. Trigger-Level Control vs Pipeline Condition Control
+
+This was one of the most important design decisions this week.
+
+**❌ Wrong approach — checking branch inside pipeline:**
+```groovy
+// Build still runs for stg/uat — wastes resources
+stage('Deploy') {
+    steps {
+        script {
+            if (env.BRANCH_NAME == 'dev') {
+                // deploy
+            } else {
+                echo "Skipping"   // build already wasted CI time!
+            }
+        }
+    }
+}
+```
+
+**✅ Right approach — filter at trigger level:**
+In Multibranch Pipeline settings → Branch Sources → Behaviours → Filter by name
+Only include: `dev` and `prod`
+`stg` and `uat` never trigger a build at all.
+
+**Why this matters:**
+- Saves CI/CD resources — no wasted builds
+- Cleaner pipeline — no dead `else` branches
+- More professional — mirrors how real teams manage environments
+
+---
+
+### 6. Passing -e Environment Variables to Docker Containers
+
+To make the **same Docker image behave differently** in dev vs prod, pass environment variables at runtime:
+
+```groovy
+stage('Deploy') {
+    steps {
+        script {
+            def branch = env.BRANCH_NAME
+            if (branch == 'prod') {
+                sh "docker run -d -p 80:80 -e BRANCH=prod -e ENV=production --name myapp-prod myapp:${branch}-${BUILD_NUMBER}"
+            } else if (branch == 'dev') {
+                sh "docker run -d -p 8080:80 -e BRANCH=dev -e ENV=development --name myapp-dev myapp:${branch}-${BUILD_NUMBER}"
+            }
+        }
+    }
+}
+```
+
+Inside the container, your app reads `ENV` to behave accordingly — same image, different config per environment.
+
+---
+
+### 7. Multibranch Pipeline vs Standalone Pipeline
 
 This was a major learning this week — these two pipeline types behave very differently.
 
@@ -290,7 +359,74 @@ agent {
 
 ---
 
-### Error 3: BRANCH_NAME is Null in Standalone Pipeline
+### Error 3: Git Push Rejected — Non-Fast-Forward
+
+**What happened:**
+After making local changes, pushed to remote but got rejected because remote had newer commits.
+
+**Error message:**
+```
+! [rejected]        dev -> dev (non-fast-forward)
+error: failed to push some refs
+hint: Updates were rejected because the tip of your current branch is behind
+```
+
+**Fix:**
+```bash
+# Pull with rebase first, then push
+git pull origin dev --rebase
+git push origin dev
+```
+
+**Lesson:** Always `git pull` before starting work. Rebase keeps history linear and clean.
+
+---
+
+### Error 4: Merge Conflict While Syncing Jenkinsfile Across Branches
+
+**What happened:**
+Jenkinsfile was updated on `dev`. When syncing to `prod`, conflict happened because both had different pipeline logic.
+
+**Error message:**
+```
+CONFLICT (content): Merge conflict in Jenkinsfile
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+**Fix:**
+```bash
+git diff Jenkinsfile          # See conflict
+# Manually edit — remove <<<<<<< HEAD, =======, >>>>>>> markers
+git add Jenkinsfile
+git commit -m "Resolve Jenkinsfile merge conflict"
+git push origin prod
+```
+
+**Lesson:** Use `BRANCH_NAME` inside one Jenkinsfile for branch logic instead of separate Jenkinsfiles per branch — fewer conflicts.
+
+---
+
+### Error 5: Groovy Syntax Error — Misplaced Brackets
+
+**What happened:**
+Jenkinsfile failed to parse because of a missing `}` in Groovy script.
+
+**Error message:**
+```
+org.codehaus.groovy.control.MultipleCompilationErrorsException:
+startup failed: WorkflowScript: 45: unexpected token: } @ line 45
+```
+
+**Fix:**
+- Count every `{` — every one needs a matching `}`
+- Use proper indentation to make mismatches visible
+- Use VS Code with Groovy extension for syntax highlighting
+
+**Lesson:** One missing bracket = entire pipeline fails to parse. Indentation is not optional in Groovy.
+
+---
+
+### Error 3 (original): BRANCH_NAME is Null in Standalone Pipeline
 
 **What happened:**
 Used `env.BRANCH_NAME` in a standalone pipeline expecting it to work like in multibranch.
@@ -400,27 +536,70 @@ pipeline {
 
 ---
 
+## 🏆 Final Outcome
+
+```
+GitHub Push to 'dev' branch
+         │
+         ▼
+Multibranch Jenkins detects push (Webhook)
+         │
+         ▼
+Branch filter: dev ✅ allowed → Build starts
+         │
+         ▼
+Stage 1: Checkout dev branch
+Stage 2: Build image → myapp:dev-42
+Stage 3: docker run -e ENV=development → port 8080
+         │
+         ▼
+Dev environment live ✅
+
+─────────────────────────────────────
+
+GitHub Push to 'stg' branch
+         │
+         ▼
+Branch filter: stg ⛔ blocked → Build NEVER starts
+No resources wasted ✅
+```
+
+**Result:** A clean, production-style CI/CD setup where:
+- Deployments are **automated** — no manual intervention
+- Deployments are **branch-aware** — right code goes to right environment
+- Deployments are **controlled** — stg/uat don't waste build resources
+- Containers are **environment-specific** — same image, different behavior via `-e` flags
+
+---
+
 ## 🧠 Key Takeaways This Week
 
 > Things that clicked this week after debugging:
 
 - A pipeline that **thinks** is more valuable than a pipeline that just **runs**
+- Control deployment logic at the **trigger level** — not inside the pipeline with `if/else`
 - `BRANCH_NAME` is a gift from Multibranch — standalone pipelines don't get it for free
+- Pass `-e ENV=value` to Docker containers to make one image behave differently per environment
 - Shell inside Groovy has its own quoting rules — single vs double quotes matter a lot
-- Docker inside Jenkins is not automatic — you have to explicitly connect them
+- Docker inside Jenkins is not automatic — mount the socket or use a Docker-enabled agent
+- Non-fast-forward errors mean someone pushed before you — always pull first
+- One wrong bracket in Groovy = entire pipeline fails to parse
 - `skipDefaultCheckout` exists for a reason — learn when to use it
-- Debugging CI/CD teaches you more than building it from scratch ever could
+- **Debugging CI/CD teaches you more than building it from scratch ever could**
 
 ---
 
 ## 🏃 Practice Exercises
 
-- [ ] Build a standalone pipeline that detects branch automatically
-- [ ] Tag Docker images with branch name + build number
-- [ ] Write deploy logic that behaves differently for `main` vs `dev`
-- [ ] Reproduce the Docker socket error and fix it
+- [ ] Set up a Multibranch Pipeline with 4 branches: dev, prod, stg, uat
+- [ ] Configure branch filter so only dev and prod trigger builds
+- [ ] Tag Docker images with branch name + build number (`myapp:dev-42`)
+- [ ] Pass `-e ENV=development` and `-e ENV=production` to containers at runtime
+- [ ] Reproduce the Docker socket error and fix it via socket mount
+- [ ] Reproduce a non-fast-forward push rejection and fix it with rebase
+- [ ] Cause a Groovy syntax error intentionally and learn to debug it
+- [ ] Fix a real merge conflict in Jenkinsfile across branches
 - [ ] Test the difference between Multibranch and Standalone pipeline behavior
-- [ ] Fix a real Git rebase conflict inside a pipeline context
 
 ---
 

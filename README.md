@@ -198,6 +198,7 @@ devops-industrial-training-roadmap/
 - Wrote Groovy pipeline scripts
 - Created a project using Jenkinsfile (declarative pipeline)
 - Configured Webhooks and Poll SCM triggers
+- Built a dynamic, branch-aware CI/CD pipeline (Project 5)
 
 👉 See [projects/jenkins-projects.md](./projects/jenkins-projects.md)
 
