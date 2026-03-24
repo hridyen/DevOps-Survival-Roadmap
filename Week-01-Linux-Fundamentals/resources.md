@@ -8,9 +8,9 @@
 
 | Title | Platform | Link |
 |-------|----------|------|
-| Linux for Beginners | YouTube | *[Add link]* |
-| Shell Scripting Tutorial | YouTube | *[Add link]* |
-| Linux File Permissions Explained | YouTube | *[Add link]* |
+| Linux for Beginners | YouTube | https://youtu.be/sWbUDq4S6Y8?si=hljLHerUk2uaftI_ |
+| Shell Scripting Tutorial | YouTube | https://youtu.be/tK9Oc6AEnR4?si=x-XPIBq2_CzUVRw_ |
+| Linux File Permissions Explained | YouTube |  https://youtu.be/A3G-3hp88mo?si=oCangGYsYqzayqVW |
 
 ---
 
@@ -34,9 +34,8 @@
 
 ---
 
-## 📝 My Resource Notes
 
-<!-- Add links you found helpful during your practice -->
+
 
 | Resource | Notes |
 |----------|-------|
