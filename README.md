@@ -8,7 +8,7 @@
 
 ![DevOps](https://img.shields.io/badge/DevOps-Training-blue?style=for-the-badge)
 ![Duration](https://img.shields.io/badge/Duration-9%20Weeks-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Complete-green?style=for-the-badge)
 ![Start Date](https://img.shields.io/badge/Started-Jan%2020%2C%202026-purple?style=for-the-badge)
 ![Dynamic Pipelines](https://img.shields.io/badge/Week%209-Dynamic%20Pipelines-blue?style=for-the-badge)
 
@@ -66,7 +66,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 | Week 06 | Feb 24 – Mar 09 | Docker & Containerization | ✅ Complete |
 | Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD | ✅ Complete |
 | Week 08 | Mar 16 – Mar 22 | DevSecOps | ✅ Complete |
-| Week 09 | Mar 23 – Ongoing | Dynamic Jenkins Pipelines | 🟡 In Progress |
+| Week 09 | Mar 23 – Mar 26 | Dynamic Jenkins Pipelines | ✅ Complete |
 
 ---
 
@@ -127,9 +127,10 @@ devops-industrial-training-roadmap/
 │   ├── commands.md                      ← Tool commands and pipeline examples
 │   └── resources.md                     ← Links and references
 │
-├── 📂 Week-09-Dynamic-Jenkins-Pipelines/ ← 🆕 In Progress
+├── 📂 Week-09-Dynamic-Jenkins-Pipelines/
 │   ├── notes.md                         ← Dynamic branch detection, Groovy logic
 │   ├── commands.md                      ← Git snippets and pipeline code
+│   ├── project-monorepo-cicd.md         ← CI/CD for Monorepo Microservices
 │   └── resources.md                     ← Links and references
 │
 ├── 📂 projects/
@@ -176,7 +177,7 @@ devops-industrial-training-roadmap/
 **Step 8 →** Complete [Week 08 - DevSecOps](./Week-08-DevSecOps/notes.md)
 > Learn how to bake security into every stage of your pipeline. The future of DevOps.
 
-**Step 9 →** Explore [Week 09 - Dynamic Pipelines](./Week-09-Dynamic-Jenkins-Pipelines/notes.md) 🆕
+**Step 9 →** Explore [Week 09 - Dynamic Pipelines](./Week-09-Dynamic-Jenkins-Pipelines/notes.md)
 > Move beyond static CI/CD and build intelligent pipelines that react to Git automatically.
 
 ---

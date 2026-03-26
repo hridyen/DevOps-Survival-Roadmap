@@ -1,8 +1,19 @@
 # ⚙️ Week 09 — Dynamic Jenkins Pipelines
 
 > **Duration:** Mar 23, 2026 – Ongoing
-> **Status:** 🟡 In Progress
+> **Status:** ✅ Complete
 > **Goal:** Move beyond basic CI/CD and build a real-world, branch-aware deployment pipeline using Jenkins Multibranch and Docker.
+
+---
+
+## 📂 This Week Has Two Parts
+
+| File | What's Inside |
+|---|---|
+| **`notes.md`** (this file) | Branch-aware multibranch pipeline — concepts, errors, groovy tips |
+| **`project-monorepo-cicd.md`** | Deep-dive project: CI/CD for Monorepo Microservices with delta builds |
+
+> 💡 Both are part of Week 9. Read `notes.md` first, then `project-monorepo-cicd.md` for the advanced project deep-dive.
 
 ---
 
@@ -613,6 +624,19 @@ No resources wasted ✅
 
 > 💬 *This week was more about debugging than building. These lessons were hard-earned but make the pipelines much more robust.*
 
+
+---
+
+## 🏗️ Go Deeper — Monorepo Project
+
+For the full project documentation including:
+- Complete pipeline line-by-line breakdown
+- Old pipeline vs new pipeline (what broke and why)
+- Delta builds, parallel execution, idempotency explained
+- 4 real challenges with root causes and fixes
+- Personal learning reflection
+
+👉 Read: [project-monorepo-cicd.md](./project-monorepo-cicd.md)
 
 ---
 
