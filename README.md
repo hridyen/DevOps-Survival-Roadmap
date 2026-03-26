@@ -50,7 +50,7 @@ It covers everything I learned week by week — from Linux basics all the way to
 ## 📅 Training Timeline
 
 ```
-Jan 20 ────────────────────────────────────────────────────────── Mar 23+
+Jan 20 ────────────────────────────────────────────────────────── Apr 01+
   │         │          │          │          │         │    │       │      │
 Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8  Week 9
 Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dynamic
@@ -66,7 +66,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 | Week 06 | Feb 24 – Mar 09 | Docker & Containerization | ✅ Complete |
 | Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD | ✅ Complete |
 | Week 08 | Mar 16 – Mar 22 | DevSecOps | ✅ Complete |
-| Week 09 | Mar 23 – Mar 26 | Dynamic Jenkins Pipelines | ✅ Complete |
+| Week 09 | Mar 23 – Apr 01 | Dynamic Jenkins Pipelines | ✅ Complete |
 
 ---
 
