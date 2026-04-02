@@ -1,11 +1,11 @@
-# 🐳 Week 06 — Docker & Containerization
+# Week 06 — Docker & Containerization
 
 > **Duration:** Feb 24 – Mar 09, 2026 (2 weeks)
 > **Goal:** Understand containers, run applications inside Docker, and manage multi-container systems.
 
 ---
 
-## 📌 Why Docker in DevOps?
+## Why Docker in DevOps?
 
 Before Docker, deploying an application was a nightmare. It would work on one machine but not another — the classic *"it works on my machine"* problem.
 
@@ -13,7 +13,7 @@ Docker solves this by packaging your application and **everything it needs** int
 
 ---
 
-## 📚 Concepts Learned
+## Concepts Learned
 
 ### 1. What is Virtualisation?
 
@@ -26,16 +26,23 @@ Each virtual machine (VM) has its **own full OS**, which makes VMs heavy and slo
 - Start in seconds (VMs take minutes)
 - Use less RAM and disk space
 
-```
-┌──────────────────────────────┐     ┌──────────────────────────────┐
-│       Virtual Machines       │     │         Containers            │
-│ ┌────────┐  ┌────────┐       │     │ ┌──────┐ ┌──────┐ ┌──────┐  │
-│ │  App A │  │  App B │       │     │ │App A │ │App B │ │App C │  │
-│ ├────────┤  ├────────┤       │     │ └──────┘ └──────┘ └──────┘  │
-│ │Full OS │  │Full OS │       │     │    Docker Engine             │
-│ └────────┘  └────────┘       │     │    Host OS Kernel            │
-│       Hypervisor             │     └──────────────────────────────┘
-└──────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Virtual Machines
+        HA[Hypervisor]
+        HA --> OA[Full OS]
+        HA --> OB[Full OS]
+        OA --> AA[App A]
+        OB --> AB[App B]
+    end
+
+    subgraph Containers
+        K[Host OS Kernel]
+        K --> DE[Docker Engine]
+        DE --> CA[App A]
+        DE --> CB[App B]
+        DE --> CC[App C]
+    end
 ```
 
 ---
@@ -44,17 +51,10 @@ Each virtual machine (VM) has its **own full OS**, which makes VMs heavy and slo
 
 Docker uses a **client-server** architecture.
 
-```
-┌────────────┐        REST API         ┌──────────────────────────────────┐
-│   Docker   │ ─────────────────────▶  │         Docker Daemon            │
-│   Client   │                         │  (manages images, containers,    │
-│ (CLI/GUI)  │ ◀─────────────────────  │   volumes, networks)             │
-└────────────┘                         └──────────────────────────────────┘
-                                                    │
-                                          ┌─────────▼──────────┐
-                                          │    Docker Registry  │
-                                          │   (Docker Hub)      │
-                                          └────────────────────┘
+```mermaid
+graph LR
+    Client[Docker Client<br>CLI/GUI] <-->|REST API| Daemon[Docker Daemon<br>Manages images, containers,<br>volumes, networks]
+    Daemon <--> Registry[Docker Registry<br>Docker Hub]
 ```
 
 Key components:
@@ -271,7 +271,7 @@ server {
 
 ---
 
-## 🏃 Practice Exercises
+## Practice Exercises
 
 - [ ] Pull the `nginx` image from Docker Hub and run it
 - [ ] Write a Dockerfile for a simple Python or Node.js app
@@ -283,7 +283,7 @@ server {
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 
 <!-- Add your own observations, errors you hit, and how you fixed them -->
 
@@ -291,6 +291,6 @@ server {
 
 ---
 
-## 🔗 Resources
+## Resources
 
 See [resources.md](./resources.md) for Docker documentation, tutorials, and reference links.

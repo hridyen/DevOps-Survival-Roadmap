@@ -1,17 +1,17 @@
-# 🗂️ Week 05 — Git & Version Control
+# Week 05 — Git & Version Control
 
 > **Duration:** Feb 17 – Feb 23, 2026
 > **Goal:** Understand version control and master Git — the backbone of all modern software development.
 
 ---
 
-## 📌 Why Git in DevOps?
+## Why Git in DevOps?
 
 Every DevOps workflow starts with code in a Git repository. Whether you are writing a Dockerfile, a Jenkins pipeline, or a Terraform script — it all lives in Git.
 
 ---
 
-## 📚 Concepts Learned
+## Concepts Learned
 
 ### 1. What is Version Control?
 
@@ -53,12 +53,12 @@ Git is **DVCS** — the entire repository (with all history) exists on your loca
 A branching strategy is a plan for how your team uses branches. Common strategies:
 
 **Git Flow:**
-```
-main ─────────────────────────────────── (always stable, production-ready)
-  └── develop ──────────────────────────── (integration branch)
-        ├── feature/login ──────────────── (new features)
-        ├── feature/payment ────────────── (new features)
-        └── hotfix/bug-123 ─────────────── (urgent bug fixes)
+```mermaid
+graph LR
+    M[main<br>Always stable, production-ready] --> D[develop<br>Integration branch]
+    M --> H[hotfix/bug-123<br>Urgent bug fixes]
+    D --> FL[feature/login<br>New features]
+    D --> FP[feature/payment<br>New features]
 ```
 
 ### 5. Rebase vs Merge
@@ -82,7 +82,7 @@ Use case: A bug fix was made on `feature` branch but you need it on `main` right
 
 ---
 
-## 🔗 Git Commands Reference
+## Git Commands Reference
 
 ```bash
 # Setup
@@ -141,12 +141,12 @@ ssh -T git@github.com                          # Test SSH connection
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 
 <!-- Add your Git notes and discoveries here -->
 
 ---
 
-## 🔗 Resources
+## Resources
 
 See [resources.md](./resources.md) for Git documentation and tutorials.

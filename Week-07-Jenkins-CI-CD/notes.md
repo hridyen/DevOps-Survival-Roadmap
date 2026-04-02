@@ -1,29 +1,22 @@
-# ⚙️ Week 07 — Jenkins & CI/CD
+# Week 07 — Jenkins & CI/CD
 
 > **Duration:** Mar 10 – Mar 15, 2026
 > **Goal:** Understand CI/CD concepts and build real pipelines with Jenkins.
 
 ---
 
-## 📌 Why CI/CD?
+## Why CI/CD?
 
 In traditional development, code was written for weeks and then deployed all at once — which often caused massive failures.
 
 **CI/CD solves this** by automatically building, testing, and deploying code every time a developer pushes changes.
 
-```
-Developer pushes code
-        │
-        ▼
-   ┌──────────┐
-   │  Jenkins │  ← Automatically triggered
-   │ detects  │
-   │  change  │
-   └────┬─────┘
-        │
-   ┌────▼─────┐     ┌─────────┐     ┌──────────┐
-   │  Build   │────▶│  Test   │────▶│  Deploy  │
-   └──────────┘     └─────────┘     └──────────┘
+```mermaid
+graph TD
+    Dev[Developer pushes code] --> Jenkins[Jenkins detects change]
+    Jenkins --> Build[Build]
+    Build --> Test[Test]
+    Test --> Deploy[Deploy]
 ```
 
 **CI (Continuous Integration)** — automatically build and test code on every push
@@ -32,7 +25,7 @@ Developer pushes code
 
 ---
 
-## 📚 Concepts Learned
+## Concepts Learned
 
 ### 1. What is Jenkins?
 
@@ -48,30 +41,15 @@ Jenkins watches your Git repository and automatically:
 
 ### 2. Jenkins Internal Flow
 
-```
-Push to GitHub
-     │
-     ▼
-Webhook / Poll SCM
-     │
-     ▼
-Jenkins Master receives trigger
-     │
-     ▼
-Jenkins assigns job to an Agent
-     │
-     ▼
-Agent clones the Git repo
-     │
-     ▼
-Agent runs pipeline stages:
-  Build → Test → Deploy
-     │
-     ▼
-Jenkins reports result (pass/fail)
-     │
-     ▼
-Notification sent (email, Slack, etc.)
+```mermaid
+graph TD
+    Push[Push to GitHub] --> Webhook[Webhook / Poll SCM]
+    Webhook --> Master[Jenkins Master receives trigger]
+    Master --> Assign[Jenkins assigns job to an Agent]
+    Assign --> Clone[Agent clones the Git repo]
+    Clone --> Stages[Agent runs pipeline stages: Build, Test, Deploy]
+    Stages --> Result[Jenkins reports result: pass/fail]
+    Result --> Notify[Notification sent: email, Slack, etc.]
 ```
 
 ---
@@ -239,7 +217,7 @@ steps {
 
 ---
 
-## 🏃 Practice Exercises
+## Practice Exercises
 
 - [ ] Install Jenkins and access the web UI
 - [ ] Create a Freestyle project that clones a GitHub repo
@@ -251,7 +229,7 @@ steps {
 
 ---
 
-## 🐛 Errors I Encountered & Fixed
+## Errors I Encountered & Fixed
 
 | Error | Cause | Fix |
 |-------|-------|-----|
@@ -260,16 +238,16 @@ steps {
 | Agent not connecting | Firewall blocking agent port | Open port 50000 on agent machine |
 | Pipeline script not found | Jenkinsfile not in repo root | Move Jenkinsfile to root directory |
 
-> 💬 *Add your own errors and solutions here as you encounter them.*
+> *Add your own errors and solutions here as you encounter them.*
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 
 <!-- Your own notes, observations, things that surprised you -->
 
 ---
 
-## 🔗 Resources
+## Resources
 
 See [resources.md](./resources.md) for Jenkins documentation and tutorials.

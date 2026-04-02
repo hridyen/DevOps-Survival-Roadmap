@@ -1,4 +1,4 @@
-# 🔧 Week 03 — Internet, Server Setup & Hardware
+# Week 03 — Internet, Server Setup & Hardware
 
 > **Duration:** Feb 03 – Feb 09, 2026
 
@@ -28,8 +28,8 @@ Automated with shell scripts:
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 <!-- Add notes here -->
 
-## 🔗 Resources
+## Resources
 See [resources.md](./resources.md)

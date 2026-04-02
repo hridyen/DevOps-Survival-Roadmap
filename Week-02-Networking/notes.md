@@ -1,4 +1,4 @@
-# 🌐 Week 02 — Networking
+# Week 02 — Networking
 
 > **Duration:** Jan 27 – Feb 02, 2026
 
@@ -44,8 +44,8 @@ Client sends requests → Server responds with data.
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 <!-- Add your notes here -->
 
-## 🔗 Resources
+## Resources
 See [resources.md](./resources.md)

@@ -1,4 +1,4 @@
-# 🚀 DevOps Industrial Training Roadmap
+# DevOps Industrial Training Roadmap
 
 > **A complete, beginner-friendly documentation of my DevOps industrial training journey — from zero to CI/CD pipelines and DevSecOps.**
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 👋 About This Repository
+## About This Repository
 
 This repo documents my **DevOps Industrial Training** that started on **20th January 2026**.
 
@@ -30,7 +30,7 @@ It covers everything I learned week by week — from Linux basics all the way to
 
 ---
 
-## 🧠 Skills Covered
+## Skills Covered
 
 | Category | Topics |
 |---|---|
@@ -43,17 +43,33 @@ It covers everything I learned week by week — from Linux basics all the way to
 | ⚙️ **Jenkins CI/CD** | Pipelines, Agents, Webhooks, Groovy, Jenkinsfile |
 | 🛡️ **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift Left Security |
 | 🔀 **Dynamic Pipelines** | Branch Detection, Dynamic Checkout, Multi-branch |
-| ☁️ **AWS (Intro)** 🔄 In Progress | EC2, VPC, Subnetting, Security Groups, Snapshots |
+| ☁️ **AWS (Intro)** 🔄 In Progress | IAM, EC2, VPC, Subnetting, Security Groups, Snapshots |
 
 ---
 
-## 📅 Training Timeline
+## Training Timeline
 
-```
-Jan 20 ────────────────────────────────────────────────────────────────── Apr 01+
-  │         │          │          │          │         │    │       │      │       │
-Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8  Week 9  Week 10
-Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dynamic   AWS
+```mermaid
+gantt
+    title DevOps Training Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %d
+    
+    section Foundational
+    Linux Fundamentals       :done,    des1, 2026-01-20, 7d
+    Networking               :done,    des2, 2026-01-27, 7d
+    Internet & Servers       :done,    des3, 2026-02-03, 7d
+    Advanced Linux           :done,    des4, 2026-02-10, 7d
+    Git & Version Control    :done,    des5, 2026-02-17, 7d
+    
+    section Containers CI/CD
+    Docker & Containers      :done,    des6, 2026-02-24, 14d
+    Jenkins CI/CD            :done,    des7, 2026-03-10, 6d
+    DevSecOps                :done,    des8, 2026-03-16, 7d
+    Dynamic Pipelines        :done,    des9, 2026-03-23, 10d
+    
+    section Cloud
+    AWS Cloud Computing      :active,  des10, 2026-04-02, 14d
 ```
 
 | Week | Dates | Topic | Status |
@@ -71,16 +87,42 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 
 ---
 
-## 🗺️ Visual Learning Roadmap
+## Visual Learning Roadmap
 
-![Alt text for accessibility](charts/flowwchart.png)
+```mermaid
+graph TD
+    %% Define Styles
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef highlight fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef current fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
 
-**Simple path:**
-`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps` → `Dynamic Pipelines` → `AWS Cloud`
+    %% Nodes
+    A[Linux Fundamentals]:::highlight
+    B[Networking]:::highlight
+    C[Server Setup]:::highlight
+    D[Advanced Linux]:::highlight
+    E[Git & Version Control]:::highlight
+    F[Docker Containerization]:::highlight
+    G[Jenkins CI/CD]:::highlight
+    H[DevSecOps]:::highlight
+    I[Dynamic Pipelines]:::highlight
+    J[AWS Cloud Computing]:::current
+
+    %% Connections
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+```
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 devops-industrial-training-roadmap/
@@ -135,10 +177,14 @@ devops-industrial-training-roadmap/
 │   └── resources.md                     ← Links and references
 │
 ├── 📂 Week-10-AWS-Cloud-Computing/
-│   ├── notes.md                         ← Introduction to AWS, core concepts
-│   ├── concepts.md                      ← AWS concepts
-│   └── resources.md                     ← Links and references
-│
+│   ├── 📂 Cloud-Computing-Introduction/ ← Introduction to AWS, core concepts
+│   │   ├── notes.md
+│   │   ├── concepts.md
+│   │   └── resources.md
+│   └── 📂 IAM/                          ← Identity and Access Management
+│       ├── notes.md
+│       ├── commands.md
+│       └── resources.md
 ├── 📂 projects/
 │   ├── docker-projects.md
 │   └── jenkins-projects.md
@@ -155,7 +201,7 @@ devops-industrial-training-roadmap/
 
 ---
 
-## 🧭 How Beginners Should Use This Repo
+## How Beginners Should Use This Repo
 
 **If you are new to DevOps, follow this exact order:**
 
@@ -186,12 +232,12 @@ devops-industrial-training-roadmap/
 **Step 9 →** Explore [Week 09 - Dynamic Pipelines](./Week-09-Dynamic-Jenkins-Pipelines/notes.md)
 > Move beyond static CI/CD and build intelligent pipelines that react to Git automatically.
 
-**Step 10 →** Explore [Week 10 - AWS Cloud Computing](./Week-10-AWS-Cloud-Computing/notes.md)
+**Step 10 →** Explore [Week 10 - AWS Cloud Computing](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/notes.md)
 > Getting started with AWS Cloud Computing and core cloud concepts.
 
 ---
 
-## 🏗️ Projects Built
+## Projects Built
 
 ### 🐳 Docker Projects
 - Dockerized multiple web applications from scratch
@@ -214,7 +260,7 @@ devops-industrial-training-roadmap/
 
 ---
 
-## 🔮 Future Learning Roadmap
+## Future Learning Roadmap
 
 After completing this training, the next steps on the DevOps path are:
 
@@ -233,7 +279,7 @@ Current Level              3 Months               6 Months
 
 ---
 
-## 📚 Resource Library
+## Resource Library
 
 | Type | Link |
 |------|------|
@@ -243,7 +289,7 @@ Current Level              3 Months               6 Months
 
 ---
 
-## 💡 Things I Learned the Hard Way
+## Things I Learned the Hard Way
 
 > ⚠️ These are hard lessons — save yourself the pain!
 
@@ -262,7 +308,7 @@ Current Level              3 Months               6 Months
 
 ---
 
-## 🧰 Quick Commands Cheat Sheet
+## Quick Commands Cheat Sheet
 
 > Jump to the right week for full command references:
 
@@ -276,10 +322,11 @@ Current Level              3 Months               6 Months
 | Jenkins Pipelines | [Week-07/pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
 | DevSecOps Commands | [Week-08/commands.md](./Week-08-DevSecOps/commands.md) |
 | Dynamic Pipelines | [Week-09/commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
+| IAM Commands | [Week-10/IAM/commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
 
 ---
 
-## 👤 About Me
+## About Me
 
 - 🎓 DevOps Industrial Training — Jan 2026 to present
 - 📍 Learning path: Linux → Networking → Docker → Jenkins → DevSecOps → Cloud

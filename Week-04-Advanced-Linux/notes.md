@@ -1,4 +1,4 @@
-# 🔐 Week 04 — Advanced Linux Tools
+# Week 04 — Advanced Linux Tools
 
 > **Duration:** Feb 10 – Feb 16, 2026
 
@@ -54,8 +54,8 @@ nmcli connection show
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 <!-- Add notes here -->
 
-## 🔗 Resources
+## Resources
 See [resources.md](./resources.md)

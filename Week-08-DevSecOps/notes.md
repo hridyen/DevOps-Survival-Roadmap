@@ -1,12 +1,12 @@
-# 🔐 Week 08 — DevSecOps
+# Week 08 — DevSecOps
 
 > **Duration:** Mar 16, 2026 – Ongoing
-> **Status:** 🟡 In Progress
+> **Status:** In Progress
 > **Goal:** Understand how security is integrated into the DevOps pipeline — "Shift Left" security.
 
 ---
 
-## 📌 What is DevSecOps?
+## What is DevSecOps?
 
 Traditional DevOps focuses on **speed** — build fast, deploy fast.
 But speed without security creates vulnerabilities.
@@ -15,19 +15,26 @@ But speed without security creates vulnerabilities.
 
 Instead of checking security at the end, you check it **continuously** throughout the pipeline.
 
-```
-Old Way (DevOps):
-Build → Test → Deploy → [Security Check at the end] ❌ Too late!
+```mermaid
+graph LR
+    subgraph Traditional DevOps
+        B1[Build] --> T1[Test] --> D1[Deploy] --> S1[Security Check]
+        style S1 fill:#ffcccc,stroke:#ff0000
+    end
 
-DevSecOps Way:
-[Security] → Build → [Security] → Test → [Security] → Deploy ✅
+    subgraph DevSecOps
+        S2[Security] --> B2[Build] --> S3[Security] --> T2[Test] --> S4[Security] --> D2[Deploy]
+        style S2 fill:#ccffcc,stroke:#00aa00
+        style S3 fill:#ccffcc,stroke:#00aa00
+        style S4 fill:#ccffcc,stroke:#00aa00
+    end
 ```
 
 This is called **"Shift Left"** — moving security checks earlier in the process.
 
 ---
 
-## 📚 Concepts Being Learned
+## Concepts Being Learned
 
 ### 1. DevSecOps Overview
 - What is the difference between DevOps and DevSecOps
@@ -41,8 +48,8 @@ This is called **"Shift Left"** — moving security checks earlier in the proces
 
 ---
 
-### 2. SonarQube 🔍
-> **Status:** 📖 Introduced — not yet hands-on
+### 2. SonarQube
+> **Status:** Introduced — not yet hands-on
 
 **What it is:**
 SonarQube is a **code quality and security analysis tool**. It scans your source code and finds:
@@ -53,16 +60,15 @@ SonarQube is a **code quality and security analysis tool**. It scans your source
 - Test coverage gaps
 
 **How it fits in DevSecOps:**
-```
-Developer pushes code
-        ↓
-Jenkins Pipeline runs
-        ↓
-SonarQube scans the code ← This is the SAST step
-        ↓
-If issues found → Pipeline fails / alerts sent
-        ↓
-Developer fixes issues → Re-push
+```mermaid
+graph TD
+    Push[Developer pushes code] --> Jenkins[Jenkins Pipeline runs]
+    Jenkins --> Scan[SonarQube scans the code: SAST step]
+    Scan --> Cond{Issues found?}
+    Cond -->|Yes| Fail[Pipeline fails / alerts sent]
+    Fail --> Fix[Developer fixes issues & Re-push]
+    Fix --> Push
+    Cond -->|No| Pass[Pipeline Continues]
 ```
 
 **Key terms to know:**
@@ -81,8 +87,8 @@ Developer fixes issues → Re-push
 
 ---
 
-### 3. OWASP 🛡️
-> **Status:** 📖 Introduced — not yet hands-on
+### 3. OWASP
+> **Status:** Introduced — not yet hands-on
 
 **What it is:**
 OWASP (Open Web Application Security Project) is an open-source organization that publishes security standards and tools.
@@ -120,8 +126,8 @@ It tells you → Upgrade to version 1.2
 
 ---
 
-### 4. Trivy 🐳
-> **Status:** 📖 Introduced — not yet hands-on
+### 4. Trivy
+> **Status:** Introduced — not yet hands-on
 
 **What it is:**
 Trivy is an open-source **container image vulnerability scanner** made by Aqua Security. It scans Docker images for known vulnerabilities.
@@ -178,31 +184,28 @@ Total: 136 (HIGH: 9, CRITICAL: 2)
 
 ---
 
-## 🔗 How These Tools Fit Together in a Pipeline
+## How These Tools Fit Together in a Pipeline
 
-```
-┌─────────────────────────────────────────────────────────┐
-│              DevSecOps Jenkins Pipeline                  │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  Stage 1: Checkout Code                                  │
-│       ↓                                                  │
-│  Stage 2: SonarQube Scan ← SAST (scan source code)      │
-│       ↓                                                  │
-│  Stage 3: OWASP Check   ← SCA (scan dependencies)       │
-│       ↓                                                  │
-│  Stage 4: Build Docker Image                             │
-│       ↓                                                  │
-│  Stage 5: Trivy Scan    ← Container security scan        │
-│       ↓                                                  │
-│  Stage 6: Deploy (only if all above passed ✅)           │
-│                                                          │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    %% DevSecOps Pipeline
+    Stage1[Stage 1: Checkout Code]
+    Stage2[Stage 2: SonarQube Scan<br/>SAST: Scan source code]
+    Stage3[Stage 3: OWASP Check<br/>SCA: Scan dependencies]
+    Stage4[Stage 4: Build Docker Image]
+    Stage5[Stage 5: Trivy Scan<br/>Container security scan]
+    Stage6[Stage 6: Deploy<br/>Only if all above passed]
+
+    Stage1 --> Stage2
+    Stage2 --> Stage3
+    Stage3 --> Stage4
+    Stage4 --> Stage5
+    Stage5 --> Stage6
 ```
 
 ---
 
-## 🏃 Practice Exercises (Pending)
+## Practice Exercises (Pending)
 
 - [ ] Install SonarQube using Docker
 - [ ] Connect SonarQube to Jenkins
@@ -214,7 +217,7 @@ Total: 136 (HIGH: 9, CRITICAL: 2)
 
 ---
 
-## 🐛 Errors & Fixes
+## Errors & Fixes
 
 <!-- Fill this as you practice and hit errors -->
 
@@ -224,14 +227,14 @@ Total: 136 (HIGH: 9, CRITICAL: 2)
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 
 <!-- Add your own notes as you go deeper into Week 8 -->
 
-> 💬 *This section will grow as you practice. Add your observations, commands, and aha moments here.*
+> *This section will grow as you practice. Add your observations, commands, and aha moments here.*
 
 ---
 
-## 🔗 Resources
+## Resources
 
 See [resources.md](./resources.md)

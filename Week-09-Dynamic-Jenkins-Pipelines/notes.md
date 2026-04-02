@@ -1,12 +1,12 @@
-# ⚙️ Week 09 — Dynamic Jenkins Pipelines
+# Week 09 — Dynamic Jenkins Pipelines
 
 > **Duration:** Mar 23, 2026 – Ongoing
-> **Status:** ✅ Complete
+> **Status:** Complete
 > **Goal:** Move beyond basic CI/CD and build a real-world, branch-aware deployment pipeline using Jenkins Multibranch and Docker.
 
 ---
 
-## 📂 This Week Has Two Parts
+## This Week Has Two Parts
 
 | File | What's Inside |
 |---|---|
@@ -17,13 +17,13 @@
 
 ---
 
-## 📌 What Changed This Week?
+## What Changed This Week?
 
 In Week 7, pipelines were **static** — you manually selected a branch, wrote fixed steps, and ran them.
 
 This week the goal was to make pipelines **dynamic and branch-aware** — the pipeline itself reacts differently based on which Git branch triggered it.
 
-### 🏗️ What Was Actually Built
+### What Was Actually Built
 
 A **Multibranch Jenkins Pipeline** handling 4 Git branches with different behavior:
 
@@ -36,19 +36,22 @@ A **Multibranch Jenkins Pipeline** handling 4 Git branches with different behavi
 
 > 💡 **Key design decision:** `stg` and `uat` are ignored **at the trigger level**, not inside the pipeline with an `if` condition. This is cleaner — unnecessary builds never even start.
 
-```
-Static Pipeline (Week 7):         Dynamic Pipeline (Week 9):
-──────────────────────────        ──────────────────────────
-You select branch manually   →    Pipeline detects branch automatically
-Fixed Docker tag             →    Docker tag = branch name
-Same deploy logic always     →    Deploy logic changes based on branch
-                                  (dev branch → dev server,
-                                   main branch → production)
+```mermaid
+graph LR
+    subgraph Static Pipeline Week 7
+        A1[Select branch manually] --> B1[Fixed Docker tag]
+        B1 --> C1[Same deploy logic always]
+    end
+
+    subgraph Dynamic Pipeline Week 9
+        A2[Pipeline detects branch automatically] --> B2[Docker tag = branch name]
+        B2 --> C2[Deploy logic changes based on branch]
+    end
 ```
 
 ---
 
-## 📚 Concepts Learned
+## Concepts Learned
 
 ### 1. Dynamic Branch Detection
 
@@ -153,13 +156,13 @@ stage('Deploy') {
 }
 ```
 
-```
-Branch Logic:
-─────────────────────────────────────────────────────
-main branch    →  Deploy to Production  (port 80)
-dev branch     →  Deploy to Dev server  (port 8080)
-feature/*      →  Run tests only        (no deploy)
-─────────────────────────────────────────────────────
+```mermaid
+graph TD
+    Trigger[Pipeline Triggered]
+    Trigger --> Cond{Which Branch?}
+    Cond -->|main| Prod[Deploy to Production<br>Port 80]
+    Cond -->|dev| Dev[Deploy to Dev server<br>Port 8080]
+    Cond -->|feature/*| Test[Run tests only<br>No deploy]
 ```
 
 ---
@@ -309,7 +312,7 @@ pipeline {
 
 ---
 
-## 🐛 Real Errors Encountered & Fixed
+## Real Errors Encountered & Fixed
 
 ### Error 1: Git Rebase Conflicts
 
@@ -458,7 +461,7 @@ def branch = sh(
 
 ---
 
-## 🔗 Full Dynamic Pipeline (Complete Example)
+## Full Dynamic Pipeline (Complete Example)
 
 ```groovy
 pipeline {
@@ -547,32 +550,26 @@ pipeline {
 
 ---
 
-## 🏆 Final Outcome
+## Final Outcome
 
-```
-GitHub Push to 'dev' branch
-         │
-         ▼
-Multibranch Jenkins detects push (Webhook)
-         │
-         ▼
-Branch filter: dev ✅ allowed → Build starts
-         │
-         ▼
-Stage 1: Checkout dev branch
-Stage 2: Build image → myapp:dev-42
-Stage 3: docker run -e ENV=development → port 8080
-         │
-         ▼
-Dev environment live ✅
+```mermaid
+graph TD
+    subgraph Allowed Branch Workflow: dev
+        Push1[GitHub push 'dev'] --> Detect1[Webhook]
+        Detect1 --> Filter1[Filter: dev allowed]
+        Filter1 --> BuildStarts[Build Starts]
+        BuildStarts --> S1[Stage 1: Checkout branch]
+        S1 --> S2[Stage 2: Build image]
+        S2 --> S3[Stage 3: Run container ENV=development]
+        S3 --> Live[Dev environment live]
+    end
 
-─────────────────────────────────────
-
-GitHub Push to 'stg' branch
-         │
-         ▼
-Branch filter: stg ⛔ blocked → Build NEVER starts
-No resources wasted ✅
+    subgraph Ignored Branch Workflow: stg
+        Push2[GitHub push 'stg'] --> Detect2[Webhook]
+        Detect2 --> Filter2{Filter: stg blocked}
+        Filter2 --> Stop[Build NEVER starts<br>No resources wasted]
+        style Filter2 fill:#ffcccc,stroke:#ff0000
+    end
 ```
 
 **Result:** A clean, production-style CI/CD setup where:
@@ -583,7 +580,7 @@ No resources wasted ✅
 
 ---
 
-## 🧠 Key Takeaways This Week
+## Key Takeaways This Week
 
 > Things that clicked this week after debugging:
 
@@ -600,7 +597,7 @@ No resources wasted ✅
 
 ---
 
-## 🏃 Practice Exercises
+## Practice Exercises
 
 - [ ] Set up a Multibranch Pipeline with 4 branches: dev, prod, stg, uat
 - [ ] Configure branch filter so only dev and prod trigger builds
@@ -614,7 +611,7 @@ No resources wasted ✅
 
 ---
 
-## 📝 Personal Notes
+## Personal Notes
 
 - **`BRANCH_NAME` Variable Pitfall**: Learned the hard way that `env.BRANCH_NAME` only exists in Multibranch pipelines. In standalone jobs, it returns `null`, and you have to detect the branch manually using Git commands.
 - **Git Push Rejections**: Encountered `non-fast-forward` errors when remote was ahead. The fix is to always `git pull --rebase` before pushing to keep history linear.
@@ -627,7 +624,7 @@ No resources wasted ✅
 
 ---
 
-## 🏗️ Go Deeper — Monorepo Project
+## Go Deeper — Monorepo Project
 
 For the full project documentation including:
 - Complete pipeline line-by-line breakdown
@@ -640,6 +637,6 @@ For the full project documentation including:
 
 ---
 
-## 🔗 Resources
+## Resources
 
 See [resources.md](./resources.md)

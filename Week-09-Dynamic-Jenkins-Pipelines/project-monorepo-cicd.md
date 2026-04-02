@@ -1,13 +1,13 @@
-# 🏗️ Week 09 — Project: Branch-Aware CI/CD Pipeline for Monorepo Microservices
+# Week 09 — Project: Branch-Aware CI/CD Pipeline for Monorepo Microservices
 
 > **Project Type:** Real-World CI/CD Optimization Project
 > **Stack:** Jenkins · Docker · Git · Groovy · Bash
-> **Status:** ✅ Completed
+> **Status:** Completed
 > **Difficulty:** Advanced
 
 ---
 
-## 📌 1. Project Overview
+## 1. Project Overview
 
 ### What Problem Does This Project Solve?
 
@@ -68,46 +68,28 @@ In real companies with large teams:
 
 ---
 
-## 🏛️ 2. Architecture Breakdown
+## 2. Architecture Breakdown
 
 ### Full System Flow
 
-```
-Developer pushes code to GitHub
-            │
-            ▼
-    ┌───────────────┐
-    │    GitHub     │  ← Stores the monorepo with all microservices
-    │  (Monorepo)   │  ← Webhook fires on every push
-    └───────┬───────┘
-            │ Webhook trigger
-            ▼
-    ┌───────────────┐
-    │    Jenkins    │  ← Receives webhook, starts pipeline
-    │  (Pipeline)   │  ← Runs on Jenkins agent/master
-    └───────┬───────┘
-            │
-    ┌───────▼────────────────────────────────┐
-    │           Pipeline Stages              │
-    │                                        │
-    │  Stage 1: Checkout                     │
-    │       ↓                                │
-    │  Stage 2: Detect Changes               │
-    │       (git diff → which services?)     │
-    │       ↓                                │
-    │  Stage 3: Build (Parallel)             │
-    │       ↓  ↓  ↓                          │
-    │      sA  sB  sC  (only changed ones)   │
-    │       ↓                                │
-    │  Stage 4: Run Containers               │
-    │       (docker run per changed service) │
-    └───────┬────────────────────────────────┘
-            │
-            ▼
-    ┌───────────────┐
-    │    Docker     │  ← Builds images, runs containers
-    │   (Runtime)   │  ← Each service gets its own container
-    └───────────────┘
+```mermaid
+graph TD
+    Dev[Developer pushes code to GitHub] --> Git[GitHub Monorepo<br>Stores services & fires webhook]
+    Git -->|Webhook trigger| Jenkins[Jenkins Pipeline<br>Receives webhook]
+    
+    subgraph Jenkins Pipeline Stages
+        S1[Stage 1: Checkout] --> S2[Stage 2: Detect Changes<br>git diff]
+        S2 --> S3[Stage 3: Build in Parallel]
+        S3 -->|Build only changed| bA[Service A]
+        S3 -->|Build only changed| bB[Service B]
+        S3 -->|Build only changed| bC[Service C]
+        bA --> S4[Stage 4: Run Containers]
+        bB --> S4
+        bC --> S4
+    end
+    
+    Jenkins --> S1
+    S4 --> Docker[Docker Runtime<br>Builds images & runs containers]
 ```
 
 ---
@@ -142,7 +124,7 @@ Developer pushes code to GitHub
 
 ---
 
-## 🔬 3. Pipeline Deep Dive
+## 3. Pipeline Deep Dive
 
 ### The Full Working Jenkinsfile
 
@@ -420,7 +402,7 @@ This is the **idempotency pattern** — the pipeline can run safely even if no c
 
 ---
 
-## ⚔️ 4. Old Pipeline vs New Pipeline
+## 4. Old Pipeline vs New Pipeline
 
 This section is critical for interviews — it shows you understand not just what works but **why things fail**.
 
@@ -575,7 +557,7 @@ def changes = currentBuild.changeSets.collectMany { it.items }.collectMany { it.
 
 ---
 
-## 🧠 5. Key DevOps Concepts Learned
+## 5. Key DevOps Concepts Learned
 
 ### Monorepo CI/CD Optimization
 
@@ -641,7 +623,7 @@ A reliable pipeline must handle:
 
 ---
 
-## 🌍 6. Real-World Industry Relevance
+## 6. Real-World Industry Relevance
 
 ### Where This Approach Is Used
 
@@ -678,7 +660,7 @@ At scale, an unoptimized pipeline becomes a **bottleneck that slows the entire e
 
 ---
 
-## 🐛 7. Challenges Faced
+## 7. Challenges Faced
 
 ### Challenge 1: Jenkins `env` Variable Mutation Issue
 
@@ -748,43 +730,29 @@ echo "Changed files: ${changedFiles}"
 
 ---
 
-## ✅ 8. Final Working Flow (Summary)
+## 8. Final Working Flow (Summary)
 
-```
-Step 1: Developer pushes code to GitHub
-        └── Changes: service-a/app.py modified
-
-Step 2: GitHub webhook fires → Jenkins build starts
-
-Step 3: Stage — Checkout
-        └── Jenkins clones repo at current commit
-
-Step 4: Stage — Detect Changes
-        ├── previousCommit = abc123 (last successful build)
-        ├── currentCommit  = xyz789 (this push)
-        ├── git diff --name-only abc123 xyz789
-        │   Output: "service-a/app.py"
-        ├── buildServiceA = true   ✅ (contains 'service-a/')
-        ├── buildServiceB = false  ⛔ (not in diff)
-        └── buildServiceC = false  ⛔ (not in diff)
-
-Step 5: Stage — Build Services (Parallel)
-        ├── Build Service A → RUNS  → docker build -t service-a:latest ./service-a ✅
-        ├── Build Service B → SKIPPED (buildServiceB is false) ⛔
-        └── Build Service C → SKIPPED (buildServiceC is false) ⛔
-
-Step 6: Stage — Run Containers
-        ├── docker rm -f service-a || true  (remove old container)
-        └── docker run -d --name service-a -p 5001:5000 service-a:latest ✅
-
-Step 7: Pipeline completes ✅
-        └── Only service-a was rebuilt and redeployed
-        └── service-b and service-c: untouched, still running old version
+```mermaid
+graph TD
+    S1[Step 1: Developer pushes code<br>service-a/app.py modified] --> S2[Step 2: GitHub webhook fires]
+    S2 --> S3[Step 3: Jenkins Checkout]
+    S3 --> S4[Step 4: Detect Changes]
+    
+    S4 -->|git diff Output: service-a/app.py| D_A[buildServiceA = true]
+    S4 --> D_B[buildServiceB = false]
+    S4 --> D_C[buildServiceC = false]
+    
+    D_A --> B_A[Build Service A: RUNS]
+    D_B --> B_B[Build Service B: SKIPPED]
+    D_C --> B_C[Build Service C: SKIPPED]
+    
+    B_A --> R_A[Run Containers: docker run service-a]
+    R_A --> S7[Step 7: Pipeline Completes<br>Only service-a deployed]
 ```
 
 ---
 
-## 🔮 9. Improvements & Next Steps
+## 9. Improvements & Next Steps
 
 ### Docker Image Tagging
 
