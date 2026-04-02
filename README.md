@@ -40,10 +40,10 @@ It covers everything I learned week by week — from Linux basics all the way to
 | 🔐 **Advanced Linux** | ACL, GREP, Cron Jobs, SUID, SGID, nmcli, Wheel Group |
 | 🗂️ **Git & GitHub** | Version Control, Branching, Rebasing, Pull Requests, PAT |
 | 🐳 **Docker** | Containers, Images, Volumes, Networks, Compose, Swarm |
-| ☁️ **AWS (Intro)** | EC2, VPC, Subnetting, Security Groups, Snapshots |
 | ⚙️ **Jenkins CI/CD** | Pipelines, Agents, Webhooks, Groovy, Jenkinsfile |
 | 🛡️ **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift Left Security |
 | 🔀 **Dynamic Pipelines** | Branch Detection, Dynamic Checkout, Multi-branch |
+| ☁️ **AWS (Intro)** 🔄 In Progress | EC2, VPC, Subnetting, Security Groups, Snapshots |
 
 ---
 
