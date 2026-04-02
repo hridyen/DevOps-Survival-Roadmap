@@ -7,10 +7,10 @@
 <div align="center">
 
 ![DevOps](https://img.shields.io/badge/DevOps-Training-blue?style=for-the-badge)
-![Duration](https://img.shields.io/badge/Duration-9%20Weeks-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Complete-green?style=for-the-badge)
+![Duration](https://img.shields.io/badge/Duration-10%20Weeks-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge)
 ![Start Date](https://img.shields.io/badge/Started-Jan%2020%2C%202026-purple?style=for-the-badge)
-![Dynamic Pipelines](https://img.shields.io/badge/Week%209-Dynamic%20Pipelines-blue?style=for-the-badge)
+![AWS Cloud](https://img.shields.io/badge/Week%2010-AWS%20Cloud-orange?style=for-the-badge)
 
 </div>
 
@@ -50,10 +50,10 @@ It covers everything I learned week by week — from Linux basics all the way to
 ## 📅 Training Timeline
 
 ```
-Jan 20 ────────────────────────────────────────────────────────── Apr 01+
-  │         │          │          │          │         │    │       │      │
-Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8  Week 9
-Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dynamic
+Jan 20 ────────────────────────────────────────────────────────────────── Apr 01+
+  │         │          │          │          │         │    │       │      │       │
+Week 1    Week 2     Week 3    Week 4     Week 5    Week 6  Week 7  Week 8  Week 9  Week 10
+Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dynamic   AWS
 ```
 
 | Week | Dates | Topic | Status |
@@ -67,6 +67,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 | Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD | ✅ Complete |
 | Week 08 | Mar 16 – Mar 22 | DevSecOps | ✅ Complete |
 | Week 09 | Mar 23 – Apr 01 | Dynamic Jenkins Pipelines | ✅ Complete |
+| Week 10 | Apr 02 – Present | AWS Cloud Computing | 🔄 In Progress |
 
 ---
 
@@ -75,7 +76,7 @@ Linux   Networking  Servers  Adv.Linux   Git      Docker  Jenkins DevSecOps Dyna
 ![Alt text for accessibility](charts/flowchart.png)
 
 **Simple path:**
-`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps` → `Dynamic Pipelines`
+`Linux` → `Networking` → `Server Setup` → `Advanced Linux` → `Git` → `Docker` → `Jenkins CI/CD` → `DevSecOps` → `Dynamic Pipelines` → `AWS Cloud`
 
 ---
 
@@ -133,6 +134,11 @@ devops-industrial-training-roadmap/
 │   ├── project-monorepo-cicd.md         ← CI/CD for Monorepo Microservices
 │   └── resources.md                     ← Links and references
 │
+├── 📂 Week-10-AWS-Cloud-Computing/
+│   ├── notes.md                         ← Introduction to AWS, core concepts
+│   ├── concepts.md                      ← AWS concepts
+│   └── resources.md                     ← Links and references
+│
 ├── 📂 projects/
 │   ├── docker-projects.md
 │   └── jenkins-projects.md
@@ -180,6 +186,9 @@ devops-industrial-training-roadmap/
 **Step 9 →** Explore [Week 09 - Dynamic Pipelines](./Week-09-Dynamic-Jenkins-Pipelines/notes.md)
 > Move beyond static CI/CD and build intelligent pipelines that react to Git automatically.
 
+**Step 10 →** Explore [Week 10 - AWS Cloud Computing](./Week-10-AWS-Cloud-Computing/notes.md)
+> Getting started with AWS Cloud Computing and core cloud concepts.
+
 ---
 
 ## 🏗️ Projects Built
@@ -217,7 +226,7 @@ Current Level              3 Months               6 Months
 ✅ Git/Docker          AWS Deep Dive          Monitoring (Prometheus)
 ✅ Jenkins             Prometheus/Grafana     Full CI/CD Pipelines
 ✅ DevSecOps (Intro)   ArgoCD (GitOps)        Cloud Certifications
-🔜 AWS Advanced        Advanced DevSecOps     Security Certifications
+🔄 AWS Cloud           Advanced DevSecOps     Security Certifications
 ```
 
 👉 Full plan: [future-roadmap/3-month-plan.md](./future-roadmap/3-month-plan.md)

@@ -1,6 +1,6 @@
 # 📅 3-Month Learning Plan
 
-> Immediate next steps after completing the 9-week training.
+> Immediate next steps after completing the 10-week training.
 
 ---
 
