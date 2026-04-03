@@ -1,349 +1,249 @@
-# DevOps Industrial Training Roadmap
+# ❖ DevOps Industrial Training Roadmap
 
-> **A complete, beginner-friendly documentation of my DevOps industrial training journey — from zero to CI/CD pipelines and DevSecOps.**
+> **Systematic documentation of an industrial DevOps training journey.**
+> From foundation to CI/CD, DevSecOps, and Cloud Infrastructure.
 
 ---
 
 <div align="center">
 
-![DevOps](https://img.shields.io/badge/DevOps-Training-blue?style=for-the-badge)
-![Duration](https://img.shields.io/badge/Duration-10%20Weeks-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge)
-![Start Date](https://img.shields.io/badge/Started-Jan%2020%2C%202026-purple?style=for-the-badge)
-![AWS Cloud](https://img.shields.io/badge/Week%2010-AWS%20Cloud-orange?style=for-the-badge)
+[![DevOps Training](https://img.shields.io/badge/Track-DevOps_Training-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-10_Weeks-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
+[![Status](https://img.shields.io/badge/Status-In_Progress-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
+[![Init](https://img.shields.io/badge/Initialized-Jan_2026-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
+[![Phase](https://img.shields.io/badge/Current_Phase-AWS_Cloud-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
 
 </div>
 
 ---
 
-## About This Repository
+## ⬢ ABOUT THIS REPOSITORY
 
-This repo documents my **DevOps Industrial Training** that started on **20th January 2026**.
+This repository documents the comprehensive **DevOps Industrial Training** initiated on **January 20, 2026**.
 
-It covers everything I learned week by week — from Linux basics all the way to Jenkins CI/CD pipelines, Docker containerization, AWS cloud fundamentals, and now **DevSecOps** with SonarQube, OWASP, and Trivy.
+It systematically categorizes weekly progressions, detailing fundamental Linux operations, Jenkins CI/CD pipelines, Docker containerization, AWS cloud architecture, and **DevSecOps** implementations (SonarQube, OWASP, and Trivy).
 
-**This repository serves 4 purposes:**
-1. 📝 My personal training documentation
-2. 🗺️ A beginner roadmap for anyone entering DevOps
-3. 📎 A place to attach resources, scripts, and notes
-4. 💼 A portfolio project showing real practical exposure
+**Core Functions:**
+- ✦ Personal training baseline and documentation
+- ✦ Sequential entry roadmap for DevOps fundamentals
+- ✦ Resource repository for scripts, configurations, and reference data
+- ✦ Professional portfolio reflecting practical deployments
 
 ---
 
-## Skills Covered
+## ⬢ SKILLS COVERED
 
-| Category | Topics |
+| Core Vertical | Technologies & Methodologies |
 |---|---|
-| 🐧 **Linux** | Commands, File System, Permissions, Shell Scripting, Bash |
-| 🌐 **Networking** | IP, Subnetting, OSI Model, TCP/UDP, DHCP, CIDR |
-| 🔧 **Server Setup** | WordPress, PHP multi-version, Hardware, Reverse Proxy |
-| 🔐 **Advanced Linux** | ACL, GREP, Cron Jobs, SUID, SGID, nmcli, Wheel Group |
-| 🗂️ **Git & GitHub** | Version Control, Branching, Rebasing, Pull Requests, PAT |
-| 🐳 **Docker** | Containers, Images, Volumes, Networks, Compose, Swarm |
-| ⚙️ **Jenkins CI/CD** | Pipelines, Agents, Webhooks, Groovy, Jenkinsfile |
-| 🛡️ **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift Left Security |
-| 🔀 **Dynamic Pipelines** | Branch Detection, Dynamic Checkout, Multi-branch |
-| ☁️ **AWS (Intro)** 🔄 In Progress | IAM, EC2, VPC, Subnetting, Security Groups, Snapshots |
+| **Linux Foundations** | File Systems, Permissions, Shell Scripting, Bash |
+| **Networking** | IPv4, Subnetting, OSI Model, TCP/UDP, DHCP, CIDR |
+| **Server Infrastructure** | Web Servers, Reverse Proxy, Hardware Basics |
+| **Advanced Systems** | ACL, Cron, SUID/SGID, `nmcli`, `grep`, Users/Groups |
+| **Version Control** | Git, GitHub, Branching, Rebase, Webhooks, Actions |
+| **Containerization** | Docker, Images, Volumes, Compose, Docker Swarm |
+| **Continuous Integration** | Jenkins, Pipelines, Node Agents, Groovy |
+| **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift-Left Security |
+| **Pipeline Automation** | Dynamic Pipelines, Branch Detection, Groovy Logic |
+| **Cloud Computing** | AWS Intro, IAM, EC2, VPC, Security Groups, Subnets |
 
 ---
 
-## Training Timeline
+## ⬢ TRAINING TIMELINE
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111111', 'primaryTextColor': '#00E5FF', 'primaryBorderColor': '#00E5FF', 'lineColor': '#00E5FF', 'tertiaryColor': '#1A1A1A', 'fontFamily': 'monospace'}}}%%
 gantt
-    title DevOps Training Timeline
+    title DEVOPS TRAINING PROGRESSION
     dateFormat  YYYY-MM-DD
     axisFormat  %b %d
     
-    section Foundational
+    section FOUNDATION
     Linux Fundamentals       :done,    des1, 2026-01-20, 7d
     Networking               :done,    des2, 2026-01-27, 7d
     Internet & Servers       :done,    des3, 2026-02-03, 7d
     Advanced Linux           :done,    des4, 2026-02-10, 7d
     Git & Version Control    :done,    des5, 2026-02-17, 7d
     
-    section Containers CI/CD
+    section AUTOMATION
     Docker & Containers      :done,    des6, 2026-02-24, 14d
     Jenkins CI/CD            :done,    des7, 2026-03-10, 6d
     DevSecOps                :done,    des8, 2026-03-16, 7d
     Dynamic Pipelines        :done,    des9, 2026-03-23, 10d
     
-    section Cloud
+    section CLOUD INIT
     AWS Cloud Computing      :active,  des10, 2026-04-02, 14d
 ```
 
-| Week | Dates | Topic | Status |
+| Phase | Duration | Core Subject | Status |
 |---|---|---|---|
-| Week 01 | Jan 20 – Jan 26 | Linux Fundamentals | ✅ Complete |
-| Week 02 | Jan 27 – Feb 02 | Networking | ✅ Complete |
-| Week 03 | Feb 03 – Feb 09 | Internet, Servers & Hardware | ✅ Complete |
-| Week 04 | Feb 10 – Feb 16 | Advanced Linux Tools | ✅ Complete |
-| Week 05 | Feb 17 – Feb 23 | Git & Version Control | ✅ Complete |
-| Week 06 | Feb 24 – Mar 09 | Docker & Containerization | ✅ Complete |
-| Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD | ✅ Complete |
-| Week 08 | Mar 16 – Mar 22 | DevSecOps | ✅ Complete |
-| Week 09 | Mar 23 – Apr 01 | Dynamic Jenkins Pipelines | ✅ Complete |
-| Week 10 | Apr 02 – Present | AWS Cloud Computing | 🔄 In Progress |
+| Week 01 | Jan 20 – Jan 26 | Linux Fundamentals | ⬢ Complete |
+| Week 02 | Jan 27 – Feb 02 | Networking Architecture | ⬢ Complete |
+| Week 03 | Feb 03 – Feb 09 | Internet & Server Setup | ⬢ Complete |
+| Week 04 | Feb 10 – Feb 16 | Advanced Linux Control | ⬢ Complete |
+| Week 05 | Feb 17 – Feb 23 | Git & Version Control | ⬢ Complete |
+| Week 06 | Feb 24 – Mar 09 | Docker & Environments | ⬢ Complete |
+| Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | ⬢ Complete |
+| Week 08 | Mar 16 – Mar 22 | DevSecOps & Assessment | ⬢ Complete |
+| Week 09 | Mar 23 – Apr 01 | Dynamic CI/CD Automation | ⬢ Complete |
+| Week 10 | Apr 02 – Present | AWS Cloud Architecture | ⟐ Active |
 
 ---
 
-## Visual Learning Roadmap
+## ⬢ TOPOLOGICAL ROADMAP
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111111', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#333333', 'lineColor': '#00E5FF', 'fontFamily': 'monospace'}}}%%
 graph TD
-    %% Define Styles
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    classDef highlight fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
-    classDef current fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+    classDef highlight fill:#15202B,stroke:#00E5FF,stroke-width:2px,color:#00E5FF;
+    classDef current fill:#000000,stroke:#FF0055,stroke-width:2px,color:#FF0055;
+    classDef default fill:#000000,stroke:#333333,stroke-width:1px,color:#FFFFFF;
 
-    %% Nodes
-    A[Linux Fundamentals]:::highlight
-    B[Networking]:::highlight
-    C[Server Setup]:::highlight
-    D[Advanced Linux]:::highlight
-    E[Git & Version Control]:::highlight
-    F[Docker Containerization]:::highlight
-    G[Jenkins CI/CD]:::highlight
-    H[DevSecOps]:::highlight
-    I[Dynamic Pipelines]:::highlight
-    J[AWS Cloud Computing]:::current
+    A[01. Linux Foundation]:::highlight
+    B[02. Networking]:::highlight
+    C[03. Server Infrastructure]:::highlight
+    D[04. Advanced Systems]:::highlight
+    E[05. Git & VCS]:::highlight
+    F[06. Containerization]:::highlight
+    G[07. Jenkins Automation]:::highlight
+    H[08. DevSecOps]:::highlight
+    I[09. Dynamic Interfacing]:::highlight
+    J[10. AWS Cloud Architecture]:::current
 
-    %% Connections
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    G --> H
-    H --> I
-    I --> J
+    A --> B --> C --> D --> E --> F --> G --> H --> I --> J
 ```
 
 ---
 
-## Repository Structure
+## ⬢ REPOSITORY ARCHITECTURE
 
-```
+```text
 devops-industrial-training-roadmap/
+├── README.md                            [Central Interface]
+├── projects/                            [Deployed Capabilities]
+├── future-roadmap/                      [Strategic Trajectory]
+├── resources/                           [External Data]
 │
-├── 📄 README.md                         ← You are here
-│
-├── 📂 Week-01-Linux-Fundamentals/
-│   ├── notes.md                         ← Concepts explained simply
-│   ├── commands.md                      ← All Linux commands used
-│   └── resources.md                     ← Links and references
-│
-├── 📂 Week-02-Networking/
-│   ├── notes.md
-│   ├── concepts.md
-│   └── resources.md
-│
-├── 📂 Week-03-Internet-and-Server-Setup/
-│   ├── notes.md
-│   ├── scripts.md                       ← Shell scripts written
-│   └── resources.md
-│
-├── 📂 Week-04-Advanced-Linux/
-│   ├── notes.md
-│   ├── commands.md
-│   └── resources.md
-│
-├── 📂 Week-05-Git-Version-Control/
-│   ├── notes.md
-│   ├── git-commands.md
-│   └── resources.md
-│
-├── 📂 Week-06-Docker-Containerization/
-│   ├── notes.md
-│   ├── docker-commands.md
-│   ├── projects.md
-│   └── resources.md
-│
-├── 📂 Week-07-Jenkins-CI-CD/
-│   ├── notes.md
-│   ├── pipeline-examples.md
-│   └── resources.md
-│
-├── 📂 Week-08-DevSecOps/
-│   ├── notes.md                         ← DevSecOps concepts, SonarQube, OWASP, Trivy
-│   ├── commands.md                      ← Tool commands and pipeline examples
-│   └── resources.md                     ← Links and references
-│
-├── 📂 Week-09-Dynamic-Jenkins-Pipelines/
-│   ├── notes.md                         ← Dynamic branch detection, Groovy logic
-│   ├── commands.md                      ← Git snippets and pipeline code
-│   ├── project-monorepo-cicd.md         ← CI/CD for Monorepo Microservices
-│   └── resources.md                     ← Links and references
-│
-├── 📂 Week-10-AWS-Cloud-Computing/
-│   ├── 📂 Cloud-Computing-Introduction/ ← Introduction to AWS, core concepts
-│   │   ├── notes.md
-│   │   ├── concepts.md
-│   │   └── resources.md
-│   └── 📂 IAM/                          ← Identity and Access Management
-│       ├── notes.md
-│       ├── commands.md
-│       └── resources.md
-├── 📂 projects/
-│   ├── docker-projects.md
-│   └── jenkins-projects.md
-│
-├── 📂 future-roadmap/
-│   ├── 3-month-plan.md
-│   └── 6-month-devops-roadmap.md
-│
-└── 📂 resources/
-    ├── learning-resources.md
-    ├── books.md
-    └── youtube-channels.md
+├── Week-01-Linux-Fundamentals/          [System Base]
+├── Week-02-Networking/                  [Network Protocol]
+├── Week-03-Internet-and-Server-Setup/   [Infrastructure]
+├── Week-04-Advanced-Linux/              [System Control]
+├── Week-05-Git-Version-Control/         [Version Protocol]
+├── Week-06-Docker-Containerization/     [Environment Isolation]
+├── Week-07-Jenkins-CI-CD/               [Continuous Integration]
+├── Week-08-DevSecOps/                   [Security Protocol]
+├── Week-09-Dynamic-Jenkins-Pipelines/   [Dynamic Automation]
+└── Week-10-AWS-Cloud-Computing/         [Cloud Infrastructure]
 ```
 
 ---
 
-## How Beginners Should Use This Repo
+## ⬢ ONBOARDING SEQUENCE
 
-**If you are new to DevOps, follow this exact order:**
+For an optimal progression sequence, traverse the modules systematically:
 
-**Step 1 →** Start with [Week 01 - Linux](./Week-01-Linux-Fundamentals/notes.md)
-> Linux is the foundation of everything in DevOps. Don't skip it.
-
-**Step 2 →** Move to [Week 02 - Networking](./Week-02-Networking/notes.md)
-> Understanding how computers talk to each other is critical for cloud and DevOps work.
-
-**Step 3 →** Read [Week 03 - Internet & Servers](./Week-03-Internet-and-Server-Setup/notes.md)
-> Learn how the internet works and how servers are set up with shell scripts.
-
-**Step 4 →** Go through [Week 04 - Advanced Linux](./Week-04-Advanced-Linux/notes.md)
-> Cron jobs, permissions, and system tools used in real DevOps work.
-
-**Step 5 →** Study [Week 05 - Git](./Week-05-Git-Version-Control/notes.md)
-> Git is used in every single DevOps project. Learn this well.
-
-**Step 6 →** Dive into [Week 06 - Docker](./Week-06-Docker-Containerization/notes.md)
-> Containers are the heart of modern DevOps. This is where it gets exciting.
-
-**Step 7 →** Complete [Week 07 - Jenkins](./Week-07-Jenkins-CI-CD/notes.md)
-> Build your first CI/CD pipeline. This ties everything together.
-
-**Step 8 →** Complete [Week 08 - DevSecOps](./Week-08-DevSecOps/notes.md)
-> Learn how to bake security into every stage of your pipeline. The future of DevOps.
-
-**Step 9 →** Explore [Week 09 - Dynamic Pipelines](./Week-09-Dynamic-Jenkins-Pipelines/notes.md)
-> Move beyond static CI/CD and build intelligent pipelines that react to Git automatically.
-
-**Step 10 →** Explore [Week 10 - AWS Cloud Computing](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/notes.md)
-> Getting started with AWS Cloud Computing and core cloud concepts.
+> [!TIP]
+> **Sequential Execution Required:**
+> 1. **[01. Linux Base](./Week-01-Linux-Fundamentals/notes.md)** - The core OS layer.
+> 2. **[02. Networking Layer](./Week-02-Networking/notes.md)** - Communication protocols.
+> 3. **[03. Server Protocols](./Week-03-Internet-and-Server-Setup/notes.md)** - Hardware/services bridging.
+> 4. **[04. Advanced Control](./Week-04-Advanced-Linux/notes.md)** - Permissions and automation.
+> 5. **[05. Version Protocol](./Week-05-Git-Version-Control/notes.md)** - Change tracking.
+> 6. **[06. Container Isolation](./Week-06-Docker-Containerization/notes.md)** - Immutable infrastructure.
+> 7. **[07. Pipeline Automation](./Week-07-Jenkins-CI-CD/notes.md)** - CI/CD orchestration.
+> 8. **[08. DevSecOps Analysis](./Week-08-DevSecOps/notes.md)** - Vulnerability mitigation.
+> 9. **[09. Dynamic Logic](./Week-09-Dynamic-Jenkins-Pipelines/notes.md)** - Reactive pipelines.
+> 10. **[10. AWS Subsystems](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/notes.md)** - Remote infrastructure.
 
 ---
 
-## Projects Built
+## ⬢ DEPLOYED PROJECTS
 
-### 🐳 Docker Projects
-- Dockerized multiple web applications from scratch
-- Built multi-container apps using Docker Compose
-- Configured Docker Swarm with master and worker nodes
-- Set up overlay networks in Swarm
-- Pushed custom images to Docker Hub
+### » Containerized Stack
+- Multi-tier web deployments utilizing Docker Compose.
+- Docker Swarm consensus with active master/worker nodes.
+- Overlay network configurations for inter-container communication.
 
-👉 See [projects/docker-projects.md](./projects/docker-projects.md)
+[Access Container Logs ❯](./projects/docker-projects.md)
 
-### ⚙️ Jenkins CI/CD Projects
-- Created Freestyle and Pipeline projects in Jenkins
-- Set up 2 Jenkins agents with SSH key authentication
-- Wrote Groovy pipeline scripts
-- Created a project using Jenkinsfile (declarative pipeline)
-- Configured Webhooks and Poll SCM triggers
-- Built a dynamic, branch-aware CI/CD pipeline (Project 5)
+### » Pipeline Orchestrations
+- Jenkins Pipeline definitions (Declarative & Scripted Groovy).
+- Bi-directional agent arrays authenticated via SSH keypairs.
+- Automated hook triggers integrated with GitHub repositories.
+- Branch-aware logic for segregated testing execution.
 
-👉 See [projects/jenkins-projects.md](./projects/jenkins-projects.md)
+[Access Pipeline Configs ❯](./projects/jenkins-projects.md)
 
 ---
 
-## Future Learning Roadmap
+## ⬢ STRATEGIC FLIGHT PLAN
 
-After completing this training, the next steps on the DevOps path are:
+Future capabilities mapping for extended integration:
 
-```
-Current Level              3 Months               6 Months
-─────────────         ─────────────────      ──────────────────
-✅ Linux               Kubernetes (K8s)       Terraform (IaC)
-✅ Networking          Helm Charts            Ansible
-✅ Git/Docker          AWS Deep Dive          Monitoring (Prometheus)
-✅ Jenkins             Prometheus/Grafana     Full CI/CD Pipelines
-✅ DevSecOps (Intro)   ArgoCD (GitOps)        Cloud Certifications
-🔄 AWS Cloud           Advanced DevSecOps     Security Certifications
+```text
+CURRENT LOG             T+3 MONTHS              T+6 MONTHS
+─────────────           ─────────────────       ──────────────────
+⬢ Linux Core            Kubernetes (K8s)        Terraform (IaC)
+⬢ Network Layer         Helm Charts             Ansible Config
+⬢ Container/VCS         AWS Integration         Telemetry/Metrics
+⬢ CI/CD Pipelines       Prometheus & Grafana    Enterprise Pipelines
+⬢ SecOps Scan           ArgoCD (GitOps)         Cloud Certifications
+⟐ AWS Introduction      Advanced Vulnerability  Security Assessment
 ```
 
-👉 Full plan: [future-roadmap/3-month-plan.md](./future-roadmap/3-month-plan.md)
+[Review Extended Trajectory ❯](./future-roadmap/3-month-plan.md)
 
 ---
 
-## Resource Library
+## ⬢ SYSTEM ANOMALIES & LEARNINGS
 
-| Type | Link |
-|------|------|
-| 📖 Books | [resources/books.md](./resources/books.md) |
-| 🎥 YouTube Channels | [resources/youtube-channels.md](./resources/youtube-channels.md) |
-| 🔗 Learning Resources | [resources/learning-resources.md](./resources/learning-resources.md) |
+> [!WARNING]
+> Runtime warnings based on critical failures and isolated events:
 
----
-
-## Things I Learned the Hard Way
-
-> ⚠️ These are hard lessons — save yourself the pain!
-
-- Always test your SSH keys **before** adding them to Jenkins credentials
-- Docker containers are **not** VMs — they share the host kernel
-- `git rebase` rewrites history — never rebase a shared/public branch
-- Port conflicts in Docker are easy to miss — always check with `docker ps`
-- Cron job timing syntax has **5 fields** — count them every time
-- A misconfigured security group in AWS will silently block all traffic
-- `EXPOSE` in Dockerfile is documentation only — use `-p` to actually publish
-- Always run a `trivy image` scan **before** pushing to Docker Hub to avoid security vulnerabilities
-- If the SonarQube Quality Gate fails, stop the pipeline immediately — never deploy unverified code
-- The OWASP Top 10 is not just theoretical; most real-world attacks exploit these exact vulnerabilities
-- Jenkins doesn’t behave the same across pipeline types — things like `BRANCH_NAME`, default checkout, and execution context can silently break logic if not handled properly.
-- Running Jenkins inside Docker doesn’t mean Docker is available inside it — you need explicit access (like mounting the Docker socket), or your pipeline will fail at runtime.
+- **SSH Keys:** Validate via manual connection prior to credential injection in Jenkins.
+- **Kernel Sharing:** Containers lack embedded kernels; host kernel resources are shared identically.
+- **Git History:** Executing `git rebase` alters time-state; strictly prohibit on public branches.
+- **Port Saturation:** Container endpoint collisions require constant verification via `docker ps`.
+- **Chronological Syntax:** Unix cron demands 5 distinct positional arguments. Verify integrity.
+- **VPC Subnets:** Misconfigured AWS Security Groups fail implicitly rather than explicitly. 
+- **Image Scans:** `trivy image` isolation is required prior to external repository pushes.
+- **Quality Gates:** Terminate pipeline execution upon SonarQube negative parity; never deploy degraded code.
+- **Socket Mounts:** Running Jenkins encapsulated via Docker requires host `docker.sock` mapped internally to retain execution capability.
 
 ---
 
-## Quick Commands Cheat Sheet
+## ⬢ QUICK-REFERENCE ALIASES
 
-> Jump to the right week for full command references:
-
-| Topic | File |
-|---|---|
-| Linux Commands | [Week-01/commands.md](./Week-01-Linux-Fundamentals/commands.md) |
-| Networking Commands | [Week-02/concepts.md](./Week-02-Networking/concepts.md) |
-| Advanced Linux | [Week-04/commands.md](./Week-04-Advanced-Linux/commands.md) |
-| Git Commands | [Week-05/git-commands.md](./Week-05-Git-Version-Control/git-commands.md) |
-| Docker Commands | [Week-06/docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
-| Jenkins Pipelines | [Week-07/pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
-| DevSecOps Commands | [Week-08/commands.md](./Week-08-DevSecOps/commands.md) |
-| Dynamic Pipelines | [Week-09/commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
-| IAM Commands | [Week-10/IAM/commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
+| Functionality | Memory Address |
+| --- | --- |
+| Root Navigation | [commands.md](./Week-01-Linux-Fundamentals/commands.md) |
+| Protocol Specs | [concepts.md](./Week-02-Networking/concepts.md) |
+| Advanced Functions | [commands.md](./Week-04-Advanced-Linux/commands.md) |
+| VCS Arguments | [git-commands.md](./Week-05-Git-Version-Control/git-commands.md) |
+| Docker Directives | [docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
+| Jenkins Groovy | [pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
+| SecOps Assessment | [commands.md](./Week-08-DevSecOps/commands.md) |
+| Dynamic Branches | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
+| AWS IAM Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
 
 ---
 
-## About Me
+## ⬢ OPERATOR IDENTITY
 
-- 🎓 DevOps Industrial Training — Jan 2026 to present
-- 📍 Learning path: Linux → Networking → Docker → Jenkins → DevSecOps → Cloud
-- 🔗 GitHub: https://github.com/hridyen
-- 💼 LinkedIn: https://www.linkedin.com/in/hridyen/
+- **Designation:** DevOps Industrial Training Candidate
+- **Execution Phase:** Initiated Jan 2026
+- **Routing Loop:** Linux ❯ Network ❯ Docker ❯ Jenkins ❯ DevSecOps ❯ Cloud
+- **Uplink GitHub:** [hridyen](https://github.com/hridyen)
+- **Uplink LinkedIn:** [hridyen](https://www.linkedin.com/in/hridyen/)
 
 ---
 
 <div align="center">
 
-*⚠️ Educational Repository*
+`[ SYSTEM ID: DEVOPS EDUCATIONAL REPOSITORY ]`
 
-*This project is shared for learning purposes only.*
-*You are welcome to study the code and concepts.*
-*Please do not redistribute, sell, or present this work as your own.*
-*If you use ideas from this repository, kindly give credit.*
-
-`Made with ❤️ during DevOps Industrial Training - HRIDYEN PRASHAR`
+> Restricted redistribution parameter set to true. 
+> Source code and structural templates open for read/study processes.
+> 
+> *INITIALIZED BY HRIDYEN PRASHAR*
 
 </div>
