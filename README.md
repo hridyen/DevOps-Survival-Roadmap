@@ -50,66 +50,81 @@ It systematically categorizes weekly progressions, detailing fundamental Linux o
 
 ## ⬢ TRAINING TIMELINE
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111111', 'primaryTextColor': '#00E5FF', 'primaryBorderColor': '#00E5FF', 'lineColor': '#00E5FF', 'tertiaryColor': '#1A1A1A', 'fontFamily': 'monospace'}}}%%
-gantt
-    title DEVOPS TRAINING PROGRESSION
-    dateFormat  YYYY-MM-DD
-    axisFormat  %b %d
-    
-    section FOUNDATION
-    Linux Fundamentals       :done,    des1, 2026-01-20, 7d
-    Networking               :done,    des2, 2026-01-27, 7d
-    Internet & Servers       :done,    des3, 2026-02-03, 7d
-    Advanced Linux           :done,    des4, 2026-02-10, 7d
-    Git & Version Control    :done,    des5, 2026-02-17, 7d
-    
-    section AUTOMATION
-    Docker & Containers      :done,    des6, 2026-02-24, 14d
-    Jenkins CI/CD            :done,    des7, 2026-03-10, 6d
-    DevSecOps                :done,    des8, 2026-03-16, 7d
-    Dynamic Pipelines        :done,    des9, 2026-03-23, 10d
-    
-    section CLOUD INIT
-    AWS Cloud Computing      :active,  des10, 2026-04-02, 14d
-```
+```bash
+[root@system] ~$ ./execute_timeline.sh --verbose
 
-| Phase | Duration | Core Subject | Status |
-|---|---|---|---|
-| Week 01 | Jan 20 – Jan 26 | Linux Fundamentals | ⬢ Complete |
-| Week 02 | Jan 27 – Feb 02 | Networking Architecture | ⬢ Complete |
-| Week 03 | Feb 03 – Feb 09 | Internet & Server Setup | ⬢ Complete |
-| Week 04 | Feb 10 – Feb 16 | Advanced Linux Control | ⬢ Complete |
-| Week 05 | Feb 17 – Feb 23 | Git & Version Control | ⬢ Complete |
-| Week 06 | Feb 24 – Mar 09 | Docker & Environments | ⬢ Complete |
-| Week 07 | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | ⬢ Complete |
-| Week 08 | Mar 16 – Mar 22 | DevSecOps & Assessment | ⬢ Complete |
-| Week 09 | Mar 23 – Apr 01 | Dynamic CI/CD Automation | ⬢ Complete |
-| Week 10 | Apr 02 – Present | AWS Cloud Architecture | ⟐ Active |
+[*] INITIALIZING TRAJECTORY PROTOCOL...
+-------------------------------------------------------------------------------
+[█████████████████████████████████████████████░░░] 90% COMPILED
+
+>> [SYS.LAYER 01] • FOUNDATION PROTOCOL (Jan 20 - Feb 23)
+   ├── [OK] Week 01: Linux Fundamentals ............... Jan 20 - Jan 26
+   ├── [OK] Week 02: Networking Architecture .......... Jan 27 - Feb 02
+   ├── [OK] Week 03: Internet & Server Setup .......... Feb 03 - Feb 09
+   ├── [OK] Week 04: Advanced Linux Control ........... Feb 10 - Feb 16
+   └── [OK] Week 05: Git & Version Control ............ Feb 17 - Feb 23
+
+>> [SYS.LAYER 02] • AUTOMATION & ISOLATION (Feb 24 - Mar 09)
+   └── [OK] Week 06: Docker Containerization .......... Feb 24 - Mar 09
+
+>> [SYS.LAYER 03] • CI/CD DEPLOYMENTS (Mar 10 - Apr 01)
+   ├── [OK] Week 07: Jenkins CI/CD Pipelines .......... Mar 10 - Mar 15
+   ├── [OK] Week 08: DevSecOps Vulnerability Scan ..... Mar 16 - Mar 22
+   └── [OK] Week 09: Dynamic CI/CD Automation ......... Mar 23 - Apr 01
+
+>> [SYS.LAYER 04] • CLOUD INGRESS & SCALING (Apr 02 - Present)
+   └── [>>] Week 10: AWS Cloud Architecture ........... IN PROGRESS...
+-------------------------------------------------------------------------------
+[*] END OF LOCAL TIMELINE MODULE.
+```
 
 ---
 
 ## ⬢ TOPOLOGICAL ROADMAP
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111111', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#333333', 'lineColor': '#00E5FF', 'fontFamily': 'monospace'}}}%%
-graph TD
-    classDef highlight fill:#15202B,stroke:#00E5FF,stroke-width:2px,color:#00E5FF;
-    classDef current fill:#000000,stroke:#FF0055,stroke-width:2px,color:#FF0055;
-    classDef default fill:#000000,stroke:#333333,stroke-width:1px,color:#FFFFFF;
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111111', 'primaryTextColor': '#00E5FF', 'primaryBorderColor': '#00E5FF', 'lineColor': '#00E5FF', 'fontFamily': 'monospace'}}}%%
+flowchart LR
+    subgraph L1 [SYSTEM BASE]
+        A(01. Linux Foundation)
+        B(02. Networking)
+        C(03. Server Infrastructure)
+        D(04. Advanced Systems)
+    end
+    
+    subgraph L2 [AUTOMATION & ISOLATION]
+        E{05. Git & VCS}
+        F{{06. Containerization}}
+    end
+    
+    subgraph L3 [DEPLOYMENT LAYER]
+        G([07. Jenkins Automation])
+        H([08. DevSecOps])
+        I([09. Dynamic Interfacing])
+    end
 
-    A[01. Linux Foundation]:::highlight
-    B[02. Networking]:::highlight
-    C[03. Server Infrastructure]:::highlight
-    D[04. Advanced Systems]:::highlight
-    E[05. Git & VCS]:::highlight
-    F[06. Containerization]:::highlight
-    G[07. Jenkins Automation]:::highlight
-    H[08. DevSecOps]:::highlight
-    I[09. Dynamic Interfacing]:::highlight
-    J[10. AWS Cloud Architecture]:::current
+    subgraph L4 [CLOUD FABRIC]
+        J[[10. AWS Cloud Architecture]]
+    end
 
-    A --> B --> C --> D --> E --> F --> G --> H --> I --> J
+    A --> B --> C --> D
+    D -.-> E
+    E --> F
+    F -.-> G
+    G --> H --> I
+    I ===> J
+
+    classDef default fill:#0A0A0A,stroke:#333333,stroke-width:1px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef phase fill:#111111,stroke:#00E5FF,stroke-width:2px,color:#00E5FF,rx:5px,ry:5px;
+    classDef active fill:#000000,stroke:#FF0055,stroke-width:2px,color:#FF0055,rx:5px,ry:5px;
+    
+    class A,B,C,D,E,F,G,H,I phase;
+    class J active;
+    
+    style L1 fill:transparent,stroke:#333,stroke-dasharray: 5 5,color:#888
+    style L2 fill:transparent,stroke:#333,stroke-dasharray: 5 5,color:#888
+    style L3 fill:transparent,stroke:#333,stroke-dasharray: 5 5,color:#888
+    style L4 fill:transparent,stroke:#FF0055,stroke-dasharray: 5 5,color:#FF0055
 ```
 
 ---
