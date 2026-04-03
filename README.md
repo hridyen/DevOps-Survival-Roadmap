@@ -1,264 +1,214 @@
-# ❖ DevOps Industrial Training Roadmap
+# 🚀 DevOps Industrial Training Roadmap
 
-> **Systematic documentation of an industrial DevOps training journey.**
-> From foundation to CI/CD, DevSecOps, and Cloud Infrastructure.
+> **A complete, professional roadmap documenting my journey from foundation to Cloud deployments.** 
+> Built for clarity, tracking, and showcasing practical enterprise skills.
 
 ---
 
 <div align="center">
 
-[![DevOps Training](https://img.shields.io/badge/Track-DevOps_Training-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
-[![Duration](https://img.shields.io/badge/Duration-10_Weeks-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
-[![Status](https://img.shields.io/badge/Status-In_Progress-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
-[![Init](https://img.shields.io/badge/Initialized-Jan_2026-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
-[![Phase](https://img.shields.io/badge/Current_Phase-AWS_Cloud-00E5FF?style=flat-square&labelColor=0A0A0A)](#)
+[![Track](https://img.shields.io/badge/Track-DevOps_Training-3B82F6?style=for-the-badge&labelColor=0F172A)](#)
+[![Duration](https://img.shields.io/badge/Duration-10_Weeks-3B82F6?style=for-the-badge&labelColor=0F172A)](#)
+[![Status](https://img.shields.io/badge/Status-In_Progress-8B5CF6?style=for-the-badge&labelColor=0F172A)](#)
+[![Init](https://img.shields.io/badge/Started-Jan_2026-3B82F6?style=for-the-badge&labelColor=0F172A)](#)
+[![Phase](https://img.shields.io/badge/Phase-AWS_Cloud-8B5CF6?style=for-the-badge&labelColor=0F172A)](#)
 
 </div>
 
 ---
 
-## ⬢ ABOUT THIS REPOSITORY
+## 🎯 About This Repository
 
 This repository documents the comprehensive **DevOps Industrial Training** initiated on **January 20, 2026**.
 
-It systematically categorizes weekly progressions, detailing fundamental Linux operations, Jenkins CI/CD pipelines, Docker containerization, AWS cloud architecture, and **DevSecOps** implementations (SonarQube, OWASP, and Trivy).
+It systematically categorizes my weekly progression, detailing fundamental Linux operations, Jenkins CI/CD pipelines, Docker containerization, AWS cloud architecture, and **DevSecOps** implementations.
 
-**Core Functions:**
-- ✦ Personal training baseline and documentation
-- ✦ Sequential entry roadmap for DevOps fundamentals
-- ✦ Resource repository for scripts, configurations, and reference data
-- ✦ Professional portfolio reflecting practical deployments
+**Core Purposes:**
+- 📌 My personal training documentation
+- 🛣️ A structured entry-level roadmap for DevOps engineers
+- 📁 A clean resource library for scripts, tools, and notes
+- 💼 A professional portfolio reflecting practical deployments
 
 ---
 
-## ⬢ SKILLS COVERED
+## 🛠️ Skills Covered
 
-| Core Vertical | Technologies & Methodologies |
+| Category | Technologies & Topics |
 |---|---|
-| **Linux Foundations** | File Systems, Permissions, Shell Scripting, Bash |
-| **Networking** | IPv4, Subnetting, OSI Model, TCP/UDP, DHCP, CIDR |
-| **Server Infrastructure** | Web Servers, Reverse Proxy, Hardware Basics |
+| **Linux Foundations** | Commands, File Systems, Permissions, Shell Scripting |
+| **Networking** | IP, Subnetting, OSI Model, TCP/UDP, DHCP, CIDR |
+| **Server Infrastructure** | Web Servers, PHP, Reverse Proxy, Hardware Basics |
 | **Advanced Systems** | ACL, Cron, SUID/SGID, `nmcli`, `grep`, Users/Groups |
-| **Version Control** | Git, GitHub, Branching, Rebase, Webhooks, Actions |
+| **Version Control** | Git, GitHub, Branching, Rebase, Pull Requests |
 | **Containerization** | Docker, Images, Volumes, Compose, Docker Swarm |
-| **Continuous Integration** | Jenkins, Pipelines, Node Agents, Groovy |
+| **Continuous Integration** | Jenkins, Pipelines, Node Agents, Groovy, SSH |
 | **DevSecOps** | SonarQube, OWASP, Trivy, SAST, Shift-Left Security |
-| **Pipeline Automation** | Dynamic Pipelines, Branch Detection, Groovy Logic |
+| **Pipeline Logic** | Dynamic Pipelines, Branch Detection, Webhooks |
 | **Cloud Computing** | AWS Intro, IAM, EC2, VPC, Security Groups, Subnets |
 
 ---
 
-## ⬢ TRAINING TIMELINE
-
-```bash
-[root@system] ~$ ./execute_timeline.sh --verbose
-
-[*] INITIALIZING TRAJECTORY PROTOCOL...
--------------------------------------------------------------------------------
-[█████████████████████████████████████████████░░░] 90% COMPILED
-
->> [SYS.LAYER 01] • FOUNDATION PROTOCOL (Jan 20 - Feb 23)
-   ├── [OK] Week 01: Linux Fundamentals ............... Jan 20 - Jan 26
-   ├── [OK] Week 02: Networking Architecture .......... Jan 27 - Feb 02
-   ├── [OK] Week 03: Internet & Server Setup .......... Feb 03 - Feb 09
-   ├── [OK] Week 04: Advanced Linux Control ........... Feb 10 - Feb 16
-   └── [OK] Week 05: Git & Version Control ............ Feb 17 - Feb 23
-
->> [SYS.LAYER 02] • AUTOMATION & ISOLATION (Feb 24 - Mar 09)
-   └── [OK] Week 06: Docker Containerization .......... Feb 24 - Mar 09
-
->> [SYS.LAYER 03] • CI/CD DEPLOYMENTS (Mar 10 - Apr 01)
-   ├── [OK] Week 07: Jenkins CI/CD Pipelines .......... Mar 10 - Mar 15
-   ├── [OK] Week 08: DevSecOps Vulnerability Scan ..... Mar 16 - Mar 22
-   └── [OK] Week 09: Dynamic CI/CD Automation ......... Mar 23 - Apr 01
-
->> [SYS.LAYER 04] • CLOUD INGRESS & SCALING (Apr 02 - Present)
-   └── [>>] Week 10: AWS Cloud Architecture ........... IN PROGRESS...
--------------------------------------------------------------------------------
-[*] END OF LOCAL TIMELINE MODULE.
-```
-
----
-
-## ⬢ TOPOLOGICAL ROADMAP
+## 📅 Training Timeline
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111111', 'primaryTextColor': '#00E5FF', 'primaryBorderColor': '#00E5FF', 'lineColor': '#00E5FF', 'fontFamily': 'monospace'}}}%%
+%%{init: { 'theme': 'base', 'themeVariables': { 'primaryColor': '#1E293B', 'primaryTextColor': '#F8FAFC', 'primaryBorderColor': '#3B82F6', 'lineColor': '#8B5CF6', 'tertiaryColor': '#0F172A', 'fontFamily': 'sans-serif'}}}%%
+timeline
+    title 🚀 DevOps Journey Progression
+    section Foundation Phase
+        Jan 20 : Linux Fundamentals
+        Jan 27 : Networking
+        Feb 03 : Servers & Hardware
+        Feb 10 : Advanced Linux
+        Feb 17 : Git & Version Control
+    section Containers & CI/CD
+        Feb 24 : Docker Containers
+        Mar 10 : Jenkins Pipelines
+        Mar 16 : DevSecOps
+        Mar 23 : Dynamic Automation
+    section Cloud Operations
+        Apr 02 : AWS Cloud & Architecture
+```
+
+| Week | Duration | Topic | Status |
+|---|---|---|---|
+| **Week 01** | Jan 20 – Jan 26 | Linux Fundamentals | ✅ Complete |
+| **Week 02** | Jan 27 – Feb 02 | Networking Architecture | ✅ Complete |
+| **Week 03** | Feb 03 – Feb 09 | Internet & Server Setup | ✅ Complete |
+| **Week 04** | Feb 10 – Feb 16 | Advanced Linux Control | ✅ Complete |
+| **Week 05** | Feb 17 – Feb 23 | Git & Version Control | ✅ Complete |
+| **Week 06** | Feb 24 – Mar 09 | Docker & Environments | ✅ Complete |
+| **Week 07** | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | ✅ Complete |
+| **Week 08** | Mar 16 – Mar 22 | DevSecOps & Assessment | ✅ Complete |
+| **Week 09** | Mar 23 – Apr 01 | Dynamic CI/CD Automation | ✅ Complete |
+| **Week 10** | Apr 02 – Present | AWS Cloud Architecture | 🔄 In Progress |
+
+---
+
+## 🗺️ Path Roadmap
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1E293B', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#3B82F6', 'lineColor': '#8B5CF6', 'fontFamily': 'sans-serif'}}}%%
 flowchart LR
-    subgraph L1 [SYSTEM BASE]
-        A(01. Linux Foundation)
-        B(02. Networking)
-        C(03. Server Infrastructure)
-        D(04. Advanced Systems)
-    end
+    A(01. Linux) --> B(02. Networking)
+    B --> C(03. Servers)
+    C --> D(04. Adv Linux)
     
-    subgraph L2 [AUTOMATION & ISOLATION]
-        E{05. Git & VCS}
-        F{{06. Containerization}}
-    end
+    D --> E(05. Git & VCS)
+    E --> F(06. Docker)
+    F --> G(07. Jenkins)
     
-    subgraph L3 [DEPLOYMENT LAYER]
-        G([07. Jenkins Automation])
-        H([08. DevSecOps])
-        I([09. Dynamic Interfacing])
-    end
+    G --> H(08. DevSecOps)
+    H --> I(09. Dynamic CI/CD)
+    I --> J(((10. AWS Cloud)))
 
-    subgraph L4 [CLOUD FABRIC]
-        J[[10. AWS Cloud Architecture]]
-    end
-
-    A --> B --> C --> D
-    D -.-> E
-    E --> F
-    F -.-> G
-    G --> H --> I
-    I ===> J
-
-    classDef default fill:#0A0A0A,stroke:#333333,stroke-width:1px,color:#FFFFFF,rx:5px,ry:5px;
-    classDef phase fill:#111111,stroke:#00E5FF,stroke-width:2px,color:#00E5FF,rx:5px,ry:5px;
-    classDef active fill:#000000,stroke:#FF0055,stroke-width:2px,color:#FF0055,rx:5px,ry:5px;
+    classDef default fill:#1E293B,stroke:#3B82F6,stroke-width:2px,color:#F8FAFC,rx:5px,ry:5px;
+    classDef active fill:#8B5CF6,stroke:#FFFFFF,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
     
-    class A,B,C,D,E,F,G,H,I phase;
     class J active;
-    
-    style L1 fill:transparent,stroke:#333,stroke-dasharray: 5 5,color:#888
-    style L2 fill:transparent,stroke:#333,stroke-dasharray: 5 5,color:#888
-    style L3 fill:transparent,stroke:#333,stroke-dasharray: 5 5,color:#888
-    style L4 fill:transparent,stroke:#FF0055,stroke-dasharray: 5 5,color:#FF0055
 ```
 
 ---
 
-## ⬢ REPOSITORY ARCHITECTURE
+## 📂 Repository Architecture
 
 ```text
 devops-industrial-training-roadmap/
-├── README.md                            [Central Interface]
-├── projects/                            [Deployed Capabilities]
-├── future-roadmap/                      [Strategic Trajectory]
-├── resources/                           [External Data]
+├── 📄 README.md                         ← Central Hub
+├── 📂 projects/                         ← Practical Implementations
+├── 📂 future-roadmap/                   ← Next Steps (3/6 Months)
+├── 📂 resources/                        ← Books & Channels
 │
-├── Week-01-Linux-Fundamentals/          [System Base]
-├── Week-02-Networking/                  [Network Protocol]
-├── Week-03-Internet-and-Server-Setup/   [Infrastructure]
-├── Week-04-Advanced-Linux/              [System Control]
-├── Week-05-Git-Version-Control/         [Version Protocol]
-├── Week-06-Docker-Containerization/     [Environment Isolation]
-├── Week-07-Jenkins-CI-CD/               [Continuous Integration]
-├── Week-08-DevSecOps/                   [Security Protocol]
-├── Week-09-Dynamic-Jenkins-Pipelines/   [Dynamic Automation]
-└── Week-10-AWS-Cloud-Computing/         [Cloud Infrastructure]
+├── 📂 Week-01-Linux-Fundamentals/       ← Linux Commands & Notes
+├── 📂 Week-02-Networking/               ← IP & Routing Concepts
+├── 📂 Week-03-Internet-and-Server-Setup/← Server Configurations
+├── 📂 Week-04-Advanced-Linux/           ← Security & Permissions
+├── 📂 Week-05-Git-Version-Control/      ← Branching & Merges
+├── 📂 Week-06-Docker-Containerization/  ← Containers & Swarm
+├── 📂 Week-07-Jenkins-CI-CD/            ← Pipelines & Groovy
+├── 📂 Week-08-DevSecOps/                ← SonarQube & Trivy
+├── 📂 Week-09-Dynamic-Jenkins-Pipelines/← Auto CI/CD Flow
+└── 📂 Week-10-AWS-Cloud-Computing/      ← IAM, EC2, VPC
 ```
 
 ---
 
-## ⬢ ONBOARDING SEQUENCE
+## 🏗️ Deployed Projects
 
-For an optimal progression sequence, traverse the modules systematically:
-
-> [!TIP]
-> **Sequential Execution Required:**
-> 1. **[01. Linux Base](./Week-01-Linux-Fundamentals/notes.md)** - The core OS layer.
-> 2. **[02. Networking Layer](./Week-02-Networking/notes.md)** - Communication protocols.
-> 3. **[03. Server Protocols](./Week-03-Internet-and-Server-Setup/notes.md)** - Hardware/services bridging.
-> 4. **[04. Advanced Control](./Week-04-Advanced-Linux/notes.md)** - Permissions and automation.
-> 5. **[05. Version Protocol](./Week-05-Git-Version-Control/notes.md)** - Change tracking.
-> 6. **[06. Container Isolation](./Week-06-Docker-Containerization/notes.md)** - Immutable infrastructure.
-> 7. **[07. Pipeline Automation](./Week-07-Jenkins-CI-CD/notes.md)** - CI/CD orchestration.
-> 8. **[08. DevSecOps Analysis](./Week-08-DevSecOps/notes.md)** - Vulnerability mitigation.
-> 9. **[09. Dynamic Logic](./Week-09-Dynamic-Jenkins-Pipelines/notes.md)** - Reactive pipelines.
-> 10. **[10. AWS Subsystems](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/notes.md)** - Remote infrastructure.
-
----
-
-## ⬢ DEPLOYED PROJECTS
-
-### » Containerized Stack
+### 🐳 Docker Configurations
 - Multi-tier web deployments utilizing Docker Compose.
 - Docker Swarm consensus with active master/worker nodes.
-- Overlay network configurations for inter-container communication.
+- Overlay network architecture for inter-container communication.
+👉 **[View Docker Projects](./projects/docker-projects.md)**
 
-[Access Container Logs ❯](./projects/docker-projects.md)
-
-### » Pipeline Orchestrations
+### ⚙️ Jenkins CI/CD Orchestrations
 - Jenkins Pipeline definitions (Declarative & Scripted Groovy).
-- Bi-directional agent arrays authenticated via SSH keypairs.
-- Automated hook triggers integrated with GitHub repositories.
-- Branch-aware logic for segregated testing execution.
-
-[Access Pipeline Configs ❯](./projects/jenkins-projects.md)
+- Jenkins agents authenticated via SSH keypairs.
+- Automated webhooks integrated with GitHub endpoints.
+- Branch-aware pipelines for decoupled environment testing.
+👉 **[View Jenkins Projects](./projects/jenkins-projects.md)**
 
 ---
 
-## ⬢ STRATEGIC FLIGHT PLAN
-
-Future capabilities mapping for extended integration:
+## 🔭 Future Learning Trajectory
 
 ```text
-CURRENT LOG             T+3 MONTHS              T+6 MONTHS
-─────────────           ─────────────────       ──────────────────
-⬢ Linux Core            Kubernetes (K8s)        Terraform (IaC)
-⬢ Network Layer         Helm Charts             Ansible Config
-⬢ Container/VCS         AWS Integration         Telemetry/Metrics
-⬢ CI/CD Pipelines       Prometheus & Grafana    Enterprise Pipelines
-⬢ SecOps Scan           ArgoCD (GitOps)         Cloud Certifications
-⟐ AWS Introduction      Advanced Vulnerability  Security Assessment
+Current State          3 Months               6 Months
+─────────────          ─────────────────      ──────────────────
+✅ Linux/Net           Kubernetes (K8s)       Terraform (IaC)
+✅ Version Control     Helm Charts            Ansible Config
+✅ Docker/Jenkins      AWS Deep Dive          Monitoring Metrics
+✅ SecOps Scan         Prometheus & Grafana   Enterprise CI/CD
+🔄 AWS Introduction    ArgoCD (GitOps)        Cloud Certifications
 ```
 
-[Review Extended Trajectory ❯](./future-roadmap/3-month-plan.md)
+👉 **[Review Full 3-Month Plan](./future-roadmap/3-month-plan.md)**
 
 ---
 
-## ⬢ SYSTEM ANOMALIES & LEARNINGS
+## ⚠️ Important Lessons Learned
 
 > [!WARNING]
-> Runtime warnings based on critical failures and isolated events:
+> Save yourself the troubleshooting time by reviewing these key gotchas:
 
-- **SSH Keys:** Validate via manual connection prior to credential injection in Jenkins.
-- **Kernel Sharing:** Containers lack embedded kernels; host kernel resources are shared identically.
-- **Git History:** Executing `git rebase` alters time-state; strictly prohibit on public branches.
-- **Port Saturation:** Container endpoint collisions require constant verification via `docker ps`.
-- **Chronological Syntax:** Unix cron demands 5 distinct positional arguments. Verify integrity.
-- **VPC Subnets:** Misconfigured AWS Security Groups fail implicitly rather than explicitly. 
-- **Image Scans:** `trivy image` isolation is required prior to external repository pushes.
-- **Quality Gates:** Terminate pipeline execution upon SonarQube negative parity; never deploy degraded code.
-- **Socket Mounts:** Running Jenkins encapsulated via Docker requires host `docker.sock` mapped internally to retain execution capability.
+- **SSH Configurations:** Always manually test SSH connectivities on the agent before letting Jenkins attempt it.
+- **Docker Kernels:** Containers share the host kernel. They are **not** virtual machines.
+- **Git Rebase:** Never rebase a public shared branch; it alters the foundational history.
+- **Port Collisions:** Silent application failures are often just container port conflicts. Check `docker ps`.
+- **Cron Jobs:** Remember the sequence: `Minute Hour Day Month DayOfWeek` (5 fields).
+- **Security Groups:** AWS groups act as silent firewalls; if a port isn't explicitly permitted, it drops gracefully.
+- **Vulnerability Isolation:** Scan with `trivy image` before pushing code directly to Docker Hub.
+- **Quality Gates:** Your CI pipeline MUST fail if SonarQube detects vulnerabilities. Do not pass bad builds.
+- **Socket Permissions:** Running Jenkins nested inside Docker needs explicit socket mounting to utilize the host daemon.
 
 ---
 
-## ⬢ QUICK-REFERENCE ALIASES
+## 📖 Quick-Reference Aliases
 
-| Functionality | Memory Address |
+| Section | Link |
 | --- | --- |
-| Root Navigation | [commands.md](./Week-01-Linux-Fundamentals/commands.md) |
-| Protocol Specs | [concepts.md](./Week-02-Networking/concepts.md) |
-| Advanced Functions | [commands.md](./Week-04-Advanced-Linux/commands.md) |
-| VCS Arguments | [git-commands.md](./Week-05-Git-Version-Control/git-commands.md) |
-| Docker Directives | [docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
-| Jenkins Groovy | [pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
-| SecOps Assessment | [commands.md](./Week-08-DevSecOps/commands.md) |
-| Dynamic Branches | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
-| AWS IAM Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
+| Linux Core | [commands.md](./Week-01-Linux-Fundamentals/commands.md) |
+| Networking | [concepts.md](./Week-02-Networking/concepts.md) |
+| System Control | [commands.md](./Week-04-Advanced-Linux/commands.md) |
+| Git Protocols | [git-commands.md](./Week-05-Git-Version-Control/git-commands.md) |
+| Docker Hub | [docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
+| Groovy Logic | [pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
+| SecOps Tools | [commands.md](./Week-08-DevSecOps/commands.md) |
+| AWS Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
 
 ---
 
-## ⬢ OPERATOR IDENTITY
+## 🧑‍💻 Operator Identity
 
-- **Designation:** DevOps Industrial Training Candidate
-- **Execution Phase:** Initiated Jan 2026
-- **Routing Loop:** Linux ❯ Network ❯ Docker ❯ Jenkins ❯ DevSecOps ❯ Cloud
-- **Uplink GitHub:** [hridyen](https://github.com/hridyen)
-- **Uplink LinkedIn:** [hridyen](https://www.linkedin.com/in/hridyen/)
+- **Status:** DevOps Industrial Training Candidate
+- **Path:** Linux ➡️ Network ➡️ Docker ➡️ Jenkins ➡️ DevSecOps ➡️ Cloud
+- **GitHub:** [hridyen](https://github.com/hridyen)
+- **LinkedIn:** [hridyen](https://www.linkedin.com/in/hridyen/)
 
 ---
 
 <div align="center">
 
-`[ SYSTEM ID: DEVOPS EDUCATIONAL REPOSITORY ]`
-
-> Restricted redistribution parameter set to true. 
-> Source code and structural templates open for read/study processes.
-> 
-> *INITIALIZED BY HRIDYEN PRASHAR*
+*Educational Repository. Shared for study and process reference.*  
+`Made with passion during continuous learning - HRIDYEN PRASHAR`
 
 </div>
