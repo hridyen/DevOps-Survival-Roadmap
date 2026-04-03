@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Dynamic_Jenkins_Pipelines-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-project_monorepo_cicd-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ Week 09 — Project: Branch-Aware CI/CD Pipeline for Monorepo Microservices
 
 > **Project Type:** Real-World CI/CD Optimization Project
@@ -842,7 +846,11 @@ The shift from "pipeline user" to "system thinker" is what this week gave me. An
 
 ## ✦ 📝 Personal Notes
 
-<!-- Add your own observations as you revisit this project -->
+> [!NOTE]
+> ### âœ¦ Monorepo Pipeline Execution Flow
+> 1. Webhook triggers Jenkins on branch push.
+> 2. `when { changeset "frontend/**" }` restricts rebuilds to modified containers only.
+> 3. Parallel execution matrix deploys `frontend` and `backend` images simultaneously.
 
 > 💬 *Come back here during interview prep — every section above is a potential interview question.*
 

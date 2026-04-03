@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-projects-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-jenkins_projects-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ ⚙️ Jenkins CI/CD Projects
 
 > Real pipelines and configurations built during Week 7 training.

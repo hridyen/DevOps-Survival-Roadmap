@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-AWS_Cloud_Computing-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-IAM_commands-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🔐 IAM — Commands & Policy Cheat Sheet
 
 ---
@@ -182,3 +186,9 @@ print("Secret Key:", key['SecretAccessKey'])
 | Command | What it does | Notes |
 |---|---|---|
 | | | |
+
+
+| Command | What it does | Notes |
+|---|---|---|
+| `aws sts get-caller-identity` | Validates the current authenticated IAM principal | Crucial for debugging cross-account assume-role failures |
+| `aws iam simulate-principal-policy` | Dry-runs a policy against specific actions | Allows testing if a user can access an S3 bucket before applying the policy |

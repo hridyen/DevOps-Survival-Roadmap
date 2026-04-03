@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-AWS_Cloud_Computing-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-Cloud_Computing_Introduction_concepts-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ ☁️ Cloud Computing — Concepts Cheat Sheet
 
 > Quick reference — use this for revision and interview prep.

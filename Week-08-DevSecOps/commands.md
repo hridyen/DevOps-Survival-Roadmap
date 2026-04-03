@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-commands-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🔐 Week 08 — DevSecOps Commands Reference
 
 > **Status:** 🟡 Filling in as hands-on practice happens
@@ -196,7 +200,10 @@ pipeline {
 
 ## ✦ 📝 My Command Notes
 
-<!-- Add your own commands and discoveries here as you practice -->
+| Command | What it does | When I used it |
+|---------|-------------|----------------|
+| `trivy image my_app:latest` | Scans a local docker image for critical CVEs | Blocking compromised images from pushing to Docker Hub. |
+| `sonar-scanner -Dsonar.projectKey=app` | Forces a code audit loop against Sonar server | Checking Python API code for standard security flaws. |
 
 | Command | What it does | My Notes |
 |---|---|---|

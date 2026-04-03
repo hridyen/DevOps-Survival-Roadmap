@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-resources-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-learning_resources-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 📚 Learning Resources
 
 > All learning resources used across the 7-week training.

@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Linux_Fundamentals-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-commands-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🐧 Week 01 — Linux Commands Reference
 
 > All commands used during Week 1. Use this as your personal cheat sheet.
@@ -175,5 +179,10 @@ chmod +x myscript.sh
 
 | Command | What it does | When I used it |
 |---------|-------------|----------------|
-| | | |
-| | | |
+| Command | What it does | When I used it |
+|---------|-------------|----------------|
+| `awk '{print $1}'` | Extracts the first column of text output | Parsing Apache access logs to find unique IP addresses |
+| `strace -p <PID>` | Traces system calls of a running process | Debugging a Jenkins agent that was stuck hanging |
+| `sed -i 's/old/new/g' file` | Stream editor for inline string replacement | Mass replacing environment variables in configuration files |
+| `lsof -i :8080` | Lists open files and ports | Checking if Jenkins is actively binding to port 8080 |
+| `nslookup <domain>` | Queries DNS to find IP resolution | Troubleshooting reverse proxy routing failures |

@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-notes-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ Week 08 — DevSecOps
 
 > **Duration:** Mar 16, 2026 – Ongoing
@@ -229,7 +233,11 @@ graph TD
 
 ## ✦ Personal Notes
 
-<!-- Add your own notes as you go deeper into Week 8 -->
+| Concept | Explanation | Example |
+|---|---|---|
+| **SAST** | Static Application Security Testing â€” Scans source code before compilation. | SonarQube |
+| **DAST** | Dynamic Access Security Testing â€” Scans active running apps for exploits. | OWASP ZAP |
+| **SCA** | Software Composition Analysis â€” Checks external libraries for CVEs. | Snyk / Trivy |
 
 > *This section will grow as you practice. Add your observations, commands, and aha moments here.*
 

@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Docker_Containerization-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-docker_commands-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🐳 Week 06 — Docker Commands Reference
 
 ---
@@ -152,3 +156,9 @@ docker volume prune                      # Remove unused volumes
 | Command | What it does | Notes |
 |---------|-------------|-------|
 | | | |
+
+
+| Command | What it does | When I used it |
+|---------|-------------|----------------|
+| `docker system prune -a` | Cleans up all unused, unattached images and volumes. | Recovering 20GB of disk space from dead Jenkins runs. |
+| `docker exec -it <id> sh` | Drops you into an active, running container shell. | Debugging crashed Nginx containers internally. |

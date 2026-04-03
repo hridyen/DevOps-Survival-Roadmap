@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-AWS_Cloud_Computing-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-Cloud_Computing_Introduction_resources-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 📚 Cloud Computing Introduction — Resources
 
 ---
@@ -43,3 +47,9 @@
 | Resource | Topic | Link |
 |---|---|---|
 | | | |
+
+
+| Resource Name | URL / Link | What I learned from it |
+|---|---|---|
+| AWS EC2 Pricing Models | [AWS EC2 Pricing](https://aws.amazon.com/ec2/pricing/) | The difference in cost optimizations between Reserved Instances and Spot Fleets. |
+| AWS Global Infrastructure | [Global VPC Map](https://aws.amazon.com/about-aws/global-infrastructure/) | How Availability Zones function inside Regions for High Availability. |

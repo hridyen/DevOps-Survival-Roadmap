@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Jenkins_CI_CD-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-pipeline_examples-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ ⚙️ Week 07 — Jenkins Pipeline Examples
 
 ---
@@ -258,7 +262,23 @@ pipeline {
 
 ## ✦ 📝 My Pipeline Notes
 
-<!-- Add your own pipeline snippets here as you write them -->
+```groovy
+// âœ¦ Declarative Webhook Pipeline
+pipeline {
+    agent any
+    triggers {
+        githubPush()
+    }
+    stages {
+        stage('Deploy Trigger') {
+            steps {
+                echo 'Webhook activated. Building Docker...' 
+                sh 'docker compose up -d --build'
+            }
+        }
+    }
+}
+```
 
 ```groovy
 // Add your pipeline here

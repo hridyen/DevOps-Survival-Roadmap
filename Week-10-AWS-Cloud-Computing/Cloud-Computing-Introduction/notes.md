@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-AWS_Cloud_Computing-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-Cloud_Computing_Introduction_notes-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ Cloud Computing — Introduction
 
 > **Week:** 10
@@ -313,7 +317,10 @@ graph TD
 
 ## ✦ Personal Notes
 
-<!-- Add your own observations and things that clicked -->
+| Sub-Topic | Notes & Observations | Questions to research later |
+|---|---|---|
+| **VPC Peering** | AWS strictly prohibits transitive peering models. Both ends must accept. | How do Transit Gateways solve the transitive peering limits? |
+| **Spot Instances** | Cost-effective but AWS can terminate them with only 2 minutes of warning. | How can we use Spot Fleets for fault-tolerant Jenkins build agents? |
 
 > 💬 *What confused you about cloud models? What analogy helped you understand AZs?*
 

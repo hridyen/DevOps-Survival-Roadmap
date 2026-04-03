@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-future_roadmap-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-3_month_plan-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 📅 3-Month Learning Plan
 
 > Immediate next steps after completing the 10-week training.

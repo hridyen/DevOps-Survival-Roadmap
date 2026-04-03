@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Jenkins_CI_CD-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-notes-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ Week 07 — Jenkins & CI/CD
 
 > **Duration:** Mar 10 – Mar 15, 2026

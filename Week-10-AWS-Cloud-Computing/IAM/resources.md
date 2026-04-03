@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-AWS_Cloud_Computing-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-IAM_resources-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 📚 IAM — Resources
 
 ---
@@ -31,3 +35,9 @@
 | Resource | Topic | Link |
 |---|---|---|
 | | | |
+
+
+| Resource Name | URL / Link | What I learned from it |
+|---|---|---|
+| AWS IAM Best Practices | [AWS Priority Links](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) | Strict adoption of least-privilege policies. |
+| IAM JSON Policy Generator | [Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html) | How to rapidly sandbox wildcard permissions without syntax errors. |

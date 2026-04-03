@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Linux_Fundamentals-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-notes-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ Week 01 — Linux Fundamentals
 
 > **Duration:** Jan 20 – Jan 26, 2026

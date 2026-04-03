@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Internet_and_Server_Setup-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-scripts-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🔧 Week 03 — Shell Scripts
 
 ## ✦ Install Multiple PHP Versions
@@ -38,4 +42,17 @@ server {
 ```
 
 ## ✦ 📝 My Scripts
-<!-- Add your own scripts here -->
+```bash
+#!/bin/bash
+# âœ¦ Quick Proxy Config Injection
+cat <<EOF > /etc/nginx/sites-available/default
+server {
+    listen 80;
+    server_name mydomain.com;
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}
+EOF
+systemctl restart nginx
+```

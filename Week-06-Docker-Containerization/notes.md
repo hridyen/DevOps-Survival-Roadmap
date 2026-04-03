@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Docker_Containerization-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-notes-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ Week 06 — Docker & Containerization
 
 > **Duration:** Feb 24 – Mar 09, 2026 (2 weeks)
@@ -285,7 +289,10 @@ server {
 
 ## ✦ Personal Notes
 
-<!-- Add your own observations, errors you hit, and how you fixed them -->
+| Concept | Explanation | Example |
+|---|---|---|
+| **Daemon Socket** | The UNIX core process that executes Docker commands via REST. | `/var/run/docker.sock` |
+| **Overlay Networks** | Multi-host architecture allowing containers across VMs to talk. | `docker network create -d overlay my-net` |
 
 > 💬 *Note what confused you, what clicked, and what you want to revisit.*
 

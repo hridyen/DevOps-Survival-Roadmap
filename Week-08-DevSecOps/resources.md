@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-resources-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 📚 Week 08 — DevSecOps Resources
 
 ---
@@ -50,3 +54,9 @@
 | Resource | Topic | Link |
 |---|---|---|
 | | | |
+
+
+| Resource Name | URL | What I learned from it |
+|---|---|---|
+| Trivy Vulnerability DB | [Trivy Docs](https://aquasecurity.github.io/trivy/v0.32/) | Understanding the `trivy image --severity HIGH,CRITICAL` parsing. |
+| SonarQube Metrics Gate | [Sonar Guidelines](https://docs.sonarqube.org/latest/user-guide/quality-gates/) | Quality gates fail the pipeline if Coverage drops below 80%. |

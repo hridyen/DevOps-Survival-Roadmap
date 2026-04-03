@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-projects-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-docker_projects-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🐳 Docker Projects
 
 > Projects I built and dockerized during Week 6 training.

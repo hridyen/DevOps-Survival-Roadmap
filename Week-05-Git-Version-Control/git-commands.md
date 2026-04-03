@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Git_Version_Control-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-git_commands-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 🗂️ Week 05 — Git Commands Quick Reference
 
 > See notes.md for full commands with explanations. This file is the quick-reference cheat sheet.

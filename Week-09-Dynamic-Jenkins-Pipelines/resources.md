@@ -1,3 +1,7 @@
+[![Sector](https://img.shields.io/badge/SECTOR-Dynamic_Jenkins_Pipelines-00E5FF?style=flat-square&labelColor=0A0A0A)](#) [![Module](https://img.shields.io/badge/MODULE-resources-FF0055?style=flat-square&labelColor=0A0A0A)](#)
+
+---
+
 # ⚡ 📚 Week 09 — Dynamic Jenkins Pipelines Resources
 
 ---
@@ -50,3 +54,9 @@
 | Resource | Topic | Link |
 |---|---|---|
 | | | |
+
+
+| Resource Name | URL / Link | What I learned from it |
+|---|---|---|
+| Jenkins Pipeline Syntax | [Pipeline Steps](https://www.jenkins.io/doc/book/pipeline/syntax/) | Declarative blocks must be strictly nested inside `stages` and `steps`. |
+| Groovy Dynamic Scripts | [Groovy Ref](https://groovy-lang.org/syntax.html) | Using Groovy string interpolation (`${VAR}`) instead of bash variables (`$VAR`). |
