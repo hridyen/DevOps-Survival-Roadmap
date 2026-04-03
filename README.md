@@ -124,24 +124,30 @@ flowchart TD
 
 ## ✦ Repository File Architecture
 
-```text
-devops-industrial-training-roadmap/
-├── README.md                            [Central Entrypoint & Index]
-├── projects/                            [Documented Configurations & Code]
-├── future-roadmap/                      [Strategic Integration Plans]
-├── resources/                           [Book/External References]
-│
-├── Week-01-Linux-Fundamentals/          [System Base Files]
-├── Week-02-Networking/                  [Network Protocol Configurations]
-├── Week-03-Internet-and-Server-Setup/   [Hosting Architecture files]
-├── Week-04-Advanced-Linux/              [System Control Constraints]
-├── Week-05-Git-Version-Control/         [Version Protocol Files]
-├── Week-06-Docker-Containerization/     [Environment Infrastructure]
-├── Week-07-Jenkins-CI-CD/               [Continuous Integration Scripts]
-├── Week-08-DevSecOps/                   [Security Check Protocols]
-├── Week-09-Dynamic-Jenkins-Pipelines/   [Dynamic Automations Code]
-└── Week-10-AWS-Cloud-Computing/         [Cloud Management & IAM]
-```
+> ✦ **System Root** `devops-industrial-training-roadmap/`
+
+- ![File](https://img.shields.io/badge/DOC-README.md-FF0055?style=flat-square&labelColor=0A0A0A) — *Central Entrypoint & Index*
+- ![Folder](https://img.shields.io/badge/DIR-projects%2F-00E5FF?style=flat-square&labelColor=0A0A0A) — *Documented Configurations & Deployment Code*
+- ![Folder](https://img.shields.io/badge/DIR-future--roadmap%2F-00E5FF?style=flat-square&labelColor=0A0A0A) — *Strategic Integration Plans (3 & 6 Months)*
+- ![Folder](https://img.shields.io/badge/DIR-resources%2F-00E5FF?style=flat-square&labelColor=0A0A0A) — *Book Library & External Technical References*
+
+<br/>
+
+### ✦ Phase 1: Environment Logic
+- ![Folder](https://img.shields.io/badge/DIR-Week--01--Linux-00E5FF?style=flat-square&labelColor=0A0A0A) — ***System Base Files*** (Core Commands, File Structures)
+- ![Folder](https://img.shields.io/badge/DIR-Week--02--Networking-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Network Protocol*** (Subnetting, TCP/IP Configs)
+- ![Folder](https://img.shields.io/badge/DIR-Week--03--Servers-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Hosting Architecture*** (Nginx/Apache setups)
+- ![Folder](https://img.shields.io/badge/DIR-Week--04--Advanced-00E5FF?style=flat-square&labelColor=0A0A0A) — ***System Constraints*** (ACLs, Cron Jobs, Security)
+
+### ✦ Phase 2: Delivery & CI/CD
+- ![Folder](https://img.shields.io/badge/DIR-Week--05--Git-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Version Protocol*** (Branching, Merge Logics)
+- ![Folder](https://img.shields.io/badge/DIR-Week--06--Docker-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Environment Infrastructure*** (Containers, Swarms)
+- ![Folder](https://img.shields.io/badge/DIR-Week--07--Jenkins-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Continuous Integration Scripts*** (Groovy Pipelines)
+
+### ✦ Phase 3: Cloud & Scalability
+- ![Folder](https://img.shields.io/badge/DIR-Week--08--DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Security Controls*** (SonarQube, Trivy Protocols)
+- ![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Dynamic Automations*** (Hooks, Branch Execution)
+- ![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A) — ***Cloud Management Dashboard*** (IAM, EC2 scaling)
 
 ---
 
