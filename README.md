@@ -50,43 +50,23 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 
 ## Detailed Training Timeline
 
-```mermaid
-gantt
-    title DevOps Execution & Delivery Timeline
-    dateFormat YYYY-MM-DD
-    axisFormat %b %d
+**Phase 1: Environment & Code Foundation**
+- **Week 01** (Jan 20 – Jan 26) | **Linux Fundamentals** — *Complete*
+- **Week 02** (Jan 27 – Feb 02) | **Networking Architecture** — *Complete*
+- **Week 03** (Feb 03 – Feb 09) | **Internet & Server Setup** — *Complete*
+- **Week 04** (Feb 10 – Feb 16) | **Advanced Linux Control** — *Complete*
 
-    section Phase 1: Foundation
-    01. Linux Fundamentals       :done,    l1, 2026-01-20, 7d
-    02. Networking Architecture  :done,    l2, 2026-01-27, 7d
-    03. Server Configurations    :done,    l3, 2026-02-03, 7d
-    04. Advanced Systems Control :done,    l4, 2026-02-10, 7d
+**Phase 2: CI/CD & Delivery Architecture**
+- **Week 05** (Feb 17 – Feb 23) | **Git & Version Control** — *Complete*
+- **Week 06** (Feb 24 – Mar 09) | **Docker Container Ecosystems** — *Complete*
 
-    section Phase 2: Core
-    05. Git & Version Control    :done,    l5, 2026-02-17, 7d
-    06. Docker Containerization  :done,    l6, 2026-02-24, 14d
+**Phase 3: Security & Cloud Scalability**
+- **Week 07** (Mar 10 – Mar 15) | **Jenkins & CI/CD Pipelines** — *Complete*
+- **Week 08** (Mar 16 – Mar 22) | **DevSecOps Integrations** — *Complete*
+- **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation** — *Complete*
 
-    section Phase 3: Automation
-    07. Jenkins CI/CD Pipelines  :done,    l7, 2026-03-10, 6d
-    08. DevSecOps Integrations   :done,    l8, 2026-03-16, 7d
-    09. Dynamic Pipeline Logic   :done,    l9, 2026-03-23, 10d
-
-    section Phase 4: Cloud
-    10. AWS Cloud Architecture   :active,  l10, 2026-04-02, 14d
-```
-
-| Execution Week | Duration | Primary Module | Status |
-|---|---|---|---|
-| **Week 01** | Jan 20 – Jan 26 | Linux Fundamentals | Complete |
-| **Week 02** | Jan 27 – Feb 02 | Networking Architecture | Complete |
-| **Week 03** | Feb 03 – Feb 09 | Internet & Server Setup | Complete |
-| **Week 04** | Feb 10 – Feb 16 | Advanced Linux Control | Complete |
-| **Week 05** | Feb 17 – Feb 23 | Git & Version Control | Complete |
-| **Week 06** | Feb 24 – Mar 09 | Docker Container Ecosystems | Complete |
-| **Week 07** | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | Complete |
-| **Week 08** | Mar 16 – Mar 22 | DevSecOps & Security Vulnerability | Complete |
-| **Week 09** | Mar 23 – Apr 01 | Dynamic CI/CD Automation | Complete |
-| **Week 10** | Apr 02 – Present | AWS Cloud Architecture | In Progress |
+**Phase 4: Cloud Ingress**
+- **Week 10** (Apr 02 – Present) | **AWS Cloud Architecture** — *In Progress*
 
 ---
 
@@ -96,9 +76,9 @@ This diagram illustrates the dependencies and explicit learning components of ea
 
 ```mermaid
 flowchart TD
-    classDef default fill:transparent,stroke:#0366d6,stroke-width:2px,color:inherit;
-    classDef active fill:#0366d6,stroke:#0366d6,stroke-width:2px,color:#ffffff;
-    classDef phase fill:transparent,stroke:#d0d7de,stroke-width:1px,stroke-dasharray: 4 4;
+    classDef default fill:#0d2438,stroke:#58a6ff,stroke-width:2px,color:#ffffff;
+    classDef active fill:#1f6feb,stroke:#79c0ff,stroke-width:3px,color:#ffffff;
+    classDef phase fill:transparent,stroke:#8b949e,stroke-width:2px,stroke-dasharray: 5 5,color:#c9d1d9;
 
     subgraph P1 [Phase 1: Environment & Code Foundation]
         A["1. Linux Base<br/>(OS Structure, CLI, Permissions)"] --> 
