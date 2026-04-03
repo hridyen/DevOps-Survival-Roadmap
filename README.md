@@ -1,23 +1,23 @@
-# DevOps Industrial Training Roadmap
+# ⚡ DevOps Industrial Training Roadmap
 
-> **A comprehensive and structured roadmap documenting my industrial training journey from foundational Linux systems to AWS Cloud deployments.** 
-> Designed for technical clarity, detailed tracking, and enterprise-level skill demonstration.
+> **A comprehensive and structured roadmap documenting my industrial training journey.** 
+> Built for technical clarity, detailed tracking, and enterprise-level skill demonstration.
 
 ---
 
 <div align="center">
 
-[![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-0366d6?style=flat-square&labelColor=24292e)](#)
-[![Duration](https://img.shields.io/badge/Duration-10_Weeks-0366d6?style=flat-square&labelColor=24292e)](#)
-[![Status](https://img.shields.io/badge/Status-In_Progress-28a745?style=flat-square&labelColor=24292e)](#)
-[![Start Date](https://img.shields.io/badge/Init-January_2026-0366d6?style=flat-square&labelColor=24292e)](#)
-[![Current Phase](https://img.shields.io/badge/Active_Phase-AWS_Cloud-0366d6?style=flat-square&labelColor=24292e)](#)
+[![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-10_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Status](https://img.shields.io/badge/Status-In_Progress-39FF14?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Phase](https://img.shields.io/badge/Active_Phase-AWS_Cloud-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
 
 </div>
 
 ---
 
-## About This Repository
+## ✦ About This Repository
 
 This repository serves as the central documentation standard for my comprehensive **DevOps Industrial Training** which commenced on **January 20, 2026**.
 
@@ -31,7 +31,7 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 
 ---
 
-## Technical Skills Covered
+## ✦ Technical Skills Covered
 
 | Competency Area | Technologies & Methodologies Exerted |
 |---|---|
@@ -48,55 +48,70 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 
 ---
 
-## Detailed Training Timeline
+## ✦ Detailed Training Timeline
 
 ### Phase 1: Environment & Code Foundation
-- 🟢 **Week 01** (Jan 20 – Jan 26) | **Linux Fundamentals**
-- 🟢 **Week 02** (Jan 27 – Feb 02) | **Networking Architecture**
-- 🟢 **Week 03** (Feb 03 – Feb 09) | **Internet & Server Setup**
-- 🟢 **Week 04** (Feb 10 – Feb 16) | **Advanced Linux Control**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 01** (Jan 20 – Jan 26) | **Linux Fundamentals**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 02** (Jan 27 – Feb 02) | **Networking Architecture**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 03** (Feb 03 – Feb 09) | **Internet & Server Setup**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 04** (Feb 10 – Feb 16) | **Advanced Linux Control**
 
 ### Phase 2: CI/CD & Delivery Architecture
-- 🟢 **Week 05** (Feb 17 – Feb 23) | **Git & Version Control**
-- 🟢 **Week 06** (Feb 24 – Mar 09) | **Docker Container Ecosystems**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 05** (Feb 17 – Feb 23) | **Git & Version Control**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 06** (Feb 24 – Mar 09) | **Docker Container Ecosystems**
 
 ### Phase 3: Security & Cloud Scalability
-- 🟢 **Week 07** (Mar 10 – Mar 15) | **Jenkins & CI/CD Pipelines**
-- 🟢 **Week 08** (Mar 16 – Mar 22) | **DevSecOps Integrations**
-- 🟢 **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 07** (Mar 10 – Mar 15) | **Jenkins & CI/CD Pipelines**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 08** (Mar 16 – Mar 22) | **DevSecOps Integrations**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation**
 
 ### Phase 4: Cloud Ingress
-- 🟡 **Week 10** (Apr 02 – Present) | **AWS Cloud Architecture** *(In Progress)*
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 10** (Apr 02 – Present) | **AWS Cloud Architecture**
+
+<br/>
+
+| Execution Week | Duration | Primary Module | Status |
+|---|---|---|---|
+| **Week 01** | Jan 20 – Jan 26 | Linux Fundamentals | Complete |
+| **Week 02** | Jan 27 – Feb 02 | Networking Architecture | Complete |
+| **Week 03** | Feb 03 – Feb 09 | Internet & Server Setup | Complete |
+| **Week 04** | Feb 10 – Feb 16 | Advanced Linux Control | Complete |
+| **Week 05** | Feb 17 – Feb 23 | Git & Version Control | Complete |
+| **Week 06** | Feb 24 – Mar 09 | Docker Container Ecosystems | Complete |
+| **Week 07** | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | Complete |
+| **Week 08** | Mar 16 – Mar 22 | DevSecOps & Security Vulnerability | Complete |
+| **Week 09** | Mar 23 – Apr 01 | Dynamic CI/CD Automation | Complete |
+| **Week 10** | Apr 02 – Present | AWS Cloud Architecture | In Progress |
 
 ---
 
-## Architectural Roadmap
+## ✦ Architectural Roadmap
 
 This diagram illustrates the dependencies and explicit learning components of each phase.
 
 ```mermaid
 flowchart TD
-    classDef default fill:#0d2438,stroke:#58a6ff,stroke-width:2px,color:#ffffff;
-    classDef active fill:#1f6feb,stroke:#79c0ff,stroke-width:3px,color:#ffffff;
-    classDef phase fill:transparent,stroke:#8b949e,stroke-width:2px,stroke-dasharray: 5 5,color:#c9d1d9;
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef phase fill:transparent,stroke:#333333,stroke-width:2px,stroke-dasharray: 4 4,color:#00E5FF;
 
     subgraph P1 [Phase 1: Environment & Code Foundation]
-        A["1. Linux Base<br/>(OS Structure, CLI, Permissions)"] --> 
-        B["2. Networking<br/>(OSI, TCP/IP, Routing)"] --> 
-        C["3. Servers & Scaling<br/>(Web Servers, Proxies)"] --> 
-        D["4. Advanced Linux<br/>(Crons, SUID/SGID, Security)"]
+        A["[01] Linux Base<br/>(OS Structure, CLI, Permissions)"] --> 
+        B["[02] Networking<br/>(OSI, TCP/IP, Routing)"] --> 
+        C["[03] Servers & Scaling<br/>(Web Servers, Proxies)"] --> 
+        D["[04] Advanced Linux<br/>(Crons, SUID/SGID, Security)"]
     end
 
     subgraph P2 [Phase 2: CI/CD & Delivery Architecture]
-        E["5. Version Control<br/>(Git, Branching workflows)"] --> 
-        F["6. Containerization<br/>(Docker, Dockerfiles, Swarm)"] --> 
-        G["7. CI/CD Orchestration<br/>(Jenkins, Declarative Pipelines)"]
+        E["[05] Version Control<br/>(Git, Branching workflows)"] --> 
+        F["[06] Containerization<br/>(Docker, Dockerfiles, Swarm)"] --> 
+        G["[07] CI/CD Orchestration<br/>(Jenkins, Declarative Pipelines)"]
     end
 
     subgraph P3 [Phase 3: Security & Cloud Scalability]
-        H["8. Security Pipelines<br/>(DevSecOps, SonarQube, SAST)"] --> 
-        I["9. Dynamic Logic<br/>(Branch Parameters, Code Triggers)"] --> 
-        J["10. AWS Cloud<br/>(EC2, IAM, Virtual Private Clouds)"]:::active
+        H["[08] Security Pipelines<br/>(DevSecOps, SonarQube, SAST)"] --> 
+        I["[09] Dynamic Logic<br/>(Branch Parameters, Code Triggers)"] --> 
+        J["[10] AWS Cloud<br/>(EC2, IAM, Virtual Private Clouds)"]:::active
     end
 
     P1 -.-> P2
@@ -107,7 +122,7 @@ flowchart TD
 
 ---
 
-## Repository File Architecture
+## ✦ Repository File Architecture
 
 ```text
 devops-industrial-training-roadmap/
@@ -130,7 +145,7 @@ devops-industrial-training-roadmap/
 
 ---
 
-## Deployed Application Stacks
+## ✦ Deployed Application Stacks
 
 ### Containerized Application Portfolios
 - End-to-end multi-tier web application deployments constructed via Docker Compose.
@@ -147,7 +162,7 @@ devops-industrial-training-roadmap/
 
 ---
 
-## Long-Term Integration Strategy
+## ✦ Long-Term Integration Strategy
 
 ```text
 Current State              T-Minus 3 Months            T-Minus 6 Months
@@ -163,7 +178,7 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 
 ---
 
-## Engineering Considerations & Technical Anomalies
+## ✦ Engineering Considerations & Technical Anomalies
 
 > [!WARNING]
 > The following system properties have historically caused failure points during execution. Note these for incident response:
@@ -180,7 +195,7 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 
 ---
 
-## Command Reference Matrix
+## ✦ Command Reference Matrix
 
 | Category Functionality | Implementation Path |
 | --- | --- |
@@ -196,7 +211,7 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 
 ---
 
-## Engineer Data
+## ✦ Engineer Data
 
 - **Designation:** DevOps Industrial Training Candidate
 - **Commencement Date:** January 2026
