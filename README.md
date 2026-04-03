@@ -51,22 +51,22 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 ## Detailed Training Timeline
 
 **Phase 1: Environment & Code Foundation**
-- **Week 01** (Jan 20 – Jan 26) | **Linux Fundamentals** — *Complete*
-- **Week 02** (Jan 27 – Feb 02) | **Networking Architecture** — *Complete*
-- **Week 03** (Feb 03 – Feb 09) | **Internet & Server Setup** — *Complete*
-- **Week 04** (Feb 10 – Feb 16) | **Advanced Linux Control** — *Complete*
+🟢 **Week 01** (Jan 20 – Jan 26) | **Linux Fundamentals**
+🟢 **Week 02** (Jan 27 – Feb 02) | **Networking Architecture**
+🟢 **Week 03** (Feb 03 – Feb 09) | **Internet & Server Setup**
+🟢 **Week 04** (Feb 10 – Feb 16) | **Advanced Linux Control**
 
 **Phase 2: CI/CD & Delivery Architecture**
-- **Week 05** (Feb 17 – Feb 23) | **Git & Version Control** — *Complete*
-- **Week 06** (Feb 24 – Mar 09) | **Docker Container Ecosystems** — *Complete*
+🟢 **Week 05** (Feb 17 – Feb 23) | **Git & Version Control**
+🟢 **Week 06** (Feb 24 – Mar 09) | **Docker Container Ecosystems**
 
 **Phase 3: Security & Cloud Scalability**
-- **Week 07** (Mar 10 – Mar 15) | **Jenkins & CI/CD Pipelines** — *Complete*
-- **Week 08** (Mar 16 – Mar 22) | **DevSecOps Integrations** — *Complete*
-- **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation** — *Complete*
+🟢 **Week 07** (Mar 10 – Mar 15) | **Jenkins & CI/CD Pipelines**
+🟢 **Week 08** (Mar 16 – Mar 22) | **DevSecOps Integrations**
+🟢 **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation**
 
 **Phase 4: Cloud Ingress**
-- **Week 10** (Apr 02 – Present) | **AWS Cloud Architecture** — *In Progress*
+🟡 **Week 10** (Apr 02 – Present) | **AWS Cloud Architecture** *(In Progress)*
 
 ---
 
