@@ -1,10 +1,10 @@
-# ⚙️ Jenkins CI/CD Projects
+# ⚡ ⚙️ Jenkins CI/CD Projects
 
 > Real pipelines and configurations built during Week 7 training.
 
 ---
 
-## Project 1: First Jenkins Pipeline
+## ✦ Project 1: First Jenkins Pipeline
 
 **Type:** Pipeline Project
 
@@ -75,7 +75,7 @@ pipeline {
 
 ---
 
-## Project 2: Pipeline with Webhook Trigger
+## ✦ Project 2: Pipeline with Webhook Trigger
 
 **Type:** Pipeline with GitHub Webhook
 
@@ -90,7 +90,7 @@ pipeline {
 
 ---
 
-## Project 3: Multi-Agent Pipeline
+## ✦ Project 3: Multi-Agent Pipeline
 
 **Type:** Declarative Pipeline with 2 Agents
 
@@ -105,7 +105,7 @@ pipeline {
 
 ---
 
-## Project 4: Jenkinsfile in Repository
+## ✦ Project 4: Jenkinsfile in Repository
 
 **What it does:** Uses a `Jenkinsfile` stored in the Git repo root instead of pipeline code in Jenkins UI.
 
@@ -125,7 +125,7 @@ myproject/
 
 ---
 
-## Project 5: Dynamic Branch-Based Pipeline
+## ✦ Project 5: Dynamic Branch-Based Pipeline
 
 **Type:** Intelligent Declarative Pipeline
 
@@ -154,11 +154,11 @@ if (branch == 'main') {
 
 ---
 
-## 📝 Notes
+## ✦ 📝 Notes
 
-## Best Practices and Tips for Jenkins Declarative Pipelines
+## ✦ Best Practices and Tips for Jenkins Declarative Pipelines
 
-### 1. Keeping Pipelines Modular
+### ✦ 1. Keeping Pipelines Modular
 
 Complex Jenkins pipelines should be split into smaller, reusable components.  
 This improves maintainability, readability, and overall project organization.
@@ -185,7 +185,7 @@ This allows multiple pipelines to reuse the same logic while keeping the pipelin
 
 ---
 
-### 2. Version Control and Code Review
+### ✦ 2. Version Control and Code Review
 
 Pipeline scripts should always be stored in a **version control system such as Git**.
 
@@ -210,7 +210,7 @@ Using webhooks or polling, Jenkins automatically triggers builds when changes ar
 
 ---
 
-### 3. Error Handling and Recovery
+### ✦ 3. Error Handling and Recovery
 
 Proper error handling is critical for reliable pipelines.
 
@@ -237,7 +237,7 @@ Additionally, I would implement retries and timeout mechanisms to recover from t
 
 ---
 
-### 4. Testing Pipelines
+### ✦ 4. Testing Pipelines
 
 Pipelines should be tested before deploying them in production.
 

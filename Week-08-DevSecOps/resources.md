@@ -1,8 +1,8 @@
-# 📚 Week 08 — DevSecOps Resources
+# ⚡ 📚 Week 08 — DevSecOps Resources
 
 ---
 
-## 🔍 SonarQube
+## ✦ 🔍 SonarQube
 
 | Resource | Link |
 |---|---|
@@ -12,7 +12,7 @@
 
 ---
 
-## 🛡️ OWASP
+## ✦ 🛡️ OWASP
 
 | Resource | Link |
 |---|---|
@@ -22,7 +22,7 @@
 
 ---
 
-## 🐳 Trivy
+## ✦ 🐳 Trivy
 
 | Resource | Link |
 |---|---|
@@ -32,7 +32,7 @@
 
 ---
 
-## 🎥 Videos to Watch
+## ✦ 🎥 Videos to Watch
 
 | Title | Platform | Link |
 |---|---|---|
@@ -43,7 +43,7 @@
 
 ---
 
-## 📝 My Resources
+## ✦ 📝 My Resources
 
 <!-- Add links you find useful as you go deeper -->
 

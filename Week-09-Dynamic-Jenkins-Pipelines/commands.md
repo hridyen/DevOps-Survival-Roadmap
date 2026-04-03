@@ -1,8 +1,8 @@
-# ⚙️ Week 09 — Dynamic Pipeline Commands & Snippets
+# ⚡ ⚙️ Week 09 — Dynamic Pipeline Commands & Snippets
 
 ---
 
-## 🔍 Git Commands Used Inside Pipelines
+## ✦ 🔍 Git Commands Used Inside Pipelines
 
 ```bash
 # Get latest updated remote branch
@@ -33,7 +33,7 @@ git stash pop            # Restore after rebase
 
 ---
 
-## 🐳 Docker Socket Fix (Jenkins in Docker)
+## ✦ 🐳 Docker Socket Fix (Jenkins in Docker)
 
 ```yaml
 # docker-compose.yml for Jenkins — mount Docker socket
@@ -63,7 +63,7 @@ chmod 666 /var/run/docker.sock
 
 ---
 
-## 📝 Groovy Snippets — Quoting Rules
+## ✦ 📝 Groovy Snippets — Quoting Rules
 
 ```groovy
 // ✅ Single quotes — no variable expansion (literal string)
@@ -94,7 +94,7 @@ if (exitCode != 0) {
 
 ---
 
-## 🔀 Branch Detection Snippets
+## ✦ 🔀 Branch Detection Snippets
 
 ```groovy
 // Method 1 — Latest updated branch from remote
@@ -118,7 +118,7 @@ def branch = env.BRANCH_NAME ?: 'unknown'  // ?: means "if null, use 'unknown'"
 
 ---
 
-## 🚦 Environment-Based Deploy Logic
+## ✦ 🚦 Environment-Based Deploy Logic
 
 ```groovy
 script {
@@ -145,7 +145,7 @@ script {
 
 ---
 
-## 🏷️ Docker Image Tagging Per Branch
+## ✦ 🏷️ Docker Image Tagging Per Branch
 
 ```groovy
 // Tag format: appname:branchname-buildnumber
@@ -162,7 +162,7 @@ sh "docker push ${imageTag}"
 
 ---
 
-## ⚙️ Pipeline Options Cheat Sheet
+## ✦ ⚙️ Pipeline Options Cheat Sheet
 
 ```groovy
 pipeline {
@@ -177,7 +177,7 @@ pipeline {
 
 ---
 
-## 📝 My Snippets
+## ✦ 📝 My Snippets
 
 
 ```groovy

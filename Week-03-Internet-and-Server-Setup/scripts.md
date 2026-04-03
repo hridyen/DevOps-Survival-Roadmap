@@ -1,6 +1,6 @@
-# 🔧 Week 03 — Shell Scripts
+# ⚡ 🔧 Week 03 — Shell Scripts
 
-## Install Multiple PHP Versions
+## ✦ Install Multiple PHP Versions
 
 ```bash
 #!/bin/bash
@@ -12,7 +12,7 @@ apt-get install -y php7.4 php7.4-fpm php8.1 php8.1-fpm
 echo "PHP 7.4 and 8.1 installed"
 ```
 
-## WordPress Installation Script
+## ✦ WordPress Installation Script
 
 ```bash
 #!/bin/bash
@@ -24,7 +24,7 @@ rm latest.tar.gz
 echo "WordPress downloaded to /var/www/html/wordpress"
 ```
 
-## Nginx Reverse Proxy Config
+## ✦ Nginx Reverse Proxy Config
 
 ```nginx
 server {
@@ -37,5 +37,5 @@ server {
 }
 ```
 
-## 📝 My Scripts
+## ✦ 📝 My Scripts
 <!-- Add your own scripts here -->

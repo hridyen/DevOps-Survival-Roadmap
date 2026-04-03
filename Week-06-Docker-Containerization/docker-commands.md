@@ -1,8 +1,8 @@
-# 🐳 Week 06 — Docker Commands Reference
+# ⚡ 🐳 Week 06 — Docker Commands Reference
 
 ---
 
-## 🖼️ Images
+## ✦ 🖼️ Images
 
 ```bash
 docker pull nginx                         # Download image from Docker Hub
@@ -17,7 +17,7 @@ docker inspect myimage                   # Detailed info about an image
 
 ---
 
-## 📦 Containers
+## ✦ 📦 Containers
 
 ```bash
 docker run nginx                          # Run a container (foreground)
@@ -44,7 +44,7 @@ docker stats                            # Live CPU/RAM usage of all containers
 
 ---
 
-## 🔌 exec vs attach
+## ✦ 🔌 exec vs attach
 
 ```bash
 docker exec -it mycontainer bash        # Open new bash shell inside container
@@ -55,7 +55,7 @@ docker attach mycontainer               # Attach to the container's main process
 
 ---
 
-## 💾 Volumes
+## ✦ 💾 Volumes
 
 ```bash
 docker volume create myvolume           # Create a named volume
@@ -72,7 +72,7 @@ docker run -v /host/path:/container/path nginx
 
 ---
 
-## 🌐 Networks
+## ✦ 🌐 Networks
 
 ```bash
 docker network ls                                  # List all networks
@@ -88,7 +88,7 @@ docker run --network mynetwork nginx
 
 ---
 
-## 🧩 Docker Compose
+## ✦ 🧩 Docker Compose
 
 ```bash
 docker compose up                        # Start all services
@@ -105,7 +105,7 @@ docker compose exec servicename bash    # Shell into a service
 
 ---
 
-## ⚓ Docker Swarm
+## ✦ ⚓ Docker Swarm
 
 ```bash
 # Setup
@@ -133,7 +133,7 @@ docker stack rm mystack                             # Remove stack
 
 ---
 
-## 🧹 Cleanup Commands
+## ✦ 🧹 Cleanup Commands
 
 ```bash
 docker system prune                      # Remove all stopped containers, unused images, networks
@@ -145,7 +145,7 @@ docker volume prune                      # Remove unused volumes
 
 ---
 
-## 📝 My Docker Notes
+## ✦ 📝 My Docker Notes
 
 <!-- Add commands and tricks you discovered during practice -->
 

@@ -1,4 +1,4 @@
-# Week 09 — Dynamic Jenkins Pipelines
+# ⚡ Week 09 — Dynamic Jenkins Pipelines
 
 > **Duration:** Mar 23, 2026 – Ongoing
 > **Status:** Complete
@@ -6,7 +6,7 @@
 
 ---
 
-## This Week Has Two Parts
+## ✦ This Week Has Two Parts
 
 | File | What's Inside |
 |---|---|
@@ -17,13 +17,13 @@
 
 ---
 
-## What Changed This Week?
+## ✦ What Changed This Week?
 
 In Week 7, pipelines were **static** — you manually selected a branch, wrote fixed steps, and ran them.
 
 This week the goal was to make pipelines **dynamic and branch-aware** — the pipeline itself reacts differently based on which Git branch triggered it.
 
-### What Was Actually Built
+### ✦ What Was Actually Built
 
 A **Multibranch Jenkins Pipeline** handling 4 Git branches with different behavior:
 
@@ -51,9 +51,9 @@ graph LR
 
 ---
 
-## Concepts Learned
+## ✦ Concepts Learned
 
-### 1. Dynamic Branch Detection
+### ✦ 1. Dynamic Branch Detection
 
 Instead of hardcoding which branch to build, the pipeline detects **which branch was most recently updated** using Git commands inside the pipeline itself.
 
@@ -72,7 +72,7 @@ In real companies, dozens of developers push to different branches constantly. A
 
 ---
 
-### 2. Dynamic Checkout
+### ✦ 2. Dynamic Checkout
 
 After detecting the branch, the pipeline checks it out dynamically — not using Jenkins' default checkout behavior.
 
@@ -100,7 +100,7 @@ stage('Dynamic Checkout') {
 
 ---
 
-### 3. Branch-Based Docker Tagging
+### ✦ 3. Branch-Based Docker Tagging
 
 Docker images are tagged **per branch** so you always know which branch produced which image.
 
@@ -129,7 +129,7 @@ stage('Build Docker Image') {
 
 ---
 
-### 4. Environment-Based Deploy Logic
+### ✦ 4. Environment-Based Deploy Logic
 
 The pipeline behaves **differently** depending on which branch triggered it.
 
@@ -168,7 +168,7 @@ graph TD
 ---
 
 
-### 5. Trigger-Level Control vs Pipeline Condition Control
+### ✦ 5. Trigger-Level Control vs Pipeline Condition Control
 
 This was one of the most important design decisions this week.
 
@@ -200,7 +200,7 @@ Only include: `dev` and `prod`
 
 ---
 
-### 6. Passing -e Environment Variables to Docker Containers
+### ✦ 6. Passing -e Environment Variables to Docker Containers
 
 To make the **same Docker image behave differently** in dev vs prod, pass environment variables at runtime:
 
@@ -223,7 +223,7 @@ Inside the container, your app reads `ENV` to behave accordingly — same image,
 
 ---
 
-### 7. Multibranch Pipeline vs Standalone Pipeline
+### ✦ 7. Multibranch Pipeline vs Standalone Pipeline
 
 This was a major learning this week — these two pipeline types behave very differently.
 
@@ -248,7 +248,7 @@ def branch = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).t
 
 ---
 
-### 6. Shell Scripting Inside Groovy — Escaping Issues
+### ✦ 6. Shell Scripting Inside Groovy — Escaping Issues
 
 One of the trickiest parts of this week was running shell commands inside Groovy scripts, especially when quotes and variables are involved.
 
@@ -282,7 +282,7 @@ sh '''
 
 ---
 
-### 7. Default Checkout Behavior — The Hidden Problem
+### ✦ 7. Default Checkout Behavior — The Hidden Problem
 
 When Jenkins runs a pipeline, it **automatically checks out** the repository before your stages even begin. This is called **implicit checkout** or **default SCM checkout**.
 
@@ -312,9 +312,9 @@ pipeline {
 
 ---
 
-## Real Errors Encountered & Fixed
+## ✦ Real Errors Encountered & Fixed
 
-### Error 1: Git Rebase Conflicts
+### ✦ Error 1: Git Rebase Conflicts
 
 **What happened:**
 While working on the pipeline, pushed changes to a branch that had diverged from remote. Git rebase failed with conflicts.
@@ -344,7 +344,7 @@ git rebase --continue
 
 ---
 
-### Error 2: Docker Not Available Inside Jenkins Container
+### ✦ Error 2: Docker Not Available Inside Jenkins Container
 
 **What happened:**
 Jenkins was running inside a Docker container. When the pipeline tried to run `docker build`, it failed because Docker was not installed inside the Jenkins container.
@@ -373,7 +373,7 @@ agent {
 
 ---
 
-### Error 3: Git Push Rejected — Non-Fast-Forward
+### ✦ Error 3: Git Push Rejected — Non-Fast-Forward
 
 **What happened:**
 After making local changes, pushed to remote but got rejected because remote had newer commits.
@@ -396,7 +396,7 @@ git push origin dev
 
 ---
 
-### Error 4: Merge Conflict While Syncing Jenkinsfile Across Branches
+### ✦ Error 4: Merge Conflict While Syncing Jenkinsfile Across Branches
 
 **What happened:**
 Jenkinsfile was updated on `dev`. When syncing to `prod`, conflict happened because both had different pipeline logic.
@@ -420,7 +420,7 @@ git push origin prod
 
 ---
 
-### Error 5: Groovy Syntax Error — Misplaced Brackets
+### ✦ Error 5: Groovy Syntax Error — Misplaced Brackets
 
 **What happened:**
 Jenkinsfile failed to parse because of a missing `}` in Groovy script.
@@ -440,7 +440,7 @@ startup failed: WorkflowScript: 45: unexpected token: } @ line 45
 
 ---
 
-### Error 3 (original): BRANCH_NAME is Null in Standalone Pipeline
+### ✦ Error 3 (original): BRANCH_NAME is Null in Standalone Pipeline
 
 **What happened:**
 Used `env.BRANCH_NAME` in a standalone pipeline expecting it to work like in multibranch.
@@ -461,7 +461,7 @@ def branch = sh(
 
 ---
 
-## Full Dynamic Pipeline (Complete Example)
+## ✦ Full Dynamic Pipeline (Complete Example)
 
 ```groovy
 pipeline {
@@ -550,7 +550,7 @@ pipeline {
 
 ---
 
-## Final Outcome
+## ✦ Final Outcome
 
 ```mermaid
 graph TD
@@ -580,7 +580,7 @@ graph TD
 
 ---
 
-## Key Takeaways This Week
+## ✦ Key Takeaways This Week
 
 > Things that clicked this week after debugging:
 
@@ -597,7 +597,7 @@ graph TD
 
 ---
 
-## Practice Exercises
+## ✦ Practice Exercises
 
 - [ ] Set up a Multibranch Pipeline with 4 branches: dev, prod, stg, uat
 - [ ] Configure branch filter so only dev and prod trigger builds
@@ -611,7 +611,7 @@ graph TD
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 - **`BRANCH_NAME` Variable Pitfall**: Learned the hard way that `env.BRANCH_NAME` only exists in Multibranch pipelines. In standalone jobs, it returns `null`, and you have to detect the branch manually using Git commands.
 - **Git Push Rejections**: Encountered `non-fast-forward` errors when remote was ahead. The fix is to always `git pull --rebase` before pushing to keep history linear.
@@ -624,7 +624,7 @@ graph TD
 
 ---
 
-## Go Deeper — Monorepo Project
+## ✦ Go Deeper — Monorepo Project
 
 For the full project documentation including:
 - Complete pipeline line-by-line breakdown
@@ -637,6 +637,6 @@ For the full project documentation including:
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md)

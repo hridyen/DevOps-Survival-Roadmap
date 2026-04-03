@@ -1,26 +1,26 @@
-# Week 05 — Git & Version Control
+# ⚡ Week 05 — Git & Version Control
 
 > **Duration:** Feb 17 – Feb 23, 2026
 > **Goal:** Understand version control and master Git — the backbone of all modern software development.
 
 ---
 
-## Why Git in DevOps?
+## ✦ Why Git in DevOps?
 
 Every DevOps workflow starts with code in a Git repository. Whether you are writing a Dockerfile, a Jenkins pipeline, or a Terraform script — it all lives in Git.
 
 ---
 
-## Concepts Learned
+## ✦ Concepts Learned
 
-### 1. What is Version Control?
+### ✦ 1. What is Version Control?
 
 Version control is a system that records changes to files over time. It lets you:
 - Go back to any previous version of your code
 - Work in parallel with a team without overwriting each other's work
 - Track who changed what and when
 
-### 2. CVCS vs DVCS
+### ✦ 2. CVCS vs DVCS
 
 | CVCS (Centralized) | DVCS (Distributed) |
 |---|---|
@@ -31,7 +31,7 @@ Version control is a system that records changes to files over time. It lets you
 
 Git is **DVCS** — the entire repository (with all history) exists on your local machine.
 
-### 3. Key Git Concepts
+### ✦ 3. Key Git Concepts
 
 | Concept | Meaning |
 |---|---|
@@ -48,7 +48,7 @@ Git is **DVCS** — the entire repository (with all history) exists on your loca
 | **Cherry-pick** | Copy a specific commit from one branch to another |
 | **PAT** | Personal Access Token — used instead of password for GitHub |
 
-### 4. Branching Strategy
+### ✦ 4. Branching Strategy
 
 A branching strategy is a plan for how your team uses branches. Common strategies:
 
@@ -61,7 +61,7 @@ graph LR
     D --> FP[feature/payment<br>New features]
 ```
 
-### 5. Rebase vs Merge
+### ✦ 5. Rebase vs Merge
 
 | Merge | Rebase |
 |---|---|
@@ -70,7 +70,7 @@ graph LR
 | Safe for shared branches | ⚠️ Never rebase public/shared branches |
 | Good for collaborative work | Good for local cleanup before PR |
 
-### 6. Cherry-Pick
+### ✦ 6. Cherry-Pick
 
 Copy a specific commit to another branch without merging the whole branch.
 
@@ -82,7 +82,7 @@ Use case: A bug fix was made on `feature` branch but you need it on `main` right
 
 ---
 
-## Git Commands Reference
+## ✦ Git Commands Reference
 
 ```bash
 # Setup
@@ -141,12 +141,12 @@ ssh -T git@github.com                          # Test SSH connection
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 <!-- Add your Git notes and discoveries here -->
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md) for Git documentation and tutorials.

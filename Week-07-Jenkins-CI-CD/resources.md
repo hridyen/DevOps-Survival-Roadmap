@@ -1,4 +1,4 @@
-# 📚 Week 07 — Jenkins Resources
+# ⚡ 📚 Week 07 — Jenkins Resources
 
 | Resource | Link |
 |---|---|
@@ -7,5 +7,5 @@
 | Groovy Language Docs | https://groovy-lang.org/documentation.html |
 | Jenkins Plugins Index | https://plugins.jenkins.io |
 
-## 📝 My Resources
+## ✦ 📝 My Resources
 <!-- Add your own -->

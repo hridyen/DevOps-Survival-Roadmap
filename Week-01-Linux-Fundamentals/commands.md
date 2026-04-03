@@ -1,10 +1,10 @@
-# 🐧 Week 01 — Linux Commands Reference
+# ⚡ 🐧 Week 01 — Linux Commands Reference
 
 > All commands used during Week 1. Use this as your personal cheat sheet.
 
 ---
 
-## 📂 File & Directory Commands
+## ✦ 📂 File & Directory Commands
 
 ```bash
 # Navigation
@@ -34,7 +34,7 @@ tail -f /var/log/syslog      # Watch a log file in real time
 
 ---
 
-## 🔐 Permission Commands
+## ✦ 🔐 Permission Commands
 
 ```bash
 # View permissions
@@ -58,7 +58,7 @@ chown -R user foldername     # Change ownership recursively
 
 ---
 
-## 👤 User Management Commands
+## ✦ 👤 User Management Commands
 
 ```bash
 # Create & manage users
@@ -84,7 +84,7 @@ whoami                       # Show current logged-in user
 
 ---
 
-## 🔍 Search & Text Commands
+## ✦ 🔍 Search & Text Commands
 
 ```bash
 # Search
@@ -106,7 +106,7 @@ wc -l filename.txt           # Count lines in a file
 
 ---
 
-## 🖥️ System Info Commands
+## ✦ 🖥️ System Info Commands
 
 ```bash
 uname -a                     # Show kernel and system info
@@ -124,7 +124,7 @@ kill -9 PID                  # Force kill a process
 
 ---
 
-## 🛠️ Shell Scripting Basics
+## ✦ 🛠️ Shell Scripting Basics
 
 ```bash
 #!/bin/bash                  # Shebang line — always first
@@ -169,7 +169,7 @@ chmod +x myscript.sh
 
 ---
 
-## 📝 My Command Notes
+## ✦ 📝 My Command Notes
 
 <!-- Add your own command discoveries below -->
 

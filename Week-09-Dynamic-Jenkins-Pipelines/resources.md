@@ -1,8 +1,8 @@
-# 📚 Week 09 — Dynamic Jenkins Pipelines Resources
+# ⚡ 📚 Week 09 — Dynamic Jenkins Pipelines Resources
 
 ---
 
-## ⚙️ Jenkins
+## ✦ ⚙️ Jenkins
 
 | Resource | Link |
 |---|---|
@@ -13,7 +13,7 @@
 
 ---
 
-## 🐳 Docker in Jenkins
+## ✦ 🐳 Docker in Jenkins
 
 | Resource | Link |
 |---|---|
@@ -23,7 +23,7 @@
 
 ---
 
-## 🔀 Git
+## ✦ 🔀 Git
 
 | Resource | Link |
 |---|---|
@@ -33,7 +33,7 @@
 
 ---
 
-## 🎥 Videos to Watch
+## ✦ 🎥 Videos to Watch
 
 | Title | Platform | Link |
 |---|---|---|
@@ -43,7 +43,7 @@
 
 ---
 
-## 📝 My Resources
+## ✦ 📝 My Resources
 
 <!-- Add links you find useful during practice -->
 

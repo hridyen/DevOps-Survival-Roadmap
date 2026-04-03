@@ -1,8 +1,8 @@
-# 📚 Cloud Computing Introduction — Resources
+# ⚡ 📚 Cloud Computing Introduction — Resources
 
 ---
 
-## 📖 Official AWS
+## ✦ 📖 Official AWS
 
 | Resource | Link |
 |---|---|
@@ -15,7 +15,7 @@
 
 ---
 
-## 🎥 Videos
+## ✦ 🎥 Videos
 
 | Title | Platform | Link |
 |---|---|---|
@@ -26,7 +26,7 @@
 
 ---
 
-## 📜 Certifications
+## ✦ 📜 Certifications
 
 | Cert | Level | Covers |
 |---|---|---|
@@ -38,7 +38,7 @@
 
 ---
 
-## 📝 My Resources
+## ✦ 📝 My Resources
 
 | Resource | Topic | Link |
 |---|---|---|

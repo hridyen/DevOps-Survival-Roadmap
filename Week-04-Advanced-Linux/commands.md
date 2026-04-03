@@ -1,4 +1,4 @@
-# 🔐 Week 04 — Advanced Linux Commands
+# ⚡ 🔐 Week 04 — Advanced Linux Commands
 
 ```bash
 # ACL
@@ -42,5 +42,5 @@ nmcli connection show
 nmcli connection up "Wired connection 1"
 ```
 
-## 📝 My Notes
+## ✦ 📝 My Notes
 <!-- Add command notes -->

@@ -1,4 +1,4 @@
-# 🌐 Week 02 — Networking Commands
+# ⚡ 🌐 Week 02 — Networking Commands
 
 ```bash
 ip addr show                         # Show IP addresses
@@ -11,7 +11,7 @@ netstat -tulnp                       # Show open ports
 ss -tulnp                            # Modern netstat alternative
 ```
 
-## Common Port Numbers
+## ✦ Common Port Numbers
 
 | Port | Service |
 |---|---|
@@ -22,5 +22,5 @@ ss -tulnp                            # Modern netstat alternative
 | 8080 | HTTP Alt / Jenkins |
 | 2377 | Docker Swarm |
 
-## 📝 My Notes
+## ✦ 📝 My Notes
 <!-- Add networking notes -->

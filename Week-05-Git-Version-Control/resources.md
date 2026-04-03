@@ -1,4 +1,4 @@
-# 📚 Week 05 — Git Resources
+# ⚡ 📚 Week 05 — Git Resources
 
 | Resource | Link |
 |---|---|
@@ -7,5 +7,5 @@
 | Oh Shit, Git! (quick fixes) | https://ohshitgit.com |
 | GitHub Docs | https://docs.github.com |
 
-## 📝 My Resources
+## ✦ 📝 My Resources
 <!-- Add your own -->

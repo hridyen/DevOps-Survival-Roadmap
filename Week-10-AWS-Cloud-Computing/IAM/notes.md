@@ -1,4 +1,4 @@
-# IAM — Identity & Access Management
+# ⚡ IAM — Identity & Access Management
 
 > **Week:** 10
 > **Folder:** IAM
@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Why IAM Matters for DevOps
+## ✦ 1. Why IAM Matters for DevOps
 
 In every AWS project, you need to answer:
 - Which developer can launch EC2 instances?
@@ -32,7 +32,7 @@ graph LR
 
 ---
 
-## 1. IAM — Core Components
+## ✦ 1. IAM — Core Components
 
 IAM manages three things:
 
@@ -44,16 +44,16 @@ IAM manages three things:
 
 ---
 
-## 2. Users & Groups
+## ✦ 2. Users & Groups
 
-### Users
+### ✦ Users
 An IAM User is an identity for a **real person** or **application**. Each user has:
 - Unique username
 - Password (for Console access)
 - Access keys (for CLI/SDK access)
 - Permissions via policies
 
-### Groups
+### ✦ Groups
 A Group is a collection of users. Assign permissions to the group — all members inherit them automatically.
 
 ```mermaid
@@ -72,7 +72,7 @@ graph TD
     end
 ```
 
-### Key Rules
+### ✦ Key Rules
 
 | Rule | Example |
 |---|---|
@@ -83,12 +83,12 @@ graph TD
 
 ---
 
-## 3. IAM Permissions & Policies
+## ✦ 3. IAM Permissions & Policies
 
-### What Is a Policy?
+### ✦ What Is a Policy?
 A **policy** is a **JSON document** that defines what actions are allowed or denied on which resources.
 
-### Policy Structure — Every Field Explained
+### ✦ Policy Structure — Every Field Explained
 
 ```json
 {
@@ -111,7 +111,7 @@ A **policy** is a **JSON document** that defines what actions are allowed or den
 | `Action` | Which AWS API action | `"s3:ListBucket"`, `"ec2:*"`, `"*"` |
 | `Resource` | Which specific resource | `"arn:aws:s3:::my-bucket"` or `"*"` |
 
-### ARN — Amazon Resource Name
+### ✦ ARN — Amazon Resource Name
 Every AWS resource has a unique ID:
 ```
 arn:aws:s3:::my-bucket
@@ -122,7 +122,7 @@ arn:aws:s3:::my-bucket
  └────────────────── Prefix — always "arn"
 ```
 
-### Policy Examples
+### ✦ Policy Examples
 
 ```json
 // Allow full S3 access
@@ -150,7 +150,7 @@ arn:aws:s3:::my-bucket
 
 > ⚠️ **Critical rule:** An explicit `Deny` **ALWAYS overrides** an `Allow`. If one policy allows and another denies — result is always **denied**.
 
-### Types of Policies
+### ✦ Types of Policies
 
 | Type | What It Is | When to Use |
 |---|---|---|
@@ -158,7 +158,7 @@ arn:aws:s3:::my-bucket
 | **Customer Managed** | You create and maintain it | Custom business requirements |
 | **Inline** | Directly attached to one user/role, not reusable | One-off specific permissions |
 
-### Policy Inheritance — How Permissions Stack
+### ✦ Policy Inheritance — How Permissions Stack
 
 ```mermaid
 graph TD
@@ -179,9 +179,9 @@ graph TD
 
 ---
 
-## 4. IAM Roles
+## ✦ 4. IAM Roles
 
-### What Is a Role?
+### ✦ What Is a Role?
 A Role is like a user but for **AWS services** — not for people.
 
 ```mermaid
@@ -199,7 +199,7 @@ graph LR
 **If the server is compromised with hardcoded keys → attacker gets permanent access.**
 **With Roles → temporary credentials, auto-rotated, no exposure.**
 
-### Common Role Use Cases
+### ✦ Common Role Use Cases
 
 | Service | Why It Needs a Role | What the Role Allows |
 |---|---|---|
@@ -212,7 +212,7 @@ graph LR
 
 ---
 
-## 5. IAM Password Policy
+## ✦ 5. IAM Password Policy
 
 | Setting | Recommended Value |
 |---|---|
@@ -227,7 +227,7 @@ graph LR
 
 ---
 
-## 6. Multi-Factor Authentication (MFA)
+## ✦ 6. Multi-Factor Authentication (MFA)
 
 ```mermaid
 graph LR
@@ -241,7 +241,7 @@ graph LR
     end
 ```
 
-### MFA Device Types
+### ✦ MFA Device Types
 
 | Type | How It Works | Example |
 |---|---|---|
@@ -253,7 +253,7 @@ graph LR
 
 ---
 
-## 7. How to Access AWS — 3 Methods
+## ✦ 7. How to Access AWS — 3 Methods
 
 | Method | What It Is | Best For |
 |---|---|---|
@@ -261,7 +261,7 @@ graph LR
 | **AWS CLI** | Terminal commands | Automation, scripting, DevOps |
 | **AWS SDK** | Code (Python, JS, Java) | Applications, automation in code |
 
-### AWS CLI Setup
+### ✦ AWS CLI Setup
 ```bash
 # Install (Linux)
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -278,7 +278,7 @@ aws configure
 aws iam get-user
 ```
 
-### AWS SDK (Python boto3)
+### ✦ AWS SDK (Python boto3)
 ```python
 import boto3
 
@@ -291,7 +291,7 @@ for bucket in response['Buckets']:
 
 ---
 
-## 8. IAM Security Tools
+## ✦ 8. IAM Security Tools
 
 | Tool | What It Does | Use It For |
 |---|---|---|
@@ -307,7 +307,7 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ---
 
-## 9. IAM Best Practices
+## ✦ 9. IAM Best Practices
 
 | Practice | Why It Matters |
 |---|---|
@@ -323,7 +323,7 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ---
 
-## 10. Shared Responsibility for IAM
+## ✦ 10. Shared Responsibility for IAM
 
 | AWS Handles | You Handle |
 |---|---|
@@ -336,7 +336,7 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ---
 
-## Summary — Interview Ready
+## ✦ Summary — Interview Ready
 
 | Concept | One-Line Answer |
 |---|---|
@@ -355,7 +355,7 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ---
 
-## Practice Exercises
+## ✦ Practice Exercises
 
 - [ ] Log in to AWS Console and create your first IAM user (not root!)
 - [ ] Create a group `Developers` and attach `AmazonS3ReadOnlyAccess`
@@ -370,7 +370,7 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ---
 
-## Common IAM Mistakes
+## ✦ Common IAM Mistakes
 
 | Mistake | Consequence | Fix |
 |---|---|---|
@@ -383,12 +383,12 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 <!-- Add your IAM observations, things you tried in the console, errors you hit -->
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md)

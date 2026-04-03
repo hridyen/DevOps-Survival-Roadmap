@@ -1,19 +1,19 @@
-# Week 01 — Linux Fundamentals
+# ⚡ Week 01 — Linux Fundamentals
 
 > **Duration:** Jan 20 – Jan 26, 2026
 > **Goal:** Build a solid foundation in Linux, the operating system that powers 90%+ of DevOps infrastructure.
 
 ---
 
-## Why Linux in DevOps?
+## ✦ Why Linux in DevOps?
 
 Almost every server, cloud machine, and container runs Linux. If you want to work in DevOps, Linux is not optional — it is your daily workplace.
 
 ---
 
-## Concepts Learned
+## ✦ Concepts Learned
 
-### 1. What is Linux?
+### ✦ 1. What is Linux?
 Linux is an open-source operating system (OS). Unlike Windows, it is mostly used through a **command-line interface (CLI)** — you type commands instead of clicking buttons.
 
 Key terms:
@@ -23,7 +23,7 @@ Key terms:
 
 ---
 
-### 2. Linux File System
+### ✦ 2. Linux File System
 
 Linux organizes files in a tree structure starting from `/` (called **root**).
 
@@ -43,7 +43,7 @@ Linux organizes files in a tree structure starting from `/` (called **root**).
 
 ---
 
-### 3. File Permissions
+### ✦ 3. File Permissions
 
 Every file and folder in Linux has permissions. You can see them with `ls -l`.
 
@@ -74,7 +74,7 @@ Example: `chmod 755 myfile.sh` gives owner full access, others can read and exec
 
 ---
 
-### 4. User Management
+### ✦ 4. User Management
 
 Linux supports multiple users. As a DevOps engineer you will constantly manage users.
 
@@ -87,7 +87,7 @@ Key concepts:
 
 ---
 
-### 5. Shell Scripting & Bash
+### ✦ 5. Shell Scripting & Bash
 
 A **shell script** is a file containing a series of Linux commands that run automatically. It lets you automate repetitive tasks.
 
@@ -106,7 +106,7 @@ echo "Hello, DevOps!"
 
 ---
 
-## Practice Exercises
+## ✦ Practice Exercises
 
 - [ ] Navigate the file system using `cd`, `ls`, `pwd`
 - [ ] Create files and folders using `touch`, `mkdir`
@@ -117,9 +117,9 @@ echo "Hello, DevOps!"
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
-### Linux Administration Notes
+### ✦ Linux Administration Notes
 
 #### 1. Process, Service & Daemon
 - **What is a Process?**
@@ -344,6 +344,6 @@ rsync -avh root@IP:/mnt/file.txt /root/Desktop/
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md) for useful links, documentation, and video references for this week.

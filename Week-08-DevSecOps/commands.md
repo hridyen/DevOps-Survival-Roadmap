@@ -1,10 +1,10 @@
-# 🔐 Week 08 — DevSecOps Commands Reference
+# ⚡ 🔐 Week 08 — DevSecOps Commands Reference
 
 > **Status:** 🟡 Filling in as hands-on practice happens
 
 ---
 
-## 🔍 SonarQube
+## ✦ 🔍 SonarQube
 
 ```bash
 # Run SonarQube using Docker (easiest way to install)
@@ -45,7 +45,7 @@ stage('Quality Gate') {
 
 ---
 
-## 🛡️ OWASP Dependency Check
+## ✦ 🛡️ OWASP Dependency Check
 
 ```bash
 # Run OWASP Dependency Check via Docker
@@ -72,7 +72,7 @@ stage('OWASP Dependency Check') {
 
 ---
 
-## 🐳 Trivy
+## ✦ 🐳 Trivy
 
 ```bash
 # Install Trivy on Linux (Ubuntu/Debian)
@@ -125,7 +125,7 @@ stage('Trivy Image Scan') {
 
 ---
 
-## 🔗 Full DevSecOps Pipeline Example
+## ✦ 🔗 Full DevSecOps Pipeline Example
 
 ```groovy
 pipeline {
@@ -194,7 +194,7 @@ pipeline {
 
 ---
 
-## 📝 My Command Notes
+## ✦ 📝 My Command Notes
 
 <!-- Add your own commands and discoveries here as you practice -->
 

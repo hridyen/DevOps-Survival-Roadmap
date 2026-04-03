@@ -1,4 +1,4 @@
-# Week 08 — DevSecOps
+# ⚡ Week 08 — DevSecOps
 
 > **Duration:** Mar 16, 2026 – Ongoing
 > **Status:** In Progress
@@ -6,7 +6,7 @@
 
 ---
 
-## What is DevSecOps?
+## ✦ What is DevSecOps?
 
 Traditional DevOps focuses on **speed** — build fast, deploy fast.
 But speed without security creates vulnerabilities.
@@ -34,9 +34,9 @@ This is called **"Shift Left"** — moving security checks earlier in the proces
 
 ---
 
-## Concepts Being Learned
+## ✦ Concepts Being Learned
 
-### 1. DevSecOps Overview
+### ✦ 1. DevSecOps Overview
 - What is the difference between DevOps and DevSecOps
 - Why security needs to be part of the CI/CD pipeline
 - What "Shift Left" means
@@ -48,7 +48,7 @@ This is called **"Shift Left"** — moving security checks earlier in the proces
 
 ---
 
-### 2. SonarQube
+### ✦ 2. SonarQube
 > **Status:** Introduced — not yet hands-on
 
 **What it is:**
@@ -87,7 +87,7 @@ graph TD
 
 ---
 
-### 3. OWASP
+### ✦ 3. OWASP
 > **Status:** Introduced — not yet hands-on
 
 **What it is:**
@@ -126,7 +126,7 @@ It tells you → Upgrade to version 1.2
 
 ---
 
-### 4. Trivy
+### ✦ 4. Trivy
 > **Status:** Introduced — not yet hands-on
 
 **What it is:**
@@ -184,7 +184,7 @@ Total: 136 (HIGH: 9, CRITICAL: 2)
 
 ---
 
-## How These Tools Fit Together in a Pipeline
+## ✦ How These Tools Fit Together in a Pipeline
 
 ```mermaid
 graph TD
@@ -205,7 +205,7 @@ graph TD
 
 ---
 
-## Practice Exercises (Pending)
+## ✦ Practice Exercises (Pending)
 
 - [ ] Install SonarQube using Docker
 - [ ] Connect SonarQube to Jenkins
@@ -217,7 +217,7 @@ graph TD
 
 ---
 
-## Errors & Fixes
+## ✦ Errors & Fixes
 
 <!-- Fill this as you practice and hit errors -->
 
@@ -227,7 +227,7 @@ graph TD
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 <!-- Add your own notes as you go deeper into Week 8 -->
 
@@ -235,6 +235,6 @@ graph TD
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md)

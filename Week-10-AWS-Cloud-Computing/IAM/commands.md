@@ -1,8 +1,8 @@
-# 🔐 IAM — Commands & Policy Cheat Sheet
+# ⚡ 🔐 IAM — Commands & Policy Cheat Sheet
 
 ---
 
-## ⚙️ AWS CLI — IAM Commands
+## ✦ ⚙️ AWS CLI — IAM Commands
 
 ```bash
 # ── Users ───────────────────────────────────────────────
@@ -53,9 +53,9 @@ aws iam get-credential-report \
 
 ---
 
-## 📄 Policy Templates
+## ✦ 📄 Policy Templates
 
-### S3 Full Access
+### ✦ S3 Full Access
 ```json
 {
   "Version": "2012-10-17",
@@ -63,7 +63,7 @@ aws iam get-credential-report \
 }
 ```
 
-### S3 Read-Only
+### ✦ S3 Read-Only
 ```json
 {
   "Version": "2012-10-17",
@@ -75,7 +75,7 @@ aws iam get-credential-report \
 }
 ```
 
-### EC2 Read-Only
+### ✦ EC2 Read-Only
 ```json
 {
   "Version": "2012-10-17",
@@ -83,7 +83,7 @@ aws iam get-credential-report \
 }
 ```
 
-### Deny Delete on S3
+### ✦ Deny Delete on S3
 ```json
 {
   "Version": "2012-10-17",
@@ -95,7 +95,7 @@ aws iam get-credential-report \
 }
 ```
 
-### EC2 Trust Policy (for Role)
+### ✦ EC2 Trust Policy (for Role)
 ```json
 {
   "Version": "2012-10-17",
@@ -107,7 +107,7 @@ aws iam get-credential-report \
 }
 ```
 
-### Jenkins ECR Push Policy
+### ✦ Jenkins ECR Push Policy
 ```json
 {
   "Version": "2012-10-17",
@@ -128,7 +128,7 @@ aws iam get-credential-report \
 
 ---
 
-## 🔑 Common AWS Managed Policies
+## ✦ 🔑 Common AWS Managed Policies
 
 | Policy Name | What It Allows |
 |---|---|
@@ -145,7 +145,7 @@ aws iam get-credential-report \
 
 ---
 
-## 🐍 boto3 — Python Examples
+## ✦ 🐍 boto3 — Python Examples
 
 ```python
 import boto3
@@ -177,7 +177,7 @@ print("Secret Key:", key['SecretAccessKey'])
 
 ---
 
-## 📝 My Notes
+## ✦ 📝 My Notes
 
 | Command | What it does | Notes |
 |---|---|---|

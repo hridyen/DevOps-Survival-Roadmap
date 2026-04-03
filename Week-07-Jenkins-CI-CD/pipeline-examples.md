@@ -1,8 +1,8 @@
-# ⚙️ Week 07 — Jenkins Pipeline Examples
+# ⚡ ⚙️ Week 07 — Jenkins Pipeline Examples
 
 ---
 
-## 📋 Example 1: Basic Pipeline (Hello World)
+## ✦ 📋 Example 1: Basic Pipeline (Hello World)
 
 ```groovy
 pipeline {
@@ -22,7 +22,7 @@ pipeline {
 
 ---
 
-## 📋 Example 2: Build, Test, Deploy Pipeline
+## ✦ 📋 Example 2: Build, Test, Deploy Pipeline
 
 ```groovy
 pipeline {
@@ -70,7 +70,7 @@ pipeline {
 
 ---
 
-## 📋 Example 3: Pipeline with Docker Build & Push
+## ✦ 📋 Example 3: Pipeline with Docker Build & Push
 
 ```groovy
 pipeline {
@@ -119,7 +119,7 @@ pipeline {
 
 ---
 
-## 📋 Example 4: Pipeline on Specific Agent
+## ✦ 📋 Example 4: Pipeline on Specific Agent
 
 ```groovy
 pipeline {
@@ -147,7 +147,7 @@ pipeline {
 
 ---
 
-## 📋 Example 5: Parallel Stages
+## ✦ 📋 Example 5: Parallel Stages
 
 ```groovy
 pipeline {
@@ -176,7 +176,7 @@ pipeline {
 
 ---
 
-## 📋 Example 6: Pipeline with Input (Manual Approval)
+## ✦ 📋 Example 6: Pipeline with Input (Manual Approval)
 
 ```groovy
 pipeline {
@@ -206,7 +206,7 @@ pipeline {
 
 ---
 
-## 📋 Example Jenkinsfile (used in my project)
+## ✦ 📋 Example Jenkinsfile (used in my project)
 
 > This is the Jenkinsfile I placed in the root of my Git repo instead of writing the pipeline in the Jenkins UI.
 
@@ -256,7 +256,7 @@ pipeline {
 
 ---
 
-## 📝 My Pipeline Notes
+## ✦ 📝 My Pipeline Notes
 
 <!-- Add your own pipeline snippets here as you write them -->
 

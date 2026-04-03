@@ -1,4 +1,4 @@
-# Cloud Computing — Introduction
+# ⚡ Cloud Computing — Introduction
 
 > **Week:** 10
 > **Folder:** Cloud-Computing-Introduction
@@ -6,7 +6,7 @@
 
 ---
 
-## Why Cloud in DevOps?
+## ✦ Why Cloud in DevOps?
 
 Everything built so far — Jenkins, Docker, pipelines — needs somewhere to **run in production**. That place is the cloud.
 
@@ -19,11 +19,11 @@ AWS holds over 30% of the global cloud market. As a DevOps engineer, you will us
 
 ---
 
-## 1. What Is Cloud Computing?
+## ✦ 1. What Is Cloud Computing?
 
 **Cloud computing** is the on-demand delivery of IT resources — servers, storage, databases, networking — over the internet with **pay-as-you-go pricing**.
 
-### Before Cloud vs After Cloud
+### ✦ Before Cloud vs After Cloud
 
 ```mermaid
 graph LR
@@ -42,7 +42,7 @@ graph LR
 
 ---
 
-## 2. The Three Deployment Models
+## ✦ 2. The Three Deployment Models
 
 | Model | What It Means | Who Uses It |
 |---|---|---|
@@ -54,7 +54,7 @@ graph LR
 
 ---
 
-## 3. Five Characteristics of Cloud Computing
+## ✦ 3. Five Characteristics of Cloud Computing
 
 These are the official NIST definitions — important for certifications:
 
@@ -68,7 +68,7 @@ These are the official NIST definitions — important for certifications:
 
 ---
 
-## 4. Six Advantages of Cloud Computing
+## ✦ 4. Six Advantages of Cloud Computing
 
 | Advantage | Traditional IT Problem | Cloud Solution |
 |---|---|---|
@@ -81,7 +81,7 @@ These are the official NIST definitions — important for certifications:
 
 ---
 
-## 5. Types of Cloud Computing — IaaS / PaaS / SaaS
+## ✦ 5. Types of Cloud Computing — IaaS / PaaS / SaaS
 
 Think of this as a spectrum of **how much you control vs how much AWS manages**:
 
@@ -104,7 +104,7 @@ graph LR
 | **AWS example** | EC2, EBS, VPC | Elastic Beanstalk, RDS | Chime, WorkMail |
 | **Other examples** | Azure VMs, DigitalOcean | Heroku, Google App Engine | Gmail, Dropbox, Zoom |
 
-### Restaurant Analogy
+### ✦ Restaurant Analogy
 
 | Model | Analogy |
 |---|---|
@@ -117,7 +117,7 @@ graph LR
 
 ---
 
-## 6. AWS Pricing Model
+## ✦ 6. AWS Pricing Model
 
 AWS pricing is based on three fundamentals — **pay only for what you use**:
 
@@ -131,9 +131,9 @@ AWS pricing is based on three fundamentals — **pay only for what you use**:
 
 ---
 
-## 7. AWS Global Infrastructure
+## ✦ 7. AWS Global Infrastructure
 
-### The Three Layers
+### ✦ The Three Layers
 
 ```mermaid
 graph TD
@@ -158,7 +158,7 @@ graph TD
 
 ---
 
-### AWS Regions
+### ✦ AWS Regions
 
 - A Region is a **physical geographic area** — Mumbai, Virginia, Frankfurt
 - Each Region is **completely independent** — failure in one does not affect others
@@ -175,7 +175,7 @@ graph TD
 
 ---
 
-### Availability Zones (AZs)
+### ✦ Availability Zones (AZs)
 
 - One or more **physical data centers** within a Region
 - Each has **independent power, cooling, and networking**
@@ -197,7 +197,7 @@ graph LR
 
 ---
 
-### Edge Locations
+### ✦ Edge Locations
 
 - **400+ worldwide** — far more than Regions
 - NOT for running your servers — for **delivering content faster**
@@ -213,11 +213,11 @@ User in Mumbai → Edge Location in Mumbai  (content already cached, low latency
 
 ---
 
-## 8. AWS Shared Responsibility Model
+## ✦ 8. AWS Shared Responsibility Model
 
 One of the **most common interview and certification questions**.
 
-### The Core Idea
+### ✦ The Core Idea
 
 ```
 AWS = Security OF the Cloud   (the building, the hardware, the infrastructure)
@@ -230,7 +230,7 @@ You = Security IN the Cloud   (what you put inside, how you configure it)
 
 ---
 
-### AWS Is Responsible For
+### ✦ AWS Is Responsible For
 
 - Physical security of data centers
 - Hardware maintenance and replacement
@@ -240,7 +240,7 @@ You = Security IN the Cloud   (what you put inside, how you configure it)
 
 ---
 
-### You Are Responsible For
+### ✦ You Are Responsible For
 
 | Your Responsibility | Example |
 |---|---|
@@ -253,7 +253,7 @@ You = Security IN the Cloud   (what you put inside, how you configure it)
 
 ---
 
-### Responsibility Shifts by Service Type
+### ✦ Responsibility Shifts by Service Type
 
 | Service | Type | AWS Manages | You Manage |
 |---|---|---|---|
@@ -266,7 +266,7 @@ You = Security IN the Cloud   (what you put inside, how you configure it)
 
 ---
 
-### Visual Stack
+### ✦ Visual Stack
 
 ```mermaid
 graph TD
@@ -285,7 +285,7 @@ graph TD
 
 ---
 
-## Quick Summary — Interview Ready
+## ✦ Quick Summary — Interview Ready
 
 | Concept | One-Line Answer |
 |---|---|
@@ -301,7 +301,7 @@ graph TD
 
 ---
 
-## Practice Exercises
+## ✦ Practice Exercises
 
 - [ ] Create a free AWS account and explore the console
 - [ ] Open the AWS Global Infrastructure map: https://infrastructure.aws
@@ -311,7 +311,7 @@ graph TD
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 <!-- Add your own observations and things that clicked -->
 
@@ -319,6 +319,6 @@ graph TD
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md)

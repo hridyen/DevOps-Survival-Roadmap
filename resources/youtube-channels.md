@@ -1,4 +1,4 @@
-## 📝 My Recommendations
+## ✦ 📝 My Recommendations
 
 | Channel | Topics Covered | Link |
 |---|---|---|

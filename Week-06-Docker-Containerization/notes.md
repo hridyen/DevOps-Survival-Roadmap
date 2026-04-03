@@ -1,11 +1,11 @@
-# Week 06 — Docker & Containerization
+# ⚡ Week 06 — Docker & Containerization
 
 > **Duration:** Feb 24 – Mar 09, 2026 (2 weeks)
 > **Goal:** Understand containers, run applications inside Docker, and manage multi-container systems.
 
 ---
 
-## Why Docker in DevOps?
+## ✦ Why Docker in DevOps?
 
 Before Docker, deploying an application was a nightmare. It would work on one machine but not another — the classic *"it works on my machine"* problem.
 
@@ -13,9 +13,9 @@ Docker solves this by packaging your application and **everything it needs** int
 
 ---
 
-## Concepts Learned
+## ✦ Concepts Learned
 
-### 1. What is Virtualisation?
+### ✦ 1. What is Virtualisation?
 
 **Virtualisation** means running multiple operating systems on a single physical machine using software called a **hypervisor** (like VirtualBox or VMware).
 
@@ -47,7 +47,7 @@ graph TD
 
 ---
 
-### 2. Docker Architecture
+### ✦ 2. Docker Architecture
 
 Docker uses a **client-server** architecture.
 
@@ -65,7 +65,7 @@ Key components:
 
 ---
 
-### 3. Images vs Containers
+### ✦ 3. Images vs Containers
 
 | Image | Container |
 |-------|-----------|
@@ -76,7 +76,7 @@ Key components:
 
 ---
 
-### 4. Volumes
+### ✦ 4. Volumes
 
 By default, when a container is deleted, its data is deleted too.
 
@@ -97,7 +97,7 @@ Types:
 
 ---
 
-### 5. Docker Networks
+### ✦ 5. Docker Networks
 
 Docker containers can communicate with each other through networks.
 
@@ -113,7 +113,7 @@ Docker containers can communicate with each other through networks.
 
 ---
 
-### 6. EXPOSE vs -p (Publish)
+### ✦ 6. EXPOSE vs -p (Publish)
 
 This is a common source of confusion:
 
@@ -132,7 +132,7 @@ docker run -p 8080:80 nginx
 
 ---
 
-### 7. docker exec vs docker attach
+### ✦ 7. docker exec vs docker attach
 
 | `docker exec` | `docker attach` |
 |---|---|
@@ -147,7 +147,7 @@ docker attach mycontainer           # Attach to the running main process
 
 ---
 
-### 8. Dockerfile
+### ✦ 8. Dockerfile
 
 A **Dockerfile** is a script that tells Docker how to build your image.
 
@@ -176,7 +176,7 @@ CMD ["python3", "app.py"]
 
 ---
 
-### 9. Docker Compose
+### ✦ 9. Docker Compose
 
 **Docker Compose** lets you define and run multi-container applications using a single YAML file.
 
@@ -218,7 +218,7 @@ Run everything with: `docker compose up -d`
 
 ---
 
-### 10. Docker Swarm
+### ✦ 10. Docker Swarm
 
 **Docker Swarm** is Docker's built-in tool for running containers across **multiple machines** (nodes).
 
@@ -247,7 +247,7 @@ docker service ls
 
 ---
 
-### 11. Reverse Proxy with Nginx
+### ✦ 11. Reverse Proxy with Nginx
 
 A **reverse proxy** sits in front of your app and forwards requests to it. This lets you:
 - Use a domain name instead of an IP:port
@@ -271,7 +271,7 @@ server {
 
 ---
 
-## Practice Exercises
+## ✦ Practice Exercises
 
 - [ ] Pull the `nginx` image from Docker Hub and run it
 - [ ] Write a Dockerfile for a simple Python or Node.js app
@@ -283,7 +283,7 @@ server {
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 <!-- Add your own observations, errors you hit, and how you fixed them -->
 
@@ -291,6 +291,6 @@ server {
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md) for Docker documentation, tutorials, and reference links.

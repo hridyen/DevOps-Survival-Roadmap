@@ -1,10 +1,10 @@
-# 📚 Learning Resources
+# ⚡ 📚 Learning Resources
 
 > All learning resources used across the 7-week training.
 
 ---
 
-## 🐧 Linux
+## ✦ 🐧 Linux
 
 | Resource | Type | Link |
 |---|---|---|
@@ -15,7 +15,7 @@
 
 ---
 
-## 🌐 Networking
+## ✦ 🌐 Networking
 
 | Resource | Type | Link |
 |---|---|---|
@@ -25,7 +25,7 @@
 
 ---
 
-## 🗂️ Git & GitHub
+## ✦ 🗂️ Git & GitHub
 
 | Resource | Type | Link |
 |---|---|---|
@@ -36,7 +36,7 @@
 
 ---
 
-## 🐳 Docker
+## ✦ 🐳 Docker
 
 | Resource | Type | Link |
 |---|---|---|
@@ -47,7 +47,7 @@
 
 ---
 
-## ☁️ AWS
+## ✦ ☁️ AWS
 
 | Resource | Type | Link |
 |---|---|---|
@@ -57,7 +57,7 @@
 
 ---
 
-## ⚙️ Jenkins
+## ✦ ⚙️ Jenkins
 
 | Resource | Type | Link |
 |---|---|---|

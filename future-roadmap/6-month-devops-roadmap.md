@@ -1,10 +1,10 @@
-# 🔮 6-Month DevOps Roadmap
+# ⚡ 🔮 6-Month DevOps Roadmap
 
 > Built on top of the 7-week industrial training. This plan takes you from Junior to Mid-level DevOps Engineer.
 
 ---
 
-## 📍 Where You Are Now (After 7 Weeks)
+## ✦ 📍 Where You Are Now (After 7 Weeks)
 
 ```
 ✅ Linux (Basic to Advanced)
@@ -18,7 +18,7 @@
 
 ---
 
-## 🗓️ Month 1–2: Container Orchestration
+## ✦ 🗓️ Month 1–2: Container Orchestration
 
 **Goal:** Learn Kubernetes — the industry standard for running containers at scale.
 
@@ -38,7 +38,7 @@ Docker → Docker Swarm → Kubernetes
 
 ---
 
-## 🗓️ Month 3: Cloud Deep Dive (AWS)
+## ✦ 🗓️ Month 3: Cloud Deep Dive (AWS)
 
 **Goal:** Get comfortable with AWS services used in real DevOps work.
 
@@ -57,7 +57,7 @@ Docker → Docker Swarm → Kubernetes
 
 ---
 
-## 🗓️ Month 4: Infrastructure as Code (IaC)
+## ✦ 🗓️ Month 4: Infrastructure as Code (IaC)
 
 **Goal:** Stop clicking in the AWS console — manage infrastructure with code.
 
@@ -73,7 +73,7 @@ Write .tf files → terraform init → terraform plan → terraform apply
 
 ---
 
-## 🗓️ Month 5: Monitoring & Observability
+## ✦ 🗓️ Month 5: Monitoring & Observability
 
 **Goal:** Know when things break before users notice.
 
@@ -86,7 +86,7 @@ Write .tf files → terraform init → terraform plan → terraform apply
 
 ---
 
-## 🗓️ Month 6: GitOps & Advanced CI/CD
+## ✦ 🗓️ Month 6: GitOps & Advanced CI/CD
 
 **Goal:** Implement modern GitOps workflows used in production companies.
 
@@ -99,7 +99,7 @@ Write .tf files → terraform init → terraform plan → terraform apply
 
 ---
 
-## 📊 Full 6-Month Visual Timeline
+## ✦ 📊 Full 6-Month Visual Timeline
 
 ```
 Month 1     Month 2     Month 3     Month 4     Month 5     Month 6
@@ -111,7 +111,7 @@ kubectl     Minikube    CloudWatch  IaC basics  ELK Stack   GitHub Actions
 
 ---
 
-## 🏆 Career Goal After 6 Months
+## ✦ 🏆 Career Goal After 6 Months
 
 With this roadmap complete, you will be ready for:
 - **Junior DevOps Engineer** roles
@@ -121,7 +121,7 @@ With this roadmap complete, you will be ready for:
 
 ---
 
-## 📝 Notes
+## ✦ 📝 Notes
 
 <!-- Track your progress month by month here -->
 

@@ -1,4 +1,4 @@
-# 📚 Week 06 — Docker Resources
+# ⚡ 📚 Week 06 — Docker Resources
 
 | Resource | Link |
 |---|---|
@@ -8,5 +8,5 @@
 | Dockerfile reference | https://docs.docker.com/engine/reference/builder |
 | Docker Compose reference | https://docs.docker.com/compose/compose-file |
 
-## 📝 My Resources
+## ✦ 📝 My Resources
 <!-- Add your own -->

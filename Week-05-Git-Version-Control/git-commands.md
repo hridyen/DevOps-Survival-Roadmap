@@ -1,4 +1,4 @@
-# 🗂️ Week 05 — Git Commands Quick Reference
+# ⚡ 🗂️ Week 05 — Git Commands Quick Reference
 
 > See notes.md for full commands with explanations. This file is the quick-reference cheat sheet.
 
@@ -22,5 +22,5 @@ git remote -v                         # List remotes
 git fetch origin                      # Fetch without merging
 ```
 
-## 📝 My Git Notes
+## ✦ 📝 My Git Notes
 <!-- Add command discoveries here -->

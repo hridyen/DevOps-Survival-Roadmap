@@ -1,11 +1,11 @@
-# Week 07 — Jenkins & CI/CD
+# ⚡ Week 07 — Jenkins & CI/CD
 
 > **Duration:** Mar 10 – Mar 15, 2026
 > **Goal:** Understand CI/CD concepts and build real pipelines with Jenkins.
 
 ---
 
-## Why CI/CD?
+## ✦ Why CI/CD?
 
 In traditional development, code was written for weeks and then deployed all at once — which often caused massive failures.
 
@@ -25,9 +25,9 @@ graph TD
 
 ---
 
-## Concepts Learned
+## ✦ Concepts Learned
 
-### 1. What is Jenkins?
+### ✦ 1. What is Jenkins?
 
 Jenkins is an **open-source automation server**. It is the most widely used CI/CD tool in DevOps.
 
@@ -39,7 +39,7 @@ Jenkins watches your Git repository and automatically:
 
 ---
 
-### 2. Jenkins Internal Flow
+### ✦ 2. Jenkins Internal Flow
 
 ```mermaid
 graph TD
@@ -54,7 +54,7 @@ graph TD
 
 ---
 
-### 3. Jenkins Architecture: Master & Agents
+### ✦ 3. Jenkins Architecture: Master & Agents
 
 | Master (Controller) | Agent (Node) |
 |---|---|
@@ -67,7 +67,7 @@ graph TD
 
 ---
 
-### 4. Project Types in Jenkins
+### ✦ 4. Project Types in Jenkins
 
 **Freestyle Project:**
 - Simple, GUI-based setup
@@ -83,7 +83,7 @@ graph TD
 
 ---
 
-### 5. Pipeline Components
+### ✦ 5. Pipeline Components
 
 A Jenkins pipeline is written in **Groovy DSL** (Domain Specific Language).
 
@@ -143,7 +143,7 @@ pipeline {
 
 ---
 
-### 6. Jenkinsfile
+### ✦ 6. Jenkinsfile
 
 Instead of writing pipeline code inside Jenkins UI, you can store it in a file called `Jenkinsfile` in the root of your Git repository.
 
@@ -163,7 +163,7 @@ myproject/
 
 ---
 
-### 7. Plugins in Jenkins
+### ✦ 7. Plugins in Jenkins
 
 Jenkins gets its power from **plugins** — there are 1,800+ available.
 
@@ -180,7 +180,7 @@ Key plugins used:
 
 ---
 
-### 8. Triggers: Webhook vs Poll SCM
+### ✦ 8. Triggers: Webhook vs Poll SCM
 
 **Webhook:**
 - GitHub sends a message to Jenkins **immediately** when code is pushed
@@ -195,7 +195,7 @@ Key plugins used:
 
 ---
 
-### 9. Credentials in Jenkins
+### ✦ 9. Credentials in Jenkins
 
 Jenkins stores sensitive information (passwords, SSH keys, tokens) in **Credentials**.
 
@@ -217,7 +217,7 @@ steps {
 
 ---
 
-## Practice Exercises
+## ✦ Practice Exercises
 
 - [ ] Install Jenkins and access the web UI
 - [ ] Create a Freestyle project that clones a GitHub repo
@@ -229,7 +229,7 @@ steps {
 
 ---
 
-## Errors I Encountered & Fixed
+## ✦ Errors I Encountered & Fixed
 
 | Error | Cause | Fix |
 |-------|-------|-----|
@@ -242,12 +242,12 @@ steps {
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 
 <!-- Your own notes, observations, things that surprised you -->
 
 ---
 
-## Resources
+## ✦ Resources
 
 See [resources.md](./resources.md) for Jenkins documentation and tutorials.

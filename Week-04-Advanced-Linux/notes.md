@@ -1,17 +1,17 @@
-# Week 04 — Advanced Linux Tools
+# ⚡ Week 04 — Advanced Linux Tools
 
 > **Duration:** Feb 10 – Feb 16, 2026
 
-## Concepts Learned
+## ✦ Concepts Learned
 
-### ACL (Access Control Lists)
+### ✦ ACL (Access Control Lists)
 Fine-grained permissions beyond basic owner/group/others.
 ```bash
 setfacl -m u:username:rwx filename
 getfacl filename
 ```
 
-### GREP
+### ✦ GREP
 Search text in files — used constantly in DevOps for log analysis.
 ```bash
 grep "error" /var/log/syslog
@@ -19,13 +19,13 @@ grep -r "TODO" /home/
 grep -E "error|warning" app.log
 ```
 
-### tar (Archives)
+### ✦ tar (Archives)
 ```bash
 tar -czvf archive.tar.gz folder/     # Create
 tar -xzvf archive.tar.gz             # Extract
 ```
 
-### Cron Jobs & at
+### ✦ Cron Jobs & at
 - **cron** — recurring scheduled tasks
 - **at / atq** — one-time scheduled tasks
 ```bash
@@ -35,17 +35,17 @@ crontab -e                           # Edit cron schedule
 atq                                  # List at jobs
 ```
 
-### SUID & SGID
+### ✦ SUID & SGID
 - **SUID** on binary: runs as the file's owner, not the current user
 - **SGID** on directory: new files inherit directory's group
 
-### Wheel Group
+### ✦ Wheel Group
 Users in `wheel` group can use `sudo`.
 ```bash
 usermod -aG wheel username
 ```
 
-### nmcli
+### ✦ nmcli
 CLI tool for NetworkManager.
 ```bash
 nmcli device status
@@ -54,8 +54,8 @@ nmcli connection show
 
 ---
 
-## Personal Notes
+## ✦ Personal Notes
 <!-- Add notes here -->
 
-## Resources
+## ✦ Resources
 See [resources.md](./resources.md)

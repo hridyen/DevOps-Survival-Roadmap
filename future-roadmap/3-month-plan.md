@@ -1,10 +1,10 @@
-# 📅 3-Month Learning Plan
+# ⚡ 📅 3-Month Learning Plan
 
 > Immediate next steps after completing the 10-week training.
 
 ---
 
-## Month 1: Kubernetes Basics
+## ✦ Month 1: Kubernetes Basics
 
 **Why:** Docker Swarm is good, but Kubernetes is the industry standard.
 
@@ -21,7 +21,7 @@ Resources to use:
 
 ---
 
-## Month 2: AWS Cloud (Intermediate)
+## ✦ Month 2: AWS Cloud (Intermediate)
 
 **Why:** Deepen the AWS knowledge started during training.
 
@@ -38,7 +38,7 @@ Resources:
 
 ---
 
-## Month 3: Terraform (Infrastructure as Code)
+## ✦ Month 3: Terraform (Infrastructure as Code)
 
 **Why:** Managing infrastructure manually is not scalable.
 
@@ -50,7 +50,7 @@ Topics to cover:
 
 ---
 
-## 📝 Progress Tracker
+## ✦ 📝 Progress Tracker
 
 | Week | Topic | Status | Notes |
 |---|---|---|---|

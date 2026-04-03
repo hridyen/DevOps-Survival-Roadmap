@@ -1,4 +1,4 @@
-# Week 09 — Project: Branch-Aware CI/CD Pipeline for Monorepo Microservices
+# ⚡ Week 09 — Project: Branch-Aware CI/CD Pipeline for Monorepo Microservices
 
 > **Project Type:** Real-World CI/CD Optimization Project
 > **Stack:** Jenkins · Docker · Git · Groovy · Bash
@@ -7,9 +7,9 @@
 
 ---
 
-## 1. Project Overview
+## ✦ 1. Project Overview
 
-### What Problem Does This Project Solve?
+### ✦ What Problem Does This Project Solve?
 
 Imagine a repository with 5 microservices — `service-a`, `service-b`, `service-c`, `service-d`, `service-e`. A developer fixes a bug in `service-a` and pushes. A naive pipeline would:
 
@@ -25,7 +25,7 @@ This wastes CI/CD time, compute resources, and slows down every developer on the
 
 ---
 
-### Why Is Monorepo CI/CD Challenging?
+### ✦ Why Is Monorepo CI/CD Challenging?
 
 A **monorepo** is a single Git repository that contains multiple services/projects:
 
@@ -55,7 +55,7 @@ my-monorepo/
 
 ---
 
-### Why Optimization Matters
+### ✦ Why Optimization Matters
 
 In real companies with large teams:
 
@@ -68,9 +68,9 @@ In real companies with large teams:
 
 ---
 
-## 2. Architecture Breakdown
+## ✦ 2. Architecture Breakdown
 
-### Full System Flow
+### ✦ Full System Flow
 
 ```mermaid
 graph TD
@@ -94,7 +94,7 @@ graph TD
 
 ---
 
-### Each Component Explained
+### ✦ Each Component Explained
 
 #### GitHub (Source of Truth)
 - Stores all microservices in one repo
@@ -124,9 +124,9 @@ graph TD
 
 ---
 
-## 3. Pipeline Deep Dive
+## ✦ 3. Pipeline Deep Dive
 
-### The Full Working Jenkinsfile
+### ✦ The Full Working Jenkinsfile
 
 ```groovy
 def buildServiceA = false
@@ -219,7 +219,7 @@ pipeline {
 
 ---
 
-### Line-by-Line Explanation
+### ✦ Line-by-Line Explanation
 
 #### Global Variables
 
@@ -402,11 +402,11 @@ This is the **idempotency pattern** — the pipeline can run safely even if no c
 
 ---
 
-## 4. Old Pipeline vs New Pipeline
+## ✦ 4. Old Pipeline vs New Pipeline
 
 This section is critical for interviews — it shows you understand not just what works but **why things fail**.
 
-### The Old (Broken) Pipeline
+### ✦ The Old (Broken) Pipeline
 
 ```groovy
 pipeline {
@@ -463,7 +463,7 @@ pipeline {
 
 ---
 
-### What Was Wrong — Problem by Problem
+### ✦ What Was Wrong — Problem by Problem
 
 #### Problem 1: `env` Variable Mutation in Declarative Pipelines
 
@@ -545,7 +545,7 @@ def changes = currentBuild.changeSets.collectMany { it.items }.collectMany { it.
 
 ---
 
-### How the New Pipeline Fixes Every Issue
+### ✦ How the New Pipeline Fixes Every Issue
 
 | Old Problem | Old Code | New Solution | New Code |
 |---|---|---|---|
@@ -557,9 +557,9 @@ def changes = currentBuild.changeSets.collectMany { it.items }.collectMany { it.
 
 ---
 
-## 5. Key DevOps Concepts Learned
+## ✦ 5. Key DevOps Concepts Learned
 
-### Monorepo CI/CD Optimization
+### ✦ Monorepo CI/CD Optimization
 
 **What it is:** Instead of rebuilding everything on every push, the pipeline is intelligent enough to only rebuild what changed.
 
@@ -572,7 +572,7 @@ Changed files → Map to services → Build only those services
 
 ---
 
-### Delta Builds
+### ✦ Delta Builds
 
 **Definition:** A build that processes only the **delta** (difference) between the current state and the last known good state.
 
@@ -588,7 +588,7 @@ Delta:                 git diff abc123 xyz789  ← what changed
 
 ---
 
-### Parallel Execution
+### ✦ Parallel Execution
 
 **Why it matters:** Serial builds waste time. If 3 services all need to be built after a big commit, running them in parallel cuts build time by up to 3x.
 
@@ -598,7 +598,7 @@ Delta:                 git diff abc123 xyz789  ← what changed
 
 ---
 
-### Idempotency
+### ✦ Idempotency
 
 **Definition:** An operation that produces the same result whether run once or many times.
 
@@ -612,7 +612,7 @@ Pipelines must be safe to re-run. If a deploy fails halfway and you re-run it, i
 
 ---
 
-### Pipeline Reliability
+### ✦ Pipeline Reliability
 
 A reliable pipeline must handle:
 - **First run** (no previous commits) → build everything
@@ -623,9 +623,9 @@ A reliable pipeline must handle:
 
 ---
 
-## 6. Real-World Industry Relevance
+## ✦ 6. Real-World Industry Relevance
 
-### Where This Approach Is Used
+### ✦ Where This Approach Is Used
 
 | Company | Their Tool | Concept |
 |---|---|---|
@@ -637,7 +637,7 @@ A reliable pipeline must handle:
 
 ---
 
-### How Companies Optimize CI/CD Pipelines
+### ✦ How Companies Optimize CI/CD Pipelines
 
 1. **Delta builds** — only build what changed (this project)
 2. **Build caching** — reuse Docker layers to speed up builds
@@ -648,7 +648,7 @@ A reliable pipeline must handle:
 
 ---
 
-### Why This Matters for Scalability
+### ✦ Why This Matters for Scalability
 
 | Team Size | Naive Pipeline | Optimized Pipeline |
 |---|---|---|
@@ -660,9 +660,9 @@ At scale, an unoptimized pipeline becomes a **bottleneck that slows the entire e
 
 ---
 
-## 7. Challenges Faced
+## ✦ 7. Challenges Faced
 
-### Challenge 1: Jenkins `env` Variable Mutation Issue
+### ✦ Challenge 1: Jenkins `env` Variable Mutation Issue
 
 **Problem:** Set `env.BUILD_A = 'true'` in detect stage. `when` condition in parallel build stage read it as `'false'`.
 
@@ -672,7 +672,7 @@ At scale, an unoptimized pipeline becomes a **bottleneck that slows the entire e
 
 ---
 
-### Challenge 2: `changeSets` Unreliability
+### ✦ Challenge 2: `changeSets` Unreliability
 
 **Problem:** Tried `currentBuild.changeSets` to detect changed files. It was empty on manual triggers and first builds.
 
@@ -682,7 +682,7 @@ At scale, an unoptimized pipeline becomes a **bottleneck that slows the entire e
 
 ---
 
-### Challenge 3: Docker BuildKit / buildx Issue
+### ✦ Challenge 3: Docker BuildKit / buildx Issue
 
 **Problem:** `docker build` failed with errors related to BuildKit or buildx not being available inside the Jenkins environment.
 
@@ -710,7 +710,7 @@ environment {
 
 ---
 
-### Challenge 4: Debugging Pipeline Logic (When Nothing Fails But Nothing Builds)
+### ✦ Challenge 4: Debugging Pipeline Logic (When Nothing Fails But Nothing Builds)
 
 **Problem:** Pipeline ran successfully, showed green, but no Docker images were built and no containers were running.
 
@@ -730,7 +730,7 @@ echo "Changed files: ${changedFiles}"
 
 ---
 
-## 8. Final Working Flow (Summary)
+## ✦ 8. Final Working Flow (Summary)
 
 ```mermaid
 graph TD
@@ -752,9 +752,9 @@ graph TD
 
 ---
 
-## 9. Improvements & Next Steps
+## ✦ 9. Improvements & Next Steps
 
-### Docker Image Tagging
+### ✦ Docker Image Tagging
 
 Currently images are tagged as `service-a:latest`. This overwrites previous images and makes rollback impossible.
 
@@ -769,7 +769,7 @@ This gives every build a unique, traceable tag.
 
 ---
 
-### Push to DockerHub or AWS ECR
+### ✦ Push to DockerHub or AWS ECR
 
 Currently images only exist locally on the Jenkins agent. For real deployments:
 
@@ -784,7 +784,7 @@ Remote registries allow:
 
 ---
 
-### Kubernetes Deployment
+### ✦ Kubernetes Deployment
 
 After pushing to a registry, the next step is deploying to Kubernetes instead of bare `docker run`:
 
@@ -799,7 +799,7 @@ Kubernetes gives you:
 
 ---
 
-### Dynamic Service Detection
+### ✦ Dynamic Service Detection
 
 Currently, service names are hardcoded (`service-a`, `service-b`, `service-c`). A more advanced approach automatically discovers all services:
 
@@ -822,7 +822,7 @@ This scales to any number of services without modifying the Jenkinsfile.
 
 ---
 
-## 💭 10. Personal Learning Reflection
+## ✦ 💭 10. Personal Learning Reflection
 
 This project felt different from everything before it. Earlier in the training, I was following steps — install this, run that, it works, move on. This week, I was actually **thinking**.
 
@@ -840,7 +840,7 @@ The shift from "pipeline user" to "system thinker" is what this week gave me. An
 
 ---
 
-## 📝 Personal Notes
+## ✦ 📝 Personal Notes
 
 <!-- Add your own observations as you revisit this project -->
 
@@ -848,7 +848,7 @@ The shift from "pipeline user" to "system thinker" is what this week gave me. An
 
 ---
 
-## 🔗 Resources
+## ✦ 🔗 Resources
 
 | Resource | Link |
 |---|---|

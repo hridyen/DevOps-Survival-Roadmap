@@ -1,10 +1,10 @@
-# 📚 Week 01 — Linux Resources
+# ⚡ 📚 Week 01 — Linux Resources
 
 > Useful links, documentation, and videos for learning Linux.
 
 ---
 
-## 🎥 Video Resources
+## ✦ 🎥 Video Resources
 
 | Title | Platform | Link |
 |-------|----------|------|
@@ -14,7 +14,7 @@
 
 ---
 
-## 📖 Documentation
+## ✦ 📖 Documentation
 
 | Resource | Link |
 |----------|------|
@@ -24,7 +24,7 @@
 
 ---
 
-## 🔗 Useful Websites
+## ✦ 🔗 Useful Websites
 
 | Site | Description |
 |------|-------------|

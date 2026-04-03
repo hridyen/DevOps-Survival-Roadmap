@@ -1,4 +1,4 @@
-# 📖 Books
+# ⚡ 📖 Books
 
 | Title | Author | Topic | Free? |
 |---|---|---|---|

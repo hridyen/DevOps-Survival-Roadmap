@@ -1,10 +1,10 @@
-# 🐳 Docker Projects
+# ⚡ 🐳 Docker Projects
 
 > Projects I built and dockerized during Week 6 training.
 
 ---
 
-## Project 1:  MySQL with Docker Volume Persistence
+## ✦ Project 1:  MySQL with Docker Volume Persistence
 
 **Description:**  hands-on DevOps project demonstrating how to run MySQL inside Docker with persistent storage using Docker Volumes.
 
@@ -41,7 +41,7 @@ EXPOSE 3306
 
 ---
 
-## Project 2: Multi-Container App with Docker Compose
+## ✦ Project 2: Multi-Container App with Docker Compose
 
 **Description:** ReliefCo is a full-stack disaster relief platform built to connect volunteers, donors, and administrators during times of crisis.
 
@@ -116,7 +116,7 @@ networks:
 
 ---
 
-## Project 3: Docker Swarm Deployment
+## ✦ Project 3: Docker Swarm Deployment
 
 **Description:** Deployed a service across multiple nodes using Docker Swarm.
 
@@ -127,7 +127,7 @@ networks:
 4. Deployed a service with 3 replicas
 5. Scaled the service up and down
 
-### Commands used
+### ✦ Commands used
 
 ```bash
 docker swarm init
@@ -170,6 +170,6 @@ docker config create <CONFIG-NAME> <FILE>
 docker config ls
 docker config rm <CONFIG-NAME>
 ```
-## 📝 Notes
+## ✦ 📝 Notes
 
 Will be adding more projects on the way
