@@ -27,8 +27,8 @@ graph LR
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
     classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
 
-    V[Vertical: Scale UP] --- S1[Small] --> L1[Large]
-    H[Horizontal: Scale OUT] --- S2[Instance 1] --> S3[Instance 1 + 2 + 3...]:::highlight
+    V["Vertical: Scale UP"] --- S1["Small"] --> L1["Large"]
+    H["Horizontal: Scale OUT"] --- S2["Instance 1"] --> S3["Instance 1 + 2 + 3..."]:::highlight
 ```
 
 ---

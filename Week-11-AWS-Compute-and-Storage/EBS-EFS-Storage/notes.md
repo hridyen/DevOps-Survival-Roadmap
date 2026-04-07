@@ -66,10 +66,10 @@ graph TD
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
     classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
 
-    Step1[Start & Customize Instance]
-    Step2[Stop Instance <br/>(Ensure Data Integrity)]
-    Step3[Build AMI <br/>(Creates Snapshots)]:::highlight
-    Step4[Launch New Instances <br/>From AMI]
+    Step1["Start & Customize Instance"]
+    Step2["Stop Instance <br/>(Ensure Data Integrity)"]
+    Step3["Build AMI <br/>(Creates Snapshots)"]:::highlight
+    Step4["Launch New Instances <br/>From AMI"]
     
     Step1 --> Step2 --> Step3 --> Step4
 ```
