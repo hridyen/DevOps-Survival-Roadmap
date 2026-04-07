@@ -2,67 +2,67 @@
 
 ---
 
-# ⚡ Load Balancer CLI — Management Blocks
+# ⚡ Industrial AWS Load Balancing — Advanced CLI
 
 ---
 
-## ✦ ⚖️ Elastic Load Balancing (V2)
+## ✦ ⚖️ ALB — Multi-Condition Routing
 
-### ✦ Audit & Inventory
+### ✦ Create a Listener Rule (Priority 10)
 
 ```bash
-# Renders all Load Balancer ARNs across the region
-aws elbv2 describe-load-balancers
+# Complex Routing Rule: 
+# IF Path == '/api/*' AND Header 'User-Agent' contains 'Mobile'
+# THEN Forward to Target Group 'api-mobile-targets'
 
-# List all Target Groups (Clusters of EC2s)
-aws elbv2 describe-target-groups
+aws elbv2 create-rule \
+  --listener-arn arn:aws:elasticloadbalancing:xxx:listener/app/prod-alb/xxx \
+  --priority 10 \
+  --conditions '[
+    {
+      "Field": "path-pattern",
+      "Values": ["/api/*"]
+    },
+    {
+      "Field": "http-header",
+      "HttpHeaderConfig": {
+        "HttpHeaderName": "User-Agent",
+        "Values": ["*Mobile*"]
+      }
+    }
+  ]' \
+  --actions Type=forward,TargetGroupArn=arn:aws:elbv2:xxx:targetgroup/api-mobile-targets/xxx
 ```
 
-### ✦ Create ALB Infrastructure
+---
+
+## ✦ 🛡️ Maintenance & Tunneling (NLB)
+
+### ✦ NLB with Elastic IP (Static Endpoint)
 
 ```bash
-# 1. Generate the Application Load Balancer (ALB)
+# Create an NLB with a specific Elastic IP for Whitelisting
 aws elbv2 create-load-balancer \
-  --name prod-alb \
-  --subnets subnet-111 subnet-222 \
-  --security-groups sg-xxx
-
-# 2. Configure the Target Group (Destination)
-aws elbv2 create-target-group \
-  --name web-targets \
-  --protocol HTTP \
-  --port 80 \
-  --vpc-id vpc-xxx \
-  --health-check-path /health
-
-# 3. Register Instances to the Target Group
-aws elbv2 register-targets \
-  --target-group-arn arn:aws:elasticloadbalancing:xxx:targetgroup/web-targets/xxx \
-  --targets Id=i-xxxx Id=i-yyyy
+  --name prod-nlb-static \
+  --type network \
+  --subnet-mappings SubnetId=subnet-111,AllocationId=eipalloc-xxxx
 ```
 
----
-
-## ✦ 🛡️ SSL/TLS Integration (ACM)
-
-### ✦ Certificate Lifecycle
+### ✦ Adjusting Deregistration Delay (Connection Draining)
 
 ```bash
-# Request a public SSL certificate for your domain
-aws acm request-certificate \
-  --domain-name example.com \
-  --validation-method DNS
-
-# List all certificates waiting for approval
-aws acm list-certificates --certificate-statuses PENDING_VALIDATION
+# Reduce draining time to 60s for faster CI/CD testing (Default: 300s)
+aws elbv2 modify-target-group-attributes \
+  --target-group-arn arn:aws:elbv2:xxx:targetgroup/web-targets/xxx \
+  --attributes Key=deregistration_delay.timeout_seconds,Value=60
 ```
 
 ---
 
-## ✦ 📝 My Implementation Checklist
+## ✦ 📝 My Advanced Performance Snippets
 
-| Command | Real-World Use |
-|---|---|
-| `describe-target-health` | Debugging why an instance is "Unhealthy" (Timeout vs Connection Refused). |
-| `modify-listener` | Updating the SSL certificate directly on a production Load Balancer. |
-| `githubPush()` | Triggering a build that eventually deploys to an ALB target group. |
+| Operation | Command | Why it's used? |
+|---|---|---|
+| `describe-target-health` | `aws elbv2 describe-target-health` | Real-time debugging of "Unhealthy" instances. |
+| `SSL-Cert-Update` | `aws elbv2 modify-listener` | Replacing the SSL certificate on a production ALB listener. |
+| `EIP-Whitelisting` | `aws elbv2 describe-load-balancers` | Finding the static IPs of an NLB for corporate firewall access. |

@@ -2,92 +2,94 @@
 
 ---
 
-# 💾 AWS Storage Architecture — EBS, EFS & Instance Store
+# 💾 Industrial AWS Storage — Multi-Tier Architectures
 
-> **Focus:** Persistent block storage (EBS), Shared file systems (EFS), and Ephemeral performance (Instance Store).
+> **Architectural Goal:** Transition from "General Storage" to "Performance-Optimized & Cost-Efficient" block and file systems.
 
 ---
 
-## ✦ 1. Storage Divergence Taxonomy
+## ✦ 1. Block Storage Taxonomy (EBS)
 
-In the AWS ecosystem, choosing the right storage "flavor" depends on your durability requirements and access patterns.
+### ✦ GP3: The Performance Decoupling Revolution
+
+In legacy **GP2**, Performance (IOPS) was "bundled" with Capacity (Size). To get more speed, you had to buy more disk space. 
+
+**GP3 (Current Gen)** decouples these two planes, allowing for:
+- **Baseline Performance**: 3,000 IOPS and 125 MiB/s throughput (Guaranteed).
+- **Independent Scaling**: Provision up to 16,000 IOPS and 1,000 MiB/s without increasing the storage size.
+- **Cost Saving**: Typically **20% cheaper** than gp2 per GiB.
 
 ```mermaid
-graph TD
+graph LR
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
-    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
 
-    Root((Selection Matrix))
+    GP2[GP2: Bundled Performance] -->|Unleashed| GP3[GP3: Decoupled Performance]:::highlight
     
-    Root --> Block[Block Storage]:::active
-    Block --> EBS[EBS: Network Drive<br/>Persistent, 1:1 EC2]
-    Block --> IS[Instance Store: Physical<br/>Ephemeral, High Performance]
-    
-    Root --> File[File Storage]:::active
-    File --> EFS[EFS: Multi-AZ NFS<br/>Shared, 1:Many EC2]
-    File --> FSx[FSx: Windows/Lustre<br/>Specialized Filesystems]
-    
-    Root --> Object[Object Storage]:::active
-    Object --> S3[S3: Web-Scale<br/>Immutable, Versioned]
+    subgraph GP3 Architecture
+        Size[Storage GiB]
+        IOPS[IOPS: Up to 16k]
+        TP[Throughput: Up to 1k MiB/s]
+        Size --- IOPS
+        Size --- TP
+    end
 ```
 
----
+### ✦ Performance Tiering Matrix
 
-## ✦ 2. EBS (Elastic Block Store) Deep-Dive
-
-Think of EBS as a **Networked USB Stick**. It is durable, can be detached/reattached, and persists even if the EC2 instance is terminated (if configured).
-
-### ✦ Volume Types — Performance Selection
-
-| Type | Name | Best For | Technical Insight |
+| Volume Type | Max IOPS | Max Throughput | Deep-Dive Technical Use Case |
 |---|---|---|---|
-| **gp3** | Gen-Purpose SSD | Standard Workloads | decoupled IOPS from Size. (Cheaper than gp2) |
-| **gp2** | Gen-Purpose SSD | Small/Dev setups | IOPS tied to GiB size (3 IOPS per 1GB). |
-| **io1/io2** | Provisioned IOPS | High-IQ Databases | Mission-critical apps needing >16k IOPS. |
-| **st1** | Throughput HDD | Big Data / Logs | High MB/s, low IOPS. (Streaming focus). |
-| **sc1** | Cold HDD | Archived data | Lowest cost, infrequently accessed. |
-
-> [!TIP]
-> **gp3 vs gp2**: Always use **gp3**. It allows you to increase IOPS and Throughput independently without increasing the drive size!
+| **io2 Block Express** | 256,000 | 4,000 MiB/s | Sub-millisecond latency for mission-critical SAP HANA/Oracle clusters. |
+| **io1/io2** | 64,000 | 1,000 MiB/s | Consistent performance for large-scale relational databases. |
+| **st1 (HDD)** | 500 | 500 MiB/s | High-throughput sequential data — Log processing, ETL pipelines. |
+| **sc1 (HDD)** | 250 | 250 MiB/s | Cold data — Infrequently accessed backups/archives. |
 
 ---
 
-## ✦ 3. The Snapshot Lifecycle (Durability 101)
+## ✦ 2. Elastic File System (EFS) — Scaling Logic
 
-Snapshots are **incremental** backups stored in S3. 
+EFS provides a serverless, POSIX-compliant file system shareable across thousands of instances.
 
-1. **Snapshot 1**: Full copy of initial data.
-2. **Snapshot 2**: Only the changed blocks (Delta).
-3. **Snapshot 3**: Only the new changes.
+### ✦ Throughput & Performance Control
+
+| Mode | Behavior | Best For |
+|---|---|---|
+| **Elastic Throughput** | Automatically scales with workload activity. | Spiky or unpredictable application traffic. |
+| **Provisioned Throughput** | Guaranteed MB/s regardless of data size. | Consistent, high-performance batch processing. |
+| **Bursting Throughput** | Driven by volume of data stored (Baseline + Credits). | General file shares where spikes are infrequent. |
 
 > [!IMPORTANT]
-> To move an EBS volume to a **different Availability Zone**, you must:
-> 1. Take a Snapshot.
-> 2. Create a new volume from that Snapshot in the target AZ.
+> **Performance Modes**: Use **General Purpose** for latency-sensitive apps (Web Servers). Use **Max I/O** only for massive, highly parallelized Big Data workloads where IOPS are more important than individual file latency.
 
 ---
 
-## ✦ 4. EFS (Elastic File System) — Shared Logic
+## ✦ 3. The "Shift-Left" Cost Optimization Cheat Sheet
 
-EFS solves the "Shared Web Folder" problem. While EBS is limited to a single AZ and (mostly) a single instance, EFS is accessible across your entire VPC.
+Industrial DevOps requires financial awareness (FinOps). 
 
-- **NFS Protocol**: Linux only (POSIX compliant).
-- **Scalability**: Grows and shrinks automatically (Serverless storage).
-- **Cost-Optimization**: Use **EFS-IA** (Infrequent Access) to save 92% on files not used in 30 days.
+| Strategy | Action | Target Savings |
+|---|---|---|
+| **GP2 to GP3** | Migrate existing volumes via "Modify Volume" (No downtime). | **20%** directly on storage cost. |
+| **EFS-IA Tiering** | Enable Lifecycle Management for files not used in 30 days. | **92%** on per-GB storage cost. |
+| **Snapshot Archiving** | Move compliance-based "Cold" snapshots to Archive tier. | **75%** on snapshot costs. |
+| **Wasted Resources** | Identity unattached EBS volumes via CLI/Automation. | **100%** on orphaned disk spend. |
 
 ---
 
-## ✦ 5. Instance Store — The Speed Trap
+## ✦ 4. Advanced Durability — Snapshots & AMIs
 
-The **Instance Store** is a physical drive on the host hardware. It is **Ephemeral**.
+### ✦ Automated Lifecycle (DLM)
+AWS **Data Lifecycle Manager (DLM)** automates the creation, retention, and deletion of EBS snapshots.
+- **Cross-Region Copying**: Automates DR (Disaster Recovery) by cloning snapshots to another AWS region.
+- **Fast Snapshot Restore (FSR)**: Pre-warms snapshots to eliminate the "first-touch" initialization delay.
 
 > [!CAUTION]
-> If you **STOP** your EC2 instance, you will **LOSE** all data in the Instance Store. It only survives reboots. Only use for caches, buffers, or temporary scratch space!
+> **Encryption Persistence**: If you take a snapshot of an unencrypted volume, the snapshot is unencrypted. You must **copy** the snapshot and select "Encrypt" to transform it before recreating a volume.
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Attach a 10GB `gp3` volume to a running EC2.
-- [ ] SSH in and use `lsblk` to identify it, then `mkfs` to format it as XFS.
-- [ ] Mount it to `/mnt/data` and verify with `df -h`.
-- [ ] Take a snapshot and try to recreate a volume from it in `us-east-1b` (or a different AZ).
+## ✦ Technical Deep-Dive Checklist
+- [ ] Implement a **GP2 to GP3 migration** using `aws ec2 modify-volume`.
+- [ ] Configure an **EFS Lifecycle Policy** to move data to Infrequent Access (IA).
+- [ ] Create a **DLM Lifecycle Policy** for automated daily incremental backups.
+- [ ] Validate **Multi-Attach** on `io1` volumes across a shared clustered filesystem.
