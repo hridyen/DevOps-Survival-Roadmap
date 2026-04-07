@@ -134,6 +134,7 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-projects%2F-00E5FF?style=flat-square&labelColor=0A0A0A)](./projects/) — *Documented Configurations & Deployment Code*
 - [![Folder](https://img.shields.io/badge/DIR-future--roadmap%2F-00E5FF?style=flat-square&labelColor=0A0A0A)](./future-roadmap/) — *Strategic Integration Plans (3 & 6 Months)*
 - [![Folder](https://img.shields.io/badge/DIR-resources%2F-00E5FF?style=flat-square&labelColor=0A0A0A)](./resources/) — *Book Library & External Technical References*
+- [![Folder](https://img.shields.io/badge/DIR-scripts%2F-FF0055?style=flat-square&labelColor=0A0A0A)](./scripts/) — *Automation & Maintenance (Neon Theme Engine)*
 
 <br/>
 
