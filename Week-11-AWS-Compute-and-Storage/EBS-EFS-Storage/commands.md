@@ -24,7 +24,7 @@ aws ec2 describe-volume-modification \
   --volume-id vol-0123456789abcdef0
 ```
 
-### ✦ Lifecycle Automation (DLM)
+### ✦ Snapshot Automation (DLM)
 
 ```bash
 # Create a Data Lifecycle Manager (DLM) Lifecycle Policy
@@ -54,26 +54,23 @@ echo "fs-0123456789abcdef0:/ /mnt/efs efs _netdev,tls,defaults 0 0" | sudo tee -
 
 ---
 
-## ✦ 🛠️ EBS Physical Initialization (NVMe Instances)
+## ✦ 🛡️ AWS Disaster Recovery Patterns
 
-### ✦ NVMe Device Mapping
+### ✦ Cross-Region Snapshot Copying
 
 ```bash
-# Identify NVMe mapped devices (Nitro-based instances e.g. T3, C5, M5)
-lsblk
-
-# Get NVMe controller details for EBS mapping
-sudo nvme id-ctrl /dev/nvme1n1 | grep "mn"
-
-# Format and mount using NVMe device path
-sudo mkfs -t xfs /dev/nvme1n1
-sudo mkdir /data
-sudo mount /dev/nvme1n1 /data
+# Copy a production snapshot to a Disaster Recovery (DR) Region (Mumbai)
+aws ec2 copy-snapshot \
+  --source-region us-east-1 \
+  --source-snapshot-id snap-0123456789abcdef0 \
+  --destination-region ap-south-1 \
+  --description "DR Copy" \
+  --encrypted
 ```
 
 ---
 
-## ✦ 📝 My Advanced Snippets
+## ✦ 📝 My Advanced Performance Snippets
 
 | Operation | Command | Why it's used? |
 |---|---|---|
