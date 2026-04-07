@@ -22,6 +22,24 @@
 
 ALB is the brain of the modern microservices stack. It doesn't just "split" traffic; it "thinks" before routing.
 
+```mermaid
+graph TD
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+
+    L["ALB Listener (HTTPS:443)"] --> R1["Rule 1: /api/*"]
+    L --> R2["Rule 2: /web/*"]
+    L --> DF["Default Rule"]
+
+    R1 --> TG1["Target Group: API Clusters"]:::highlight
+    R2 --> TG2["Target Group: Web Frontend"]
+    DF --> TG3["Target Group: Multi-Region"]
+
+    TG1 --> I1["EC2 Instances"]
+    TG2 --> I2["EC2 Instances"]
+    TG3 --> I3["EC2 Instances"]
+```
+
 ### ✦ The ALB Multi-Condition Matrix
 ALB can route to different target groups based on complex logic.
 
@@ -43,8 +61,20 @@ ALB can route to different target groups based on complex logic.
 
 ### ✦ SNI (Server Name Indication) — The Multi-Site Solution
 - **The Problem**: Traditionally, one listener = one SSL cert.
-- **The Solution**: SNI allows the ALB to look at the hostname during the SSL handshake and Pick the Correct Certificate.
+- **The Solution**: SNI allows the ALB to look at the hostname during the SSL handshake and **Pick the Correct Certificate**.
 - **Availability**: Available for **ALB** and **NLB** (Not Legacy CLB).
+
+```mermaid
+graph LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
+    Client["Internet Client (HTTPS)"] -->|Requests: app.myapp.com| SNI["ALB (SNI Engine)"]
+    
+    SNI -->|Matching| C1["Certificate: app.myapp.com"]:::highlight
+    SNI -->|Matching| C2["Certificate: shop.myapp.com"]
+    SNI -->|Default| C3["Wildcard Certificate (*.myapp.com)"]
+```
 
 ---
 
@@ -58,6 +88,25 @@ When you have instances spread across AZs, cross-zone load balancing controls wh
 | **ALB** | Enabled by default | **Free** |
 | **NLB** | Disabled by default | You pay if enabled |
 | **CLB** | Enabled by default | **Free** |
+
+```mermaid
+graph TD
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
+    subgraph Cross-Zone_ENABLED
+        L1["ALB Node (AZ-A)"] -->|"25% load"| A1["In-AZ Instance"]
+        L1 -->|"25% load"| A2["In-AZ Instance"]
+        L1 -->|"25% load"| B1["Cross-AZ Instance"]:::highlight
+        L1 -->|"25% load"| B2["Cross-AZ Instance"]:::highlight
+    end
+
+    subgraph Cross-Zone_DISABLED
+        L2["NLB Node (AZ-A)"] -->|"50% load"| S1["In-AZ Instance"]
+        L2 -->|"50% load"| S2["In-AZ Instance"]
+        L2 -.->|"No Traffic"| S3["Cross-AZ Instance (Idle)"]
+    end
+```
 
 ### ✦ Connection Draining (Deregistration Delay)
 When an instance is removed (e.g., during scale-in), the Load Balancer keeps the connection open for a **cooldown period** (default: 300s) to let active users finish their requests.
