@@ -22,6 +22,9 @@ In every AWS project, you need to answer:
 
 ```mermaid
 graph LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
     subgraph Without IAM
         Usr[All Users] -->|Full Access| AWSA[All AWS Resources]
     end
@@ -62,6 +65,9 @@ A Group is a collection of users. Assign permissions to the group — all member
 
 ```mermaid
 graph TD
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
     subgraph Without Groups
         A1[Alice] --> P1[Policy Set]
         B1[Bob] --> P2[Policy Set]
@@ -152,7 +158,8 @@ arn:aws:s3:::my-bucket
 }
 ```
 
-> ⚠️ **Critical rule:** An explicit `Deny` **ALWAYS overrides** an `Allow`. If one policy allows and another denies — result is always **denied**.
+> [!WARNING]
+> **Critical rule:** An explicit `Deny` **ALWAYS overrides** an `Allow`. If one policy allows and another denies — result is always **denied**.
 
 ### ✦ Types of Policies
 
@@ -166,6 +173,9 @@ arn:aws:s3:::my-bucket
 
 ```mermaid
 graph TD
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
     User[IAM User: Alice]
     
     User --> Direct[Direct Policy]
@@ -190,6 +200,9 @@ A Role is like a user but for **AWS services** — not for people.
 
 ```mermaid
 graph LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
     subgraph Vulnerable Approach
         EC2A[EC2 Instance] -->|Hardcoded Keys| S3A[S3 Bucket]
     end
@@ -212,7 +225,8 @@ graph LR
 | **Jenkins on EC2** | Pipeline pushes to ECR | `ecr:PutImage`, `ecr:GetAuthorizationToken` |
 | **CodeBuild** | Build job reads S3, writes logs | `s3:GetObject`, `logs:CreateLogGroup` |
 
-> 💡 **DevOps Rule:** Never store AWS credentials in code, config files, or environment variables on a server. **Always use IAM Roles.**
+> [!TIP]
+> **DevOps Rule:** Never store AWS credentials in code, config files, or environment variables on a server. **Always use IAM Roles.**
 
 ---
 
@@ -235,6 +249,9 @@ graph LR
 
 ```mermaid
 graph LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+
     subgraph Single Factor
         pwd1[Username + Password] --> Access1[AWS Access]
     end
@@ -253,7 +270,8 @@ graph LR
 | **Hardware Token** | Physical key fob generates codes | Gemalto token |
 | **U2F Security Key** | USB key — press button to authenticate | YubiKey |
 
-> 💡 Enable MFA on your **root account immediately** after creating AWS account. Root = unlimited access.
+> [!TIP]
+> Enable MFA on your **root account immediately** after creating AWS account. Root = unlimited access.
 
 ---
 
@@ -389,7 +407,9 @@ aws iam get-credential-report --query 'Content' --output text | base64 -d
 
 ## ✦ Personal Notes
 
-<!-- Add your IAM observations, things you tried in the console, errors you hit -->
+- **Policy Generator Insight**: By using `aws iam simulate-principal-policy` I learned you can perfectly dry-run if a role works before binding it in production!
+- **MFA Compliance**: Enforced virtual MFA via Authy onto my root login structure as the primary layer of defense.
+- **Service Roles**: Discovered that assigning Jenkins a custom EC2 role automatically propagates permissions without physically typing an `aws configure` access token anywhere into the EC2 host.
 
 ---
 

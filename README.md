@@ -211,14 +211,15 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 
 | Category Functionality | Implementation Path |
 | --- | --- |
-| Basic System Core | [commands.md](./Week-01-Linux-Fundamentals/commands.md) |
-| Protocol Details | [concepts.md](./Week-02-Networking/concepts.md) |
-| Advanced Constraints | [commands.md](./Week-04-Advanced-Linux/commands.md) |
-| VCS Operations | [git-commands.md](./Week-05-Git-Version-Control/git-commands.md) |
-| Container Subsystems | [docker-commands.md](./Week-06-Docker-Containerization/docker-commands.md) |
-| Execution Logic | [pipeline-examples.md](./Week-07-Jenkins-CI-CD/pipeline-examples.md) |
-| Security Operations | [commands.md](./Week-08-DevSecOps/commands.md) |
-| Parameter Executions | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
+| Basic System Core | [commands.md](./Week-01-Linux-Fundamentals/CLI-Basics/commands.md) |
+| Protocol Details | [commands.md](./Week-02-Networking/OSI-and-Protocols/commands.md) |
+| Advanced Constraints | [commands.md](./Week-04-Advanced-Linux/Automation-and-Crons/commands.md) |
+| VCS Operations | [commands.md](./Week-05-Git-Version-Control/Git-Basics/commands.md) |
+| Container Subsystems | [commands.md](./Week-06-Docker-Containerization/Container-Basics/commands.md) |
+| Execution Logic | [pipelines.md](./Week-07-Jenkins-CI-CD/Declarative-Pipelines/pipelines.md) |
+| Security Operations | [commands.md](./Week-08-DevSecOps/Trivy-Scanning/commands.md) |
+| Parameter Executions | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/Branch-Execution/commands.md) |
+| Cloud Architecture Fundamentals | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
 | Core AWS Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
 | EC2 Compute Access | [commands.md](./Week-10-AWS-Cloud-Computing/EC2/commands.md) |
 

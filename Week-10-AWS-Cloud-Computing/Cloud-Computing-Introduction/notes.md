@@ -14,9 +14,13 @@
 
 Everything built so far — Jenkins, Docker, pipelines — needs somewhere to **run in production**. That place is the cloud.
 
-```
-Local Machine (Dev)  →  Docker / Jenkins (CI/CD)  →  AWS (Production)
-     Your laptop            Your pipeline               The real world
+```mermaid
+graph LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+    
+    A["Local Machine (Dev)<br/>Your laptop"] --> B["Docker / Jenkins (CI/CD)<br/>Your pipeline"]
+    B --> C["AWS (Production)<br/>The real world"]:::active
 ```
 
 AWS holds over 30% of the global cloud market. As a DevOps engineer, you will use it daily.
@@ -54,7 +58,8 @@ graph LR
 | **Public Cloud** | Shared cloud owned by a provider | Startups, most companies — this is AWS |
 | **Hybrid Cloud** | Mix of private + public | Enterprises with compliance needs |
 
-> 💡 For DevOps work, **Public Cloud (AWS)** is the most common setup.
+> [!TIP]
+> For DevOps work, **Public Cloud (AWS)** is the most common setup.
 
 ---
 
@@ -117,7 +122,8 @@ graph LR
 | PaaS | You rent a kitchen with chefs — you just bring the recipe |
 | SaaS | You go to a restaurant — someone else does everything |
 
-> 💡 As a DevOps engineer, you will mostly work with **IaaS** — EC2, VPC, S3, EBS — because you need full control.
+> [!NOTE]
+> As a DevOps engineer, you will mostly work with **IaaS** — EC2, VPC, S3, EBS — because you need full control.
 
 ---
 
@@ -131,7 +137,8 @@ AWS pricing is based on three fundamentals — **pay only for what you use**:
 | **Storage** — S3 GB/month, EBS GB/month | — |
 | **Data Transfer OUT** — data leaving AWS to internet | — |
 
-> ⚠️ Data transfer **INTO** AWS is always **FREE**. You only pay for data going **OUT**.
+> [!WARNING]
+> Data transfer **INTO** AWS is always **FREE**. You only pay for data going **OUT**.
 
 ---
 
@@ -207,7 +214,7 @@ graph LR
 - NOT for running your servers — for **delivering content faster**
 - Used by: **CloudFront** (CDN), **Route 53** (DNS), **Global Accelerator**
 
-```
+```text
 Without Edge Location:
 User in Mumbai → Server in US → back to Mumbai  (high latency)
 
@@ -223,7 +230,7 @@ One of the **most common interview and certification questions**.
 
 ### ✦ The Core Idea
 
-```
+```text
 AWS = Security OF the Cloud   (the building, the hardware, the infrastructure)
 You = Security IN the Cloud   (what you put inside, how you configure it)
 ```
@@ -266,7 +273,8 @@ You = Security IN the Cloud   (what you put inside, how you configure it)
 | **S3** | Managed | Storage durability, infrastructure | Bucket policies, permissions, encryption |
 | **Lambda** | Serverless | Everything except your code | Your function code and data |
 
-> 💡 Rule: The more AWS manages → the less you control → the less you need to secure yourself.
+> [!NOTE]
+> Rule: The more AWS manages → the less you control → the less you need to secure yourself.
 
 ---
 
@@ -322,7 +330,8 @@ graph TD
 | **VPC Peering** | AWS strictly prohibits transitive peering models. Both ends must accept. | How do Transit Gateways solve the transitive peering limits? |
 | **Spot Instances** | Cost-effective but AWS can terminate them with only 2 minutes of warning. | How can we use Spot Fleets for fault-tolerant Jenkins build agents? |
 
-> 💬 *What confused you about cloud models? What analogy helped you understand AZs?*
+> [!NOTE]
+> I found the restaurant analogy extremely helpful for distinguishing between IaaS, PaaS, and SaaS, as it clearly abstracts the exact boundary of what AWS handles versus what the customer inputs.
 
 ---
 

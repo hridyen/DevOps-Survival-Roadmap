@@ -2,8 +2,9 @@
 
 ---
 
-# ⚡ ☁️ Cloud Computing — Concepts Cheat Sheet
+# ⚡ Cloud Computing — Concepts Cheat Sheet
 
+> [!NOTE]
 > Quick reference — use this for revision and interview prep.
 
 ---

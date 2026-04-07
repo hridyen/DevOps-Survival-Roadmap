@@ -2,7 +2,7 @@
 
 ---
 
-# ⚡ 🔐 IAM — Commands & Policy Cheat Sheet
+# ⚡ IAM — Commands & Policy Cheat Sheet
 
 ---
 
@@ -181,11 +181,11 @@ print("Secret Key:", key['SecretAccessKey'])
 
 ---
 
-## ✦ 📝 My Notes
+## ✦ My Notes
 
 | Command | What it does | Notes |
 |---|---|---|
-| | | |
+| `aws iam list-users` | Enumerates all identities | Great first step to audit an unfamiliar AWS account |
 
 
 | Command | What it does | Notes |

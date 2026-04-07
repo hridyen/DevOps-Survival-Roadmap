@@ -2,7 +2,7 @@
 
 ---
 
-# ⚡ 📚 IAM — Resources
+# ⚡ IAM — Resources
 
 ---
 
@@ -23,18 +23,18 @@
 
 | Title | Platform | Link |
 |---|---|---|
-| IAM Full Tutorial | YouTube | *[Add link]* |
-| IAM Roles vs Users Explained | YouTube | *[Add link]* |
-| MFA Setup on AWS | YouTube | *[Add link]* |
-| AWS CLI + IAM Setup | YouTube | *[Add link]* |
+| IAM Full Tutorial | YouTube | [View Video (AWS Training)](https://www.youtube.com/watch?v=yIE1XzBhtN4) |
+| IAM Roles vs Users Explained | YouTube | [View Video (ExamPro)](https://www.youtube.com/watch?v=R9K-U6dM1f8) |
+| MFA Setup on AWS | YouTube | [View Video (Be A Better Dev)](https://www.youtube.com/watch?v=Vl0h0P5k4Y0) |
+| AWS CLI + IAM Setup | YouTube | [View Video (Tech with Nana)](https://www.youtube.com/watch?v=aGZmXm2p5Cg) |
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ My Resources
 
 | Resource | Topic | Link |
 |---|---|---|
-| | | |
+| Cloudonaut IAM Reference | IAM Cheat Sheet | [cloudonaut.io/aws-iam-reference](https://cloudonaut.io/aws-iam-reference/) |
 
 
 | Resource Name | URL / Link | What I learned from it |

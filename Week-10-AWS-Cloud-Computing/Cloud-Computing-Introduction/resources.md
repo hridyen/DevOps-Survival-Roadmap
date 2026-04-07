@@ -2,7 +2,7 @@
 
 ---
 
-# ⚡ 📚 Cloud Computing Introduction — Resources
+# ⚡ Cloud Computing Introduction — Resources
 
 ---
 
@@ -23,10 +23,10 @@
 
 | Title | Platform | Link |
 |---|---|---|
-| Cloud Computing in 6 Minutes | YouTube | *[Add link]* |
-| AWS Global Infrastructure Explained | YouTube | *[Add link]* |
-| IaaS vs PaaS vs SaaS Explained | YouTube | *[Add link]* |
-| Shared Responsibility Model | YouTube | *[Add link]* |
+| Cloud Computing in 6 Minutes | YouTube | [View Video (Simplilearn)](https://www.youtube.com/watch?v=M988_fsOSWo) |
+| AWS Global Infrastructure Explained | YouTube | [View Video (ExamPro)](https://www.youtube.com/watch?v=RmmtJjX8sYg) |
+| IaaS vs PaaS vs SaaS Explained | YouTube | [View Video (IBM Technology)](https://www.youtube.com/watch?v=v2X2cI3F0P4) |
+| Shared Responsibility Model | YouTube | [View Video (AWS Training)](https://www.youtube.com/watch?v=mDZiY18g10g) |
 
 ---
 
@@ -38,15 +38,14 @@
 | AWS Solutions Architect Associate | Intermediate | Deep AWS architecture |
 | AWS DevOps Engineer Professional | Advanced | CI/CD + infrastructure at scale |
 
-> 💡 Recommended path: Cloud Practitioner → Solutions Architect → DevOps Professional
+> [!TIP]
+> Recommended path: Cloud Practitioner → Solutions Architect → DevOps Professional
 
 ---
 
 ## ✦ 📝 My Resources
 
-| Resource | Topic | Link |
-|---|---|---|
-| | | |
+| AWS Services Index | Service List | [aws.amazon.com/products](https://aws.amazon.com/products/) |
 
 
 | Resource Name | URL / Link | What I learned from it |
