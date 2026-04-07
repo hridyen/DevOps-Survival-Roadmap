@@ -8,88 +8,95 @@
 
 ---
 
-## ✦ 1. Block Storage Taxonomy (EBS)
+## ✦ 1. Elastic Block Store (EBS) Fundamentals
 
-### ✦ GP3: The Performance Decoupling Revolution
+### ✦ What is an EBS Volume?
+An **EBS (Elastic Block Store) Volume** is a network drive you can attach to your instances while they run.
 
-In legacy **GP2**, Performance (IOPS) was "bundled" with Capacity (Size). To get more speed, you had to buy more disk space. 
+- **Network-Attached Persistence**: Data persists even after the instance is terminated.
+- **Single Mounting (CCP Level)**: Mounted to one instance at a time.
+- **AZ-Bound**: Locked to a specific Availability Zone (e.g., `us-east-1a`).
+- **Analogy**: Think of it as a **"Network USB Stick"**.
 
-**GP3 (Current Gen)** decouples these two planes, allowing for:
-- **Baseline Performance**: 3,000 IOPS and 125 MiB/s throughput (Guaranteed).
-- **Independent Scaling**: Provision up to 16,000 IOPS and 1,000 MiB/s without increasing the storage size.
-- **Cost Saving**: Typically **20% cheaper** than gp2 per GiB.
+> [!TIP]
+> **Performance Catch**: Because it is a network drive, not physical, there might be a bit of latency, but it can be detached and reattached to another instance in the same AZ instantly.
+
+---
+
+## ✦ 2. EBS Volume Types Performance Matrix
+
+| Storage Category | Volume Type | Use Case | Performance Caps | Cost/GB |
+|---|---|---|---|---|
+| **SSD (Gen Purpose)** | **gp3** | Wide variety of workloads | 3k IOPS (Baseline), 125 MiB/s | **$0.08** |
+| **SSD (Gen Purpose)** | **gp2** | Dev/Test, Boot volumes | 3 IOPS/GiB, Max 16k IOPS | **$0.10** |
+| **SSD (Provisioned)** | **io2** | Mission-critical, SQL/NoSQL | 64k IOPS (sub-ms latency) | **$0.125** |
+| **SSD (Provisioned)** | **io1** | Business-critical, High I/O | 32k IOPS (Consistent) | **$0.125** |
+| **HDD (Optimized)** | **st1** | Big Data, Log processing | 500 IOPS, 500 MiB/s | **$0.045** |
+| **HDD (Cold)** | **sc1** | Frequently accessed datasets | 250 IOPS, 250 MiB/s | **$0.025** |
+
+### ✦ Multi-Attach (io1/io2)
+Allows attaching a single volume to multiple instances in the same AZ.
+- **Use Case**: Concurrent write applications (Database clusters).
+- **Hard Requirement**: Must be built on the **AWS Nitro System**.
+
+---
+
+## ✦ 3. Advanced Snapshot Ecosystem
+
+### ✦ Key Snapshot Features:
+- **EBS Snapshot Archive**: Moves snapshots to a cold, cost-effective tier (Restore takes 24-72 hrs).
+- **Recycle Bin**: Lifecycle rules to recover accidentally deleted snapshots (1 day to 1 year retention).
+- **Fast Snapshot Restore (FSR)**: Provisioned capacity on a snapshot to eliminate initial latency for first-touch IOPS.
+
+### ✦ Encryption Workflow (Standard Practice)
+To encrypt an unencrypted EBS volume:
+1. **Snapshot** the unencrypted volume.
+2. **Encrypted Copy**: Copy the snapshot and tick the "Encrypt" box.
+3. **Instance Deployment**: Create a new EBS volume from the encrypted snapshot.
+4. **Volume Swap**: Attach the newly encrypted volume to the instance.
+
+---
+
+## ✦ 4. AMI (Amazon Machine Image) Lifecycle
+
+An **AMI** is a pre-packaged customization of an EC2 instance, containing your software, configuration, and OS state.
 
 ```mermaid
-graph LR
+graph TD
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
     classDef highlight fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
 
-    GP2[GP2: Bundled Performance] -->|Unleashed| GP3[GP3: Decoupled Performance]:::highlight
+    Step1[Start & Customize Instance]
+    Step2[Stop Instance <br/>(Ensure Data Integrity)]
+    Step3[Build AMI <br/>(Creates Snapshots)]:::highlight
+    Step4[Launch New Instances <br/>From AMI]
     
-    subgraph GP3 Architecture
-        Size[Storage GiB]
-        IOPS[IOPS: Up to 16k]
-        TP[Throughput: Up to 1k MiB/s]
-        Size --- IOPS
-        Size --- TP
-    end
+    Step1 --> Step2 --> Step3 --> Step4
 ```
 
-### ✦ Performance Tiering Matrix
-
-| Volume Type | Max IOPS | Max Throughput | Deep-Dive Technical Use Case |
-|---|---|---|---|
-| **io2 Block Express** | 256,000 | 4,000 MiB/s | Sub-millisecond latency for mission-critical SAP HANA/Oracle clusters. |
-| **io1/io2** | 64,000 | 1,000 MiB/s | Consistent performance for large-scale relational databases. |
-| **st1 (HDD)** | 500 | 500 MiB/s | High-throughput sequential data — Log processing, ETL pipelines. |
-| **sc1 (HDD)** | 250 | 250 MiB/s | Cold data — Infrequently accessed backups/archives. |
+- **Boot Speed**: Dramatic reduction in boot time since software is pre-loaded.
+- **Regional Bound**: AMIs are built for a specific region (but can be copied).
+- **AMI Sources**: Public (AWS), Personal (Owned), or AWS Marketplace (Commercial).
 
 ---
 
-## ✦ 2. Elastic File System (EFS) — Scaling Logic
+## ✦ 5. Amazon EFS (Elastic File System)
 
-EFS provides a serverless, POSIX-compliant file system shareable across thousands of instances.
+A shared, scalable, pay-as-you-go file system using the **NFSv4** protocol.
 
-### ✦ Throughput & Performance Control
-
-| Mode | Behavior | Best For |
-|---|---|---|
-| **Elastic Throughput** | Automatically scales with workload activity. | Spiky or unpredictable application traffic. |
-| **Provisioned Throughput** | Guaranteed MB/s regardless of data size. | Consistent, high-performance batch processing. |
-| **Bursting Throughput** | Driven by volume of data stored (Baseline + Credits). | General file shares where spikes are infrequent. |
+- **Multi-AZ Awareness**: Accessible by instances across different AZs simultaneously.
+- **Access Control**: Managed strictly via **Security Groups**.
+- **Tiering**: 
+  - **EFS Infrequent Access (EFS IA)**: Cost-optimized for files not accessed daily (serverless savings).
+  - **EFS One Zone**: Stores data in a single AZ (higher risk, lower cost).
 
 > [!IMPORTANT]
-> **Performance Modes**: Use **General Purpose** for latency-sensitive apps (Web Servers). Use **Max I/O** only for massive, highly parallelized Big Data workloads where IOPS are more important than individual file latency.
-
----
-
-## ✦ 3. The "Shift-Left" Cost Optimization Cheat Sheet
-
-Industrial DevOps requires financial awareness (FinOps). 
-
-| Strategy | Action | Target Savings |
-|---|---|---|
-| **GP2 to GP3** | Migrate existing volumes via "Modify Volume" (No downtime). | **20%** directly on storage cost. |
-| **EFS-IA Tiering** | Enable Lifecycle Management for files not used in 30 days. | **92%** on per-GB storage cost. |
-| **Snapshot Archiving** | Move compliance-based "Cold" snapshots to Archive tier. | **75%** on snapshot costs. |
-| **Wasted Resources** | Identity unattached EBS volumes via CLI/Automation. | **100%** on orphaned disk spend. |
-
----
-
-## ✦ 4. Advanced Durability — Snapshots & AMIs
-
-### ✦ Automated Lifecycle (DLM)
-AWS **Data Lifecycle Manager (DLM)** automates the creation, retention, and deletion of EBS snapshots.
-- **Cross-Region Copying**: Automates DR (Disaster Recovery) by cloning snapshots to another AWS region.
-- **Fast Snapshot Restore (FSR)**: Pre-warms snapshots to eliminate the "first-touch" initialization delay.
-
-> [!CAUTION]
-> **Encryption Persistence**: If you take a snapshot of an unencrypted volume, the snapshot is unencrypted. You must **copy** the snapshot and select "Encrypt" to transform it before recreating a volume.
+> **Compatibility**: EFS is compatible with both Linux-based AMIs and Windows. Encryption is supported at-rest (KMS) and in-transit (TLS).
 
 ---
 
 ## ✦ Technical Deep-Dive Checklist
-- [ ] Implement a **GP2 to GP3 migration** using `aws ec2 modify-volume`.
-- [ ] Configure an **EFS Lifecycle Policy** to move data to Infrequent Access (IA).
-- [ ] Create a **DLM Lifecycle Policy** for automated daily incremental backups.
-- [ ] Validate **Multi-Attach** on `io1` volumes across a shared clustered filesystem.
+- [ ] Migrate a **GP2 (bundled)** instance to **GP3 (decoupled)** using CLI.
+- [ ] Implement an **Encryption Swap** for a production root volume.
+- [ ] Create a **Custom AMI** and verify boot time improvements.
+- [ ] Mount an **EFS share** across two instances in different subnets.
