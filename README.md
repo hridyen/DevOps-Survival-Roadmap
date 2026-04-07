@@ -214,6 +214,7 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 | Security Operations | [commands.md](./Week-08-DevSecOps/commands.md) |
 | Parameter Executions | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/commands.md) |
 | Core AWS Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
+| EC2 Compute Access | [commands.md](./Week-10-AWS-Cloud-Computing/EC2/commands.md) |
 
 ---
 
