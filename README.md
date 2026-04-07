@@ -66,7 +66,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation**
 
 ### Phase 4: Cloud Ingress
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 10** (Apr 02 – Present) | **AWS Cloud Architecture**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 10** (Apr 02 – Apr 08) | **AWS Fundamentals & IAM**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 11** (Apr 09 – Present) | **AWS Compute & Storage**
 
 <br/>
 
@@ -81,7 +82,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 07** | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | Complete |
 | **Week 08** | Mar 16 – Mar 22 | DevSecOps & Security Vulnerability | Complete |
 | **Week 09** | Mar 23 – Apr 01 | Dynamic CI/CD Automation | Complete |
-| **Week 10** | Apr 02 – Present | AWS Cloud Architecture | In Progress |
+| **Week 10** | Apr 02 – Apr 08 | AWS Fundamentals & IAM | Complete |
+| **Week 11** | Apr 09 – Present | AWS Compute & Storage | In Progress |
 
 ---
 
@@ -114,7 +116,8 @@ flowchart TD
     end
 
     subgraph P4 [Phase 4: Cloud Ingress]
-        J["[10] AWS Cloud<br/>(EC2, IAM, Virtual Private Clouds)"]:::active
+        J["[10] AWS Fundamentals<br/>(Global Infra, IAM, Regions)"] -->
+        K["[11] Compute & Storage<br/>(EC2, EBS, ELB, EFS)"]:::active
     end
 
     P1 -.-> P2
@@ -154,7 +157,8 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-09-Dynamic-Jenkins-Pipelines/) — ***Dynamic Automations*** (Hooks, Branch Execution)
 
 ### ✦ Phase 4: Cloud Ingress
-- [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Management Dashboard*** (IAM, EC2 scaling)
+- [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
+- [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
 
 ---
 
@@ -222,7 +226,9 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 | Parameter Executions | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/Branch-Execution/commands.md) |
 | Cloud Architecture Fundamentals | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
 | Core AWS Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
-| EC2 Compute Access | [commands.md](./Week-10-AWS-Cloud-Computing/EC2/commands.md) |
+| EC2 Compute Access | [commands.md](./Week-11-AWS-Compute-and-Storage/EC2/commands.md) |
+| Block Storage Ops | [commands.md](./Week-11-AWS-Compute-and-Storage/EBS-EFS-Storage/commands.md) |
+| Traffic Management | [commands.md](./Week-11-AWS-Compute-and-Storage/Load-Balancing/commands.md) |
 
 ---
 
