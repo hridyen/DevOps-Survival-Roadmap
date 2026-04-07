@@ -59,9 +59,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 ### Phase 2: CI/CD & Delivery Architecture
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 05** (Feb 17 – Feb 23) | **Git & Version Control**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 06** (Feb 24 – Mar 09) | **Docker Container Ecosystems**
-
-### Phase 3: Security & Cloud Scalability
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 07** (Mar 10 – Mar 15) | **Jenkins & CI/CD Pipelines**
+
+### Phase 3: Security & Advanced Automations
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 08** (Mar 16 – Mar 22) | **DevSecOps Integrations**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 09** (Mar 23 – Apr 01) | **Dynamic CI/CD Automation**
 
@@ -108,16 +108,20 @@ flowchart TD
         G["[07] CI/CD Orchestration<br/>(Jenkins, Declarative Pipelines)"]
     end
 
-    subgraph P3 [Phase 3: Security & Cloud Scalability]
+    subgraph P3 [Phase 3: Security & Advanced Automations]
         H["[08] Security Pipelines<br/>(DevSecOps, SonarQube, SAST)"] --> 
-        I["[09] Dynamic Logic<br/>(Branch Parameters, Code Triggers)"] --> 
+        I["[09] Dynamic Logic<br/>(Branch Parameters, Code Triggers)"]
+    end
+
+    subgraph P4 [Phase 4: Cloud Ingress]
         J["[10] AWS Cloud<br/>(EC2, IAM, Virtual Private Clouds)"]:::active
     end
 
     P1 -.-> P2
     P2 -.-> P3
+    P3 -.-> P4
     
-    class P1,P2,P3 phase;
+    class P1,P2,P3,P4 phase;
 ```
 
 ---
@@ -144,9 +148,11 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--06--Docker-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-06-Docker-Containerization/) — ***Environment Infrastructure*** (Containers, Swarms)
 - [![Folder](https://img.shields.io/badge/DIR-Week--07--Jenkins-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-07-Jenkins-CI-CD/) — ***Continuous Integration Scripts*** (Groovy Pipelines)
 
-### ✦ Phase 3: Cloud & Scalability
+### ✦ Phase 3: Security & Advanced Automations
 - [![Folder](https://img.shields.io/badge/DIR-Week--08--DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — ***Security Controls*** (SonarQube, Trivy Protocols)
 - [![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-09-Dynamic-Jenkins-Pipelines/) — ***Dynamic Automations*** (Hooks, Branch Execution)
+
+### ✦ Phase 4: Cloud Ingress
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Management Dashboard*** (IAM, EC2 scaling)
 
 ---
