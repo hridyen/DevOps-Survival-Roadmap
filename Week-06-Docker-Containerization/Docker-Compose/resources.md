@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| Writing Your First Docker Compose File | YouTube | [View Video](https://www.youtube.com/watch?v=MElgYc8c1xU) |
+| Resource | Topic | Link |
+|---|---|---|
+| Compose Spec | Deep dive into YAML properties | https://github.com/compose-spec/compose-spec/blob/master/spec.md |
+| Networking in Compose | Resolving services by name | https://docs.docker.com/compose/networking/ |
+| Docker Labs | Multi-container application examples | https://github.com/docker/labs/tree/master/developer-tools/java/basic |
+| Awesome Compose | 100+ production-ready Compose samples | https://github.com/docker/awesome-compose |

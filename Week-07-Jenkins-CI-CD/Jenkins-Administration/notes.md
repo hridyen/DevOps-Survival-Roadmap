@@ -47,6 +47,18 @@ environment {
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Bind a second Linux VM cleanly directly natively into Jenkins configuring it securely strictly as a standalone execution Agent via SSH.
 - [ ] Connect a live repo directly seamlessly using GitHub Webhooks testing auto-triggers inherently!
+
+---
+
+## ✦ Personal Notes
+
+- **The Agent SSH Rule:** When adding agents via SSH, always use the `ed25519` key format. It's shorter, more secure, and perfectly compatible with modern Linux distributions. Ensure the `jenkins` user on the agent node has ownership of its workspace directory (`/home/jenkins/workspace`).
+- **Webhook Debugging:** If your webhook isn't triggering, check the "Payload URL" in GitHub. It should usually be `http://<jenkins-url>:8080/github-webhook/`. That trailing slash `/` is critical; without it, some versions of Jenkins will silently ignore the ping.
+- **Plugin Fatigue:** Only install the plugins you absolutely need. Every plugin adds overhead to the Jenkins Master and increases the security attack surface. Periodically audit and remove unused plugins to keep the UI snappy.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

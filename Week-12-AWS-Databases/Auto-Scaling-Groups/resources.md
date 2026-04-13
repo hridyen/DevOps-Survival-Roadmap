@@ -11,4 +11,7 @@
 ## 📝 My Resources
 | Resource | Topic | Link |
 |---|---|---|
-| | | |
+| AWS Well-Architected | Reliability Pillar & Scaling | https://wa.aws.amazon.com/wat.pillar.reliability.en.html |
+| ASG Deep Dive | Lifecycle Hooks & Automation | https://aws.amazon.com/blogs/compute/using-aws-lambda-with-amazon-ec2-auto-scaling-lifecycle-hooks/ |
+| Spot Instance Guide | Cost Optimization with ASG | https://aws.amazon.com/ec2/spot/asg-resources/ |
+| Instance Refresh | Zero Downtime Updates in ASG | https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html |

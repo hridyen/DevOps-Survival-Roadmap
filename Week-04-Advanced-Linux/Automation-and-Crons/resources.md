@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| Full Introduction to Cronjobs | YouTube | [View Video](https://www.youtube.com/watch?v=QZJ1drMQz1A) |
+| Resource | Topic | Link |
+|---|---|---|
+| Bash Guide for Beginners | Foundation for script automation | https://tldp.org/LDP/Bash-Beginners-Guide/html/index.html |
+| ShellCheck | Linter for shell scripts (Best practice) | https://www.shellcheck.net/ |
+| Cron Troubleshooting | Debugging common cron issues | https://linuxconfig.org/how-to-debug-crontab-on-linux |
+| Gzip vs Tar | Compression Architecture | https://www.redhat.com/sysadmin/tar-gzip-compression |

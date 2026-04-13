@@ -67,3 +67,17 @@ systemctl enable sshd     # Initialize daemon automatically at system boot
 - [ ] List all active daemons across your system using `systemctl list-units --type=service`.
 - [ ] Create a hierarchical folder structure using `mkdir -p` imitating the root layout `/var/log/custom`.
 - [ ] Monitor your own system RAM consumption using `top` and `free -h`.
+
+---
+
+## ✦ Personal Notes
+
+- **The Power of `/etc`:** As a DevOps engineer, you'll spend a lot of time here. Always take a backup (e.g., `cp config.conf config.conf.bak`) before editing any system configuration file.
+- **Log Rotation:** Keep an eye on `/var/log`. In professional environments, `logrotate` is your best friend to prevent the root partition from filling up and crashing the server.
+- **Binaries:** Understanding the difference between `/bin` (essential) and `/usr/bin` (non-essential) helps when debugging "Command not found" issues in restricted environments.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

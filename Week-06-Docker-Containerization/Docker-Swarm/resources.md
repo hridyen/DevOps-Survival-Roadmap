@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| Complete Swarm Mode Setup | YouTube | [View Video](https://www.youtube.com/watch?v=FjBfTof_J9k) |
+| Resource | Topic | Link |
+|---|---|---|
+| RAFT Consensus | How Swarm Leaders are elected | https://raft.github.io/ |
+| Swarm Pit | Open-source GUI for Docker Swarm | https://swarmpit.io/ |
+| Portainer | Container management for Swarm | https://www.portainer.io/ |
+| Docker Stack | Deploying Compose files to Swarm | https://docs.docker.com/engine/reference/commandline/stack_deploy/ |

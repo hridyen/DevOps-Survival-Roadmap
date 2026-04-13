@@ -41,22 +41,17 @@
 
 | Title | Platform | Link |
 |---|---|---|
-| Jenkins Multibranch vs Standalone | YouTube | *[Add link]* |
-| Dynamic Jenkins Pipelines | YouTube | *[Add link]* |
-| Docker Socket in Jenkins | YouTube | *[Add link]* |
+| Jenkins Multibranch vs Standalone | YouTube | https://youtu.be/mF8LOnP2_T4 |
+| Dynamic Jenkins Pipelines | YouTube | https://youtu.be/kXGfP8vT7m8 |
+| Docker Socket in Jenkins | YouTube | https://youtu.be/kKAnrshhYl0 |
 
 ---
 
 ## ✦ 📝 My Resources
 
-<!-- Add links you find useful during practice -->
-
 | Resource | Topic | Link |
 |---|---|---|
-| | | |
-
-
-| Resource Name | URL / Link | What I learned from it |
-|---|---|---|
-| Jenkins Pipeline Syntax | [Pipeline Steps](https://www.jenkins.io/doc/book/pipeline/syntax/) | Declarative blocks must be strictly nested inside `stages` and `steps`. |
-| Groovy Dynamic Scripts | [Groovy Ref](https://groovy-lang.org/syntax.html) | Using Groovy string interpolation (`${VAR}`) instead of bash variables (`$VAR`). |
+| Jenkins Shared Libraries | Reusable Pipeline Logic | https://www.jenkins.io/doc/book/pipeline/shared-libraries/ |
+| Groovy Playground | Testing Groovy Snippets | https://groovy-playground.appspot.com/ |
+| CloudBees Blog | Dynamic Parameterization | https://www.cloudbees.com/blog/jenkins-pipeline-conditional-execution-and-dynamic-parameters |
+| Pipeline as Code | CI/CD Best Practices | https://www.jenkins.io/solutions/pipeline/ |

@@ -61,6 +61,18 @@ By default, Docker isolates completely. You must intentionally bridge it nativel
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Spin up `nginx` isolated internally on Port 80 and deliberately fail to connect via browser without mapped `8080:80` parameters!
 - [ ] Mount a distinct named volume natively into `/usr/share/nginx/html` and watch how destroying the container doesn't delete your web files.
+
+---
+
+## ✦ Personal Notes
+
+- **The "Thin Layer" Rule:** Always place your most frequently changing instructions (like `COPY . .`) at the bottom of your Dockerfile. This maximizes the use of Docker's layer cache and reduces build times from minutes to seconds.
+- **Rootless Docker:** In high-security enterprise environments, avoid running the Docker daemon as root. Rootless mode prevents container-escape vulnerabilities from compromising the entire host machine.
+- **Image Bloat:** Use Alpine-based images (e.g., `python:3.9-alpine`) instead of standard ones. A 900MB image takes longer to pull in Jenkins than a 50MB one, directly impacting your CI/CD pipeline speed.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

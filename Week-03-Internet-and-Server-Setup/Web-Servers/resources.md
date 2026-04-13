@@ -15,9 +15,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| Building a LEMP Stack flawlessly | YouTube | [View Video](https://www.youtube.com/watch?v=18mFzK-A0W4) |
-| Hard Drive Storage: HDDs vs SSDs vs NVMe | YouTube | [View Video](https://www.youtube.com/watch?v=5Mh3o886qpg) |
+| Resource | Topic | Link |
+|---|---|---|
+| Nginx Config Generator | Boilerplate configs for Security/Perf | https://www.digitalocean.com/community/tools/nginx |
+| Hardware Corner | SSD vs NVMe IOPS Benchmarks | https://www.anandtech.com/tag/storage |
+| High Performance PHP | FPM & Opcache Tuning | https://www.scalingphpbook.com/blog/2014/02/14/php-fpm-settings-using-pm-static-for-max-performance.html |
+| Web Server Security | OWASP Hardening Guide | https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html |

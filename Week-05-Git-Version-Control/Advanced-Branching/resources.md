@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🛠️ Practical Environments
+## ✦ 📝 My Resources
 
-| Site | Description | Link |
-|------|-------------|------|
-| Interactive Learn Git Visualizer | Hands-down the absolute best graphic UI simulator for safely testing out how Merges visually differ from Rebases! | [learngitbranching.js.org](https://learngitbranching.js.org/) |
+| Resource | Topic | Link |
+|---|---|---|
+| Git Flow Cheat Sheet | Visual guide to standard branching | https://danielkummer.github.io/git-flow-cheatsheet/ |
+| GitHub Flow | Simplified branching for CI/CD | https://docs.github.com/en/get-started/using-git/github-flow |
+| Dangit, Git! | Fixing common repository mistakes | https://dangitgit.com/ |
+| Merge vs Rebase | Detailed architectural comparison | https://www.atlassian.com/git/tutorials/merging-vs-rebasing |

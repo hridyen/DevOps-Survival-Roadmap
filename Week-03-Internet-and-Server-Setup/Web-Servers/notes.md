@@ -33,6 +33,18 @@ When orchestrating internet traffic, specific daemons are tuned to handle incomi
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Determine the exactly RAM allocation limits of your local system execution states using `free -mh`.
 - [ ] Spin up an offline Nginx installation and modify its default `/var/www/html/index.html` file. 
+
+---
+
+## ✦ Personal Notes
+
+- **The Nginx Reverse Proxy:** In production, we rarely serve apps directly from an app server (like Node.js or Python). We put Nginx in front as a **Reverse Proxy** to handle SSL termination, caching, and load balancing.
+- **Hardware Bottlenecks:** When debugging slow servers, check `iostat`. High "iowait" usually means your SSD/HDD is the bottleneck, not the CPU. This is common in database-heavy Docker containers.
+- **The .htaccess Trap:** Avoid using `.htaccess` in high-traffic Apache setups. Moving those rules to the main virtual host config improves performance significantly since Apache doesn't have to scan the file system on every request.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

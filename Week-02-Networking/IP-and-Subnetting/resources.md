@@ -15,8 +15,11 @@
 
 ---
 
-## ✦ 🛠️ Practical Environments
+## ✦ 📝 My Resources
 
-| Site | Description | Link |
-|------|-------------|------|
-| Interactive Subnet Calculator | The most critical DevOps tool for calculating CIDR masking perfectly | [subnet-calculator.com](https://www.subnet-calculator.com/) |
+| Resource | Topic | Link |
+|---|---|---|
+| CIDR.xyz | Interactive CIDR Visualizer | https://cidr.xyz/ |
+| Subnetting Practice | Gamified Subnetting Drills | https://www.subnetting.net/ |
+| AWS VPC FAQ | Network Limits & VPC CIDR Design | https://aws.amazon.com/vpc/faqs/ |
+| IP Address Guide | Public vs Private Ranges (RFC 1918) | https://www.ipaddressguide.com/rfc1918 |

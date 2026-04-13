@@ -12,4 +12,7 @@
 ## 📝 My Resources
 | Resource | Topic | Link |
 |---|---|---|
-| | | |
+| S3 Security Hub | Blocking Public Access | https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html |
+| Performance Tips | GET/PUT request optimization | https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html |
+| CRR Tutorial | Cross-Region Replication Guide | https://aws.amazon.com/getting-started/hands-on/replicate-data-using-s3-replication-time-control/ |
+| Intelligent-Tiering | Automating Cost Savings | https://aws.amazon.com/s3/storage-classes/intelligent-tiering/ |

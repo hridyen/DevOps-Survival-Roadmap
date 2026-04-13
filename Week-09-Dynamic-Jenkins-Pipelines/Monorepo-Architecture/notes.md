@@ -844,25 +844,16 @@ The shift from "pipeline user" to "system thinker" is what this week gave me. An
 
 ---
 
-## ✦ 📝 Personal Notes
+---
 
-> [!NOTE]
-> ### âœ¦ Monorepo Pipeline Execution Flow
-> 1. Webhook triggers Jenkins on branch push.
-> 2. `when { changeset "frontend/**" }` restricts rebuilds to modified containers only.
-> 3. Parallel execution matrix deploys `frontend` and `backend` images simultaneously.
+## ✦ Personal Notes
 
-> 💬 *Come back here during interview prep — every section above is a potential interview question.*
+- **The GIT_PREVIOUS_SUCCESSFUL_COMMIT Secret:** In Jenkins, always use the previous *successful* commit for your `git diff`. If you compare against the previous *attempted* build (which might have failed), you risk skipping the files that caused the failure in the first place, leading to "ghost" bugs in the pipeline.
+- **Microservice Isolation:** In a monorepo, its tempting to share code between services. Resist this! If `service-a` depends on `service-b`'s internal logic, a change in `service-b` should trigger a rebuild of `service-a`. This adds complexity to your detection logic.
+- **Parallelism Limits:** While `parallel` is great, don't overdo it. If you have 50 services in a monorepo, running 50 Docker builds at once will likely crash your Jenkins Agent's CPU/RAM. Use a concurrency limit or a build matrix to throttle execution.
 
 ---
 
 ## ✦ 🔗 Resources
 
-| Resource | Link |
-|---|---|
-| Jenkins GIT_PREVIOUS_SUCCESSFUL_COMMIT docs | https://www.jenkins.io/doc/book/pipeline/multibranch |
-| git diff documentation | https://git-scm.com/docs/git-diff |
-| Jenkins parallel stages | https://www.jenkins.io/doc/book/pipeline/syntax/#parallel |
-| Jenkins `when` expression | https://www.jenkins.io/doc/book/pipeline/syntax/#when |
-| Docker BuildKit docs | https://docs.docker.com/build/buildkit |
-| Monorepo CI/CD patterns | *[Search: monorepo CI/CD best practices]* |
+See [resources.md](./resources.md)

@@ -65,3 +65,17 @@ sequenceDiagram
 ## ✦ Practice Exercises
 - [ ] Utilize an external IP checker to identify your outbound IPv4 address.
 - [ ] Determine how many total computers could be spun up inside a `/26` configuration.
+
+---
+
+## ✦ Personal Notes
+
+- **The /32 Rule:** In AWS Security Groups, you almost never use `0.0.0.0/24` for your own IP. Use the `/32` CIDR to pin access to exactly one IP address for maximum security (Zero Trust).
+- **Public vs. Private:** Remember that within a VPC, instances communicate via Private IPs. Public IPs are NAT-ed at the IGW level. If you can't reach a "Public" IP, check if the instance is in a Public Subnet with a route to an Internet Gateway.
+- **CIDR Math:** `/24` = 256. `/25` = 128. `/26` = 64. Each +1 in the prefix halves the number of IPs. This is a quick cognitive shortcut when designing subnet boundaries.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

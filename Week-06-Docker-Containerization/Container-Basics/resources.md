@@ -14,9 +14,11 @@
 
 ---
 
-## ✦ 🛠️ Practical Environments
+## ✦ 📝 My Resources
 
-| Site | Description | Link |
-|------|-------------|------|
-| Play With Docker | Completely free browser-based Alpine Linux environment utilizing pure Docker functionality natively | [labs.play-with-docker.com](https://labs.play-with-docker.com/) |
-| Official Docker Hub Registry | Native distribution center for standard images | [hub.docker.com](https://hub.docker.com) |
+| Resource | Topic | Link |
+|---|---|---|
+| Dockerfile Best Practices | Official guide to optimizing images | https://docs.docker.com/develop/develop-images/dockerfile_best-practices/ |
+| Dive | Tool for exploring Docker image layers | https://github.com/wagoodman/dive |
+| Hadolint | Dockerfile linter to catch smells | https://github.com/hadolint/hadolint |
+| Container Security Guide | NIST guidance on container security | https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf |

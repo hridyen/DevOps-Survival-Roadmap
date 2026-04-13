@@ -56,6 +56,18 @@ Automated jobs produce logs. `grep` filters these logs natively using regex eval
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Configure `crontab -e` to pipe a "Helo World" string into a temporary `/tmp/test.log` exactly every 1 minute.
 - [ ] Create a massive dummy folder network using `mkdir -p` and comprehensively compress it utilizing `tar`.
+
+---
+
+## ✦ Personal Notes
+
+- **The Cron Absolute Path Rule:** Always use absolute paths in your scripts (e.g., `/usr/local/bin/python` instead of just `python`). Cron has a very minimal shell environment and often doesn't know where your binaries are located.
+- **Silent Failures:** By default, cron logs errors to the local system mail. In DevOps, we usually redirect stdout and stderr to a log file: `* * * * * /path/to/script.sh >> /var/log/cron_job.log 2>&1`.
+- **Atomic Backups:** When using `tar` for backups, append the date to the filename: `tar -czf backup_$(date +%F).tar.gz`. This prevents your automated jobs from overwriting the previous day's successful backup with a potentially corrupted one.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

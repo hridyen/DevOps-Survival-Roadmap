@@ -55,5 +55,18 @@ If the `web` container needs to ping the database, it doesn't need to hunt for c
 
 ---
 
-## ✦ Practice Exercises
 - [ ] Construct a YAML structure launching two totally separate Nginx clones that can dynamically ping each other using native alias names entirely blindly over a custom bridge network locally.
+
+---
+
+## ✦ Personal Notes
+
+- **The .env File Strategy:** Never hardcode passwords or API keys in your `docker-compose.yml`. Use a `.env` file and reference variables like `${DB_PASSWORD}`. This allows you to use the same Compose file for local dev and CI/CD while keeping secrets hidden.
+- **Docker Compose V2:** Most modern systems use `docker compose` (no hyphen) which is a plugin for the Docker CLI. Legacy `docker-compose` (with hyphen) is a standalone Python tool and is being deprecated. Use the modern syntax where possible.
+- **Restart Policies:** Use `restart: always` or `restart: unless-stopped` for critical backend services like databases. This ensures that if the host machine reboots or the container crashes, Docker automatically restores the service.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

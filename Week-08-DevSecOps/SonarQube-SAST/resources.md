@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| The COMPLETE SonarQube Integration Guide | YouTube | [View Video](https://www.youtube.com/watch?v=7P-24kX1Zng) |
+| Resource | Topic | Link |
+|---|---|---|
+| SonarSource Blog | Security Analysis & Rules | https://www.sonarsource.com/blog/ |
+| Clean Code Guide | Eliminating Technical Debt | https://www.sonarsource.com/clean-code/ |
+| Quality Gate API | Automating build failures | https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/quality-gates/ |
+| SAST vs DAST | Understanding the Security Layer | https://www.synopsys.com/glossary/what-is-sast.html |

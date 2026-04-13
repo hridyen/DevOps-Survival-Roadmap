@@ -112,4 +112,7 @@ redis-cli -h <endpoint> DEL mykey
 
 | Command | What it does | Notes |
 |---|---|---|
-| | | |
+| `aws rds reboot-db-instance --force-failover` | HA Test | Only works on Multi-AZ instances. Switches traffic to the standby node usually in < 60s. |
+| `aws rds create-db-instance-read-replica` | Scaling trigger | Use this to offload read-heavy reports from your primary writer instance. |
+| `redis-cli SET ... EXPIRE` | Cache control | Always set a TTL (Time-to-Live) to prevent the cache from filling up with stale data. |
+| `describe-db-instances --query` | Filtered output | Use `--query` to extract just the endpoints for your automation scripts. |

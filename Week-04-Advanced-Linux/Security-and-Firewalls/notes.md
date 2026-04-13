@@ -41,6 +41,18 @@ usermod -aG wheel username
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Initialize an ACL binding utilizing `setfacl` to forcibly drop any execution power from an arbitrary text file you do not legitimately own. 
 - [ ] Configure `nmcli` to rapidly drop `Wired connection 1` off the grid locally mapping the changes onto your outbound routes natively.
+
+---
+
+## ✦ Personal Notes
+
+- **The ACL Advantage:** Standard Linux permissions (rwxrwxrwx) are often too broad for shared environments. Use `getfacl` to see hidden permissions that `ls -l` might miss. If you see a `+` at the end of the permissions string, an ACL is active.
+- **SUID Security Risks:** Binaries with SUID set (like `passwd`) are common targets for privilege escalation. Use `find / -perm -4000` to audit your system for SUID files and ensure no custom-built script has this bit set unnecessarily.
+- **Firewall Persistence:** When using `iptables` or `firewalld`, always remember that rules are in-memory by default. Use `firewall-cmd --runtime-to-permanent` to ensure your security bounds survive a system reboot.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

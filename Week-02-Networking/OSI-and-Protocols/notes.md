@@ -55,5 +55,18 @@ In modern cloud architecture, you emulate these topologies using Virtual Private
 ---
 
 ## ✦ Practice Exercises
-- [ ] Diagram out how your browser fetching `google.com` passes through Layers 7 down to Layer 1.
 - [ ] Determine exactly what a `SYN-ACK` packet does during a TCP connection phase.
+
+---
+
+## ✦ Personal Notes
+
+- **The Layer 4 Bouncer:** In AWS Security Groups, you operate primarily at **Layer 4**. When a developer says "My app can't connect!", the first thing you check is if the security group allows that specific **Port** and **Protocol (TCP/UDP)**.
+- **TCP Handshake Failures:** If a connection times out, it's often a "Silent Drop" at Layer 3/4. If it returns "Connection Refused", the packet made it to the server, but no daemon is listening on that port (Layer 7 issue).
+- **UDP for Speed:** In high-scale monitoring (Prometheus/Grafana), you often use UDP for metrics (statsd). It's better to lose a single metric packet than to slow down the entire application by waiting for TCP acknowledgments.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

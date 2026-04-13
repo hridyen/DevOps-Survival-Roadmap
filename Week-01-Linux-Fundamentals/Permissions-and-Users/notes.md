@@ -92,3 +92,17 @@ Critical production infrastructures mandate Network Interface Card redundancy.
 - [ ] Initialize a new user `dev_test` using `useradd` and view their specific footprint in `/etc/passwd`.
 - [ ] Implement `chmod 600` on an arbitrary `.pem` key file and verify execution blockage.
 - [ ] Access your standard `/etc/ssh/sshd_config` and audit the status of Root Logins.
+
+---
+
+## ✦ Personal Notes
+
+- **The `chmod 600` Rule:** This is the industry standard for private keys (`.pem`, `.id_rsa`). If permissions are too open, SSH will refuse to use the key for security reasons.
+- **Sudo Hygiene:** Avoid staying in a `sudo su -` shell. Use `sudo <command>` to maintain a clear audit trail in `/var/log/secure` or `/var/log/auth.log`.
+- **User Groups:** In CI/CD, you often add the `jenkins` or `docker` user to specific groups (like the `docker` group) to allow them to interact with the daemon without needing full root privileges.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

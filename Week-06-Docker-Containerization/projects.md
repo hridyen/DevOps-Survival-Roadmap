@@ -13,7 +13,8 @@
 - [ ] Docker Hub push of custom images
 
 ## ✦ Links to Pushed Repos
-<!-- Add your GitHub links here -->
 | Project | GitHub Link |
 |---|---|
-| | |
+| Custom Nginx App | [hridyen/docker-nginx-custom](https://github.com/hridyen/docker-nginx-custom) |
+| Multi-Tier Compose App | [hridyen/docker-compose-app](https://github.com/hridyen/docker-compose-app) |
+| Swarm Cluster Logic | [hridyen/docker-swarm-setup](https://github.com/hridyen/docker-swarm-setup) |

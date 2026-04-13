@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| How exactly do Jenkins Agents connect practically securely? | YouTube | [View Video](https://www.youtube.com/watch?v=FqS51Z36xks) |
+| Resource | Topic | Link |
+|---|---|---|
+| Jenkins Hardening Guide | Production security best practices | https://www.jenkins.io/doc/book/security/hardening/ |
+| Distributed Builds | Master-Agent Architecture Deep Dive | https://wiki.jenkins.io/display/JENKINS/Distributed+builds |
+| JWS (Jenkins Web Services) | Managing Jenkins via REST API | https://www.jenkins.io/doc/book/managing/cli/ |
+| Top 10 Plugins | Essential plugins for every Jenkins setup | https://www.cloudbees.com/blog/top-10-jenkins-plugins |

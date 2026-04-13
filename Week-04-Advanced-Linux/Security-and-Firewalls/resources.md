@@ -14,8 +14,11 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 📝 My Resources
 
-| Title | Platform | Link |
-|-------|----------|------|
-| SUID and SGID Permissions Explained | YouTube | [View Video](https://www.youtube.com/watch?v=kYI4zscuU3o) |
+| Resource | Topic | Link |
+|---|---|---|
+| POSIX ACLs | Fine-grained permission control | https://wiki.archlinux.org/title/Access_Control_Lists |
+| SUID/SGID Risks | Security implications of sticky bits | https://www.hackingarticles.in/linux-privilege-escalation-using-suid-binaries/ |
+| Linux Hardening Guide | Production security best practices | https://www.cisecurity.org/benchmark/linux |
+| Firewalld Cheat Sheet | Rapid CLI firewall management | https://fedoraproject.org/wiki/Firewalld?rd=FirewallD |

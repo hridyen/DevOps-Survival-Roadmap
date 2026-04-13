@@ -47,7 +47,18 @@ Basic password authentication into major cloud registries (GitHub/GitLab) was de
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Initialize a completely blank repository locally using `git init`.
-- [ ] Create a dummy file, stage it individually bypassing other files, and commit it cleanly.
 - [ ] Generate your own `SSH ed25519` key-pair naturally and bind the public key physically to your GitHub account settings.
+
+---
+
+## ✦ Personal Notes
+
+- **Commit Granularity:** Avoid "Mega-commits". Commit small, logical changes. This makes the `git revert` or `git cherry-pick` commands much more effective when debugging a broken build in the pipeline.
+- **The .gitignore Savior:** Always add a `.gitignore` file before your first commit. Accidentally pushing environment variables (`.env`) or large binaries (`node_modules`) is a common security/performance mistake in Jenkins pipelines.
+- **SSH over HTTPS:** Whenever possible, use SSH for cloning repos in your development environment. It bypasses the need for credential managers and is the standard for automated server-to-server (Jenkins to GitHub) communication.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

@@ -145,4 +145,7 @@ aws route53 get-health-check-status \
 
 | Command | What it does | Notes |
 |---|---|---|
-| | | |
+| `aws s3 sync` | Synchronizes local and S3 | Crucial for CI/CD deployments of static sites. Remember `--delete` to remove orphans. |
+| `aws s3 mb` | Make bucket | Names must be globally unique; if it fails, it might already be taken. |
+| `aws s3 presign` | Pre-signed URL | Excellent for giving temporary access to private files without IAM. |
+| `aws s3api put-bucket-versioning` | Logic toggle | Essential for audit trails and disaster recovery from accidental deletions. |

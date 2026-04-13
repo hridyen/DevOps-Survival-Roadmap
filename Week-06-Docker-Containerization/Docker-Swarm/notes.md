@@ -40,6 +40,18 @@ When deploying scaling Web Servers blindly gracefully across 3 different physica
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Initialize your current active local terminal daemon cleanly using `docker swarm init` intelligently allocating it as a native Master natively.
 - [ ] Deploy an arbitrary global service intelligently natively using `docker service create` specifically defining `--replicas 3`.
+
+---
+
+## ✦ Personal Notes
+
+- **The Manager Quorum:** In a production Swarm, always use an odd number of Managers (3 or 5). This prevents "Split-Brain" scenarios where the cluster doesn't know who the leader is if a network partition occurs.
+- **Service vs. Container:** In Swarm, you don't manage containers directly; you manage **Services**. If a container dies, the Swarm Manager detects the delta from the desired state and automatically recreates it on a healthy node.
+- **Routing Mesh Convenience:** One of the coolest features of Swarm is the **Routing Mesh**. You can hit the IP of *any* node in the cluster on the service port, and Docker will internally route your request to a node that is actually running the container.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

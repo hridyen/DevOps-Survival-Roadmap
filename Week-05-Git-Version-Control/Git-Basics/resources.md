@@ -15,8 +15,11 @@
 
 ---
 
-## ✦ 🛠️ Practical Environments
+## ✦ 📝 My Resources
 
-| Site | Description | Link |
-|------|-------------|------|
-| Oh Shit, Git!| An exceptional compendium of quick fixes for massive Git mistakes and corrupted indexes. | [ohshitgit.com](https://ohshitgit.com/) |
+| Resource | Topic | Link |
+|---|---|---|
+| Git Visualizer | Visualizing index vs head vs remote | https://git-school.github.io/visualizing-git/ |
+| Conventional Commits | Standard for structured commit messages | https://www.conventionalcommits.org/ |
+| Git Flight Rules | Deep-dive troubleshooting guide | https://github.com/k88hudson/git-flight-rules |
+| Pro Git Book | The complete reference guide | https://git-scm.com/book/en/v2 |

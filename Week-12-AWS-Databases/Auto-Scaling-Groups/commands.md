@@ -124,4 +124,7 @@ aws autoscaling describe-scaling-activities \
 
 | Command | What it does | Notes |
 |---|---|---|
-| | | |
+| `aws autoscaling set-desired-capacity` | Manual scale trigger | Use this for immediate manual intervention during high load. |
+| `aws autoscaling enter-standby` | Isolation for debugging | Invaluable for troubleshooting a "bad" instance without the ASG terminating it. |
+| `aws ec2 create-launch-template` | API-based blueprint | Always use `UserData` encoded in Base64 for automated configuration. |
+| `describe-scaling-activities` | Audit trail | Best way to see *why* an instance was launched or terminated. |

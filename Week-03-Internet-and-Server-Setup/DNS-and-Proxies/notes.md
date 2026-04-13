@@ -53,6 +53,18 @@ A reverse proxy actively shields destination servers, sitting aggressively in fr
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Run `nslookup` on 3 major domains to identify their global resolution IPs.
 - [ ] Attempt forcing a TCP socket into `google.com:80` using `telnet` and track the exact HTTP Header responses.
+
+---
+
+## ✦ Personal Notes
+
+- **The DNS Propagating Myth:** While we say DNS takes "24-48 hours", in modern cloud setups (Route 53/Cloudflare), updates usually propagate globally in 60 seconds. If it takes longer, check your TTL settings.
+- **Why SSL Termination Matters:** Terminating SSL at the proxy allows your internal app traffic to be simple HTTP. This makes debugging with `tcpdump` internally much easier, as you don't have to deal with encrypted packets inside your VPC.
+- **Proxy vs. Load Balancer:** Remeber that a Reverse Proxy (like Nginx) is often a single point of failure unless it sits behind a highly available Load Balancer (like AWS ELB). In enterprise setups, we use both.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

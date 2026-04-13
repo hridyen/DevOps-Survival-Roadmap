@@ -15,9 +15,11 @@
 
 ---
 
-## ✦ 🛠️ Practical Environments
+## ✦ 📝 My Resources
 
-| Site | Description | Link |
-|------|-------------|------|
-| Wireshark | Open-Source packet analyzer to visualize OSI frames in real time | [wireshark.org](https://www.wireshark.org) |
-| Ping.pe | Global ICMP ping testing tool to see where your network drops | [ping.pe](https://ping.pe) |
+| Resource | Topic | Link |
+|---|---|---|
+| Wireshark University | Deep-dive Packet Analysis | https://www.wireshark.org/training/ |
+| Packet Life Cheat Sheets | Networking Reference Sheets | https://packetlife.net/library/cheat-sheets/ |
+| TCP 3-Way Handshake | Detailed Protocol Interaction | https://www.geeksforgeeks.org/tcp-3-way-handshake-process/ |
+| HTTP/3 Explained | The Future of Layer 7 | https://http3-explained.haxx.se/ |

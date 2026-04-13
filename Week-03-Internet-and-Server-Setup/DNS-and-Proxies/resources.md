@@ -15,10 +15,13 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+---
 
-| Title | Platform | Link |
-|-------|----------|------|
-| How exactly does DNS work? | YouTube | [View Video](https://www.youtube.com/watch?v=mpQZVYPuDGU) |
-| Nginx Reverse Proxy Setup Guide | YouTube | [View Video](https://www.youtube.com/watch?v=Qfju2yW0Lvk) |
-| What is a Load Balancer (AWS ELB)? | YouTube | [View Video](https://www.youtube.com/watch?v=aKMWyFpX1Ww) |
+## ✦ 📝 My Resources
+
+| Resource | Topic | Link |
+|---|---|---|
+| DNSViz | Visualizing DNSSEC & Resolution Path | https://dnsviz.net/ |
+| SSL Labs Test | Analyzing Website TLS Security | https://www.ssllabs.com/ssltest/ |
+| Nginx Reverse Proxy Guide | Best Practices for App Serving | https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/ |
+| Cloudflare Learning | DNS, CDN, and Proxy Concepts | https://www.cloudflare.com/learning/dns/what-is-dns/ |

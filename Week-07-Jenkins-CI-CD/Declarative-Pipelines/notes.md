@@ -45,5 +45,18 @@ Pipelines enforce strict bracket groupings ensuring logic dictates identically.
 
 ---
 
-## ✦ Practice Exercises
 - [ ] Initialize a standard Freestyle project structurally via the Jenkins GUI completely, then convert the exact same logic into a Jenkinsfile Pipeline dynamically!
+
+---
+
+## ✦ Personal Notes
+
+- **The "Agent any" Trap:** In production, avoid `agent any`. Use labels like `agent { label 'docker-node' }` to ensure your build only runs on agents that have the necessary tools installed. This prevents builds failing because "docker command not found".
+- **Post-Build Awareness:** Always use the `post { always { cleanWs() } }` block. Without it, Jenkins agents will keep old build artifacts on disk indefinitely, eventually running out of space and crashing future builds.
+- **Fail Fast:** Use the `timeout` option on your stages. If a build hangs (e.g., waiting for an input), you don't want it to hog an executive slot for hours. `timeout(time: 10, unit: 'MINUTES') { ... }` is a lifesaver.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

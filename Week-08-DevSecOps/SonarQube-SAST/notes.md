@@ -41,6 +41,18 @@ SonarQube analyzes un-compiled raw source code strictly tracking four distinct v
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Initialize a completely blank SonarQube instance intuitively seamlessly using a standard Docker Container directly bound to Port `9000`.
 - [ ] Evaluate explicitly natively a completely dummy Python script visually validating structural code smells logically cleanly seamlessly cleanly dynamically!
+
+---
+
+## ✦ Personal Notes
+
+- **The Quality Gate Breakpoint:** Don't be too strict at first. If you set a 90% test coverage requirement on day one, you'll stop all development. Start with a 50% gate and gradually increase it as the team builds a testing culture.
+- **SonarScanner vs. Plugin:** While there are Jenkins plugins for SonarQube, using the `sonar-scanner` CLI inside a Docker container gives you more control and portability. You can run the exact same scan on your local machine before pushing to Jenkins.
+- **False Positives:** No scanner is perfect. SonarQube allows you to mark certain issues as "False Positive" or "Won't Fix". Use this feature to keep your dashboard clean and focused on real security threats.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

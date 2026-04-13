@@ -56,6 +56,18 @@ git cherry-pick a1b2c3d4
 
 ---
 
-## ✦ Practice Exercises
-- [ ] Diagram a sandbox scenario resolving a merge conflict triggered by editing the same `.md` line on two branches.
 - [ ] Initialize a dummy repository, create a branch, run arbitrary changes natively, and merge them back onto Main sequentially.
+
+---
+
+## ✦ Personal Notes
+
+- **The Golden Rule of Rebasing:** "Rebase local, Merge remote." Use `git rebase` to clean up your local feature branch before pushing. Once the code is on a shared branch (like `develop` or `main`), stick to `git merge` to avoid rewriting history for your teammates.
+- **Merge Conflicts are Good:** Don't fear them. They are Git's way of preventing you from accidentally overwriting a colleague's work. Use a tool like VS Code's merge editor to resolve them line-by-line rather than manually editing the `<<<< HEAD` markers.
+- **Git Flow in CI/CD:** Most modern pipelines (Jenkins/GitHub Actions) are triggered by `git push`. Understanding your branch topology is critical for ensuring that un-tested feature branches don't accidentally deploy to production.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

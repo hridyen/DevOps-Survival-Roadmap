@@ -50,5 +50,18 @@ Two distinct tools solve two distinct scanning vectors seamlessly.
 
 ---
 
-## ✦ Practice Exercises
 - [ ] Pull an outdated `nginx:1.10` container dynamically and execute Trivy naturally against it to view the critical vulnerabilities list.
+
+---
+
+## ✦ Personal Notes
+
+- **The "High/Critical" Filter:** In a busy pipeline, you can't fix every vulnerability. Use `--severity HIGH,CRITICAL` in your Trivy command to focus strictly on the threats that matter most. You can even use the `--exit-code 1` flag to break the build if these are found.
+- **Base Image Security:** If Trivy shows 200+ vulnerabilities, it's usually the base OS. Switch from `ubuntu` or `debian` to `alpine` or `distroless` images. These have a much smaller attack surface and usually return near-zero CVEs.
+- **Scanning the FS vs. Image:** Trivy can scan your local filesystem (`trivy fs .`) before you even build the image. This "Fail Fast" approach helps developers find insecure libraries during coding rather than waiting for the CI pipeline to fail.
+
+---
+
+## ✦ 🔗 Resources
+
+See [resources.md](./resources.md)

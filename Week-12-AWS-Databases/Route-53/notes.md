@@ -112,29 +112,17 @@ graph TD
 
 ---
 
+---
+
 ## ✦ Personal Notes
 
-- **The Zone Apex Rule:** You can NEVER use a CNAME for the root domain (e.g., `google.com`). You MUST use an Alias or an A record. This is a common exam/interview question.
-- **Propagation:** While AWS updates records in seconds, global ISP caches might take minutes/hours to reflect changes depending on the TTL.
+- **DNS Troubleshooting:** Always use `dig` or `nslookup` to verify if a record has propagated. If the result matches what you set in AWS but the browser fails, it's likely a local cache or ISP issue.
+- **Apex Record Strategy:** Always use **Alias** records instead of **CNAME** for your root domain (e.g., `example.com`). This ensures better performance and avoids DNS protocol issues that occur when using CNAME on an apex record. 
+- **Health Check Latency:** Be aware that Route 53 health checks can take 15-30 seconds to detect a failure and another minute for DNS propagation to fully route traffic away. Design your app to handle these brief windows of partial availability.
 
 ---
 
 ## ✦ 🔗 Resources
-
-See [resources.md](./resources.md)
- check on your EC2 instance
-- [ ] Configure a Failover routing policy between two instances
-- [ ] Test Weighted routing — 80% to EC2-A, 20% to EC2-B
-
----
-
-## 📝 Personal Notes
-
-<!-- Add your Route 53 observations here -->
-
----
-
-## 🔗 Resources
 
 | Resource | Link |
 |---|---|
@@ -142,3 +130,4 @@ See [resources.md](./resources.md)
 | Routing Policies | https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html |
 | Route 53 Pricing | https://aws.amazon.com/route53/pricing |
 | AWS CLI Route 53 | https://docs.aws.amazon.com/cli/latest/reference/route53 |
+| Dig Web Interface | https://www.digwebinterface.com/ |
