@@ -8,7 +8,7 @@
 <div align="center">
 
 [![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Duration](https://img.shields.io/badge/Duration-10_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-12_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Status](https://img.shields.io/badge/Status-In_Progress-39FF14?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Phase](https://img.shields.io/badge/Active_Phase-AWS_Cloud-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
@@ -44,7 +44,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Continuous Integration** | Jenkins, Node Agents, Groovy Pipeline scripting, SSH Credentials |
 | **DevSecOps Integration** | SonarQube static analysis, OWASP mitigation, Trivy vulnerability scanning |
 | **Pipeline Automation Logic** | Dynamic Pipelines, Branch-aware executions, Automated artifact builds |
-| **Cloud Infrastructure (Active)** | AWS Core, IAM Policies, EC2 provisioning, VPC allocations, Subnets |
+| **Cloud Computing** | IAM, VPC, EC2, EBS, ELB, ASG, RDS, Aurora, S3, Route 53 |
+| **Infrastructure Scaling** | Auto-Scaling Groups, Multi-AZ High Availability, Read Replicas |
 
 ---
 
@@ -67,29 +68,20 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 
 ### Phase 4: Cloud Ingress
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 10** (Apr 02 – Apr 08) | **AWS Fundamentals & IAM**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 11** (Apr 09 – Present) | **AWS Compute & Storage**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 11** (Apr 09 – Apr 15) | **AWS Compute & Storage**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 12** (Apr 16 – Present) | **AWS Databases & Services**
 
 <br/>
 
 | Execution Week | Duration | Primary Module | Status |
 |---|---|---|---|
-| **Week 01** | Jan 20 – Jan 26 | Linux Fundamentals | Complete |
-| **Week 02** | Jan 27 – Feb 02 | Networking Architecture | Complete |
-| **Week 03** | Feb 03 – Feb 09 | Internet & Server Setup | Complete |
-| **Week 04** | Feb 10 – Feb 16 | Advanced Linux Control | Complete |
-| **Week 05** | Feb 17 – Feb 23 | Git & Version Control | Complete |
-| **Week 06** | Feb 24 – Mar 09 | Docker Container Ecosystems | Complete |
-| **Week 07** | Mar 10 – Mar 15 | Jenkins & CI/CD Pipelines | Complete |
-| **Week 08** | Mar 16 – Mar 22 | DevSecOps & Security Vulnerability | Complete |
-| **Week 09** | Mar 23 – Apr 01 | Dynamic CI/CD Automation | Complete |
 | **Week 10** | Apr 02 – Apr 08 | AWS Fundamentals & IAM | Complete |
-| **Week 11** | Apr 09 – Present | AWS Compute & Storage | In Progress |
+| **Week 11** | Apr 09 – Apr 15 | AWS Compute & Storage | Complete |
+| **Week 12** | Apr 16 – Present | AWS Databases & Services | In Progress |
 
 ---
 
 ## ✦ Architectural Roadmap
-
-This diagram illustrates the dependencies and explicit learning components of each phase.
 
 ```mermaid
 flowchart TD
@@ -97,27 +89,20 @@ flowchart TD
     classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
     classDef phase fill:transparent,stroke:#333333,stroke-width:2px,stroke-dasharray: 4 4,color:#00E5FF;
 
-    subgraph P1 [Phase 1: Environment & Code Foundation]
-        A["[01] Linux Base<br/>(OS Structure, CLI, Permissions)"] --> 
-        B["[02] Networking<br/>(OSI, TCP/IP, Routing)"] --> 
-        C["[03] Servers & Scaling<br/>(Web Servers, Proxies)"] --> 
-        D["[04] Advanced Linux<br/>(Crons, SUID/SGID, Security)"]
+    subgraph P1 [Phase 1: Foundations]
+        A["[01] Linux Base"] --> B["[02] Networking"] --> C["[03] Servers"] --> D["[04] Advanced Linux"]
     end
 
-    subgraph P2 [Phase 2: CI/CD & Delivery Architecture]
-        E["[05] Version Control<br/>(Git, Branching workflows)"] --> 
-        F["[06] Containerization<br/>(Docker, Dockerfiles, Swarm)"] --> 
-        G["[07] CI/CD Orchestration<br/>(Jenkins, Declarative Pipelines)"]
+    subgraph P2 [Phase 2: CI/CD]
+        E["[05] Git VCS"] --> F["[06] Docker"] --> G["[07] Jenkins"]
     end
 
-    subgraph P3 [Phase 3: Security & Advanced Automations]
-        H["[08] Security Pipelines<br/>(DevSecOps, SonarQube, SAST)"] --> 
-        I["[09] Dynamic Logic<br/>(Branch Parameters, Code Triggers)"]
+    subgraph P3 [Phase 3: Security]
+        H["[08] DevSecOps"] --> I["[09] Dynamic Logic"]
     end
 
-    subgraph P4 [Phase 4: Cloud Ingress]
-        J["[10] AWS Fundamentals<br/>(Global Infra, IAM, Regions)"] -->
-        K["[11] Compute & Storage<br/>(EC2, EBS, ELB, EFS)"]:::active
+    subgraph P4 [Phase 4: AWS Cloud]
+        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"]:::active
     end
 
     P1 -.-> P2
@@ -131,84 +116,23 @@ flowchart TD
 
 ## ✦ Repository File Architecture
 
-> ✦ **System Root** `devops-industrial-training-roadmap/`
-
-- [![File](https://img.shields.io/badge/DOC-README.md-FF0055?style=flat-square&labelColor=0A0A0A)](./README.md) — *Central Entrypoint & Index*
-- [![Folder](https://img.shields.io/badge/DIR-projects%2F-00E5FF?style=flat-square&labelColor=0A0A0A)](./projects/) — *Documented Configurations & Deployment Code*
-- [![Folder](https://img.shields.io/badge/DIR-future--roadmap%2F-00E5FF?style=flat-square&labelColor=0A0A0A)](./future-roadmap/) — *Strategic Integration Plans (3 & 6 Months)*
-- [![Folder](https://img.shields.io/badge/DIR-resources%2F-00E5FF?style=flat-square&labelColor=0A0A0A)](./resources/) — *Book Library & External Technical References*
-- [![Folder](https://img.shields.io/badge/DIR-scripts%2F-FF0055?style=flat-square&labelColor=0A0A0A)](./scripts/) — *Automation & Maintenance (Neon Theme Engine)*
-
-<br/>
-
-### ✦ Phase 1: Environment Logic
-- [![Folder](https://img.shields.io/badge/DIR-Week--01--Linux-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — ***System Base Files*** (Core Commands, File Structures)
-- [![Folder](https://img.shields.io/badge/DIR-Week--02--Networking-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-02-Networking/) — ***Network Protocol*** (Subnetting, TCP/IP Configs)
-- [![Folder](https://img.shields.io/badge/DIR-Week--03--Servers-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-03-Internet-and-Server-Setup/) — ***Hosting Architecture*** (Nginx/Apache setups)
-- [![Folder](https://img.shields.io/badge/DIR-Week--04--Advanced-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-04-Advanced-Linux/) — ***System Constraints*** (ACLs, Cron Jobs, Security)
-
-### ✦ Phase 2: Delivery & CI/CD
-- [![Folder](https://img.shields.io/badge/DIR-Week--05--Git-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-05-Git-Version-Control/) — ***Version Protocol*** (Branching, Merge Logics)
-- [![Folder](https://img.shields.io/badge/DIR-Week--06--Docker-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-06-Docker-Containerization/) — ***Environment Infrastructure*** (Containers, Swarms)
-- [![Folder](https://img.shields.io/badge/DIR-Week--07--Jenkins-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-07-Jenkins-CI-CD/) — ***Continuous Integration Scripts*** (Groovy Pipelines)
-
-### ✦ Phase 3: Security & Advanced Automations
-- [![Folder](https://img.shields.io/badge/DIR-Week--08--DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — ***Security Controls*** (SonarQube, Trivy Protocols)
-- [![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-09-Dynamic-Jenkins-Pipelines/) — ***Dynamic Automations*** (Hooks, Branch Execution)
-
-### ✦ Phase 4: Cloud Ingress
+### ✦ Phase 4: Cloud Ingress (Active)
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
+- [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
+
+### ✦ Phase 1-3: Foundations & CI/CD
+- [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — Linux Basics, Networking, Apache/Nginx.
+- [![Folder](https://img.shields.io/badge/DIR-Phase--2-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — Git, Docker, Jenkins Orchestration.
+- [![Folder](https://img.shields.io/badge/DIR-Phase--3-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — DevSecOps, Dynamic Pipelines.
 
 ---
 
-## ✦ Deployed Application Stacks
+## ✦ Engineering Considerations
 
-### Containerized Application Portfolios
-- End-to-end multi-tier web application deployments constructed via Docker Compose.
-- Docker Swarm consensus with active fault-tolerant master/worker nodes.
-- Overlay network architecture defined for segmented inter-container database communication.
-[View Container Deployments](./projects/docker-projects.md)
-
-### CI/CD Pipeline Orchestrations
-- Jenkins Pipeline definitions spanning Declarative to complex Scripted Groovy execution patterns.
-- External Linux build-agents authenticated strictly via secure SSH keypair configurations.
-- Webhooks actively integrating repository events directly into testing triggers.
-- Branch-aware pipelines isolating testing from production deployments automatically.
-[View CI/CD Deployments](./projects/jenkins-projects.md)
-
----
-
-## ✦ Long-Term Integration Strategy
-
-```text
-Current State              T-Minus 3 Months            T-Minus 6 Months
-─────────────              ─────────────────           ──────────────────
-Linux / Networking     ->  Kubernetes (K8s) Deploy ->  Terraform (IaC) Structure
-Git / Jenkins System   ->  Helm Chart Blueprints   ->  Ansible Infrastructure Automation
-Docker Ecosystem       ->  AWS Specialization      ->  Distributed System Monitoring
-DevSecOps Scans        ->  Prometheus & Grafana    ->  Enterprise Level CI/CD Validation
-AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certifications
-```
-
-[Examine Complete Trajectory Planning](./future-roadmap/3-month-plan.md)
-
----
-
-## ✦ Engineering Considerations & Technical Anomalies
-
-> [!WARNING]
-> The following system properties have historically caused failure points during execution. Note these for incident response:
-
-- **SSH Authentication Validations:** Require manual connection success in the terminal before allowing Jenkins to assume credential use.
-- **Docker Kernel Abstraction:** Standard containers completely share the underlying host kernel. They lack distinct VM isolation bounds.
-- **Git Rebase Destruction:** The `git rebase` command permanently alters cryptographic history. It is highly prohibited on any team-shared branches.
-- **Port Saturation Constraints:** Application downtime is frequently attributed to overlapping Docker host port binding. Always survey utilization using `docker ps`.
-- **Chronological Syntax Strictness:** The Linux cron daemon requires precisely 5 positional identifiers, otherwise syntax failures occur.
-- **VPC Subnet Packet Drops:** Misconfigured AWS Security Groups do not warn clients; they silently execute blind drops.
-- **Image Scanning Strictness:** Implementing `trivy image` isolation tests is non-negotiable prior to pushing code updates directly to public registries.
-- **Quality Gate Enforcements:** CI/CD logic requires manual termination of pipeline sequences if SonarQube metric analysis returns negative parity over code quality.
-- **Socket Authority Escalation:** Encapsulating Jenkins inside a Docker process inherently blocks it from spawning sibling containers unless the host `/var/run/docker.sock` is forcibly mounted deep within the image volume.
+> [!IMPORTANT]
+> **Database Resilience:** In AWS, high availability is achieved through **Multi-AZ** (Synchronous) for disaster recovery, while vertical scaling is handled via **Read Replicas** (Asynchronous).
+> **DNS Propagation:** Always set a lower TTL (e.g., 60s) before major DNS migrations in **Route 53** to minimize downtime.
 
 ---
 
@@ -216,19 +140,11 @@ AWS Initializer        ->  ArgoCD (GitOps) Logic   ->  Cloud & Security Certific
 
 | Category Functionality | Implementation Path |
 | --- | --- |
-| Basic System Core | [commands.md](./Week-01-Linux-Fundamentals/CLI-Basics/commands.md) |
-| Protocol Details | [commands.md](./Week-02-Networking/OSI-and-Protocols/commands.md) |
-| Advanced Constraints | [commands.md](./Week-04-Advanced-Linux/Automation-and-Crons/commands.md) |
-| VCS Operations | [commands.md](./Week-05-Git-Version-Control/Git-Basics/commands.md) |
-| Container Subsystems | [commands.md](./Week-06-Docker-Containerization/Container-Basics/commands.md) |
-| Execution Logic | [pipelines.md](./Week-07-Jenkins-CI-CD/Declarative-Pipelines/pipelines.md) |
-| Security Operations | [commands.md](./Week-08-DevSecOps/Trivy-Scanning/commands.md) |
-| Parameter Executions | [commands.md](./Week-09-Dynamic-Jenkins-Pipelines/Branch-Execution/commands.md) |
-| Cloud Architecture Fundamentals | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
-| Core AWS Policies | [commands.md](./Week-10-AWS-Cloud-Computing/IAM/commands.md) |
+| ASG Management | [commands.md](./Week-12-AWS-Databases/Auto-Scaling-Groups/commands.md) |
+| RDS & Aurora Ops | [commands.md](./Week-12-AWS-Databases/RDS-Aurora-ElastiCache/commands.md) |
+| S3 & Route 53 Ops | [commands.md](./Week-12-AWS-Databases/S3/commands.md) |
 | EC2 Compute Access | [commands.md](./Week-11-AWS-Compute-and-Storage/EC2/commands.md) |
-| Block Storage Ops | [commands.md](./Week-11-AWS-Compute-and-Storage/EBS-EFS-Storage/commands.md) |
-| Traffic Management | [commands.md](./Week-11-AWS-Compute-and-Storage/Load-Balancing/commands.md) |
+| Cloud Architecture | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
 
 ---
 
