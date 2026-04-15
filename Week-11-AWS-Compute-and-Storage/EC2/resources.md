@@ -39,9 +39,23 @@
 
 ---
 
-## ✦ My Resources
+## ✦ 🛠️ Practical Tools & Cost Optimizers
 
-| Resource | Topic | Link |
-|---|---|---|
-| AWS CLI Command Builder | CLI GUI Generation | [aws-cli-builder.com](https://aws-cli-builder.com/) |
-| EC2 Instance Selector | Instance cost tracking | [instances.vantage.sh](https://instances.vantage.sh/) |
+| Tool | Description | Link |
+|------|-------------|------|
+| **Vantage Instance Explorer** | The best comparison tool for EC2 instance types and pricing | [instances.vantage.sh](https://instances.vantage.sh/) |
+| **AWS CLI Command Builder** | Visual GUI for building complex EC2 CLI commands | [aws-cli-builder.com](https://aws-cli-builder.com/) |
+| **Spot Instance Advisor** | Real-time interruption frequency and cost savings for Spot | [AWS Console](https://aws.amazon.com/ec2/spot/instance-advisor/) |
+| **Simple Monthly Calculator** | Estimating EC2 and EBS costs before deployment | [calculator.s3.amazonaws.com](https://calculator.s3.amazonaws.com/index.html) |
+
+---
+
+## ✦ 📖 Production Mastery & Disaster Recovery
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **EC2 Auto Recovery** | Official guide to setting up self-healing EC2 instances | [AWS Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html) |
+| **Boto3 EC2 Reference** | Python SDK documentation for automating compute tasks | [Boto3 Docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html) |
+| **Amazon Linux 2023** | Understanding the modern standard for EC2 operating systems | [AL2023 Docs](https://docs.aws.amazon.com/linux/al2023/ug/what-is-al2023.html) |
+| **EC2 User Data Best Practices** | Mastering shell scripts and Cloud-Init for automation | [AWS Blog](https://aws.amazon.com/blogs/compute/automating-ec2-instance-setup-with-user-data/) |
+| **VPC Security Groups** | Deep dive into "Stateful" firewall management | [AWS Docs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) |

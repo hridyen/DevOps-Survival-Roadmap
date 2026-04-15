@@ -14,11 +14,22 @@
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ 🛠️ Practical Tools & Automation
 
-| Resource | Topic | Link |
-|---|---|---|
-| Jenkins Hardening Guide | Production security best practices | https://www.jenkins.io/doc/book/security/hardening/ |
-| Distributed Builds | Master-Agent Architecture Deep Dive | https://wiki.jenkins.io/display/JENKINS/Distributed+builds |
-| JWS (Jenkins Web Services) | Managing Jenkins via REST API | https://www.jenkins.io/doc/book/managing/cli/ |
-| Top 10 Plugins | Essential plugins for every Jenkins setup | https://www.cloudbees.com/blog/top-10-jenkins-plugins |
+| Tool | Description | Link |
+|------|-------------|------|
+| **JCasC (Config as Code)** | Manage Jenkins configuration via YAML files | [GitHub Repo](https://github.com/jenkinsci/configuration-as-code-plugin) |
+| **Jenkins CLI** | Manage your Jenkins server from the terminal | [Jenkins CLI Guide](https://www.jenkins.io/doc/book/managing/cli/) |
+| **Jenkins DSL Plugin** | Create jobs via Groovy code systematically | [GitHub Wiki](https://github.com/jenkinsci/job-dsl-plugin/wiki) |
+
+---
+
+## ✦ 📖 Core Documentation & Mastery
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Jenkins Hardening Guide** | The official guide to securing your Jenkins production instance | [Jenkins.io](https://www.jenkins.io/doc/book/security/hardening/) |
+| **Master-Agent Architecture** | Deep dive into distributed builds and scalability | [Jenkins Wiki](https://wiki.jenkins.io/display/JENKINS/Distributed+builds) |
+| **Standardized Plugin List** | CloudBees recommendation for essential enterprise plugins | [CloudBees Blog](https://www.cloudbees.com/blog/top-10-jenkins-plugins) |
+| **Jenkins on Docker** | Official guide to running and scaling Jenkins via containers | [Docker Guide](https://www.jenkins.io/doc/book/installing/docker/) |
+| **Cloud-Native Jenkins** | Exploring Jenkins X and the future of CI/CD on Kubernetes | [Jenkins X](https://jenkins-x.io/) |

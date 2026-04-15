@@ -14,8 +14,22 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 🛠️ Practical Tools & Visualizers
 
-| Title | Platform | Link |
-|-------|----------|------|
-| Jenkinsfile: Declarative vs Scripted | YouTube | [View Video](https://www.youtube.com/watch?v=7KCS70SmL2s) |
+| Tool | Description | Link |
+|------|-------------|------|
+| **Pipeline Syntax Helper** | Built-in Snippet Generator for your Jenkins instance | `[your-jenkins-url]/pipeline-syntax` |
+| **Blue Ocean** | Modern UI for visualizing complex parallel pipelines | [Jenkins.io Docs](https://www.jenkins.io/doc/book/blueocean/) |
+| **Jenkins Linter** | Validate your Jenkinsfile syntax via CLI or API | [Linter Guide](https://www.jenkins.io/doc/book/pipeline/development/#linter) |
+
+---
+
+## ✦ 📖 Core Documentation & Mastery
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Pipeline Syntax Reference** | The definitive guide to every Declarative directive | [Jenkins.io](https://www.jenkins.io/doc/book/pipeline/syntax/) |
+| **Shared Libraries** | Scaling CI/CD by reusing Groovy code across many repos | [Jenkins.io](https://www.jenkins.io/doc/book/pipeline/shared-libraries/) |
+| **Docker in Pipelines** | Using containers for build environments and sidecars | [CloudBees Blog](https://www.cloudbees.com/blog/using-docker-in-jenkins-pipeline) |
+| **Pipeline Best Practices** | Official "Do's and Don'ts" for performant Jenkinsfiles | [Jenkins.io](https://www.jenkins.io/doc/book/pipeline/pipeline-best-practices/) |
+| **Groovy for Jenkins** | Understanding the scripting language behind the scenes | [TutorialsPoint](https://www.tutorialspoint.com/groovy/index.htm) |

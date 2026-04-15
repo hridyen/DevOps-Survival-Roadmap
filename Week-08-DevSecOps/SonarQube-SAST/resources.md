@@ -14,11 +14,22 @@
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ 🛠️ Practical Tools & Integrations
 
-| Resource | Topic | Link |
-|---|---|---|
-| SonarSource Blog | Security Analysis & Rules | https://www.sonarsource.com/blog/ |
-| Clean Code Guide | Eliminating Technical Debt | https://www.sonarsource.com/clean-code/ |
-| Quality Gate API | Automating build failures | https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/quality-gates/ |
-| SAST vs DAST | Understanding the Security Layer | https://www.synopsys.com/glossary/what-is-sast.html |
+| Tool | Description | Link |
+|------|-------------|------|
+| **SonarQube Scanner** | The official CLI scanner for local and CI/CD analysis | [Sonar Docs](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner/) |
+| **SonarQube Quality Gate API** | Automating build failures based on quality metrics | [Sonar Docs](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/quality-gates/) |
+| **SonarLint** | IDE extension for real-time code quality feedback | [sonarlint.org](https://www.sonarlint.org/) |
+
+---
+
+## ✦ 📖 Core Documentation & Security Mastery
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Clean Code Guide** | Comprehensive guide to eliminating technical debt and bugs | [SonarSource](https://www.sonarsource.com/clean-code/) |
+| **SAST vs DAST** | Understanding different types of security testing layers | [Synopsys Glossary](https://www.synopsys.com/glossary/what-is-sast.html) |
+| **SonarSource Rules** | Database of all language-specific security rules | [Rules Explorer](https://rules.sonarsource.com/) |
+| **OWASP Top 10** | The essential security benchmark for web applications | [OWASP.org](https://owasp.org/www-project-top-ten/) |
+| **Static Analysis Benchmarks** | Comparing SAST tools (SonarQube, Snyk, Checkmarx) | [Gartner Reviews](https://www.gartner.com/reviews/market/application-security-testing) |

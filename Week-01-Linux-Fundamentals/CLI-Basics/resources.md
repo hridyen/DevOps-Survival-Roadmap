@@ -24,9 +24,21 @@
 
 ---
 
-## ✦ 🛠️ Practical Environments
+## ✦ 🛠️ Practical Environments & Curriculums
 
 | Site | Description | Link |
 |------|-------------|------|
-| Explain Shell | Paste any native command and receive visual breakdowns | [explainshell.com](https://explainshell.com) |
-| OverTheWire (Bandit) | Gamified terminal environment hacking | [overthewire.org](https://overthewire.org/wargames/bandit) |
+| **Linux Journey** | The best free, structured curriculum for learning Linux | [linuxjourney.com](https://linuxjourney.com/) |
+| **Explain Shell** | Paste any native command and receive visual breakdowns | [explainshell.com](https://explainshell.com) |
+| **OverTheWire (Bandit)** | Gamified terminal environment hacking | [overthewire.org](https://overthewire.org/wargames/bandit) |
+| **Cheat.sh** | Unified access to the best community-driven cheat sheets | [cheat.sh](https://cheat.sh/) |
+
+---
+
+## ✦ 📚 Professional Guides
+
+| Title | Description | Link |
+|-------|-------------|------|
+| **The Linux Command Line** | Free book by William Shotts (Highly Recommended) | [linuxcommand.org](http://www.linuxcommand.org/tlcl.php) |
+| **Command Line Power User** | A free video series on becoming a pro in the terminal | [commandlinepoweruser.com](https://commandlinepoweruser.com/) |
+| **Pure Bash Bible** | A collection of pure bash alternatives to external processes | [GitHub Repo](https://github.com/dylanaraps/pure-bash-bible) |

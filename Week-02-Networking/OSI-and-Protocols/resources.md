@@ -15,11 +15,21 @@
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ 🛠️ Practical Tools & Visualizers
 
-| Resource | Topic | Link |
-|---|---|---|
-| Wireshark University | Deep-dive Packet Analysis | https://www.wireshark.org/training/ |
-| Packet Life Cheat Sheets | Networking Reference Sheets | https://packetlife.net/library/cheat-sheets/ |
-| TCP 3-Way Handshake | Detailed Protocol Interaction | https://www.geeksforgeeks.org/tcp-3-way-handshake-process/ |
-| HTTP/3 Explained | The Future of Layer 7 | https://http3-explained.haxx.se/ |
+| Tool | Description | Link |
+|------|-------------|------|
+| **OSI Model Visualizer** | Interactive breakdown of the 7 layers | [Cloudflare Learning](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) |
+| **TCP Lifecycle Diagram** | Professional visualization of the TCP state machine | [TCP Lifecycle](https://www.medianetscape.com/tcp-lifecycle-diagram/) |
+
+---
+
+## ✦ 📚 Professional Guides & Mastery
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Wireshark University** | Industry standard for deep-packet analysis | [wireshark.org](https://www.wireshark.org/training/) |
+| **Packet Life Cheat Sheets** | Master reference for OSI, TCP, and common protocols | [Packet Life](https://packetlife.net/library/cheat-sheets/) |
+| **HTTP/3 Explained** | High-level engineering guide for the latest protocol | [haxx.se](https://http3-explained.haxx.se/) |
+| **Nmap Network Discovery** | The definitive guide to port scanning and security audits | [nmap.org](https://nmap.org/book/man.html) |
+| **Common Port Numbers** | Cheat sheet for industrial networking (Layer 4) | [IANA Service Names](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml) |

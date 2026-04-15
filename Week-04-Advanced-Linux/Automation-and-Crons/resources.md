@@ -14,11 +14,22 @@
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ 🛠️ Practical Tools & Linters
 
-| Resource | Topic | Link |
-|---|---|---|
-| Bash Guide for Beginners | Foundation for script automation | https://tldp.org/LDP/Bash-Beginners-Guide/html/index.html |
-| ShellCheck | Linter for shell scripts (Best practice) | https://www.shellcheck.net/ |
-| Cron Troubleshooting | Debugging common cron issues | https://linuxconfig.org/how-to-debug-crontab-on-linux |
-| Gzip vs Tar | Compression Architecture | https://www.redhat.com/sysadmin/tar-gzip-compression |
+| Tool | Description | Link |
+|------|-------------|------|
+| **Crontab Guru** | The gold standard for translating cron syntax to English | [crontab.guru](https://crontab.guru) |
+| **ShellCheck** | Essential linter for finding bugs in your shell scripts | [shellcheck.net](https://www.shellcheck.net/) |
+| **BATS-core** | Bash Automated Testing System for unit testing scripts | [GitHub Repo](https://github.com/bats-core/bats-core) |
+
+---
+
+## ✦ 📚 Professional Automation Guides
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **The Art of Command Line** | Master list of CLI tips for automation and speed | [GitHub Repo](https://github.com/jlevy/the-art-of-command-line) |
+| **Bash Guide for Beginners** | Foundation for script automation logic | [TLDP](https://tldp.org/LDP/Bash-Beginners-Guide/html/index.html) |
+| **Cron Debugging Guide** | Step-by-step troubleshooting for failed cron jobs | [Linux Config](https://linuxconfig.org/how-to-debug-crontab-on-linux) |
+| **Tar & Gzip Mastery** | Deep dive into compression architecture | [Red Hat Docs](https://www.redhat.com/sysadmin/tar-gzip-compression) |
+| **Systemd Timers** | Modern alternative to Cron for Linux automation | [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Timers) |

@@ -15,11 +15,22 @@
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ 🛠️ Interactive Learning & Visualizers
 
-| Resource | Topic | Link |
-|---|---|---|
-| Git Visualizer | Visualizing index vs head vs remote | https://git-school.github.io/visualizing-git/ |
-| Conventional Commits | Standard for structured commit messages | https://www.conventionalcommits.org/ |
-| Git Flight Rules | Deep-dive troubleshooting guide | https://github.com/k88hudson/git-flight-rules |
-| Pro Git Book | The complete reference guide | https://git-scm.com/book/en/v2 |
+| Tool | Description | Link |
+|------|-------------|------|
+| **Learn Git Branching** | The most visual and interactive way to learn Git branching | [learngitbranching.js.org](https://learngitbranching.js.org/) |
+| **Visualizing Git** | Interactive playground for seeing the HEAD, Index, and Remote | [git-school](https://git-school.github.io/visualizing-git/) |
+| **Git Explorer** | Find the right git command for your specific need | [gitexplorer.com](https://gitexplorer.com/) |
+
+---
+
+## ✦ 📖 Professional Mastery & Field Guides
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Pro Git Book** | The definitive, free, 500+ page guide to every Git feature | [git-scm.com](https://git-scm.com/book/en/v2) |
+| **Git Flight Rules** | Massive repository of solutions for when things go wrong | [GitHub Repo](https://github.com/k88hudson/git-flight-rules) |
+| **Conventional Commits** | A specification for adding human and machine readable meaning to commits | [conventionalcommits.org](https://www.conventionalcommits.org/) |
+| **Commit Message Guide** | How to write a professional Git commit message | [Chris Beams](https://chris.beams.io/posts/git-commit/) |
+| **GitHub Guides** | Official tutorials for GitHub-specific features (Actions, Projects) | [GitHub Guides](https://github.com/git-guides) |

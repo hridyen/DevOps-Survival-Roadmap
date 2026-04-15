@@ -14,11 +14,23 @@
 
 ---
 
-## ✦ 📝 My Resources
+## ✦ 🛠️ Practical Labs & Image Tools
 
-| Resource | Topic | Link |
-|---|---|---|
-| Dockerfile Best Practices | Official guide to optimizing images | https://docs.docker.com/develop/develop-images/dockerfile_best-practices/ |
-| Dive | Tool for exploring Docker image layers | https://github.com/wagoodman/dive |
-| Hadolint | Dockerfile linter to catch smells | https://github.com/hadolint/hadolint |
-| Container Security Guide | NIST guidance on container security | https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf |
+| Tool | Description | Link |
+|------|-------------|------|
+| **Play with Docker** | A free, browser-based Docker playground | [labs.play-with-docker.com](https://labs.play-with-docker.com/) |
+| **Dive** | Tool for exploring Docker image layers and finding wasted space | [GitHub Repo](https://github.com/wagoodman/dive) |
+| **Hadolint** | A smarter Dockerfile linter that helps you build best-practice images | [GitHub Repo](https://github.com/hadolint/hadolint) |
+
+---
+
+## ✦ 📖 Core Documentation & Mastery
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Dockerfile Best Practices** | The definitive official guide to building slim, secure images | [Docker Docs](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) |
+| **Docker Cheat Sheet** | A comprehensive reference for daily Docker operations | [Docker Guide](https://dockerlabs.collabnix.com/docker/cheatsheet/) |
+| **Container Security (NIST)** | High-level engineering guidance on container security standards | [NIST SP 800-190](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf) |
+| **Docker Networking Deep Dive** | Understanding Bridge, Host, and Overlay networks | [Docker Docs](https://docs.docker.com/network/) |
+| **The Docker Curriculum** | A comprehensive "beginner to pro" guide for engineers | [docker-curriculum.com](https://docker-curriculum.com/) |
+| **Slim.ai** | Visualizing and optimizing your container footprint | [Slim.ai](https://www.slim.ai/) |

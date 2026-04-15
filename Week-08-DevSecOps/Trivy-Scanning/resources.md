@@ -15,8 +15,22 @@
 
 ---
 
-## ✦ 🎥 Media Tutorials
+## ✦ 🛠️ Practical Tools & Scanners
 
-| Title | Platform | Link |
-|-------|----------|------|
-| Complete Guide to Scanning Containers with Trivy | YouTube | [View Video](https://www.youtube.com/watch?v=FjBfTof_J9k) |
+| Tool | Description | Link |
+|------|-------------|------|
+| **Trivy Documentation** | The comprehensive guide to every Trivy command and feature | [Aqua Security](https://aquasecurity.github.io/trivy/latest/) |
+| **Trivy GitHub Action** | Official action for integrating security scans into pipelines | [GitHub Marketplace](https://github.com/marketplace/actions/trivy-vulnerability-scanner) |
+| **Snyk Vulnerability DB** | Real-time database for checking package vulnerabilities | [snyk.io](https://snyk.io/vuln/) |
+
+---
+
+## ✦ 📖 Security Mastery & Strategy
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Trivy: Speed of DevOps** | How to integrate security scans without slowing down builds | [Aqua Blog](https://blog.aquasec.com/trivy-vulnerability-scanner-open-source) |
+| **Trivy vs Snyk vs Grype** | Industrial comparison of leading container scanners | [InfraCloud](https://www.infracloud.io/blogs/trivy-vs-snyk-vs-grype-container-scanning/) |
+| **Container Security Best Practices** | 10 steps to securing your containerized applications | [Docker Blog](https://www.docker.com/blog/container-security-best-practices/) |
+| **OWASP Top 10** | Detailed breakdown of the most critical security risks | [OWASP.org](https://owasp.org/www-project-top-ten/) |
+| **CISA Known Vulnerabilities** | Official list of exploited vulnerabilities to prioritize | [CISA.gov](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) |
