@@ -50,14 +50,29 @@ graph TD
 
 ---
 
-## ✦ 3. Networking Boundaries
+## ✦ 3. Docker Networking Ecosystem
+> **Contributor Insights:** Docker provides several network drivers to handle isolation or multi-host communication.
 
-By default, Docker isolates completely. You must intentionally bridge it natively.
+```mermaid
+graph TD
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
 
-| Network Flag | Effect |
-|---|---|
-| `--network bridge` | Standard isolation. Good for single-node systems. |
-| `--network host` | Obliterates isolation. The container physically takes over the host's direct network card. Dangerous, but extremely low latency. |
+    Bridge["Bridge (Single Host)"]:::active
+    Host["Host (Performance)"]
+    Overlay["Overlay (Multi-Host/Swarm)"]:::active
+    Macvlan["Macvlan (Legacy Layer 2)"]
+    None["None (Isolation)"]
+```
+
+| Driver | Capability | Best For |
+|---|---|---|
+| **Default Bridge** | Private network on host. | Standard development containers. |
+| **Custom Bridge** | User-defined bridge for better name resolution. | Production microservices on a single node. |
+| **Host** | Bypasses networking isolation entirely. | High-performance apps (No port mapping overhead). |
+| **Overlay** | Communication between multiple Docker nodes. | Docker Swarm and distributed services. |
+| **Macvlan** | Assigns a physical MAC address to containers. | Legacy apps needing direct network hardware access. |
+| **None** | Completely disables the networking stack. | Highly secure "Air-gapped" data processing. |
 
 ---
 

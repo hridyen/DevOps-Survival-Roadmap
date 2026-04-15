@@ -14,6 +14,8 @@
 
 IP addresses are for machines; domain names are for humans. Route 53 is the globally distributed service that bridges this gap while providing advanced routing logic for high availability.
 
+> **Why the name "53"?** It refers to the traditional **UDP/TCP Port 53**, which is the industry standard port for DNS traffic resolution.
+
 ```mermaid
 graph LR
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
@@ -27,7 +29,22 @@ graph LR
 
 ---
 
-## ✦ 1. DNS Resolution Architecture
+---
+
+## ✦ 1. DNS Terminology Breakdown
+Understanding the anatomy of a URL is critical for configuring Hosted Zones.
+
+| Term | Detail | Example |
+|---|---|---|
+| **TLD** | Top Level Domain | `.com`, `.org`, `.in` |
+| **SLD** | Second Level Domain | `google`, `amazon`, `example` |
+| **Subdomain** | Prefixed lower level | `api`, `www`, `dev` |
+| **FQDN** | Fully Qualified Domain Name | `api.www.example.com.` |
+| **Authoritative NS** | Server that holds the final answer | Route 53 Name Servers |
+
+---
+
+## ✦ 2. DNS Resolution Architecture
 
 Understanding how a query is resolved globally is essential for troubleshooting latency.
 
@@ -119,6 +136,18 @@ graph TD
 - **DNS Troubleshooting:** Always use `dig` or `nslookup` to verify if a record has propagated. If the result matches what you set in AWS but the browser fails, it's likely a local cache or ISP issue.
 - **Apex Record Strategy:** Always use **Alias** records instead of **CNAME** for your root domain (e.g., `example.com`). This ensures better performance and avoids DNS protocol issues that occur when using CNAME on an apex record. 
 - **Health Check Latency:** Be aware that Route 53 health checks can take 15-30 seconds to detect a failure and another minute for DNS propagation to fully route traffic away. Design your app to handle these brief windows of partial availability.
+
+---
+
+---
+
+## ✦ Contributor Deep Dive: External Integrations
+> **Scenario:** Moving a domain from GoDaddy/Namecheap to AWS Route 53?
+
+1. **Create Hosted Zone** in Route 53 first.
+2. **Retrieve Name Servers** (the 4 unique NS records provided by AWS).
+3. **Update NS Records** on your 3rd party registrar's dashboard.
+4. **Wait for TTL/Propagation** (Domain Registrar != DNS Service).
 
 ---
 

@@ -36,15 +36,33 @@ graph LR
 
 ---
 
-## ✦ 2. User Administration Structures
+## ✦ 2. User & Group Administration
+> **Contributor Insights:** In DevOps environments, managing access via groups (e.g., `sudo`, `docker`) is standard practice for secure CI/CD orchestration.
 
-User identities dictate access controls fundamentally across the entire system.
+### ✦ User Operations
+| Action | Command | Description |
+|---|---|---|
+| **Create** | `useradd <name>` | Adds a new user profile to the system. |
+| **Password** | `passwd <name>` | Sets or changes the user's password. |
+| **Switch** | `su <name>` | Switches the current shell session to another user. |
+| **Modify** | `usermod -l <new> <old>` | Changes the login name of an existing user. |
+| **Delete** | `userdel <name>` | Removes a user profile from the system. |
 
-* `/etc/passwd` — Unmasked log of created users and their home paths.
-* `/etc/shadow` — Masked log storing highly encrypted hash passwords.
-* `sudo` — Grants regular profiles momentary execution abilities reserved strictly for `root`.
+### ✦ Group Operations
+| Action | Command | Description |
+|---|---|---|
+| **Create** | `groupadd <group>` | Adds a new security group. |
+| **Add Member** | `gpasswd -a <user> <grp>` | Appends a user to a specific group. |
+| **Remove Member** | `gpasswd -d <user> <grp>` | Removes a user from a specific group. |
+
+### ✦ Core Configuration Files
+* `/etc/passwd` — Human-readable registry of users and home paths.
+* `/etc/shadow` — Secure storage for encrypted password hashes.
+* `/etc/group` — Registry of all system groups and their members.
+* `sudo` — Temporary privilege elevation for authorized users.
 
 ---
+ Linda
 
 ## ✦ 3. SSH Configurations (Secure Shell)
 

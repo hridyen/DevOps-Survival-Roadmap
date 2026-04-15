@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker Masterclass – Beginner to Advanced | Enterprise Clean DevOps</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ENTERPRISE CLEAN DEVOPS THEME
+   ============================================================ */
+:root {
+  --bg: #F8FAFC;
+  --text: #1E293B;
+  --heading: #0F172A;
+  --accent: #2563EB;
+  --accent-light: #EFF6FF;
+  --accent-mid: #BFDBFE;
+  --code-bg: #E2E8F0;
+  --code-text: #0F172A;
+  --border: #CBD5E1;
+  --surface: #FFFFFF;
+  --surface2: #F1F5F9;
+  --warn: #F59E0B;
+  --danger: #EF4444;
+  --success: #10B981;
+  --muted: #64748B;
+  --max-w: 900px;
+  --radius: 8px;
+  --radius-lg: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 0 1rem;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.page-wrapper {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3rem 0 6rem;
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #1d4ed8 100%);
+  border-radius: var(--radius-lg);
+  padding: 4rem 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(37,99,235,0.35) 0%, transparent 60%);
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(37,99,235,0.3);
+  border: 1px solid rgba(96,165,250,0.4);
+  color: #93C5FD;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.hero h1 span { color: #60A5FA; }
+.hero-sub {
+  color: #94A3B8;
+  font-size: 1.05rem;
+  max-width: 580px;
+  position: relative;
+}
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #CBD5E1;
+  font-size: 0.88rem;
+}
+.hero-meta-item .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── TABLE OF CONTENTS ───────────────────────────────────── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  margin-bottom: 3rem;
+}
+.toc-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+.toc-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+.toc-link:hover { background: var(--accent-light); color: var(--accent); }
+.toc-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* ── PHASE SECTION ───────────────────────────────────────── */
+.phase {
+  margin-bottom: 4rem;
+}
+.phase-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border);
+}
+.phase-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-mid);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  margin-top: 0.35rem;
+}
+.phase-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--heading);
+  line-height: 1.15;
+}
+.phase-subtitle {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* ── CONTENT CARDS ───────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+.card-warn {
+  border-left: 3px solid var(--warn);
+  background: #FFFBEB;
+}
+.card-danger {
+  border-left: 3px solid var(--danger);
+  background: #FFF5F5;
+}
+.card-success {
+  border-left: 3px solid var(--success);
+  background: #F0FDF4;
+}
+.card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.card-accent .card-label { color: var(--accent); }
+.card-warn .card-label { color: #B45309; }
+.card-danger .card-label { color: #B91C1C; }
+.card-success .card-label { color: #065F46; }
+
+/* ── HEADINGS IN CONTENT ─────────────────────────────────── */
+h2.section-h {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--heading);
+  margin: 2rem 0 0.75rem;
+}
+h3.sub-h {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin: 1.5rem 0 0.5rem;
+}
+
+/* ── PARAGRAPH ───────────────────────────────────────────── */
+p { margin-bottom: 0.9rem; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; color: var(--heading); }
+em { font-style: italic; color: var(--muted); }
+
+/* ── CODE ────────────────────────────────────────────────── */
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-weight: 500;
+}
+pre {
+  background: #0F172A;
+  border-radius: var(--radius);
+  padding: 1.4rem 1.6rem;
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  position: relative;
+  border: 1px solid #1E293B;
+}
+pre code {
+  background: none;
+  color: #E2E8F0;
+  font-size: 0.88rem;
+  padding: 0;
+  font-weight: 400;
+  white-space: pre;
+  line-height: 1.7;
+}
+.pre-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+}
+/* syntax highlight classes */
+.kw { color: #7DD3FC; font-weight: 600; }
+.cm { color: #64748B; font-style: italic; }
+.st { color: #86EFAC; }
+.nm { color: #FCA5A5; }
+.fn { color: #C4B5FD; }
+.op { color: #94A3B8; }
+
+/* ── ASCII DIAGRAM ───────────────────────────────────────── */
+.ascii-box {
+  background: #0F172A;
+  border: 1px solid #1E3A5F;
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin: 1.2rem 0 1.5rem;
+  overflow-x: auto;
+}
+.ascii-box pre code {
+  color: #38BDF8;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.ascii-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #2563EB;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* ── INTERVIEW Q&A ───────────────────────────────────────── */
+.qa-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+.qa-q {
+  background: var(--surface2);
+  padding: 0.85rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--heading);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.qa-q::before {
+  content: 'Q';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-mid);
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.qa-a {
+  padding: 0.85rem 1.2rem 0.9rem 3rem;
+  font-size: 0.93rem;
+  background: var(--surface);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+}
+
+/* ── DIVIDER ─────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* ── HIGHLIGHT INLINE ────────────────────────────────────── */
+.hl { color: var(--accent); font-weight: 600; }
+.tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 100px;
+  margin-right: 0.3rem;
+}
+.tag-blue { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-mid); }
+.tag-green { background: #F0FDF4; color: #065F46; border: 1px solid #A7F3D0; }
+.tag-orange { background: #FFFBEB; color: #92400E; border: 1px solid #FDE68A; }
+.tag-red { background: #FFF5F5; color: #B91C1C; border: 1px solid #FECACA; }
+
+/* ── LIST ────────────────────────────────────────────────── */
+ul.styled, ol.styled {
+  padding-left: 1.4rem;
+  margin: 0.5rem 0 1rem;
+}
+ul.styled li, ol.styled li {
+  margin-bottom: 0.4rem;
+  font-size: 0.97rem;
+}
+ul.styled li::marker { color: var(--accent); }
+
+/* ── FINAL PROJECT BOX ───────────────────────────────────── */
+.project-banner {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  color: #E2E8F0;
+  position: relative;
+  overflow: hidden;
+}
+.project-banner::after {
+  content: '🐳';
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+  font-size: 5rem;
+  opacity: 0.08;
+}
+.project-banner h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #FFF;
+  margin-bottom: 0.5rem;
+}
+.project-banner p { color: #94A3B8; margin-bottom: 0; }
+
+/* ── MINDSET SECTION ─────────────────────────────────────── */
+.mindset {
+  background: linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
+  border: 1px solid var(--accent-mid);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-top: 3rem;
+}
+.mindset h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--heading);
+  margin-bottom: 1rem;
+}
+
+/* ── RESUME CARD ─────────────────────────────────────────── */
+.resume-card {
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+.resume-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+/* ── STEP ROW ────────────────────────────────────────────── */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+.step-body { font-size: 0.95rem; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 2.5rem 1.5rem; }
+  .card { padding: 1.25rem 1.3rem; }
+  .toc { padding: 1.5rem; }
+  .ascii-box { padding: 1rem 0.9rem; }
+  pre { padding: 1rem 1rem; }
+  .phase-header { flex-direction: column; gap: 0.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-badge">🐳 Complete Docker Masterclass</div>
+  <h1>Docker <span>Beginner se</span><br>Advanced Tak</h1>
+  <p class="hero-sub">Ek production-grade containerization course — Hinglish mein, real-world examples ke saath. DevOps engineers jo Docker sochte hain, unke jaise sochna seekho.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="dot"></span> 10 Phases</div>
+    <div class="hero-meta-item"><span class="dot"></span> Real Production Examples</div>
+    <div class="hero-meta-item"><span class="dot"></span> Interview Prep Included</div>
+    <div class="hero-meta-item"><span class="dot"></span> Final Hands-On Project</div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     TABLE OF CONTENTS
+══════════════════════════════════════════ -->
+<div class="toc">
+  <div class="toc-title">📋 Course Structure</div>
+  <div class="toc-grid">
+    <a href="#p1" class="toc-link"><span class="toc-num">01</span>Containerization Mental Model</a>
+    <a href="#p2" class="toc-link"><span class="toc-num">02</span>Docker Architecture</a>
+    <a href="#p3" class="toc-link"><span class="toc-num">03</span>First Containers Chalana</a>
+    <a href="#p4" class="toc-link"><span class="toc-num">04</span>Images &amp; Dockerfile</a>
+    <a href="#p5" class="toc-link"><span class="toc-num">05</span>Container Networking</a>
+    <a href="#p6" class="toc-link"><span class="toc-num">06</span>Volumes &amp; Data Persistence</a>
+    <a href="#p7" class="toc-link"><span class="toc-num">07</span>Docker Compose</a>
+    <a href="#p8" class="toc-link"><span class="toc-num">08</span>Debugging &amp; Troubleshooting</a>
+    <a href="#p9" class="toc-link"><span class="toc-num">09</span>Docker in CI/CD</a>
+    <a href="#p10" class="toc-link"><span class="toc-num">10</span>Production Best Practices</a>
+    <a href="#proj" class="toc-link"><span class="toc-num">🎯</span>Final Project</a>
+    <a href="#interview" class="toc-link"><span class="toc-num">💼</span>Interview Questions</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 1 – MENTAL MODEL
+══════════════════════════════════════════ -->
+<section class="phase" id="p1">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 01</span>
+    <div>
+      <div class="phase-title">Containerization Mental Model</div>
+      <div class="phase-subtitle">Problem kya tha? Docker ne kaise solve kiya?</div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🎯 Simple Explanation</div>
+    <p>Imagine karo ek developer ne apni machine par ek Node.js app banai. Sab kuch perfectly kaam kar raha tha. Usne apne colleague ko code diya, aur colleague bola — <strong>"Mere machine pe nahi chal raha!"</strong></p>
+    <p>Kyun? Kyunki dono ki machines alag thi. Alag OS, alag Node version, alag libraries. <strong>Docker isi problem ka solution hai.</strong></p>
+    <p>Docker ek technology hai jo application ko uske saare dependencies ke saath ek "box" mein pack kar deti hai — jise <strong>container</strong> kehte hain. Ye container kisi bhi machine pe exactly same tarah se chalega.</p>
+  </div>
+
+  <h2 class="section-h">🕰️ Life Before Containers — The Dark Age</h2>
+  <div class="card">
+    <p>2010 se pehle ka ek typical SaaS company ka setup socho:</p>
+    <ul class="styled">
+      <li>Developer apni local machine pe code likhta tha (Windows/Mac)</li>
+      <li>QA team kisi aur OS pe test karti thi</li>
+      <li>Production server pe alag Linux version hota tha</li>
+      <li>Deployment hoti thi FTP ya manual SSH se</li>
+      <li>Result: <strong>"Works on my machine"</strong> — ye sabse badi problem thi</li>
+    </ul>
+    <p>Isse <strong>environment inconsistency problem</strong> kehte hain. Ek software ek jagah kaam kare, doosri jagah na kare.</p>
+  </div>
+
+  <h2 class="section-h">⚔️ Virtual Machines vs Containers</h2>
+  <div class="card">
+    <p>Pehle VMs (Virtual Machines) aai thi is problem solve karne ke liye. Par VMs heavy hoti hain — ek puri OS ka clone. Containers lightweight hain — sirf application aur uski dependencies.</p>
+  </div>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Architecture Comparison</div>
+    <pre><code>
+┌─────────────────────────────────────┐   ┌─────────────────────────────────────┐
+│       VIRTUAL MACHINE (VM)          │   │          CONTAINER                  │
+├─────────────────────────────────────┤   ├─────────────────────────────────────┤
+│  App A    │  App B    │  App C      │   │  App A  │  App B  │  App C          │
+│  Libs     │  Libs     │  Libs       │   │  Libs   │  Libs   │  Libs           │
+│  Guest OS │  Guest OS │  Guest OS   │   ├─────────────────────────────────────┤
+├─────────────────────────────────────┤   │         Docker Engine               │
+│           Hypervisor                │   ├─────────────────────────────────────┤
+├─────────────────────────────────────┤   │              HOST OS                │
+│              HOST OS                │   ├─────────────────────────────────────┤
+├─────────────────────────────────────┤   │           Physical Server           │
+│           Physical Server           │   └─────────────────────────────────────┘
+└─────────────────────────────────────┘
+
+  VM: Heavy (GBs), Boot: minutes          Container: Light (MBs), Boot: seconds
+  Full OS per VM                          Shared Host OS Kernel
+</code></pre>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🚢 Real-Life Analogy</div>
+    <p><strong>Shipping Container Analogy:</strong> 1960 se pehle, ships mein loose saman hota tha. Har port pe unload-reload mein ghante lagte the. Malcom McLean ne standardized shipping container introduce kiya — ek box jo kisi bhi ship, truck, ya crane pe fit ho jaaye.</p>
+    <p>Docker containers exactly aise hi hain. Aapka application ek standardized box mein hai jo <strong>laptop, cloud server, ya production environment</strong> — kahin bhi exactly same chal sakta hai.</p>
+  </div>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Docker Complete Stack</div>
+    <pre><code>
+    ┌──────────────────────────────────────┐
+    │          Physical Server              │
+    │  ┌────────────────────────────────┐  │
+    │  │          Host OS (Linux)       │  │
+    │  │  ┌──────────────────────────┐  │  │
+    │  │  │      Docker Engine       │  │  │
+    │  │  │  ┌───────┐  ┌────────┐  │  │  │
+    │  │  │  │  App  │  │  App  │  │  │  │
+    │  │  │  │  Con- │  │  Con- │  │  │  │
+    │  │  │  │tainer1│  │tainer2│  │  │  │
+    │  │  │  └───────┘  └────────┘  │  │  │
+    │  │  └──────────────────────────┘  │  │
+    │  └────────────────────────────────┘  │
+    └──────────────────────────────────────┘
+</code></pre>
+  </div>
+
+  <div class="card card-success">
+    <div class="card-label">🏢 Companies Docker Use Kyun Karti Hain?</div>
+    <p><strong>Netflix:</strong> 700+ microservices independently deploy karta hai. Bina Docker ke ye impossible hota.</p>
+    <p><strong>Amazon:</strong> AWS ka ECS aur EKS entirely container-based hai. Har second mein thousands of containers spin up/down hoti hain.</p>
+    <p><strong>Startups:</strong> Ek developer bhi puri production infrastructure apne laptop pe locally run kar sakta hai — PostgreSQL, Redis, backend, frontend sab ek saath.</p>
+  </div>
+
+  <div class="card card-warn">
+    <div class="card-label">💼 Interview Perspective</div>
+    <p><strong>Q: VM aur Container mein kya difference hai?</strong></p>
+    <p>Answer mein ye points cover karo: VM mein poora Guest OS hota hai (heavy, GB mein), Container sirf process isolation provide karta hai Host OS ke upar (lightweight, MB mein). Boot time VM ka minutes, container ka seconds. Container zyada portable hai.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 2 – DOCKER ARCHITECTURE
+══════════════════════════════════════════ -->
+<section class="phase" id="p2">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 02</span>
+    <div>
+      <div class="phase-title">Docker Architecture Deep Dive</div>
+      <div class="phase-subtitle">Andar se kaise kaam karta hai Docker?</div>
+    </div>
+  </div>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Docker Architecture</div>
+    <pre><code>
+  ┌─────────────────────────────────────────────────────────────┐
+  │                       Docker Client (CLI)                    │
+  │          docker build / docker run / docker pull            │
+  └────────────────────────────┬────────────────────────────────┘
+                               │ REST API (Unix Socket)
+  ┌────────────────────────────▼────────────────────────────────┐
+  │                      Docker Daemon (dockerd)                 │
+  │                                                             │
+  │  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐  │
+  │  │   Images    │  │  Containers  │  │     Networks      │  │
+  │  └─────────────┘  └──────────────┘  └───────────────────┘  │
+  │  ┌─────────────────────────────────────────────────────┐    │
+  │  │              Volumes / Storage                      │    │
+  │  └─────────────────────────────────────────────────────┘    │
+  └────────────────────────────┬────────────────────────────────┘
+                               │
+  ┌────────────────────────────▼────────────────────────────────┐
+  │                    Docker Registry                           │
+  │        (Docker Hub / AWS ECR / Private Registry)            │
+  └─────────────────────────────────────────────────────────────┘
+</code></pre>
+  </div>
+
+  <h2 class="section-h">🔩 Components Ka Explanation</h2>
+
+  <div class="card card-accent">
+    <div class="card-label">1️⃣ Docker Engine</div>
+    <p>Docker ka core hai. Ye ek client-server application hai. Isme <strong>Docker Daemon</strong> (server side) aur <strong>Docker CLI</strong> (client side) hoti hai. Engine hi containers ko manage karta hai.</p>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">2️⃣ Docker Daemon (dockerd)</div>
+    <p>Background mein chalne wala process. Jab tum <code>docker run nginx</code> likhte ho, ye daemon hi actually container create karta hai. Ye Linux ke <strong>namespaces</strong> aur <strong>cgroups</strong> use karta hai isolation ke liye.</p>
+    <p><strong>Internally:</strong> Namespaces process, network, filesystem isolate karte hain. Cgroups CPU aur memory limits set karte hain.</p>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">3️⃣ Docker Image</div>
+    <p>Ek <strong>read-only blueprint/template</strong> hai container ka. Jaise class aur object mein class ek blueprint hoti hai. Image se container create hota hai.</p>
+    <p>Images <strong>layers</strong> se bani hoti hain — har Dockerfile instruction ek layer add karta hai. Ye layers cached hoti hain, isliye builds fast hoti hain.</p>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">4️⃣ Docker Container</div>
+    <p>Image ka ek running instance. Ek image se kai containers bana sakte ho. Container ke andar ek <strong>writable layer</strong> hoti hai — is layer mein changes store hote hain.</p>
+    <p><strong>Important:</strong> Container stop/delete hone par ye writable layer destroy ho jaati hai! Data persist karne ke liye Volumes use karte hain.</p>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">5️⃣ Docker Registry</div>
+    <p>Images ka central store. <strong>Docker Hub</strong> public registry hai. Companies apni private images <strong>AWS ECR, Google GCR, ya private registry</strong> mein rakhti hain.</p>
+    <p><code>docker pull</code> registry se image download karta hai. <code>docker push</code> image upload karta hai.</p>
+  </div>
+
+  <h2 class="section-h">🔄 Container Lifecycle</h2>
+  <div class="ascii-box">
+    <div class="ascii-title">Container States</div>
+    <pre><code>
+  docker run
+      │
+      ▼
+  ┌──────────┐   docker stop    ┌──────────┐
+  │ Running  │ ──────────────▶  │ Stopped  │
+  │          │ ◀──────────────  │          │
+  └────┬─────┘   docker start   └────┬─────┘
+       │                             │
+       │ docker pause                │ docker rm
+       ▼                             ▼
+  ┌──────────┐                  ┌──────────┐
+  │  Paused  │                  │ Removed  │
+  │          │ ─ docker unpause │(Deleted) │
+  └──────────┘                  └──────────┘
+</code></pre>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 3 – RUNNING FIRST CONTAINERS
+══════════════════════════════════════════ -->
+<section class="phase" id="p3">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 03</span>
+    <div>
+      <div class="phase-title">Pehla Container Chalana</div>
+      <div class="phase-subtitle">Step-by-step commands with internals explanation</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>Chalo pehla container chalate hain — Nginx web server. Ye ek classic example hai jo production mein bhi use hota hai.</p>
+  </div>
+
+  <h2 class="section-h">🚀 docker run — Andar se Kya Hota Hai?</h2>
+  <span class="pre-label">Terminal</span>
+  <pre><code><span class="cm"># Basic run command</span>
+<span class="kw">docker run</span> nginx
+
+<span class="cm"># Port mapping ke saath (IMPORTANT!)</span>
+<span class="kw">docker run</span> <span class="op">-p</span> <span class="nm">8080:80</span> nginx
+
+<span class="cm"># Background mein chalana (detached mode)</span>
+<span class="kw">docker run</span> <span class="op">-d</span> <span class="op">-p</span> <span class="nm">8080:80</span> <span class="op">--name</span> my-nginx nginx
+
+<span class="cm"># Ab browser mein jao: http://localhost:8080</span></code></pre>
+
+  <div class="card card-accent">
+    <div class="card-label">🔍 Internally Kya Hota Hai docker run Mein?</div>
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><div class="step-body">Docker CLI daemon ko REST API call bhejta hai</div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-body">Daemon local cache mein <code>nginx</code> image dhoondta hai</div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-body">Image nahi mili toh Docker Hub se <code>docker pull nginx</code> automatically hota hai</div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-body">Image se container create hota hai (writable layer add hoti hai)</div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-body">Network namespace, mount namespace allocate hoti hai</div></div>
+      <div class="step"><span class="step-num">6</span><div class="step-body">Container process start hoti hai (nginx master process)</div></div>
+      <div class="step"><span class="step-num">7</span><div class="step-body">Port mapping 8080 → 80 configure hoti hai</div></div>
+    </div>
+  </div>
+
+  <h2 class="section-h">📋 Essential Commands</h2>
+  <span class="pre-label">Container Management</span>
+  <pre><code><span class="cm"># Running containers dekhna</span>
+<span class="kw">docker ps</span>
+
+<span class="cm"># Sab containers dekhna (stopped bhi)</span>
+<span class="kw">docker ps</span> <span class="op">-a</span>
+
+<span class="cm"># Container ke logs dekhna</span>
+<span class="kw">docker logs</span> my-nginx
+
+<span class="cm"># Live logs follow karna (tail -f jaisa)</span>
+<span class="kw">docker logs</span> <span class="op">-f</span> my-nginx
+
+<span class="cm"># Container rok na</span>
+<span class="kw">docker stop</span> my-nginx
+
+<span class="cm"># Container delete karna</span>
+<span class="kw">docker rm</span> my-nginx
+
+<span class="cm"># Roko aur delete ek saath</span>
+<span class="kw">docker rm</span> <span class="op">-f</span> my-nginx
+
+<span class="cm"># Saare stopped containers clean karna</span>
+<span class="kw">docker container prune</span></code></pre>
+
+  <div class="card card-danger">
+    <div class="card-label">⚠️ Common Beginner Mistakes</div>
+    <p><strong>Mistake 1 — Port Mapping Bhool Jaana:</strong></p>
+    <p><code>docker run nginx</code> chalate ho aur browser mein kuch nahi aata. Reason: <strong>port expose nahi kiya!</strong> Hamesha <code>-p HOST_PORT:CONTAINER_PORT</code> use karo.</p>
+    <p><strong>Mistake 2 — Container Immediately Exit:</strong></p>
+    <p>Kuch containers immediately exit ho jaate hain. Ye tab hota hai jab container ka main process khatam ho jaata hai. Example: <code>docker run ubuntu</code> turant exit karta hai kyunki koi process background mein nahi chal raha. Fix: <code>docker run -it ubuntu bash</code></p>
+    <p><strong>Mistake 3 — Container Ko Galat Name Se Refer Karna:</strong></p>
+    <p><code>--name</code> flag se naam do warna Docker random naam assign karta hai jaise <code>nervous_einstein</code>!</p>
+  </div>
+
+  <div class="card card-warn">
+    <div class="card-label">💼 Interview Question</div>
+    <p><strong>Q: <code>docker run -d -p 8080:80 nginx</code> mein <code>-d</code> aur <code>-p</code> kya karte hain?</strong></p>
+    <p><code>-d</code> (detached) container ko background mein chalata hai, terminal block nahi hoti. <code>-p 8080:80</code> host machine ka port 8080 container ke port 80 se map karta hai — yani browser se <code>localhost:8080</code> par jaao toh container ka port 80 access hoga.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 4 – IMAGES & DOCKERFILE
+══════════════════════════════════════════ -->
+<section class="phase" id="p4">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 04</span>
+    <div>
+      <div class="phase-title">Docker Images &amp; Dockerfile</div>
+      <div class="phase-subtitle">Apni custom image kaise banate hain?</div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🎯 Image Kya Hoti Hai?</div>
+    <p>Docker image ek <strong>immutable (unchangeable) layered filesystem</strong> hai. Isko ek "snapshot" socho — har instruction ek naya layer add karta hai.</p>
+    <p><strong>Real-life analogy:</strong> Socho ek cake recipe. <code>FROM</code> = plain sponge base. <code>RUN</code> = ingredients add karo. <code>COPY</code> = frosting lagao. Final cake = Docker Image!</p>
+  </div>
+
+  <h2 class="section-h">📄 Dockerfile — Node.js App Example</h2>
+  <span class="pre-label">Dockerfile — Node.js Application</span>
+  <pre><code><span class="cm"># Step 1: Base image choose karo</span>
+<span class="cm"># node:18-alpine = Node.js 18 on Alpine Linux (lightweight - ~50MB)</span>
+<span class="kw">FROM</span> node:18-alpine
+
+<span class="cm"># Step 2: Working directory set karo container ke andar</span>
+<span class="cm"># Aage ke saare commands is directory se run honge</span>
+<span class="kw">WORKDIR</span> /app
+
+<span class="cm"># Step 3: package.json PEHLE copy karo (layer caching trick!)</span>
+<span class="cm"># Isse npm install tab hi dobara chalega jab package.json change ho</span>
+<span class="kw">COPY</span> package*.json ./
+
+<span class="cm"># Step 4: Dependencies install karo</span>
+<span class="kw">RUN</span> npm ci --only=production
+
+<span class="cm"># Step 5: Baaki code copy karo</span>
+<span class="kw">COPY</span> . .
+
+<span class="cm"># Step 6: App kaunse port pe sunta hai</span>
+<span class="kw">EXPOSE</span> 3000
+
+<span class="cm"># Step 7: Container start hone par kya chalana hai</span>
+<span class="kw">CMD</span> [<span class="st">"node"</span>, <span class="st">"server.js"</span>]</code></pre>
+
+  <div class="card card-accent">
+    <div class="card-label">🔍 Har Line Ka Explanation</div>
+    <p><span class="tag tag-blue">FROM</span> Base image specify karta hai. <code>node:18-alpine</code> use karo kyunki alpine Linux bohot lightweight hai (50MB vs 900MB regular node image).</p>
+    <p><span class="tag tag-blue">WORKDIR</span> Container ke andar working directory set karta hai. Agar exist nahi karta toh create karta hai. Hamesha absolute path use karo.</p>
+    <p><span class="tag tag-blue">COPY package*.json</span> <strong>Critical optimization!</strong> Pehle sirf package.json copy karo. Isse Docker cache karta hai npm install layer ko. Agar sirf code change hua (package.json nahi) toh Docker npm install dobara nahi chalata — builds fast ho jaati hain!</p>
+    <p><span class="tag tag-blue">RUN npm ci</span> <code>npm install</code> se better hai production mein. <code>ci</code> package-lock.json se exact versions install karta hai — consistent builds guarantee karta hai.</p>
+    <p><span class="tag tag-blue">EXPOSE</span> Sirf documentation hai — actually port expose nahi karta. <code>docker run -p</code> se actual port mapping hoti hai.</p>
+    <p><span class="tag tag-blue">CMD</span> Container start par default command. Override ho sakti hai <code>docker run image_name node other.js</code> se.</p>
+  </div>
+
+  <h2 class="section-h">🔨 Build Commands</h2>
+  <span class="pre-label">Building & Managing Images</span>
+  <pre><code><span class="cm"># Image build karo current directory ke Dockerfile se</span>
+<span class="kw">docker build</span> <span class="op">-t</span> my-node-app<span class="op">:</span>1.0 .
+
+<span class="cm"># Build cache ignore karo (fresh build)</span>
+<span class="kw">docker build</span> <span class="op">--no-cache</span> <span class="op">-t</span> my-node-app<span class="op">:</span>1.0 .
+
+<span class="cm"># Saari local images dekhna</span>
+<span class="kw">docker images</span>
+
+<span class="cm"># Image ki details dekhna (layers, config)</span>
+<span class="kw">docker image inspect</span> my-node-app<span class="op">:</span>1.0
+
+<span class="cm"># Image ki history / layers dekhna</span>
+<span class="kw">docker image history</span> my-node-app<span class="op">:</span>1.0
+
+<span class="cm"># Unused images clean karna</span>
+<span class="kw">docker image prune</span> <span class="op">-a</span></code></pre>
+
+  <h2 class="section-h">⚡ Image Layer Caching — Production Optimization</h2>
+  <div class="ascii-box">
+    <div class="ascii-title">Dockerfile Layer Caching</div>
+    <pre><code>
+  ┌─────────────────────────────────────────────────┐
+  │  FROM node:18-alpine         ← Layer 1 (Cached) │
+  ├─────────────────────────────────────────────────┤
+  │  WORKDIR /app                ← Layer 2 (Cached) │
+  ├─────────────────────────────────────────────────┤
+  │  COPY package*.json ./       ← Layer 3 (Cached) │  ◀── package.json nahi
+  ├─────────────────────────────────────────────────┤       badla toh CACHE HIT!
+  │  RUN npm install             ← Layer 4 (Cached) │
+  ├─────────────────────────────────────────────────┤
+  │  COPY . .                    ← Layer 5 (REBUILT) │  ◀── Code change = sirf
+  ├─────────────────────────────────────────────────┤       ye layer rebuild
+  │  CMD ["node", "server.js"]   ← Layer 6 (REBUILT) │
+  └─────────────────────────────────────────────────┘
+
+  Result: npm install dobara nahi chala → Build 3 minutes → 30 seconds!
+</code></pre>
+  </div>
+
+  <div class="card card-warn">
+    <div class="card-label">💼 Interview Perspective</div>
+    <p><strong>Q: Docker image layers kaise kaam karti hain aur build speed optimize karne ka kya tarika hai?</strong></p>
+    <p>Answer: Docker har instruction ke liye ek read-only layer banata hai. Build ke time, agar ek layer change nahi hui toh Docker cached version use karta hai. Optimization trick: frequently changing files (application code) ko Dockerfile ke end mein rako, aur rarely changing files (package.json, system dependencies) ko upar rako. Is tarah frequently changing cheezein sirf apni aur uske neeche ki layers rebuild karengi.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 5 – NETWORKING
+══════════════════════════════════════════ -->
+<section class="phase" id="p5">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 05</span>
+    <div>
+      <div class="phase-title">Container Networking</div>
+      <div class="phase-subtitle">Containers aapas mein kaise baat karte hain?</div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🌐 Network Kyun Zaroori Hai?</div>
+    <p>Real world mein sirf ek container nahi hota. Tumhari app mein frontend, backend, database sab alag containers mein hote hain. Inhe aapas mein communicate karna hota hai — isliye container networking samajhna zaroori hai.</p>
+  </div>
+
+  <h2 class="section-h">🔗 Network Types</h2>
+
+  <div class="card">
+    <p><strong>Bridge Network (Default):</strong> Jab tum container chalate ho without specifying network, ye automatically <code>bridge</code> network pe hota hai. Containers ek virtual switch se connected hote hain.</p>
+    <p><strong>Host Network:</strong> Container directly host ke network use karta hai. No isolation — container ka port directly host ka port ban jaata hai.</p>
+    <p><strong>Custom Bridge Network (Recommended for Production):</strong> Apna custom network banao. Is mein containers ek doosre ko <strong>name se resolve kar sakte hain</strong> (DNS automatic hota hai).</p>
+  </div>
+
+  <span class="pre-label">Network Commands</span>
+  <pre><code><span class="cm"># Custom network banana</span>
+<span class="kw">docker network create</span> my-app-network
+
+<span class="cm"># Network pe container chalana</span>
+<span class="kw">docker run</span> <span class="op">-d</span> <span class="op">--name</span> backend <span class="op">--network</span> my-app-network my-backend-image
+
+<span class="kw">docker run</span> <span class="op">-d</span> <span class="op">--name</span> database <span class="op">--network</span> my-app-network postgres:15
+
+<span class="cm"># Backend container se database ko naam se access kar sakte ho:</span>
+<span class="cm"># Connection string: postgresql://database:5432/mydb</span>
+<span class="cm"># "database" naam se directly connect ho sakta hai!</span>
+
+<span class="cm"># Saari networks dekhna</span>
+<span class="kw">docker network ls</span>
+
+<span class="cm"># Network ki details inspect karna</span>
+<span class="kw">docker network inspect</span> my-app-network</code></pre>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Container Network Communication</div>
+    <pre><code>
+  ┌──────────────────────────────────────────────────────────────┐
+  │                    Host Machine                              │
+  │                                                              │
+  │  Browser ──── port 3000 ──▶  ┌─────────────────────────┐   │
+  │                              │   my-app-network (bridge) │   │
+  │                              │                           │   │
+  │                              │  ┌──────────┐            │   │
+  │                              │  │ frontend  │            │   │
+  │                              │  │  :3000   │            │   │
+  │                              │  └─────┬────┘            │   │
+  │                              │        │ http://backend   │   │
+  │                              │        │ (DNS by name!)   │   │
+  │                              │  ┌─────▼────┐            │   │
+  │                              │  │ backend   │            │   │
+  │                              │  │  :5000   │            │   │
+  │                              │  └─────┬────┘            │   │
+  │                              │        │ postgresql://    │   │
+  │                              │        │ database:5432    │   │
+  │                              │  ┌─────▼────┐            │   │
+  │                              │  │ database  │            │   │
+  │                              │  │  :5432   │            │   │
+  │                              │  └──────────┘            │   │
+  │                              └─────────────────────────┘   │
+  └──────────────────────────────────────────────────────────────┘
+</code></pre>
+  </div>
+
+  <div class="card card-danger">
+    <div class="card-label">⚠️ Common Beginner Mistake</div>
+    <p><strong>Default bridge network mein DNS nahi kaam karta!</strong></p>
+    <p>Agar tum default bridge network use karte ho, containers ek doosre ko naam se nahi, sirf IP address se access kar sakte hain. IP dynamic rehti hai — container restart hone par change ho sakti hai!</p>
+    <p><strong>Fix:</strong> Hamesha custom bridge network banao. Usme automatic DNS hota hai — container naam se hi resolve hota hai.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 6 – VOLUMES
+══════════════════════════════════════════ -->
+<section class="phase" id="p6">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 06</span>
+    <div>
+      <div class="phase-title">Volumes &amp; Data Persistence</div>
+      <div class="phase-subtitle">Container delete hone par data kaise bachate hain?</div>
+    </div>
+  </div>
+
+  <div class="card card-danger">
+    <div class="card-label">🔥 The Biggest Beginner Mistake</div>
+    <p><strong>Containers are ephemeral (temporary)!</strong></p>
+    <p>Ek naya developer ne PostgreSQL container mein 3 mahine ka data daala. Ek din unhone <code>docker rm postgres-container</code> chala diya. Saara data gayab! Database ka saara data container ke saath delete ho gaya.</p>
+    <p><strong>Kyun?</strong> Container ka filesystem by default temporary hota hai — container delete hone par sab kuch jaata hai. Ye Docker ka "stateless" design hai.</p>
+  </div>
+
+  <h2 class="section-h">💾 Volumes — Data Bachane Ka Tarika</h2>
+
+  <div class="card card-accent">
+    <div class="card-label">Volume Kya Hai?</div>
+    <p>Volume Docker ke manage kiya hua storage hai — host machine pe ek special location mein. Container delete ho jaaye, volume bacha rehta hai. New container usi volume se data paata hai.</p>
+    <p><strong>Analogy:</strong> Container ek hotel room hai. Volume ek safe deposit box hai bank mein. Room check out karo, safe deposit box theek hai.</p>
+  </div>
+
+  <span class="pre-label">Volume Commands</span>
+  <pre><code><span class="cm"># Volume create karna</span>
+<span class="kw">docker volume create</span> postgres-data
+
+<span class="cm"># Saare volumes dekhna</span>
+<span class="kw">docker volume ls</span>
+
+<span class="cm"># Volume ki details inspect karna</span>
+<span class="kw">docker volume inspect</span> postgres-data
+
+<span class="cm"># PostgreSQL container volume ke saath chalana</span>
+<span class="kw">docker run</span> <span class="op">-d</span> \
+  <span class="op">--name</span> postgres-db \
+  <span class="op">-e</span> POSTGRES_PASSWORD=mypassword \
+  <span class="op">-e</span> POSTGRES_DB=myapp \
+  <span class="op">-v</span> postgres-data:/var/lib/postgresql/data \
+  <span class="op">-p</span> <span class="nm">5432:5432</span> \
+  postgres:15
+
+<span class="cm"># Ab container delete karo...</span>
+<span class="kw">docker rm</span> <span class="op">-f</span> postgres-db
+
+<span class="cm"># Dobara chalao same volume ke saath...</span>
+<span class="kw">docker run</span> <span class="op">-d</span> <span class="op">--name</span> postgres-db <span class="op">-v</span> postgres-data:/var/lib/postgresql/data postgres:15
+
+<span class="cm"># Data WAPAS aa jayega! Volume safe tha!</span>
+
+<span class="cm"># Unused volumes clean karna</span>
+<span class="kw">docker volume prune</span></code></pre>
+
+  <h2 class="section-h">📁 Bind Mounts — Local Development Ke Liye</h2>
+  <div class="card">
+    <p>Bind mount mein host machine ki specific directory container se directly link hoti hai. Development mein useful hai — local file edit karo, container mein instantly reflect hoga (hot reload!).</p>
+  </div>
+  <span class="pre-label">Bind Mount Example</span>
+  <pre><code><span class="cm"># Host directory /my/local/code → Container /app</span>
+<span class="kw">docker run</span> <span class="op">-d</span> \
+  <span class="op">-v</span> /my/local/code:/app \
+  <span class="op">-p</span> <span class="nm">3000:3000</span> \
+  my-node-app
+
+<span class="cm"># Mac/Windows pe:</span>
+<span class="kw">docker run</span> <span class="op">-d</span> \
+  <span class="op">-v</span> <span class="st">$(pwd)</span>:/app \
+  <span class="op">-p</span> <span class="nm">3000:3000</span> \
+  my-node-app</code></pre>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Volume vs Bind Mount</div>
+    <pre><code>
+  VOLUME                              BIND MOUNT
+  ┌─────────────────┐                ┌─────────────────────┐
+  │  Container      │                │  Container           │
+  │  /var/lib/psql  │                │  /app                │
+  └────────┬────────┘                └──────────┬───────────┘
+           │                                    │
+           │ Docker managed                     │ Direct link
+           ▼                                    ▼
+  ┌─────────────────┐                ┌─────────────────────┐
+  │ Docker Volume   │                │ Host: /my/code       │
+  │ /var/lib/docker │                │ (your actual files!) │
+  │ /volumes/...    │                └─────────────────────┘
+  └─────────────────┘
+
+  ✅ Production databases          ✅ Local development
+  ✅ Docker manages location       ✅ Direct file editing
+  ✅ Better performance on Linux   ⚠️  Slower on Mac/Windows
+</code></pre>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 7 – DOCKER COMPOSE
+══════════════════════════════════════════ -->
+<section class="phase" id="p7">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 07</span>
+    <div>
+      <div class="phase-title">Docker Compose — Multi-Container Apps</div>
+      <div class="phase-subtitle">Puri application ek command mein start karo</div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🎯 Docker Compose Kyun Chahiye?</div>
+    <p>Socho tum ek app chalate ho jisme 3 containers hain: frontend, backend, database. Har baar manually teen commands likhna, network banana, volumes configure karna — boring aur error-prone hai.</p>
+    <p><strong>Docker Compose</strong> ek YAML file hai jisme puri application ki definition hoti hai. Ek command <code>docker-compose up</code> — sab kuch start. Ek command <code>docker-compose down</code> — sab kuch band.</p>
+    <p><strong>Analogy:</strong> Docker Compose ek orchestra conductor hai. Sab musicians (containers) ke baare mein jaanta hai aur sab ko saath mein play karaata hai.</p>
+  </div>
+
+  <span class="pre-label">docker-compose.yml — Complete Full Stack App</span>
+  <pre><code><span class="kw">version:</span> <span class="st">'3.9'</span>
+
+<span class="kw">services:</span>
+
+  <span class="cm"># ── Frontend Service ──────────────────────────</span>
+  <span class="fn">frontend:</span>
+    <span class="kw">build:</span>
+      <span class="kw">context:</span> ./frontend
+      <span class="kw">dockerfile:</span> Dockerfile
+    <span class="kw">ports:</span>
+      <span class="op">-</span> <span class="st">"3000:3000"</span>
+    <span class="kw">environment:</span>
+      <span class="op">-</span> REACT_APP_API_URL=http://localhost:5000
+    <span class="kw">depends_on:</span>
+      <span class="op">-</span> backend
+    <span class="kw">networks:</span>
+      <span class="op">-</span> app-network
+
+  <span class="cm"># ── Backend Service ───────────────────────────</span>
+  <span class="fn">backend:</span>
+    <span class="kw">build:</span>
+      <span class="kw">context:</span> ./backend
+      <span class="kw">dockerfile:</span> Dockerfile
+    <span class="kw">ports:</span>
+      <span class="op">-</span> <span class="st">"5000:5000"</span>
+    <span class="kw">environment:</span>
+      <span class="op">-</span> DATABASE_URL=postgresql://postgres:password@database:5432/myapp
+      <span class="op">-</span> NODE_ENV=production
+    <span class="kw">depends_on:</span>
+      <span class="fn">database:</span>
+        <span class="kw">condition:</span> service_healthy
+    <span class="kw">networks:</span>
+      <span class="op">-</span> app-network
+
+  <span class="cm"># ── Database Service ──────────────────────────</span>
+  <span class="fn">database:</span>
+    <span class="kw">image:</span> postgres:15-alpine
+    <span class="kw">environment:</span>
+      <span class="op">-</span> POSTGRES_DB=myapp
+      <span class="op">-</span> POSTGRES_USER=postgres
+      <span class="op">-</span> POSTGRES_PASSWORD=password
+    <span class="kw">volumes:</span>
+      <span class="op">-</span> postgres-data:/var/lib/postgresql/data
+    <span class="kw">healthcheck:</span>
+      <span class="kw">test:</span> [<span class="st">"CMD-SHELL"</span>, <span class="st">"pg_isready -U postgres"</span>]
+      <span class="kw">interval:</span> 10s
+      <span class="kw">timeout:</span> 5s
+      <span class="kw">retries:</span> 5
+    <span class="kw">networks:</span>
+      <span class="op">-</span> app-network
+
+<span class="cm"># ── Volumes ───────────────────────────────────</span>
+<span class="kw">volumes:</span>
+  <span class="fn">postgres-data:</span>
+
+<span class="cm"># ── Networks ──────────────────────────────────</span>
+<span class="kw">networks:</span>
+  <span class="fn">app-network:</span>
+    <span class="kw">driver:</span> bridge</code></pre>
+
+  <span class="pre-label">Docker Compose Commands</span>
+  <pre><code><span class="cm"># Poori application start karo (background mein)</span>
+<span class="kw">docker-compose up</span> <span class="op">-d</span>
+
+<span class="cm"># Sirf ek service start karo</span>
+<span class="kw">docker-compose up</span> <span class="op">-d</span> database
+
+<span class="cm"># Saari services ke logs dekhna</span>
+<span class="kw">docker-compose logs</span> <span class="op">-f</span>
+
+<span class="cm"># Sirf backend ke logs</span>
+<span class="kw">docker-compose logs</span> <span class="op">-f</span> backend
+
+<span class="cm"># Sab kuch band karo</span>
+<span class="kw">docker-compose down</span>
+
+<span class="cm"># Volumes bhi delete karo (CAUTION: data jaayega!)</span>
+<span class="kw">docker-compose down</span> <span class="op">-v</span>
+
+<span class="cm"># Services restart karo bina down/up ke</span>
+<span class="kw">docker-compose restart</span> backend
+
+<span class="cm"># Running services ka status</span>
+<span class="kw">docker-compose ps</span></code></pre>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Docker Compose Architecture</div>
+    <pre><code>
+  ┌────────────────────────────────────────────────────────────┐
+  │                docker-compose.yml                          │
+  │                                                            │
+  │  ┌─────────────────────────────────────────────────────┐  │
+  │  │                  app-network (bridge)               │  │
+  │  │                                                     │  │
+  │  │   ┌──────────┐    ┌──────────┐    ┌───────────┐   │  │
+  │  │   │ frontend  │    │ backend  │    │ database  │   │  │
+  │  │   │  :3000   │───▶│  :5000  │───▶│  :5432    │   │  │
+  │  │   └──────────┘    └──────────┘    └─────┬─────┘   │  │
+  │  │                                         │          │  │
+  │  └─────────────────────────────────────────┼──────────┘  │
+  │                                            │              │
+  │                                    ┌───────▼──────┐      │
+  │                                    │ postgres-data │      │
+  │                                    │   (volume)   │      │
+  │                                    └──────────────┘      │
+  └────────────────────────────────────────────────────────────┘
+         ▲
+    Browser: localhost:3000
+</code></pre>
+  </div>
+
+  <div class="card card-warn">
+    <div class="card-label">💼 Interview Perspective</div>
+    <p><strong>Q: <code>depends_on</code> kya karta hai? Kya ye guarantee karta hai ki dependent service ready hai?</strong></p>
+    <p>Ye ek trap question hai! <code>depends_on</code> sirf ye ensure karta hai ki container <em>start</em> ho jaaye, lekin service <em>ready</em> ho jaaye — ye guarantee nahi karta. Database container start hua matlab PostgreSQL ne connections accept karne shuru kar diye — ye same nahi hai.</p>
+    <p><strong>Proper fix:</strong> <code>healthcheck</code> + <code>condition: service_healthy</code> use karo (jaise example mein dikhaya). Ya application code mein retry logic daalo.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 8 – DEBUGGING
+══════════════════════════════════════════ -->
+<section class="phase" id="p8">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 08</span>
+    <div>
+      <div class="phase-title">Docker Debugging &amp; Troubleshooting</div>
+      <div class="phase-subtitle">Production issues kaise solve karte hain?</div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🔧 Debugging Mindset</div>
+    <p>Ek senior DevOps engineer kisi bhi issue ke liye ek <strong>systematic approach</strong> follow karta hai:</p>
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><div class="step-body"><strong>Container chal raha hai?</strong> — <code>docker ps</code></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-body"><strong>Logs kya bol rahe hain?</strong> — <code>docker logs container_name</code></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-body"><strong>Container ke andar kya ho raha hai?</strong> — <code>docker exec -it container_name sh</code></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-body"><strong>Network/ports sahi hain?</strong> — <code>docker inspect</code></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-body"><strong>Resources khatam toh nahi?</strong> — <code>docker stats</code></div></div>
+    </div>
+  </div>
+
+  <h2 class="section-h">🛠️ Essential Debugging Commands</h2>
+  <span class="pre-label">Debugging Toolkit</span>
+  <pre><code><span class="cm">══ LOGS ══════════════════════════════════════════════</span>
+<span class="cm"># Container logs dekhna</span>
+<span class="kw">docker logs</span> my-app
+
+<span class="cm"># Last 50 lines aur follow karo</span>
+<span class="kw">docker logs</span> <span class="op">--tail</span> 50 <span class="op">-f</span> my-app
+
+<span class="cm"># Timestamps ke saath</span>
+<span class="kw">docker logs</span> <span class="op">-t</span> my-app
+
+<span class="cm">══ EXEC — Container ke andar jaana ══════════════════</span>
+<span class="cm"># Container ke andar shell open karo</span>
+<span class="kw">docker exec</span> <span class="op">-it</span> my-app <span class="st">sh</span>
+
+<span class="cm"># Bash available hogi toh (zyada features)</span>
+<span class="kw">docker exec</span> <span class="op">-it</span> my-app <span class="st">bash</span>
+
+<span class="cm"># Ek command chalao container mein</span>
+<span class="kw">docker exec</span> my-app <span class="st">ls -la /app</span>
+
+<span class="cm"># Environment variables check karo</span>
+<span class="kw">docker exec</span> my-app <span class="st">env</span>
+
+<span class="cm">══ INSPECT — Deep Dive ══════════════════════════════</span>
+<span class="cm"># Container ki puri configuration JSON mein</span>
+<span class="kw">docker inspect</span> my-app
+
+<span class="cm"># Sirf IP address nikalna</span>
+<span class="kw">docker inspect</span> <span class="op">--format</span> <span class="st">'{{.NetworkSettings.IPAddress}}'</span> my-app
+
+<span class="cm">══ STATS — Resource Usage ═══════════════════════════</span>
+<span class="cm"># Live CPU, Memory, Network stats</span>
+<span class="kw">docker stats</span>
+
+<span class="cm"># Ek container ke stats</span>
+<span class="kw">docker stats</span> my-app <span class="op">--no-stream</span></code></pre>
+
+  <h2 class="section-h">🔥 Real-World Debugging Scenarios</h2>
+
+  <div class="card card-danger">
+    <div class="card-label">Scenario 1 — Container Crash Loop</div>
+    <p><strong>Problem:</strong> Container continuously restart ho raha hai. <code>docker ps</code> mein status <code>Restarting (1) 2 seconds ago</code> dikh raha hai.</p>
+    <p><strong>Debug Karo:</strong></p>
+    <pre style="margin:0.5rem 0;"><code><span class="cm"># Exited container ke logs dekhna</span>
+<span class="kw">docker logs</span> my-crashing-app
+<span class="cm"># Output: Error: Cannot find module './config'</span>
+
+<span class="cm"># Inspect exit code</span>
+<span class="kw">docker inspect</span> my-crashing-app <span class="op">--format</span> <span class="st">'{{.State.ExitCode}}'</span>
+<span class="cm"># Output: 1 (non-zero = error se exit)</span></code></pre>
+    <p style="margin-top:0.5rem"><strong>Fix:</strong> Missing file ya wrong path. Dockerfile mein <code>COPY . .</code> check karo, <code>.dockerignore</code> mein zaroor file exclude na ho.</p>
+  </div>
+
+  <div class="card card-danger">
+    <div class="card-label">Scenario 2 — Port Conflict</div>
+    <p><strong>Problem:</strong> <code>docker run -p 5432:5432 postgres</code> fail ho raha hai: <code>Bind for 0.0.0.0:5432 failed: port is already allocated</code></p>
+    <p><strong>Debug Karo:</strong></p>
+    <pre style="margin:0.5rem 0;"><code><span class="cm"># Kaun sa process port 5432 use kar raha hai?</span>
+<span class="kw">sudo lsof -i</span> <span class="op">:</span>5432
+<span class="cm"># Ya:</span>
+<span class="kw">ss -tlnp</span> | grep 5432
+
+<span class="cm"># Kahin aur docker container port use kar raha hai?</span>
+<span class="kw">docker ps</span> <span class="op">--format</span> <span class="st">"table {{.Names}}\t{{.Ports}}"</span></code></pre>
+    <p style="margin-top:0.5rem"><strong>Fix:</strong> Ya toh conflicting container/process band karo, ya alag host port use karo: <code>-p 5433:5432</code></p>
+  </div>
+
+  <div class="card card-danger">
+    <div class="card-label">Scenario 3 — Out of Memory (OOM)</div>
+    <p><strong>Problem:</strong> Container suddenly kill ho raha hai. Logs mein <code>Killed</code> dikh raha hai.</p>
+    <p><strong>Debug Karo:</strong></p>
+    <pre style="margin:0.5rem 0;"><code><span class="cm"># Container ka memory usage check karo</span>
+<span class="kw">docker stats</span> my-app <span class="op">--no-stream</span>
+<span class="cm"># Output: MEM USAGE: 512MiB / 512MiB  LIMIT: 512MiB</span>
+
+<span class="cm"># System events check karo</span>
+<span class="kw">docker events</span> <span class="op">--filter</span> <span class="st">'event=oom'</span></code></pre>
+    <p style="margin-top:0.5rem"><strong>Fix:</strong> Memory limit badhao: <code>docker run --memory=1g my-app</code> ya application mein memory leak fix karo.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 9 – CI/CD
+══════════════════════════════════════════ -->
+<section class="phase" id="p9">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 09</span>
+    <div>
+      <div class="phase-title">Docker in CI/CD Pipelines</div>
+      <div class="phase-subtitle">Code push se production deployment tak ka safar</div>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">🚀 CI/CD + Docker = Modern DevOps</div>
+    <p>Bade companies mein koi manually server pe jaake code deploy nahi karta. Poora process automated hai. Developer code push karta hai, aur minutes mein production pe deploy ho jaata hai — automatically.</p>
+    <p>Docker is process ka core component hai. Har deployment ek Docker image hai — version controlled, tested, aur reproducible.</p>
+  </div>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Complete CI/CD Pipeline with Docker</div>
+    <pre><code>
+  Developer
+     │
+     │  git push origin main
+     ▼
+  ┌────────────────────────────────────────────────────────────────┐
+  │                    CI Server (Jenkins/GitHub Actions)          │
+  │                                                                │
+  │  Step 1: Code Checkout                                         │
+  │  git clone repo → CI workspace                                 │
+  │                                                                │
+  │  Step 2: Docker Image Build                                    │
+  │  docker build -t myapp:$GIT_COMMIT .                           │
+  │                                                                │
+  │  Step 3: Run Tests Inside Container                            │
+  │  docker run myapp:$GIT_COMMIT npm test                         │
+  │                                                                │
+  │  Step 4: Security Scan                                         │
+  │  docker scout cves myapp:$GIT_COMMIT                           │
+  │                                                                │
+  │  Step 5: Push to Registry                                      │
+  │  docker push registry.company.com/myapp:$GIT_COMMIT            │
+  │  docker push registry.company.com/myapp:latest                 │
+  │                                                                │
+  └─────────────────────────────┬──────────────────────────────────┘
+                                │
+                                ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                    CD — Deployment                              │
+  │                                                                 │
+  │  Staging Server:                                                │
+  │  docker-compose pull && docker-compose up -d                   │
+  │                         ↓ (after approval)                     │
+  │  Production Server:                                             │
+  │  docker-compose pull && docker-compose up -d                   │
+  └─────────────────────────────────────────────────────────────────┘
+</code></pre>
+  </div>
+
+  <h2 class="section-h">🔧 Jenkins Pipeline Example</h2>
+  <span class="pre-label">Jenkinsfile</span>
+  <pre><code><span class="kw">pipeline</span> {
+    <span class="fn">agent any</span>
+
+    <span class="kw">environment</span> {
+        <span class="nm">IMAGE_NAME</span> = <span class="st">'myapp'</span>
+        <span class="nm">REGISTRY</span>  = <span class="st">'registry.company.com'</span>
+        <span class="nm">IMAGE_TAG</span> = <span class="st">"${env.GIT_COMMIT[0..6]}"</span>
+    }
+
+    <span class="kw">stages</span> {
+        <span class="fn">stage</span>(<span class="st">'Build Image'</span>) {
+            <span class="kw">steps</span> {
+                <span class="fn">sh</span> <span class="st">"""
+                    docker build -t ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
+                    docker tag ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+                               ${REGISTRY}/${IMAGE_NAME}:latest
+                """</span>
+            }
+        }
+
+        <span class="fn">stage</span>(<span class="st">'Test'</span>) {
+            <span class="kw">steps</span> {
+                <span class="fn">sh</span> <span class="st">"""
+                    docker run --rm \
+                      ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+                      npm test
+                """</span>
+            }
+        }
+
+        <span class="fn">stage</span>(<span class="st">'Push to Registry'</span>) {
+            <span class="kw">steps</span> {
+                <span class="fn">withCredentials</span>([usernamePassword(...)]) {
+                    <span class="fn">sh</span> <span class="st">"""
+                        docker push ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+                        docker push ${REGISTRY}/${IMAGE_NAME}:latest
+                    """</span>
+                }
+            }
+        }
+
+        <span class="fn">stage</span>(<span class="st">'Deploy to Production'</span>) {
+            <span class="kw">steps</span> {
+                <span class="fn">sh</span> <span class="st">"""
+                    ssh deploy@prod-server \
+                    "docker pull ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} && \
+                     docker-compose up -d"
+                """</span>
+            }
+        }
+    }
+}</code></pre>
+
+  <div class="card card-success">
+    <div class="card-label">✅ Production Tag Strategy</div>
+    <p><span class="tag tag-blue">:latest</span> Development ya staging ke liye. Production mein <code>:latest</code> se bachna chahiye — rollback mushkil ho jaata hai.</p>
+    <p><span class="tag tag-green">:v1.2.3</span> Semantic versioning — production ke liye best practice. Exact version pata hai, rollback easy hai.</p>
+    <p><span class="tag tag-orange">:abc1234</span> Git commit hash — CI/CD mein common. Har build uniquely identified.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     PHASE 10 – PRODUCTION BEST PRACTICES
+══════════════════════════════════════════ -->
+<section class="phase" id="p10">
+  <div class="phase-header">
+    <span class="phase-num">PHASE 10</span>
+    <div>
+      <div class="phase-title">Production Best Practices</div>
+      <div class="phase-subtitle">Senior DevOps engineers kaise Docker use karte hain</div>
+    </div>
+  </div>
+
+  <h2 class="section-h">🏗️ Multi-Stage Builds — Image Size Drastically Kam Karo</h2>
+
+  <div class="card">
+    <p>Multi-stage build mein ek Dockerfile mein multiple <code>FROM</code> hoti hain. Pehle stage mein build karo, doosre stage mein sirf final output copy karo. Build tools, compilers, dev dependencies — sab behind the scenes rehte hain. Final image sirf production code hoti hai.</p>
+    <p><strong>Result: 900MB image → 80MB image!</strong></p>
+  </div>
+
+  <span class="pre-label">Multi-Stage Dockerfile — Node.js</span>
+  <pre><code><span class="cm"># ── Stage 1: Build ────────────────────────────────</span>
+<span class="kw">FROM</span> node:18 <span class="kw">AS</span> builder
+
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> package*.json ./
+<span class="kw">RUN</span> npm ci                     <span class="cm"># Dev dependencies bhi install</span>
+<span class="kw">COPY</span> . .
+<span class="kw">RUN</span> npm run build              <span class="cm"># TypeScript compile, minify, etc.</span>
+
+<span class="cm"># ── Stage 2: Production ───────────────────────────</span>
+<span class="kw">FROM</span> node:18-alpine <span class="kw">AS</span> production
+
+<span class="kw">WORKDIR</span> /app
+
+<span class="cm"># Sirf production dependencies</span>
+<span class="kw">COPY</span> package*.json ./
+<span class="kw">RUN</span> npm ci --only=production
+
+<span class="cm"># Sirf built output copy karo builder stage se</span>
+<span class="kw">COPY</span> <span class="op">--from=</span>builder /app/dist ./dist
+
+<span class="cm"># Security: root user use mat karo!</span>
+<span class="kw">RUN</span> addgroup -S appgroup && adduser -S appuser -G appgroup
+<span class="kw">USER</span> appuser
+
+<span class="kw">EXPOSE</span> 3000
+<span class="kw">CMD</span> [<span class="st">"node"</span>, <span class="st">"dist/server.js"</span>]</code></pre>
+
+  <h2 class="section-h">🔒 Security Best Practices</h2>
+
+  <div class="card card-danger">
+    <div class="card-label">⚠️ Never Do This in Production</div>
+    <ul class="styled">
+      <li><code>FROM ubuntu:latest</code> — <code>latest</code> tag pin mat karo, unexpected changes aa sakte hain</li>
+      <li>Root user se container chalana (<code>USER root</code> or no USER instruction)</li>
+      <li>Secrets Dockerfile mein hardcode karna (<code>ENV DB_PASSWORD=secret123</code>)</li>
+      <li>Unnecessary ports expose karna</li>
+      <li>Unused packages install karna image mein</li>
+    </ul>
+  </div>
+
+  <div class="card card-success">
+    <div class="card-label">✅ Security Checklist</div>
+    <ul class="styled">
+      <li>Specific image tags use karo: <code>FROM node:18.20.4-alpine3.19</code></li>
+      <li>Non-root user create karo aur use karo: <code>USER appuser</code></li>
+      <li>Secrets environment variables ya secrets manager se inject karo</li>
+      <li><code>.dockerignore</code> file banao — <code>.git</code>, <code>node_modules</code>, <code>.env</code> exclude karo</li>
+      <li>Regularly <code>docker scout cves image_name</code> se vulnerability scan karo</li>
+      <li>Read-only filesystem: <code>docker run --read-only my-app</code></li>
+    </ul>
+  </div>
+
+  <h2 class="section-h">📝 .dockerignore — Zaroor Banana</h2>
+  <span class="pre-label">.dockerignore</span>
+  <pre><code><span class="cm"># Dependencies (Docker mein fresh install hogi)</span>
+node_modules/
+
+<span class="cm"># Git history</span>
+.git/
+.gitignore
+
+<span class="cm"># Environment files (NEVER include secrets!)</span>
+.env
+.env.*
+
+<span class="cm"># Build outputs</span>
+dist/
+build/
+
+<span class="cm"># Logs</span>
+*.log
+npm-debug.log*
+
+<span class="cm"># Tests (production image mein zaroorat nahi)</span>
+**/*.test.js
+**/*.spec.js
+coverage/
+
+<span class="cm"># Docker files khud</span>
+Dockerfile*
+docker-compose*</code></pre>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     FINAL PROJECT
+══════════════════════════════════════════ -->
+<section class="phase" id="proj">
+  <div class="project-banner">
+    <h2>🎯 Final Project</h2>
+    <p>Production-Ready Dockerized Node.js + PostgreSQL Application — End-to-End</p>
+  </div>
+
+  <div class="card card-accent">
+    <div class="card-label">📋 Project Brief</div>
+    <p><strong>Scenario:</strong> Ek simple Task Management API banani hai. Node.js backend hai jo PostgreSQL database use karta hai. Application Docker Compose se chalegi, data persist hoga, aur environment variables secure rahenge.</p>
+  </div>
+
+  <div class="ascii-box">
+    <div class="ascii-title">Final Project Architecture</div>
+    <pre><code>
+  User / Browser
+       │
+       │  HTTP Request
+       ▼
+  ┌────────────────────────────────────────────────────────────┐
+  │                    Host Machine                            │
+  │   Port 3000 exposed                                        │
+  │                                                            │
+  │  ┌─────────────────────────────────────────────────────┐  │
+  │  │               Docker Network: taskapp-net           │  │
+  │  │                                                     │  │
+  │  │  ┌───────────────────────────────────────────────┐  │  │
+  │  │  │          webapp (Node.js Container)           │  │  │
+  │  │  │  - Image: Built from Dockerfile               │  │  │
+  │  │  │  - Port: 3000 (exposed to host)               │  │  │
+  │  │  │  - Env: DATABASE_URL from env file            │  │  │
+  │  │  └──────────────────────┬────────────────────────┘  │  │
+  │  │                         │ SQL queries via             │  │
+  │  │                         │ postgresql://db:5432        │  │
+  │  │  ┌──────────────────────▼────────────────────────┐  │  │
+  │  │  │          db (PostgreSQL Container)            │  │  │
+  │  │  │  - Image: postgres:15-alpine                  │  │  │
+  │  │  │  - Port: 5432 (internal only)                 │  │  │
+  │  │  │  - Volume: pgdata → /var/lib/postgresql/data  │  │  │
+  │  │  └───────────────────────────────────────────────┘  │  │
+  │  └─────────────────────────────────────────────────────┘  │
+  │                                                            │
+  │  ┌──────────────┐                                          │
+  │  │  pgdata      │ ← Docker Volume (data persists!)         │
+  │  │  (Volume)    │                                          │
+  │  └──────────────┘                                          │
+  └────────────────────────────────────────────────────────────┘
+</code></pre>
+  </div>
+
+  <h2 class="section-h">📁 Project Structure</h2>
+  <span class="pre-label">Directory Layout</span>
+  <pre><code>task-app/
+├── Dockerfile
+├── docker-compose.yml
+├── .dockerignore
+├── .env.example
+├── package.json
+└── src/
+    └── server.js</code></pre>
+
+  <span class="pre-label">src/server.js — Node.js App</span>
+  <pre><code><span class="kw">const</span> express = require(<span class="st">'express'</span>);
+<span class="kw">const</span> { Pool } = require(<span class="st">'pg'</span>);
+
+<span class="kw">const</span> app  = express();
+<span class="kw">const</span> port = process.env.PORT || 3000;
+<span class="kw">const</span> pool = <span class="kw">new</span> Pool({
+  connectionString: process.env.DATABASE_URL
+});
+
+app.use(express.json());
+
+<span class="cm">// Health check</span>
+app.get(<span class="st">'/health'</span>, async (req, res) => {
+  <span class="kw">try</span> {
+    await pool.query(<span class="st">'SELECT 1'</span>);
+    res.json({ status: <span class="st">'ok'</span>, db: <span class="st">'connected'</span> });
+  } <span class="kw">catch</span> (err) {
+    res.status(500).json({ status: <span class="st">'error'</span>, db: err.message });
+  }
+});
+
+<span class="cm">// Get all tasks</span>
+app.get(<span class="st">'/tasks'</span>, async (req, res) => {
+  <span class="kw">const</span> { rows } = await pool.query(
+    <span class="st">'SELECT * FROM tasks ORDER BY created_at DESC'</span>
+  );
+  res.json(rows);
+});
+
+<span class="cm">// Create task</span>
+app.post(<span class="st">'/tasks'</span>, async (req, res) => {
+  <span class="kw">const</span> { title } = req.body;
+  <span class="kw">const</span> { rows } = await pool.query(
+    <span class="st">'INSERT INTO tasks(title) VALUES($1) RETURNING *'</span>,
+    [title]
+  );
+  res.status(201).json(rows[0]);
+});
+
+app.listen(port, () => console.log(<span class="st">`Server running on :${port}`</span>));</code></pre>
+
+  <span class="pre-label">Dockerfile — Multi-Stage Production Build</span>
+  <pre><code><span class="kw">FROM</span> node:18-alpine <span class="kw">AS</span> base
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> package*.json ./
+<span class="kw">RUN</span> npm ci --only=production
+
+<span class="kw">FROM</span> node:18-alpine <span class="kw">AS</span> production
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> <span class="op">--from=</span>base /app/node_modules ./node_modules
+<span class="kw">COPY</span> src/ ./src/
+<span class="kw">COPY</span> package*.json ./
+
+<span class="kw">RUN</span> addgroup -S appgroup && adduser -S appuser -G appgroup
+<span class="kw">USER</span> appuser
+
+<span class="kw">EXPOSE</span> 3000
+<span class="kw">CMD</span> [<span class="st">"node"</span>, <span class="st">"src/server.js"</span>]</code></pre>
+
+  <span class="pre-label">docker-compose.yml — Production Setup</span>
+  <pre><code><span class="kw">version:</span> <span class="st">'3.9'</span>
+
+<span class="kw">services:</span>
+  <span class="fn">webapp:</span>
+    <span class="kw">build:</span> .
+    <span class="kw">ports:</span>
+      <span class="op">-</span> <span class="st">"3000:3000"</span>
+    <span class="kw">environment:</span>
+      <span class="op">-</span> DATABASE_URL=postgresql://postgres:${DB_PASSWORD}@db:5432/taskdb
+      <span class="op">-</span> PORT=3000
+    <span class="kw">depends_on:</span>
+      <span class="fn">db:</span>
+        <span class="kw">condition:</span> service_healthy
+    <span class="kw">restart:</span> unless-stopped
+    <span class="kw">networks:</span>
+      <span class="op">-</span> taskapp-net
+
+  <span class="fn">db:</span>
+    <span class="kw">image:</span> postgres:15-alpine
+    <span class="kw">environment:</span>
+      <span class="op">-</span> POSTGRES_DB=taskdb
+      <span class="op">-</span> POSTGRES_USER=postgres
+      <span class="op">-</span> POSTGRES_PASSWORD=${DB_PASSWORD}
+    <span class="kw">volumes:</span>
+      <span class="op">-</span> pgdata:/var/lib/postgresql/data
+    <span class="kw">healthcheck:</span>
+      <span class="kw">test:</span> [<span class="st">"CMD-SHELL"</span>, <span class="st">"pg_isready -U postgres"</span>]
+      <span class="kw">interval:</span> 10s
+      <span class="kw">timeout:</span> 5s
+      <span class="kw">retries:</span> 5
+    <span class="kw">restart:</span> unless-stopped
+    <span class="kw">networks:</span>
+      <span class="op">-</span> taskapp-net
+
+<span class="kw">volumes:</span>
+  <span class="fn">pgdata:</span>
+
+<span class="kw">networks:</span>
+  <span class="fn">taskapp-net:</span>
+    <span class="kw">driver:</span> bridge</code></pre>
+
+  <span class="pre-label">.env — Environment Variables (Never Commit to Git!)</span>
+  <pre><code><span class="nm">DB_PASSWORD</span>=supersecret_password_here
+<span class="nm">NODE_ENV</span>=production</code></pre>
+
+  <span class="pre-label">Project Run Karo!</span>
+  <pre><code><span class="cm"># 1. .env file banao</span>
+<span class="kw">cp</span> .env.example .env
+
+<span class="cm"># 2. Application start karo</span>
+<span class="kw">docker-compose up</span> <span class="op">-d</span>
+
+<span class="cm"># 3. Logs dekho aur wait karo database ready hone ka</span>
+<span class="kw">docker-compose logs</span> <span class="op">-f</span>
+
+<span class="cm"># 4. Health check karo</span>
+<span class="kw">curl</span> http://localhost:3000/health
+<span class="cm"># Expected: {"status":"ok","db":"connected"}</span>
+
+<span class="cm"># 5. Task create karo</span>
+<span class="kw">curl</span> <span class="op">-X</span> POST http://localhost:3000/tasks \
+     <span class="op">-H</span> <span class="st">"Content-Type: application/json"</span> \
+     <span class="op">-d</span> <span class="st">'{"title": "Docker Masterclass complete karo!"}'</span>
+
+<span class="cm"># 6. Tasks list karo</span>
+<span class="kw">curl</span> http://localhost:3000/tasks</code></pre>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     INTERVIEW QUESTIONS
+══════════════════════════════════════════ -->
+<section class="phase" id="interview">
+  <div class="phase-header">
+    <span class="phase-num">💼 INTERVIEW</span>
+    <div>
+      <div class="phase-title">Interview Questions — Beginner to Advanced</div>
+      <div class="phase-subtitle">Confident answers ke saath jaao interview mein</div>
+    </div>
+  </div>
+
+  <h2 class="section-h"><span class="tag tag-green">Beginner Level</span></h2>
+
+  <div class="qa-item">
+    <div class="qa-q">Container aur Virtual Machine mein kya difference hai?</div>
+    <div class="qa-a">VM ek poori Guest OS run karta hai apne saath — heavyweight, GBs mein, minutes mein boot hota hai. Container sirf application aur dependencies ko isolate karta hai Host OS ke upar — lightweight, MBs mein, seconds mein start hota hai. Docker containers Host OS ka kernel share karte hain.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">Docker Image aur Docker Container mein kya fark hai?</div>
+    <div class="qa-a">Image ek read-only blueprint hai (class jaise), Container us image ka ek running instance hai (object jaise). Ek image se kai containers bana sakte hain. Container ke paas ek writable layer hoti hai jahan runtime changes hote hain.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q"><code>COPY</code> aur <code>ADD</code> Dockerfile mein — kab kya use karein?</div>
+    <div class="qa-a"><code>COPY</code> simple local files/directories copy karta hai — hamesha prefer karo. <code>ADD</code> extra features deta hai: URLs se download kar sakta hai aur tar archives automatically extract karta hai. Lekin ye extra features confusion aur security issues create karte hain. Best practice: hamesha <code>COPY</code> use karo jab tak tar extraction specifically chahiye.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q"><code>CMD</code> aur <code>ENTRYPOINT</code> mein kya difference hai?</div>
+    <div class="qa-a"><code>CMD</code> default command hai jo override ho sakti hai: <code>docker run image other_command</code>. <code>ENTRYPOINT</code> fixed executable hai jo hamesha chalta hai — arguments override hote hain lekin executable nahi. Common pattern: <code>ENTRYPOINT ["node"]</code> + <code>CMD ["server.js"]</code>.</div>
+  </div>
+
+  <h2 class="section-h"><span class="tag tag-orange">Intermediate Level</span></h2>
+
+  <div class="qa-item">
+    <div class="qa-q">Docker layer caching kaise kaam karta hai aur image build kaise optimize karein?</div>
+    <div class="qa-a">Docker har Dockerfile instruction ke liye ek layer cache karta hai. Agar instruction aur uski inputs change nahi hui, cached layer use hoti hai. Optimization: rarely changing layers (base image, system deps, package.json) ko Dockerfile ke upar rako. Frequently changing code ko neeche rako. Package.json alag copy karna (COPY package*.json ./ → RUN npm install → COPY . .) npm install ko cache karta hai jab sirf code change hota hai.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">Docker networking mein bridge aur host network ka difference explain karo.</div>
+    <div class="qa-a">Bridge network: Containers ek virtual switch se connected hote hain, isolated network milti hai, port mapping required hai host se access ke liye. Host network: Container directly host ke network namespace use karta hai, koi isolation nahi, port mapping ki zaroorat nahi. Custom bridge recommended hai production mein kyunki automatic DNS name resolution milti hai.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">Multi-stage build kya hai aur kyun use karte hain?</div>
+    <div class="qa-a">Ek Dockerfile mein multiple FROM instructions use karke alag build stages define karte hain. Pehle stage mein full build environment (compilers, dev tools) use karte hain. Final stage mein sirf production artifacts copy karte hain. Result: Final image mein sirf runtime code hota hai, build tools nahi. 900MB → 80MB jitna reduction possible hai. Security bhi better hoti hai — kam attack surface.</div>
+  </div>
+
+  <h2 class="section-h"><span class="tag tag-red">Advanced Level</span></h2>
+
+  <div class="qa-item">
+    <div class="qa-q">Container crash hone par production mein kaise debug karoge?</div>
+    <div class="qa-a">Systematic approach: 1) <code>docker ps -a</code> se exit status dekho, 2) <code>docker logs container_name</code> se error reason nikalo, 3) <code>docker inspect container_name --format '{{.State}}'</code> se state details dekho, 4) OOM issue suspect ho toh <code>docker events --filter event=oom</code> check karo, 5) <code>docker stats</code> se resource usage monitor karo, 6) Agar container still running hai toh <code>docker exec -it container sh</code> se andar jaao.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">Docker container mein secrets securely kaise inject karein?</div>
+    <div class="qa-a">Kabhi bhi secrets Dockerfile mein hardcode mat karo — image layers mein permanently visible rehte hain. Options: 1) Environment variables via docker-compose env_file ya CI/CD secrets store, 2) Docker Secrets (Swarm mode mein), 3) HashiCorp Vault ya AWS Secrets Manager se runtime injection, 4) Kubernetes Secrets (Kubernetes environment mein). Build ARGs bhi use mat karo secrets ke liye — docker history mein visible rehte hain.</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">Docker build CI/CD mein speed kaise improve karein large teams ke liye?</div>
+    <div class="qa-a">1) BuildKit enable karo: <code>DOCKER_BUILDKIT=1 docker build</code> — parallel layer building, 2) Remote cache use karo: <code>--cache-from registry/image:cache</code>, 3) .dockerignore optimize karo — unnecessary context mat bhejo, 4) Multi-stage builds se image size aur build time dono reduce karo, 5) Layer order optimize karo — dependencies pehle install karo, code baad mein copy karo, 6) Registry mirror use karo same region mein pull speed ke liye.</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     RESUME PROJECT
+══════════════════════════════════════════ -->
+<div class="resume-card">
+  <h3>📄 Resume Mein Kya Likhna Hai</h3>
+  <p><strong>Project Title:</strong> Production-Ready Dockerized Microservices Application</p>
+  <p><strong>Description:</strong> Designed and deployed a containerized full-stack application using Docker and Docker Compose. Implemented multi-stage Dockerfile builds reducing image size by 80%. Set up automated CI/CD pipeline using Jenkins integrating Docker image builds, automated testing, and registry pushes. Configured persistent data storage using Docker volumes and secure secret management using environment injection.</p>
+  <p><strong>Tech Stack:</strong> Docker, Docker Compose, Node.js, PostgreSQL, Jenkins, Docker Hub/ECR</p>
+  <p><strong>Keywords for ATS:</strong> Containerization, Docker, CI/CD, DevOps, Infrastructure, Microservices</p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MINDSET SECTION
+══════════════════════════════════════════ -->
+<div class="mindset">
+  <h2>🧠 DevOps Engineer Ki Tarah Sochna Seekho</h2>
+  <p style="margin-bottom:1.2rem"><strong>"Think in containers, not in servers."</strong></p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-body"><strong>Immutability First:</strong> Ek baar container image bani, change mat karo. Kuch badalna hai toh naya image banao, redeploy karo. Ye predictability deta hai.</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-body"><strong>Stateless Applications:</strong> Application containers mein state mat rakhna. State volumes ya external services (Redis, PostgreSQL) mein hoti hai. Container kabhi bhi restart ho sakta hai.</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-body"><strong>One Process Per Container:</strong> Ek container mein sirf ek process chalao. Nginx alag, app alag, database alag. Ye debugging aur scaling dono easy karta hai.</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-body"><strong>Logs to Stdout:</strong> Application ke logs files mein mat likhna — stdout/stderr pe print karo. Docker automatically capture karta hai aur centralized logging systems forward kar sakte hain.</div>
+    </div>
+    <div class="step">
+      <span class="step-num">5</span>
+      <div class="step-body"><strong>Environment Variables for Config:</strong> Hamesha configuration environment variables se karo, hardcode mat karo. Same image dev/staging/production pe same code ke saath different config se chalti hai.</div>
+    </div>
+    <div class="step">
+      <span class="step-num">6</span>
+      <div class="step-body"><strong>Security is Not Optional:</strong> Non-root user, minimal base images, secret management, regular vulnerability scans — ye production checklist hai, optional nahi.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem; padding:1.2rem; background:rgba(37,99,235,0.07); border-radius:8px; border:1px solid var(--accent-mid);">
+    <p style="margin:0"><strong>Final thought:</strong> Docker sirf ek tool nahi hai — ye ek <em>mindset</em> hai. Containers mein sochna matlab: reproducibility, portability, aur infrastructure as code. Ye skills aaj har DevOps, Backend, aur Cloud role mein maangi jaati hain. Tum ne ye course complete karke ek powerful foundation build ki hai — ab practice karo, break karo, debug karo. Wahi real learning hai. 🐳</p>
+  </div>
+</div>
+
+</div><!-- /page-wrapper -->
+</body>
+</html>

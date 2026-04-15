@@ -8,6 +8,17 @@
 
 ---
 
+## ✦ 0. Historical Context
+> **Contributor Insights:** Understanding where Linux comes from helps appreciate its open-source stability.
+
+| Property | Detail |
+|---|---|
+| **Founder** | **Linus Torvalds** (Finnish software engineer) |
+| **Origin Year** | **1991** |
+| **Core Philosophy** | Unix-based, free, and open-source operating system. |
+
+---
+
 ## ✦ 1. The Linux File System Hierarchy
 
 Linux organizes files in a strict hierarchical tree structure originating from `/` (root). Understanding this is critical for navigating logs and binaries.
@@ -17,13 +28,16 @@ graph TD
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
     classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
     
-    Root["/ (Root System)"] --> Home["/home<br>(User Data)"]
+    Root["/ (Root System)"]    Root --> Home["/home<br>(User Data)"]
     Root --> Etc["/etc<br>(Configuration)"]:::active
-    Root --> Var["/var<br>(Logs & Data)"]:::active
+    Root --> Var["/var<br>(Variable Data)"]:::active
     Root --> Usr["/usr<br>(User Binaries)"]
-    Root --> Bin["/bin<br>(Essential Commands)"]
+    Root --> Bin["/bin<br>(User Commands)"]
+    Root --> Sbin["/sbin<br>(Admin Commands)"]
     Root --> Tmp["/tmp<br>(Temporary Cache)"]
     Root --> Dev["/dev<br>(Device Files)"]
+    Root --> Boot["/boot<br>(Kernel Files)"]
+    Root --> Mnt["/mnt<br>(Mount Point)"]
 ```
 
 > [!TIP]
@@ -67,6 +81,8 @@ systemctl enable sshd     # Initialize daemon automatically at system boot
 - [ ] List all active daemons across your system using `systemctl list-units --type=service`.
 - [ ] Create a hierarchical folder structure using `mkdir -p` imitating the root layout `/var/log/custom`.
 - [ ] Monitor your own system RAM consumption using `top` and `free -h`.
+- [ ] Practice basic navigation: `pwd`, `ls`, `cd`, `history`.
+- [ ] Check system metadata: `uname -a`, `whoami`, `date`.
 
 ---
 

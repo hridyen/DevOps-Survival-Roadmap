@@ -1,0 +1,4178 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jenkins Masterclass – Beginner to Advanced </title>
+<style>
+  /* ====================================================
+     THEME: Enterprise Clean DevOps
+     Background: #F8FAFC | Text: #1E293B | Heading: #0F172A
+     Accent: #2563EB | Code BG: #E2E8F0 | Code Text: #0F172A
+     Fonts: Inter/Poppins (headings), Inter/Roboto (body), JetBrains Mono (code)
+  ==================================================== */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F8FAFC;
+    --text: #1E293B;
+    --heading: #0F172A;
+    --accent: #2563EB;
+    --accent-light: #DBEAFE;
+    --accent-dark: #1D4ED8;
+    --code-bg: #E2E8F0;
+    --code-text: #0F172A;
+    --border: #CBD5E1;
+    --success: #059669;
+    --warning: #D97706;
+    --danger: #DC2626;
+    --card-bg: #FFFFFF;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.75;
+    padding: 0;
+  }
+
+  /* ---- TOP BANNER ---- */
+  .course-banner {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #2563EB 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .course-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .course-banner .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .course-banner h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .course-banner h1 span { color: #60A5FA; }
+  .course-banner p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+  .course-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 700; color: #60A5FA; }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+  /* ---- LAYOUT ---- */
+  .wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* ---- TABLE OF CONTENTS ---- */
+  .toc-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow);
+  }
+  .toc-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    color: var(--heading);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: var(--bg);
+  }
+  .toc-item:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent-dark);
+  }
+  .toc-item .phase-num {
+    background: var(--accent);
+    color: white;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ---- PHASE SECTIONS ---- */
+  .phase-section {
+    margin-bottom: 72px;
+    scroll-margin-top: 20px;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #0F172A, #1E3A5F);
+    border-radius: 12px;
+    color: white;
+  }
+  .phase-icon {
+    font-size: 36px;
+    line-height: 1;
+  }
+  .phase-title { flex: 1; }
+  .phase-title .phase-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #93C5FD;
+    font-weight: 600;
+  }
+  .phase-title h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-top: 4px;
+  }
+
+  /* ---- CONTENT CARDS ---- */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h3::before {
+    content: attr(data-icon);
+    font-size: 22px;
+  }
+  .card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    margin: 20px 0 10px;
+  }
+  .card p { margin-bottom: 14px; color: var(--text); }
+  .card ul, .card ol {
+    padding-left: 24px;
+    margin-bottom: 14px;
+  }
+  .card li { margin-bottom: 6px; }
+
+  /* ---- CALLOUT BOXES ---- */
+  .callout {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-left: 4px solid;
+    display: flex;
+    gap: 12px;
+  }
+  .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .callout.info { background: #EFF6FF; border-color: var(--accent); }
+  .callout.warning { background: #FFFBEB; border-color: var(--warning); }
+  .callout.danger { background: #FEF2F2; border-color: var(--danger); }
+  .callout.success { background: #ECFDF5; border-color: var(--success); }
+  .callout.tip { background: #F5F3FF; border-color: #7C3AED; }
+  .callout strong { display: block; font-weight: 700; margin-bottom: 4px; }
+
+  /* ---- CODE BLOCKS ---- */
+  .code-block {
+    background: #1E293B;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .code-header {
+    background: #0F172A;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+  }
+  .code-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #94A3B8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .code-dot.red { background: #EF4444; }
+  .code-dot.yellow { background: #F59E0B; }
+  .code-dot.green { background: #10B981; }
+  pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #E2E8F0;
+  }
+  .inline-code {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  /* ---- ASCII DIAGRAM ---- */
+  .diagram {
+    background: #0F172A;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .diagram pre {
+    color: #7DD3FC;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre;
+    padding: 0;
+  }
+
+  /* ---- INTERVIEW BOX ---- */
+  .interview-box {
+    background: linear-gradient(135deg, #0F172A, #1E3A5F);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 28px 0;
+    color: white;
+  }
+  .interview-box h4 {
+    color: #60A5FA;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .interview-q {
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid #60A5FA;
+    padding: 14px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .interview-q strong { color: #93C5FD; display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* ---- TASK BOX ---- */
+  .task-box {
+    background: #ECFDF5;
+    border: 2px solid #10B981;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .task-box h4 {
+    color: #065F46;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .task-box ol { padding-left: 20px; color: #064E3B; }
+  .task-box li { margin-bottom: 8px; font-size: 14px; }
+
+  /* ---- ANALOGY BOX ---- */
+  .analogy-box {
+    background: #F5F3FF;
+    border: 1px solid #C4B5FD;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .analogy-box h4 {
+    color: #5B21B6;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .analogy-box p { color: #4C1D95; font-size: 15px; }
+
+  /* ---- COMPARISON TABLE ---- */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    background: var(--heading);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg); }
+  .check { color: var(--success); font-weight: 700; }
+  .cross { color: var(--danger); font-weight: 700; }
+
+  /* ---- HIGHLIGHT ---- */
+  .highlight { background: var(--accent-light); padding: 2px 6px; border-radius: 4px; color: var(--accent-dark); font-weight: 600; }
+
+  /* ---- STEP GUIDE ---- */
+  .steps { counter-reset: step-counter; list-style: none; padding: 0; }
+  .steps li {
+    counter-increment: step-counter;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .steps li::before {
+    content: counter(step-counter);
+    background: var(--accent);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { flex: 1; }
+  .step-content strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--heading); }
+
+  /* ---- FOOTER ---- */
+  .course-footer {
+    background: var(--heading);
+    color: white;
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+  }
+  .course-footer p { color: #94A3B8; font-size: 14px; margin-top: 8px; }
+
+  /* ---- PHASE DIVIDER ---- */
+  .divider { border: none; border-top: 2px solid var(--border); margin: 60px 0; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 640px) {
+    .wrapper { padding: 24px 16px; }
+    .card { padding: 20px; }
+    .phase-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .course-stats { gap: 20px; }
+    .toc-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Syntax highlight colors */
+  .kw { color: #C084FC; }
+  .str { color: #86EFAC; }
+  .cm { color: #64748B; font-style: italic; }
+  .fn { color: #60A5FA; }
+  .num { color: #FDBA74; }
+  .var { color: #F0ABFC; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================
+     COURSE BANNER
+==================================================== -->
+<div class="course-banner">
+  <div class="badge">🎓 Complete DevOps Masterclass</div>
+  <h1>Jenkins <span>Beginner to Advanced</span><br>Complete Masterclass</h1>
+  <p>Zero se Hero tak ka journey, step by step By: Hridyen Prashar</p>
+  <div class="course-stats">
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Phases</div></div>
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Code Examples</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Final Project</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Career Value</div></div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+<!-- ====================================================
+     TABLE OF CONTENTS
+==================================================== -->
+<div class="toc-card">
+  <h2>📚 Course Index </h2>
+  <div class="toc-grid">
+    <a href="#phase1" class="toc-item"><span class="phase-num">Phase 1</span> DevOps & CI/CD Foundations</a>
+    <a href="#phase2" class="toc-item"><span class="phase-num">Phase 2</span> Jenkins Architecture Deep Dive</a>
+    <a href="#phase3" class="toc-item"><span class="phase-num">Phase 3</span> Installation & Production Setup</a>
+    <a href="#phase4" class="toc-item"><span class="phase-num">Phase 4</span> Jobs, Pipelines & Jenkinsfile</a>
+    <a href="#phase5" class="toc-item"><span class="phase-num">Phase 5</span> GitHub Integration & Webhooks</a>
+    <a href="#phase6" class="toc-item"><span class="phase-num">Phase 6</span> Jenkins + Docker CI/CD</a>
+    <a href="#phase7" class="toc-item"><span class="phase-num">Phase 7</span> Distributed Builds & Scaling</a>
+    <a href="#phase8" class="toc-item"><span class="phase-num">Phase 8</span> Security & Production Hardening</a>
+    <a href="#phase9" class="toc-item"><span class="phase-num">Phase 9</span> Advanced Jenkins (Libraries, K8s)</a>
+    <a href="#final" class="toc-item"><span class="phase-num">Final 🏆</span> Complete Production Pipeline Project</a>
+  </div>
+</div>
+
+<!-- ====================================================
+     PHASE 1 – DevOps & CI/CD Foundations
+==================================================== -->
+<section class="phase-section" id="phase1">
+  <div class="phase-header">
+    <div class="phase-icon">🏗️</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 1</div>
+      <h2>DevOps & CI/CD Foundations</h2>
+    </div>
+  </div>
+
+  <!-- 1.1 What is DevOps -->
+  <div class="card">
+    <h3 data-icon="🤝">DevOps Kya Hota Hai? (The Big Picture)</h3>
+
+    <p>Bhai, socho ek restaurant hai. <strong>Kitchen team</strong> (Developers) log khaana banate hain aur <strong>Waiter team</strong> (Operations) log customers ko serve karti hai. Purane zamaane mein dono teams ek doosre se baat nahi karti thi – kitchen wale bolte "humara kaam hua, hamare haath se gaya" aur waiters bolte "yeh toh theek se ready hi nahi hai!"</p>
+
+    <p>DevOps ne kaha – <strong>dono teams ko saath milkar kaam karna chahiye.</strong> Ek shared responsibility, ek shared goal: <em>software jaldi aur reliably deliver karo.</em></p>
+
+    <div class="analogy-box">
+      <h4>🚗 Real-Life Analogy – Assembly Line of Cars</h4>
+      <p>DevOps waise hi hai jaise modern car factory ki assembly line. Har stage automated hai – welding robot, paint machine, quality check sensor – aur agar ek jagah problem aati hai toh poori line ruk jaati hai. Koi bhi "manually" gap nahi bharta. Yahi concept software delivery mein apply hota hai DevOps se.</p>
+    </div>
+
+    <h4>DevOps = Culture + Process + Tools</h4>
+    <ul>
+      <li><strong>Culture:</strong> Dev aur Ops ek team hain, blame game nahi</li>
+      <li><strong>Process:</strong> Automation first, manual steps minimize karo</li>
+      <li><strong>Tools:</strong> Jenkins, Docker, Kubernetes, Terraform, etc.</li>
+    </ul>
+
+    <div class="callout info">
+      <div class="callout-icon">💡</div>
+      <div><strong>Why Companies Care?</strong> Amazon ek time pe hafte mein sirf 1 release karta tha. DevOps adopt karne ke baad ab wo <strong>har second mein multiple deployments</strong> karta hai. Speed = competitive advantage = more money.</div>
+    </div>
+  </div>
+
+  <!-- 1.2 What is CI/CD -->
+  <div class="card">
+    <h3 data-icon="🔄">CI/CD Kya Hota Hai?</h3>
+
+    <p>CI/CD do concepts hain – <strong>Continuous Integration</strong> aur <strong>Continuous Delivery/Deployment</strong>. Dono milke ek pipeline banate hain jo code ko developer ke laptop se production server tak automatically le jaati hai.</p>
+
+    <h4>🔵 Continuous Integration (CI) – Continuous Jodna</h4>
+    <p>Jab bhi koi developer code likhke GitHub pe push karta hai, <strong>automatically</strong> yeh kaam hota hai:</p>
+    <ul>
+      <li>Code build hota hai (compile ya package)</li>
+      <li>Unit tests run hote hain</li>
+      <li>Code quality check hoti hai (linting)</li>
+      <li>Security vulnerabilities scan hoti hain</li>
+    </ul>
+
+    <h4>🟢 Continuous Delivery (CD) – Continuous Pahunchana</h4>
+    <p>CI ke baad code automatically staging environment mein deploy hota hai. Production mein jaane ke liye ek manual <em>approval</em> ki zaroorat hoti hai. Yeh "Delivery" hai.</p>
+
+    <h4>🚀 Continuous Deployment – Poora Automatic</h4>
+    <p>Yahan koi manual step nahi. Agar sab tests pass ho gaye toh code automatically production mein chala jaata hai. Netflix aur Google yehi karte hain.</p>
+
+    <div class="diagram">
+<pre>
+╔══════════════════════════════════════════════════════════════════════╗
+║                    CI/CD PIPELINE OVERVIEW                           ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Developer                                                   Production
+   │                                                            │
+   ▼                                                            │
+[git push] ──► [GitHub/GitLab] ──► [Jenkins Webhook Trigger]    │
+                                          │                     │
+                              ┌───────────▼───────────┐         │
+                              │    CI STAGE           │         │
+                              │  1. Code Checkout     │         │
+                              │  2. Build (Maven/npm) │         │
+                              │  3. Unit Tests        │         │
+                              │  4. Code Analysis     │         │
+                              │  5. Security Scan     │         │
+                              └───────────┬───────────┘         │
+                                          │                     │
+                              ┌───────────▼───────────┐         │
+                              │    CD STAGE           │         │
+                              │  6. Build Docker Image│         │
+                              │  7. Push to Registry  │         │
+                              │  8. Deploy to Staging │         │
+                              │  9. Integration Tests │         │
+                              └───────────┬───────────┘         │
+                                          │                     │
+                              ┌───────────▼───────────┐         │
+                              │  APPROVAL GATE        │         │
+                              │  (Manual for Delivery)│         │
+                              │  (Auto for Deployment)│         │
+                              └───────────┬───────────┘         │
+                                          │                     │
+                                          └────────────────────►│
+                                                        [PRODUCTION]
+</pre>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-icon">⚠️</div>
+      <div><strong>Common Mistake:</strong> Bahut log CI aur CD ko ek hi cheez samajhte hain. Interview mein clearly batao – CI = merge karne ka process, CD = deploy karne ka process. Dono alag hain!</div>
+    </div>
+
+    <h4>Before vs After CI/CD</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Situation</th><th>Before CI/CD 😰</th><th>After CI/CD 😎</th></tr>
+        <tr><td>Release frequency</td><td>Months mein ek baar</td><td>Din mein kaafi baar</td></tr>
+        <tr><td>Bug detection</td><td>Production mein milta tha</td><td>Commit pe hi milta hai</td></tr>
+        <tr><td>Deployment process</td><td>8 ghante manual kaam</td><td>10 minute automated</td></tr>
+        <tr><td>Developer confidence</td><td>Code push karne se darte the</td><td>Freely push karte hain</td></tr>
+        <tr><td>Rollback</td><td>2-3 din ka kaam</td><td>1 click mein</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 1.3 Why Jenkins -->
+  <div class="card">
+    <h3 data-icon="🔧">Jenkins Kyun? (Market Mein Aur Bhi Toh Hain!)</h3>
+
+    <p>Sahi sawaal hai! Market mein CI/CD ke liye bahut tools hain – GitHub Actions, GitLab CI, CircleCI, Travis CI. Toh Jenkins kyun sikho?</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Open Source</th><th>Self-hosted</th><th>Plugin Ecosystem</th><th>Enterprise Ready</th><th>Learning Value</th></tr>
+        <tr><td><strong>Jenkins</strong></td><td class="check">✅ Yes</td><td class="check">✅ Yes</td><td class="check">✅ 1800+</td><td class="check">✅ Yes</td><td class="check">✅ Highest</td></tr>
+        <tr><td>GitHub Actions</td><td class="check">✅ Yes</td><td>Partial</td><td>Limited</td><td>Good</td><td>High</td></tr>
+        <tr><td>GitLab CI</td><td class="check">✅ Yes</td><td class="check">✅ Yes</td><td>Limited</td><td class="check">✅ Yes</td><td>High</td></tr>
+        <tr><td>CircleCI</td><td class="cross">❌ No</td><td class="cross">❌ No</td><td>Limited</td><td>Good</td><td>Medium</td></tr>
+      </table>
+    </div>
+
+    <div class="callout success">
+      <div class="callout-icon">🎯</div>
+      <div><strong>Jenkins Ki Superpower:</strong> Jenkins itna flexible hai ki tum isko literally kisi bhi technology ke saath integrate kar sakte ho. 15+ saal ki community support, 1800+ plugins, aur almost har enterprise company abhi bhi Jenkins use karti hai. Jenkins seekha matlab CI/CD ka core concept seedha mind mein baith jaata hai.</div>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 1</h4>
+      <div class="interview-q">
+        <strong>Q: DevOps aur Agile mein kya difference hai?</strong>
+        Agile ek <em>development methodology</em> hai (kaise build karo). DevOps ek <em>culture aur practice</em> hai (kaise build karo AUR deliver karo). Dono complementary hain – Agile sprints ko DevOps CI/CD pipelines support karti hain.
+      </div>
+      <div class="interview-q">
+        <strong>Q: CI pipeline fail ho gayi – ab kya karoge?</strong>
+        First: fail hone ka reason dekho (build logs, test output). Agar test fail hai toh developer ko notify karo. Kabhi bhi failing tests ke saath code merge nahi karte. Fix karo, phir re-push.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Continuous Delivery aur Continuous Deployment mein difference?</strong>
+        Delivery mein production ke liye manual approval hoti hai. Deployment mein agar tests pass ho gaye toh automatic production deploy ho jaata hai. Netflix deployment use karta hai, zyaada traditional companies delivery prefer karti hain.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 1</h4>
+    <ol>
+      <li>Apna GitHub account banao (if nahi hai) aur ek simple repository create karo</li>
+      <li>Ek README.md likho jisme explain karo: <em>"CI/CD kya hai aur mere project mein kaise use hoga"</em></li>
+      <li>Research karo: Aapki dream company kaunsa CI/CD tool use karti hai? (LinkedIn ya job descriptions dekho)</li>
+      <li>Kisi ek company ka DevOps case study padho (Google, Netflix, Etsy – sab publicly available hain)</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 2 – Jenkins Architecture
+==================================================== -->
+<section class="phase-section" id="phase2">
+  <div class="phase-header">
+    <div class="phase-icon">🏛️</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 2</div>
+      <h2>Jenkins Architecture Deep Dive</h2>
+    </div>
+  </div>
+
+  <!-- 2.1 Jenkins Architecture -->
+  <div class="card">
+    <h3 data-icon="🗺️">Jenkins Ki Duniya – Controller & Agent Architecture</h3>
+
+    <p>Jenkins ek <strong>distributed system</strong> hai. Iske do main components hain:</p>
+
+    <ul>
+      <li><strong>Jenkins Controller (Master):</strong> Yeh boss hai. Yeh decide karta hai kaunsa job kab chalega, logs store karta hai, UI serve karta hai, aur agents ko instructions deta hai. <em>Build khud nahi chalaata.</em></li>
+      <li><strong>Jenkins Agent (Node/Slave):</strong> Yeh worker hai. Actual build commands yahan chalte hain. Multiple agents ho sakte hain – different OS, different tools, alag-alag capability ke saath.</li>
+    </ul>
+
+    <div class="analogy-box">
+      <h4>🏢 Analogy – Project Manager aur Team Members</h4>
+      <p>Controller ek Project Manager ki tarah hai jo tasks assign karta hai aur status track karta hai. Agents developer/tester team ki tarah hain jo actual kaam karte hain. PM khud coding nahi karta – sirf manage karta hai. Exactly yehi Jenkins mein hota hai.</p>
+    </div>
+
+    <div class="diagram">
+<pre>
+╔═══════════════════════════════════════════════════════════════════════╗
+║                    JENKINS ARCHITECTURE                               ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+                    ┌─────────────────────┐
+     Browser/API ──►│   JENKINS CONTROLLER│
+                    │   (Master Node)     │
+                    │                     │
+                    │  • Job Scheduling   │
+                    │  • Build Queue      │
+                    │  • Plugin Manager   │
+                    │  • User Auth/RBAC   │
+                    │  • Log Storage      │
+                    │  • Web UI (8080)    │
+                    └──────────┬──────────┘
+                               │
+              ┌────────────────┼────────────────┐
+              │   SSH/JNLP     │   SSH/JNLP     │   SSH/JNLP
+              ▼                ▼                ▼
+    ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+    │  AGENT #1    │  │  AGENT #2    │  │  AGENT #3    │
+    │  Linux/Java  │  │  Windows/.NET│  │  Docker/K8s  │
+    │              │  │              │  │              │
+    │ • Build Jobs │  │ • Build Jobs │  │ • Build Jobs │
+    │ • Run Tests  │  │ • Run Tests  │  │ • Run Tests  │
+    │ • Deploy     │  │ • Deploy     │  │ • Deploy     │
+    └──────────────┘  └──────────────┘  └──────────────┘
+
+    Agent 1: Java/Maven builds ke liye
+    Agent 2: .NET/Windows builds ke liye
+    Agent 3: Docker/Kubernetes deployments ke liye
+</pre>
+    </div>
+
+    <h4>Controller pe Build Kyun Nahi Chalate?</h4>
+    <p>Yeh ek <strong>critical production rule</strong> hai! Controller pe build chalane se:</p>
+    <ul>
+      <li>Controller ki CPU/RAM consume hoti hai → UI slow ho jaata hai</li>
+      <li>Security risk – build scripts controller ke OS pe direct access paa leti hain</li>
+      <li>Scaling impossible ho jaati hai</li>
+    </ul>
+
+    <div class="callout danger">
+      <div class="callout-icon">🚨</div>
+      <div><strong>Production Rule:</strong> Jenkins controller pe <code class="inline-code">agent none</code> configure karo aur har pipeline mein explicitly agent specify karo. Controller pe built-in executor ko 0 set karo!</div>
+    </div>
+  </div>
+
+  <!-- 2.2 Jenkins Internals -->
+  <div class="card">
+    <h3 data-icon="⚙️">Jenkins Ke Andar Kya Hota Hai? (Internals)</h3>
+
+    <h4>1. Job Queue (Build Queue)</h4>
+    <p>Jab tumhare paas zyaada builds aate hain aur agents busy hain, Jenkins unhe queue mein daal deta hai. Yeh ek waiting line hai. Queue configuration aur priority management production mein bahut important hai.</p>
+
+    <h4>2. Build Executor</h4>
+    <p>Har agent pe ek ya zyaada <strong>executors</strong> hote hain – yeh woh "slots" hain jahan builds chalte hain. 2 executors = 2 parallel builds on same agent.</p>
+
+    <h4>3. Plugin System</h4>
+    <p>Jenkins ki real power iske 1800+ plugins hain. Plugins Jenkins ko extend karte hain – naye build steps, naye SCM systems, naye notification channels, sab kuch plugins se aata hai.</p>
+
+    <div class="diagram">
+<pre>
+╔══════════════════════════════════════════════════════╗
+║              JENKINS INTERNAL FLOW                   ║
+╚══════════════════════════════════════════════════════╝
+
+[Code Push to GitHub]
+        │
+        ▼
+[Webhook/Poll SCM Trigger]
+        │
+        ▼
+[Jenkins Job Triggered]
+        │
+        ▼
+[Build Queue] ──── Agent Busy? ──Yes──► Wait in Queue
+        │
+        │ No (Agent Free)
+        ▼
+[Agent Assigned] ──► [Workspace Created on Agent]
+        │
+        ▼
+[Pipeline Stages Execute Sequentially]
+   Stage 1: Checkout ──► Stage 2: Build ──► Stage 3: Test
+        │
+        ▼
+   Stage 4: Publish ──► Stage 5: Deploy
+        │
+        ▼
+[Build Result: SUCCESS / FAILURE / UNSTABLE]
+        │
+        ▼
+[Notification: Email/Slack/Teams]
+        │
+        ▼
+[Artifacts Archived, Workspace Cleaned]
+</pre>
+    </div>
+
+    <h4>Jenkins Home Directory (JENKINS_HOME)</h4>
+    <p>Jenkins ka saara data ek folder mein hota hai – <code class="inline-code">JENKINS_HOME</code> (default: <code class="inline-code">/var/lib/jenkins</code> on Ubuntu).</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINS_HOME Structure</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>/var/lib/jenkins/
+├── config.xml          # Main Jenkins configuration
+├── jobs/               # All your job definitions
+│   ├── my-app/
+│   │   ├── config.xml  # Job config
+│   │   └── builds/     # Build history, logs, artifacts
+├── plugins/            # Installed plugins (.jpi files)
+├── nodes/              # Agent node configurations
+├── users/              # User accounts
+├── secrets/            # Credentials (encrypted)
+│   └── master.key      # Encryption key – NEVER share this!
+├── workspace/          # Build workspaces (Agent pe hoti hai)
+└── logs/               # Jenkins system logs</code></pre>
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-icon">⚠️</div>
+      <div><strong>Backup Strategy:</strong> Production mein JENKINS_HOME ka regular backup lo! Especially config.xml aur jobs/ folder. Agar yeh chale gaye toh saara setup dubara karna padega. AWS S3 ya Google Cloud Storage pe backup rakho.</div>
+    </div>
+
+    <h4>Important Ports</h4>
+    <ul>
+      <li><strong>8080:</strong> Jenkins Web UI (default)</li>
+      <li><strong>50000:</strong> JNLP Agent connection port</li>
+      <li><strong>22:</strong> SSH Agent connection</li>
+    </ul>
+  </div>
+
+  <!-- 2.3 Pipeline Types -->
+  <div class="card">
+    <h3 data-icon="🛣️">Pipeline Types – Kitne Tarike Se Pipeline Banate Hain?</h3>
+
+    <h4>1. Freestyle Project (Old School – Avoid in Production)</h4>
+    <p>GUI se configure hota hai. Simple hai lekin bahut limited. Version control nahi hota, complex logic likhna mushkil hai. Sirf learning ke liye theek hai.</p>
+
+    <h4>2. Scripted Pipeline (Groovy-based, Full Power)</h4>
+    <p>Poora Groovy mein likha jaata hai. Maximum flexibility lekin complex aur error-prone. Experienced engineers use karte hain.</p>
+
+    <h4>3. Declarative Pipeline (✅ Modern Standard)</h4>
+    <p>Yeh aaj ka standard hai. Readable, structured, aur validation built-in. Iske andar bhi Groovy use ho sakti hai when needed. <strong>Yahi seekhna chahiye.</strong></p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Feature</th><th>Freestyle</th><th>Scripted Pipeline</th><th>Declarative Pipeline</th></tr>
+        <tr><td>Learning Curve</td><td>Easy</td><td>Hard</td><td>Medium</td></tr>
+        <tr><td>Version Control</td><td class="cross">❌</td><td class="check">✅</td><td class="check">✅</td></tr>
+        <tr><td>Code Reuse</td><td class="cross">❌</td><td class="check">✅</td><td class="check">✅</td></tr>
+        <tr><td>Parallel Stages</td><td class="cross">❌</td><td class="check">✅</td><td class="check">✅</td></tr>
+        <tr><td>Recommended</td><td>Beginner only</td><td>Advanced only</td><td class="check">✅ Everyone</td></tr>
+      </table>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 2</h4>
+      <div class="interview-q">
+        <strong>Q: Jenkins Master pe build chalana kyun risky hai?</strong>
+        Controller pe build chalane se resource contention hoti hai (UI slow padti hai), security risk hota hai (build scripts OS access paa leti hain), aur horizontal scaling impossible ho jaati hai. Best practice: controller pe executor count = 0.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Jenkins agent ko controller se kaise connect karte hain?</strong>
+        Do main methods: (1) SSH – controller agent pe SSH karta hai aur Java process start karta hai. (2) JNLP/TCP – agent controller se connection initiate karta hai port 50000 pe. Firewall ke peeche wale agents ke liye JNLP better hota hai.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Jenkins failover kaise handle karte hain?</strong>
+        Active-passive setup: primary Jenkins controller ka JENKINS_HOME shared storage (NFS/EBS) pe rakho. Secondary controller same storage mount kare. Primary fail ho toh secondary manually/automatically start karo. Modern approach: Jenkins on Kubernetes with persistent volume.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 2</h4>
+    <ol>
+      <li>Ek paper pe Jenkins architecture diagram khicho (haath se banaoge toh yaad rahega!)</li>
+      <li>Sochke likhlo: agar tumhare paas ek Java app hai aur ek Node.js app – dono ke liye alag agents kyun chahiye?</li>
+      <li>Jenkins documentation padho: <code class="inline-code">https://www.jenkins.io/doc/book/managing/nodes/</code> – Node management section</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 3 – Installation
+==================================================== -->
+<section class="phase-section" id="phase3">
+  <div class="phase-header">
+    <div class="phase-icon">🔨</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 3</div>
+      <h2>Installation – Ubuntu + Docker + Production Setup</h2>
+    </div>
+  </div>
+
+  <!-- 3.1 System Requirements -->
+  <div class="card">
+    <h3 data-icon="📋">System Requirements – Pehle Check Karo</h3>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Component</th><th>Minimum</th><th>Recommended (Production)</th></tr>
+        <tr><td>RAM</td><td>1 GB</td><td>8 GB+</td></tr>
+        <tr><td>CPU</td><td>1 core</td><td>4 cores+</td></tr>
+        <tr><td>Disk</td><td>10 GB</td><td>100 GB+ (SSD)</td></tr>
+        <tr><td>Java</td><td>Java 17</td><td>Java 21 (LTS)</td></tr>
+        <tr><td>OS</td><td>Any Linux</td><td>Ubuntu 22.04 LTS</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3.2 Ubuntu Installation -->
+  <div class="card">
+    <h3 data-icon="🐧">Method 1 – Ubuntu pe Jenkins Install (Production Standard)</h3>
+
+    <p>Yeh method production environment ke liye recommended hai. Step by step chalte hain:</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Step 1: System Update & Java Install</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># System update pehle karo – hamesha!</span>
+sudo apt update && sudo apt upgrade -y
+
+<span class="cm"># Java 21 install karo (Jenkins ka requirement)</span>
+sudo apt install -y fontconfig openjdk-21-jdk
+
+<span class="cm"># Java version verify karo</span>
+java -version
+<span class="cm"># Output: openjdk version "21.x.x" ...</span>
+
+<span class="cm"># JAVA_HOME set karo</span>
+echo 'JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64' | sudo tee -a /etc/environment
+source /etc/environment
+echo $JAVA_HOME</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Step 2: Jenkins Repository Add & Install</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Jenkins ki official GPG key add karo</span>
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+<span class="cm"># Jenkins repository sources mein add karo</span>
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+<span class="cm"># Package list update karo with new repo</span>
+sudo apt update
+
+<span class="cm"># Jenkins install karo!</span>
+sudo apt install jenkins -y
+
+<span class="cm"># Jenkins service start karo aur enable karo (boot pe auto-start)</span>
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+<span class="cm"># Status check karo</span>
+sudo systemctl status jenkins
+<span class="cm"># Active (running) dikhna chahiye!</span></code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Step 3: Initial Setup & Password</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Initial admin password nikalo</span>
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+<span class="cm"># Yeh password copy karo – browser mein chahiye hoga</span>
+
+<span class="cm"># Firewall allow karo (agar UFW enabled hai)</span>
+sudo ufw allow 8080/tcp
+sudo ufw allow 50000/tcp
+sudo ufw reload
+
+<span class="cm"># Jenkins logs dekhne ke liye</span>
+sudo journalctl -u jenkins -f
+
+<span class="cm"># Ab browser mein jaao: http://YOUR_SERVER_IP:8080</span>
+<span class="cm"># Password paste karo, "Install Suggested Plugins" click karo</span>
+<span class="cm"># Admin user create karo</span></code></pre>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">🔑</div>
+      <div><strong>First Login Flow:</strong> Browser mein <code class="inline-code">http://IP:8080</code> jaao → Initial password paste karo → "Install Suggested Plugins" → Admin user create karo → Jenkins URL confirm karo → Done!</div>
+    </div>
+
+    <h4>Post-Installation – Production Settings</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Production Hardening (Jenkins Service Config)</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Jenkins service file edit karo for production settings</span>
+sudo systemctl edit jenkins
+
+<span class="cm"># Yeh content add karo (systemd override):</span>
+[Service]
+Environment="JAVA_OPTS=-Xmx4g -Xms2g -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+Environment="JENKINS_OPTS=--httpPort=8080"
+
+<span class="cm"># Memory settings samjho:
+# -Xmx4g = Maximum heap 4GB (server RAM ka 50-60% rakho)
+# -Xms2g = Initial heap 2GB (startup pe allocate)
+# -XX:+UseG1GC = G1 Garbage Collector (Jenkins ke liye best)
+# -XX:MaxGCPauseMillis=200 = Max 200ms GC pause target</span>
+
+sudo systemctl daemon-reload
+sudo systemctl restart jenkins
+
+<span class="cm"># Controller pe executor count 0 karo (Security Best Practice)
+# Manage Jenkins → Nodes → Built-In Node → Configure
+# Number of executors = 0</span></code></pre>
+    </div>
+  </div>
+
+  <!-- 3.3 Docker Installation -->
+  <div class="card">
+    <h3 data-icon="🐳">Method 2 – Docker se Jenkins (Development & Testing)</h3>
+
+    <p>Development environment ke liye Docker fastest option hai. Ek command aur Jenkins ready!</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Docker pe Jenkins Run Karo</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Simple run (development ke liye)</span>
+docker run -d \
+  --name jenkins \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins_home:/var/jenkins_home \
+  jenkins/jenkins:lts-jdk21
+
+<span class="cm"># Initial password nikalo</span>
+docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+<span class="cm"># Logs dekhne ke liye</span>
+docker logs -f jenkins</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">DOCKER-COMPOSE – Production-Grade Docker Setup</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># docker-compose.yml</span>
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk21
+    container_name: jenkins-prod
+    restart: unless-stopped
+    privileged: true           <span class="cm"># Docker-in-Docker ke liye</span>
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  <span class="cm"># Docker access</span>
+      - /usr/bin/docker:/usr/bin/docker             <span class="cm"># Docker binary</span>
+    environment:
+      - JAVA_OPTS=-Xmx2g -Xms1g -XX:+UseG1GC
+      - TZ=Asia/Kolkata       <span class="cm"># Timezone set karo</span>
+    networks:
+      - jenkins-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/login"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  jenkins-agent:
+    image: jenkins/inbound-agent:latest-jdk21
+    container_name: jenkins-agent-1
+    restart: unless-stopped
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+      - JENKINS_AGENT_NAME=docker-agent-1
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+      - JENKINS_SECRET=YOUR_AGENT_SECRET_HERE
+    volumes:
+      - agent_workspace:/home/jenkins/agent
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - jenkins-network
+    depends_on:
+      jenkins:
+        condition: service_healthy
+
+volumes:
+  jenkins_data:
+  agent_workspace:
+
+networks:
+  jenkins-network:
+    driver: bridge</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Docker Compose Commands</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Start karo</span>
+docker-compose up -d
+
+<span class="cm"># Status dekhna</span>
+docker-compose ps
+
+<span class="cm"># Logs dekhna</span>
+docker-compose logs -f jenkins
+
+<span class="cm"># Stop karna</span>
+docker-compose down
+
+<span class="cm"># Volume ke saath completely remove karna (CAREFUL – data jaayega!)</span>
+docker-compose down -v</code></pre>
+    </div>
+  </div>
+
+  <!-- 3.4 Nginx Reverse Proxy -->
+  <div class="card">
+    <h3 data-icon="🌐">Production Setup – Nginx Reverse Proxy + HTTPS</h3>
+
+    <p>Production mein Jenkins ko directly port 8080 pe expose mat karo. Nginx reverse proxy use karo SSL ke saath.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Nginx + Certbot Setup</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Nginx install karo</span>
+sudo apt install nginx -y
+
+<span class="cm"># Certbot install karo (free SSL)</span>
+sudo apt install certbot python3-certbot-nginx -y
+
+<span class="cm"># SSL certificate banao (apna domain use karo)</span>
+sudo certbot --nginx -d jenkins.yourcompany.com
+
+<span class="cm"># Nginx config create karo</span>
+sudo nano /etc/nginx/sites-available/jenkins</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">NGINX CONFIG – Jenkins Reverse Proxy with SSL</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>upstream jenkins {
+  keepalive 32;
+  server 127.0.0.1:8080 fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name jenkins.yourcompany.com;
+  return 301 https://$server_name$request_uri;
+}
+
+server {
+  listen 443 ssl http2;
+  server_name jenkins.yourcompany.com;
+
+  ssl_certificate     /etc/letsencrypt/live/jenkins.yourcompany.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/jenkins.yourcompany.com/privkey.pem;
+
+  <span class="cm"># Security headers</span>
+  add_header X-Frame-Options            SAMEORIGIN;
+  add_header X-XSS-Protection           "1; mode=block";
+  add_header X-Content-Type-Options     nosniff;
+  add_header Strict-Transport-Security  "max-age=63072000; includeSubDomains";
+
+  ignore_invalid_headers off;
+
+  location / {
+    proxy_pass         http://jenkins;
+    proxy_http_version 1.1;
+    proxy_set_header   Host              $host;
+    proxy_set_header   X-Real-IP         $remote_addr;
+    proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Proto $scheme;
+    proxy_connect_timeout 150;
+    proxy_send_timeout    100;
+    proxy_read_timeout    100;
+    proxy_buffers         4 32k;
+    client_max_body_size  8m;
+    client_body_buffer_size 128k;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Nginx Enable & Verify</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Symlink create karo</span>
+sudo ln -s /etc/nginx/sites-available/jenkins /etc/nginx/sites-enabled/
+
+<span class="cm"># Config test karo</span>
+sudo nginx -t
+
+<span class="cm"># Nginx restart karo</span>
+sudo systemctl restart nginx
+
+<span class="cm"># Jenkins Jenkins URL configure karo (System Configuration mein):
+# Manage Jenkins → Configure System → Jenkins URL
+# Set to: https://jenkins.yourcompany.com</span></code></pre>
+    </div>
+
+    <div class="callout success">
+      <div class="callout-icon">✅</div>
+      <div><strong>Production Checklist:</strong> Jenkins HTTPS pe hai, port 8080 public nahi hai (firewall se block karo), SSL auto-renew enabled hai (<code class="inline-code">certbot renew</code> cron job), aur Jenkins URL correctly configured hai.</div>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 3</h4>
+      <div class="interview-q">
+        <strong>Q: Jenkins ko Docker mein run karne ke advantages aur disadvantages?</strong>
+        Advantages: Fast setup, portable, easy to update, version pinning. Disadvantages: Docker-in-Docker complexity (builds ke liye Docker access chahiye), persistent storage manage karna padta hai, container networking tricky ho sakti hai agents ke saath.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Jenkins ka port 8080 directly expose kyun nahi karte production mein?</strong>
+        Security reasons: Jenkins directly internet pe accessible hona risky hai – brute force attacks, vulnerability exploits. Nginx reverse proxy: SSL termination, security headers, rate limiting, access control sab ek jagah milta hai.
+      </div>
+      <div class="interview-q">
+        <strong>Q: JENKINS_HOME backup strategy batao?</strong>
+        3-2-1 rule follow karo: 3 copies, 2 different media, 1 offsite. Daily automated backup to S3/GCS, weekly full backup, monthly archived backup. Thin Backup Plugin ya simple rsync + cron. Configuration as Code (JCasC) better approach – config YAML files Git mein rakho.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 3</h4>
+    <ol>
+      <li>EC2 instance ya local VM pe Ubuntu 24.04 install karo</li>
+      <li>Jenkins install karo using the commands above – step by step follow karo</li>
+      <li>Browser mein Jenkins UI open karo, initial setup complete karo</li>
+      <li>Controller pe executors = 0 set karo (Manage Jenkins → Nodes → Built-In Node)</li>
+      <li>Git Plugin aur Docker Pipeline Plugin install karo (Manage Jenkins → Plugins)</li>
+      <li>BONUS: Nginx reverse proxy setup karo with self-signed SSL</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 4 – Jobs, Pipelines & Jenkinsfile
+==================================================== -->
+<section class="phase-section" id="phase4">
+  <div class="phase-header">
+    <div class="phase-icon">📝</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 4</div>
+      <h2>Jobs, Pipelines & Jenkinsfile</h2>
+    </div>
+  </div>
+
+  <!-- 4.1 Jenkinsfile Structure -->
+  <div class="card">
+    <h3 data-icon="📄">Jenkinsfile – Jenkins Ka Heart</h3>
+
+    <p>Jenkinsfile ek text file hai jo tumhari pipeline ko define karta hai. Yeh file tumhare code ke saath repository mein hoti hai – yeh concept kahlata hai <strong>"Pipeline as Code"</strong>.</p>
+
+    <div class="analogy-box">
+      <h4>📋 Analogy – Recipe Card</h4>
+      <p>Jenkinsfile bilkul ek recipe card ki tarah hai. Jaise recipe mein likha hota hai "Step 1: Pyaaz kaato, Step 2: Tel daalo, Step 3: Fry karo" – waise hi Jenkinsfile mein likha hota hai "Stage 1: Code nikalo, Stage 2: Build karo, Stage 3: Test karo". Koi bhi yeh recipe le ke same dish bana sakta hai – koi bhi Jenkins server yeh Jenkinsfile le ke same pipeline run kar sakta hai.</p>
+    </div>
+
+    <h4>Declarative Pipeline Structure</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Complete Structure with All Options</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm">// Declarative Pipeline – Yeh structure yaad rakho!</span>
+pipeline {
+  <span class="cm">// 1. AGENT – Kahan chalana hai?</span>
+  agent {
+    label 'linux-docker'    <span class="cm">// specific agent</span>
+    <span class="cm">// ya: any  – koi bhi available agent</span>
+    <span class="cm">// ya: none – individual stage pe define karo</span>
+  }
+
+  <span class="cm">// 2. ENVIRONMENT – Environment variables</span>
+  environment {
+    APP_NAME     = 'my-java-app'
+    DOCKER_IMAGE = "myregistry/${APP_NAME}"
+    JAVA_HOME    = '/usr/lib/jvm/java-21-openjdk-amd64'
+    <span class="cm">// Credentials se values laana:</span>
+    DB_PASSWORD  = credentials('prod-db-password')  <span class="cm">// Masked in logs</span>
+  }
+
+  <span class="cm">// 3. OPTIONS – Pipeline behavior settings</span>
+  options {
+    timestamps()                          <span class="cm">// Log mein time add karo</span>
+    buildDiscarder(logRotator(
+      numToKeepStr: '10',                 <span class="cm">// Sirf 10 builds rakho</span>
+      artifactNumToKeepStr: '5'
+    ))
+    timeout(time: 30, unit: 'MINUTES')    <span class="cm">// 30 min baad auto-kill</span>
+    disableConcurrentBuilds()             <span class="cm">// Ek waqt ek hi build</span>
+    retry(2)                              <span class="cm">// Fail ho toh 2 baar retry</span>
+  }
+
+  <span class="cm">// 4. PARAMETERS – Manual input triggers ke liye</span>
+  parameters {
+    choice(name: 'ENV',
+           choices: ['staging', 'production'],
+           description: 'Deploy environment')
+    string(name: 'BRANCH', defaultValue: 'main',
+           description: 'Branch to build')
+    booleanParam(name: 'SKIP_TESTS', defaultValue: false,
+                 description: 'Tests skip karna hai?')
+  }
+
+  <span class="cm">// 5. TRIGGERS – Kab trigger hoga?</span>
+  triggers {
+    githubPush()                         <span class="cm">// GitHub webhook</span>
+    pollSCM('H/5 * * * *')              <span class="cm">// Har 5 min poll karo (fallback)</span>
+    cron('0 2 * * 1')                   <span class="cm">// Har Monday 2am scheduled build</span>
+  }
+
+  <span class="cm">// 6. STAGES – Actual kaam yahan hota hai!</span>
+  stages {
+    stage('Checkout') { ... }
+    stage('Build')    { ... }
+    stage('Test')     { ... }
+    stage('Deploy')   { ... }
+  }
+
+  <span class="cm">// 7. POST – Baad mein kya karna hai?</span>
+  post {
+    always  { ... }    <span class="cm">// Hamesha chalega</span>
+    success { ... }    <span class="cm">// Sirf success pe</span>
+    failure { ... }    <span class="cm">// Sirf failure pe</span>
+    unstable{ ... }    <span class="cm">// Test failures pe</span>
+    cleanup { ... }    <span class="cm">// Cleanup hamesha (always ke baad)</span>
+  }
+}
+</code></pre>
+    </div>
+  </div>
+
+  <!-- 4.2 Real-world Java Pipeline -->
+  <div class="card">
+    <h3 data-icon="☕">Real-World Java Spring Boot Pipeline</h3>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Production Java Spring Boot Pipeline</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent { label 'java-agent' }
+
+  environment {
+    APP_NAME     = 'springboot-ecommerce'
+    MAVEN_OPTS   = '-Xmx1024m -XX:MaxPermSize=512m'
+    SONAR_TOKEN  = credentials('sonarqube-token')
+    DOCKER_CREDS = credentials('docker-hub-credentials')
+    DOCKER_IMAGE = "mycompany/${APP_NAME}"
+    DEPLOY_SERVER = '10.0.1.50'
+  }
+
+  options {
+    timestamps()
+    buildDiscarder(logRotator(numToKeepStr: '20'))
+    timeout(time: 45, unit: 'MINUTES')
+    disableConcurrentBuilds(abortPrevious: true)
+  }
+
+  stages {
+    <span class="cm">// ─── STAGE 1: CODE CHECKOUT ───────────────────────────</span>
+    stage('Checkout') {
+      steps {
+        git branch: "${env.BRANCH_NAME ?: 'main'}",
+            url: 'https://github.com/mycompany/springboot-ecommerce.git',
+            credentialsId: 'github-credentials'
+        sh 'echo "Code checked out: $(git log --oneline -1)"'
+      }
+    }
+
+    <span class="cm">// ─── STAGE 2: BUILD ────────────────────────────────────</span>
+    stage('Build') {
+      steps {
+        sh '''
+          echo "==> Building application..."
+          mvn clean package \
+            -DskipTests=true \
+            -Dmaven.compiler.source=21 \
+            -Dmaven.compiler.target=21 \
+            --batch-mode
+          echo "==> Build complete. JAR size:"
+          ls -lh target/*.jar
+        '''
+      }
+      post {
+        success {
+          archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }
+      }
+    }
+
+    <span class="cm">// ─── STAGE 3: TEST ─────────────────────────────────────</span>
+    stage('Unit Tests') {
+      steps {
+        sh '''
+          mvn test \
+            -Dspring.profiles.active=test \
+            --batch-mode
+        '''
+      }
+      post {
+        always {
+          junit 'target/surefire-reports/*.xml'
+          publishHTML([
+            allowMissing: false,
+            reportDir: 'target/site/jacoco',
+            reportFiles: 'index.html',
+            reportName: 'Code Coverage Report'
+          ])
+        }
+        failure {
+          emailext(
+            subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "Tests failed! Check: ${env.BUILD_URL}",
+            to: 'dev-team@company.com'
+          )
+        }
+      }
+    }
+
+    <span class="cm">// ─── STAGE 4: CODE QUALITY ─────────────────────────────</span>
+    stage('SonarQube Analysis') {
+      steps {
+        withSonarQubeEnv('SonarQube-Server') {
+          sh '''
+            mvn sonar:sonar \
+              -Dsonar.projectKey=${APP_NAME} \
+              -Dsonar.projectName="${APP_NAME}" \
+              -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          '''
+        }
+      }
+    }
+
+    <span class="cm">// ─── STAGE 5: QUALITY GATE ─────────────────────────────</span>
+    stage('Quality Gate') {
+      steps {
+        timeout(time: 5, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+      }
+    }
+
+    <span class="cm">// ─── STAGE 6: DOCKER BUILD & PUSH ─────────────────────</span>
+    stage('Docker Build & Push') {
+      when {
+        anyOf {
+          branch 'main'
+          branch 'develop'
+        }
+      }
+      steps {
+        script {
+          def imageTag = "${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
+          def latestTag = "${DOCKER_IMAGE}:latest"
+
+          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            def app = docker.build(imageTag)
+            app.push()
+            app.push('latest')
+          }
+
+          env.DOCKER_TAG = env.BUILD_NUMBER
+        }
+      }
+    }
+
+    <span class="cm">// ─── STAGE 7: DEPLOY TO STAGING ────────────────────────</span>
+    stage('Deploy to Staging') {
+      when { branch 'develop' }
+      steps {
+        sshPublisher(publishers: [
+          sshPublisherDesc(
+            configName: 'staging-server',
+            transfers: [
+              sshTransfer(
+                execCommand: """
+                  docker pull ${DOCKER_IMAGE}:${env.DOCKER_TAG}
+                  docker stop ${APP_NAME} || true
+                  docker rm   ${APP_NAME} || true
+                  docker run -d \
+                    --name ${APP_NAME} \
+                    -p 8080:8080 \
+                    --restart unless-stopped \
+                    -e SPRING_PROFILES_ACTIVE=staging \
+                    ${DOCKER_IMAGE}:${env.DOCKER_TAG}
+                  echo "Deployed version ${env.DOCKER_TAG} to staging"
+                """
+              )
+            ]
+          )
+        ])
+      }
+    }
+
+    <span class="cm">// ─── STAGE 8: DEPLOY TO PRODUCTION (with approval) ─────</span>
+    stage('Deploy to Production') {
+      when { branch 'main' }
+      steps {
+        timeout(time: 2, unit: 'HOURS') {
+          input message: "Kya production deploy karna hai?",
+                ok: "Haan, Deploy Karo!",
+                submitter: 'senior-devops,tech-lead'
+        }
+        sh '''
+          ssh deploy@${DEPLOY_SERVER} "
+            docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
+            docker stop ${APP_NAME}-prod  || true
+            docker rm   ${APP_NAME}-prod  || true
+            docker run -d \
+              --name ${APP_NAME}-prod \
+              -p 8080:8080 \
+              --restart unless-stopped \
+              -e SPRING_PROFILES_ACTIVE=production \
+              ${DOCKER_IMAGE}:${DOCKER_TAG}
+          "
+        '''
+      }
+    }
+  }
+
+  <span class="cm">// ─── POST BUILD ACTIONS ────────────────────────────────</span>
+  post {
+    always {
+      cleanWs()   <span class="cm">// Workspace cleanup</span>
+      script {
+        def color = currentBuild.currentResult == 'SUCCESS' ? '#36a64f' : '#cc0000'
+        def status = currentBuild.currentResult
+        slackSend(
+          channel: '#deployments',
+          color: color,
+          message: """
+*${status}* - ${env.JOB_NAME} #${env.BUILD_NUMBER}
+Branch: ${env.BRANCH_NAME}
+Duration: ${currentBuild.durationString}
+&lt;${env.BUILD_URL}|View Build&gt;
+          """
+        )
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+  </div>
+
+  <!-- 4.3 Node.js Pipeline -->
+  <div class="card">
+    <h3 data-icon="🟨">Real-World Node.js / React Pipeline</h3>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Node.js React App Pipeline</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent {
+    docker {
+      image 'node:20-alpine'      <span class="cm">// Node container mein build karo</span>
+      args  '-u root'
+    }
+  }
+
+  environment {
+    CI             = 'true'
+    NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+    APP_NAME       = 'react-dashboard'
+  }
+
+  options {
+    timestamps()
+    timeout(time: 20, unit: 'MINUTES')
+    buildDiscarder(logRotator(numToKeepStr: '10'))
+  }
+
+  stages {
+    stage('Install Dependencies') {
+      steps {
+        sh '''
+          echo "Node version: $(node --version)"
+          echo "NPM version:  $(npm  --version)"
+          npm ci --prefer-offline    # npm install se faster!
+        '''
+      }
+    }
+
+    stage('Lint & Type Check') {
+      parallel {
+        stage('ESLint') {
+          steps { sh 'npm run lint' }
+        }
+        stage('TypeScript Check') {
+          steps { sh 'npx tsc --noEmit' }
+        }
+        stage('Prettier Check') {
+          steps { sh 'npx prettier --check "src/**/*.{ts,tsx}"' }
+        }
+      }
+    }
+
+    stage('Unit Tests') {
+      steps {
+        sh '''
+          npm test -- \
+            --coverage \
+            --ci \
+            --forceExit \
+            --testResultsProcessor=jest-junit
+        '''
+      }
+      post {
+        always {
+          junit 'junit.xml'
+          publishHTML([
+            reportDir: 'coverage/lcov-report',
+            reportFiles: 'index.html',
+            reportName: 'Test Coverage'
+          ])
+        }
+      }
+    }
+
+    stage('Build Production Bundle') {
+      steps {
+        sh '''
+          npm run build
+          echo "Build size:"
+          du -sh build/
+        '''
+        archiveArtifacts 'build/**'
+      }
+    }
+
+    stage('Deploy to S3 + CloudFront') {
+      when { branch 'main' }
+      environment {
+        AWS_CREDENTIALS = credentials('aws-s3-deploy')
+      }
+      steps {
+        sh '''
+          aws s3 sync build/ s3://my-react-app-prod/ \
+            --delete \
+            --cache-control "public,max-age=31536000" \
+            --exclude "index.html"
+
+          aws s3 cp build/index.html s3://my-react-app-prod/index.html \
+            --cache-control "no-cache,no-store,must-revalidate"
+
+          aws cloudfront create-invalidation \
+            --distribution-id E1234567890ABCD \
+            --paths "/*"
+        '''
+      }
+    }
+  }
+
+  post {
+    always { cleanWs() }
+  }
+}
+</code></pre>
+    </div>
+
+    <h4>Parallel Stages – Multiple Cheezein Ek Saath</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Parallel Execution Example</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>stage('Parallel Testing') {
+  parallel {
+    stage('Unit Tests') {
+      agent { label 'java-agent-1' }
+      steps { sh 'mvn test -Dtest="Unit*"' }
+    }
+    stage('Integration Tests') {
+      agent { label 'java-agent-2' }
+      steps { sh 'mvn test -Dtest="Integration*"' }
+    }
+    stage('Security Scan') {
+      agent { label 'security-agent' }
+      steps { sh 'mvn dependency-check:check' }
+    }
+  }
+}
+<span class="cm">// Teeno stages parallel chalenge!
+// Time: max(unit-test-time, integration-test-time, security-scan-time)
+// Instead of: unit + integration + security (much slower!)</span></code></pre>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-icon">💜</div>
+      <div><strong>Pro Tip – Parallel Saves Time:</strong> Agar Unit Tests 5 min, Integration Tests 8 min, Security Scan 4 min – sequential mein 17 min lagenge. Parallel mein sirf 8 min! Real production pipelines mein yeh difference hours ka ho sakta hai.</div>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 4</h4>
+      <div class="interview-q">
+        <strong>Q: Jenkinsfile ko repository mein rakhne ke kya benefits hain?</strong>
+        Pipeline as Code ke benefits: (1) Version controlled – history dekhna, rollback karna (2) Code review – pipeline changes bhi PR se jaate hain (3) Reproducible – naya server pe same pipeline (4) Team collaboration – sab log pipeline ko contribute kar sakte hain (5) Audit trail – kab kya change hua pata hai.
+      </div>
+      <div class="interview-q">
+        <strong>Q: when() condition Jenkinsfile mein kab use karte hain?</strong>
+        Conditional deployment ke liye: staging pe sirf develop branch se deploy, production pe sirf main branch se. Feature branches pe deploy mat karo. when() se yeh logic clean aur readable hota hai.
+      </div>
+      <div class="interview-q">
+        <strong>Q: input() step kya karta hai aur kab use karte hain?</strong>
+        input() pipeline ko pause karta hai human approval ke liye. Production deployments ke liye critical. timeout ke saath use karo nahi toh pipeline forever wait karegi. submitter parameter se sirf authorized log approve kar sakte hain.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 4</h4>
+    <ol>
+      <li>Jenkins mein ek "Freestyle Project" banao – simple "Hello World" echo command run karo</li>
+      <li>Pipeline Job banao – simple 3-stage Jenkinsfile: Checkout, Build (echo "Building"), Test (echo "Testing")</li>
+      <li>Ek real GitHub repo banao, usme Jenkinsfile commit karo</li>
+      <li>Jenkins mein "Pipeline from SCM" configure karo – Jenkinsfile GitHub se pull honi chahiye</li>
+      <li>BONUS: post { failure { ... } } section add karo jo failure pe message print kare</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 5 – GitHub Integration & Webhooks
+==================================================== -->
+<section class="phase-section" id="phase5">
+  <div class="phase-header">
+    <div class="phase-icon">🔗</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 5</div>
+      <h2>GitHub Integration & Webhooks</h2>
+    </div>
+  </div>
+
+  <!-- 5.1 GitHub Integration -->
+  <div class="card">
+    <h3 data-icon="🐙">GitHub + Jenkins Integration – Sikhenge Poori Depth Mein</h3>
+
+    <p>GitHub aur Jenkins ko connect karna – yeh har DevOps engineer ko aana chahiye. Jab bhi developer GitHub pe code push kare, Jenkins automatically build start ho jaaye. Yahi hai real CI/CD!</p>
+
+    <div class="diagram">
+<pre>
+╔══════════════════════════════════════════════════════════════════════╗
+║              GITHUB + JENKINS INTEGRATION FLOW                       ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+   Developer                GitHub                  Jenkins
+      │                        │                        │
+      │── git push ───────────►│                        │
+      │                        │── Webhook POST ───────►│
+      │                        │   (JSON payload)       │  
+      │                        │                        │── Job Triggered
+      │                        │                        │── Checkout Code
+      │                        │                        │── Build
+      │                        │                        │── Test
+      │                        │◄── Commit Status ──────│
+      │◄── GitHub Check ───────│   (Success/Failure)    │
+      │  (Green/Red checkmark) │                        │
+</pre>
+    </div>
+
+    <h4>Step 1: GitHub Personal Access Token (PAT) Banao</h4>
+    <p>Jenkins ko GitHub access dene ke liye, pehle GitHub pe token banao:</p>
+
+    <ul>
+      <li>GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic)</li>
+      <li>Generate new token with scopes: <code class="inline-code">repo</code>, <code class="inline-code">admin:repo_hook</code></li>
+      <li>Token copy karo – ek baar hi dikhega!</li>
+    </ul>
+
+    <h4>Step 2: Jenkins mein GitHub Credential Add Karo</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINS UI – Credential Add Karne Ka Process</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Steps:
+# 1. Manage Jenkins → Credentials → System → Global credentials → Add
+# 2. Kind: Username with password
+#    Username: your-github-username
+#    Password: ghp_xxxxxxxxxxxx (PAT token)
+#    ID: github-credentials  (yeh ID Jenkinsfile mein use hoga)
+#    Description: GitHub PAT for CI/CD
+
+# Ya SSH key use karo (more secure):
+# Kind: SSH Username with private key
+# Username: git
+# Private Key: tumhara SSH private key paste karo
+# ID: github-ssh-key</span></code></pre>
+    </div>
+
+    <h4>Step 3: GitHub Plugin Configure Karo</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINS CONFIG – GitHub Server Configuration</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Manage Jenkins → Configure System → GitHub → Add GitHub Server
+# Name: GitHub
+# API URL: https://api.github.com (default)
+# Credentials: (select the PAT token you added)
+# Click "Test Connection" – should show "Credentials verified"</span>
+
+<span class="cm"># Agar Jenkins public internet pe nahi hai (private network),
+# GitHub webhooks use nahi kar sakte.
+# Alternative: Poll SCM every 5 minutes</span>
+triggers {
+  pollSCM('H/5 * * * *')  <span class="cm">// Har 5 min GitHub check karo</span>
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- 5.2 Webhooks -->
+  <div class="card">
+    <h3 data-icon="🪝">Webhooks – Instant Trigger Magic</h3>
+
+    <p>Webhook ek HTTP callback hai. Jab kuch specific hota hai (code push, PR open, etc.), GitHub tumhare Jenkins ko ek POST request bhejta hai, aur Jenkins build start kar deta hai – <strong>instantly!</strong></p>
+
+    <div class="analogy-box">
+      <h4>🔔 Analogy – Doorbell</h4>
+      <p>Polling (pollSCM) ek banda hai jo har 5 minute mein bahar jaake check karta hai – "koi aaya kya?" Webhook ek doorbell ki tarah hai – jab koi aata hai toh bell bajati hai aur aap ko instantly pata chalta hai. Doorbell zyaada efficient hai!</p>
+    </div>
+
+    <h4>GitHub mein Webhook Setup Karo</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">GITHUB – Webhook Configuration Steps</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Steps in GitHub:
+# 1. Repository → Settings → Webhooks → Add webhook
+# 2. Payload URL: https://jenkins.yourcompany.com/github-webhook/
+#    (IMPORTANT: trailing slash mat bhulo!)
+# 3. Content type: application/json
+# 4. Secret: random strong string (Jenkins mein bhi configure karo)
+# 5. Events: "Just the push event" OR "Send me everything"
+# 6. Active: ✅ checked
+# 7. Add webhook
+
+# Webhook delivery verify karne ke liye:
+# Webhooks → Recent Deliveries → Last delivery ka status check karo
+# 200 OK aana chahiye</span></code></pre>
+    </div>
+
+    <h4>Multibranch Pipeline – Best Practice!</h4>
+    <p>Multibranch Pipeline automatically har branch ke liye alag pipeline create karta hai. Feature branches ke liye automatic CI!</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINS – Multibranch Pipeline Config</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Jenkins → New Item → Multibranch Pipeline
+# Branch Sources → GitHub
+# Credentials: github-credentials
+# Repository HTTPS URL: https://github.com/your-org/your-repo.git
+# Behaviors:
+#   - Discover branches: Strategy = "All branches"
+#   - Discover pull requests from origin
+# Build Configuration: by Jenkinsfile (default)
+# Scan Multibranch Pipeline Triggers:
+#   - Periodically if not otherwise run: 1 day</span>
+
+<span class="cm"># Ab repository mein alag alag branches pe push karo:
+# main → production pipeline chalega
+# develop → staging pipeline chalega  
+# feature/* → PR pipeline chalega (sirf build + test, no deploy)</span></code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Branch-based Logic</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent any
+
+  stages {
+    stage('Build & Test') {
+      steps {
+        sh 'mvn clean verify'
+      }
+    }
+
+    stage('Deploy Staging') {
+      when {
+        branch 'develop'         <span class="cm">// Sirf develop branch pe</span>
+      }
+      steps {
+        sh './deploy.sh staging'
+      }
+    }
+
+    stage('Deploy Production') {
+      when {
+        branch 'main'            <span class="cm">// Sirf main branch pe</span>
+        not { changeRequest() }  <span class="cm">// PR nahi, direct push pe hi</span>
+      }
+      steps {
+        input 'Production deploy karna hai?'
+        sh './deploy.sh production'
+      }
+    }
+
+    stage('PR Check') {
+      when {
+        changeRequest()          <span class="cm">// Sirf Pull Requests pe</span>
+      }
+      steps {
+        sh '''
+          echo "PR validation running..."
+          mvn checkstyle:check
+          mvn pmd:check
+        '''
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <h4>GitHub Commit Status Update</h4>
+    <p>Jenkins build ka result GitHub PR pe automatically show ho – green checkmark ya red X!</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – GitHub Commit Status Set Karna</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        githubNotify(
+          status: 'PENDING',
+          description: 'Build chal raha hai...',
+          context: 'CI/Build'
+        )
+        sh 'mvn clean package'
+      }
+    }
+  }
+
+  post {
+    success {
+      githubNotify(
+        status: 'SUCCESS',
+        description: 'Build pass ho gayi!',
+        context: 'CI/Build'
+      )
+    }
+    failure {
+      githubNotify(
+        status: 'FAILURE',
+        description: 'Build fail ho gayi!',
+        context: 'CI/Build'
+      )
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 5</h4>
+      <div class="interview-q">
+        <strong>Q: Webhook aur Poll SCM mein kaun better hai aur kyun?</strong>
+        Webhook better hai: (1) Instant trigger – no delay (2) Less load – Jenkins constantly check nahi karta (3) Exact event-based – sirf push pe trigger. Poll SCM: fallback when webhooks not possible (corporate firewall, private network). Best practice: dono use karo – webhook primary, pollSCM fallback.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Multibranch Pipeline aur regular Pipeline mein kya fark hai?</strong>
+        Regular pipeline: ek fixed branch ya ek job. Multibranch: automatically scan karta hai repository ki saari branches, har branch ke liye alag job create karta hai, automatically PR ke liye jobs create/delete karta hai.
+      </div>
+      <div class="interview-q">
+        <strong>Q: PR pe deploy karna chahiye ya nahi?</strong>
+        Depends on team size. Small teams: PR pe staging deploy karo for review. Large teams: PR pe sirf build + test, merge ke baad deploy. Feature flags se PRs bina deploy ke test kar sakte hain production mein. Most companies: merge ke baad staging pe auto-deploy, production manually.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 5</h4>
+    <ol>
+      <li>GitHub pe ek new repository banao: "jenkins-demo-app"</li>
+      <li>Simple Jenkinsfile add karo (3-stage pipeline)</li>
+      <li>Jenkins mein GitHub credentials add karo (PAT token use karo)</li>
+      <li>Multibranch Pipeline job banao pointing to your repository</li>
+      <li>GitHub mein Webhook configure karo (ngrok use karo if local Jenkins hai)</li>
+      <li>Code push karo aur dekho Jenkins automatically trigger hota hai ya nahi!</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 6 – Jenkins + Docker CI/CD
+==================================================== -->
+<section class="phase-section" id="phase6">
+  <div class="phase-header">
+    <div class="phase-icon">🐳</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 6</div>
+      <h2>Jenkins + Docker CI/CD</h2>
+    </div>
+  </div>
+
+  <!-- 6.1 Docker Integration -->
+  <div class="card">
+    <h3 data-icon="📦">Docker Integration – Build, Push, Deploy</h3>
+
+    <p>Docker aur Jenkins ka combination ek <strong>killer combo</strong> hai. Jenkins code build karta hai, Docker image banata hai, registry pe push karta hai, aur phir containers deploy karta hai. Yeh workflow aaj kal har company mein standard hai.</p>
+
+    <div class="diagram">
+<pre>
+╔═══════════════════════════════════════════════════════════════════════╗
+║                JENKINS + DOCKER WORKFLOW                              ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+[Code Push]
+    │
+    ▼
+[Jenkins Pipeline]
+    │
+    ├── Stage 1: Checkout Code ─────────────── git pull
+    │
+    ├── Stage 2: Build App ─────────────────── mvn package / npm build
+    │
+    ├── Stage 3: Run Tests ──────────────────── mvn test
+    │
+    ├── Stage 4: Build Docker Image ─────────── docker build -t myapp:1.0 .
+    │                                                   │
+    │                                           ┌───────▼────────┐
+    │                                           │   Dockerfile   │
+    │                                           │  FROM java:21  │
+    │                                           │  COPY app.jar  │
+    │                                           │  CMD java -jar │
+    │                                           └───────┬────────┘
+    │                                                   │
+    ├── Stage 5: Push to Registry ───────────── docker push myregistry/myapp:1.0
+    │                                              │
+    │                                         ┌───▼──────────────────┐
+    │                                         │   Docker Registry    │
+    │                                         │  (DockerHub/ECR/GCR) │
+    │                                         └───┬──────────────────┘
+    │                                             │
+    └── Stage 6: Deploy to Server ────────── docker pull + docker run
+                                                  │
+                                             [Production Server]
+                                             Container Running! 🚀
+</pre>
+    </div>
+
+    <h4>Dockerfile – Production-Grade Example</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">DOCKERFILE – Multi-Stage Java App (Production)</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Stage 1: Builder – yahan build tools hain</span>
+FROM maven:3.9-eclipse-temurin-21-alpine AS builder
+
+WORKDIR /build
+
+<span class="cm"># Pehle dependencies copy karo (caching optimization!)</span>
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+<span class="cm"># Phir source code copy karo</span>
+COPY src ./src
+
+<span class="cm"># Build karo (tests skip – CI pe already chala liye)</span>
+RUN mvn clean package -DskipTests -B
+
+<span class="cm"># ─────────────────────────────────────────────────────</span>
+<span class="cm"># Stage 2: Runtime – sirf JRE chahiye, Maven nahi!</span>
+FROM eclipse-temurin:21-jre-alpine AS runtime
+
+<span class="cm"># Non-root user banao (Security!)</span>
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+WORKDIR /app
+
+<span class="cm"># Builder se sirf JAR copy karo</span>
+COPY --from=builder /build/target/*.jar app.jar
+
+<span class="cm"># Correct ownership</span>
+RUN chown -R appuser:appgroup /app
+
+<span class="cm"># Non-root user pe switch karo</span>
+USER appuser
+
+<span class="cm"># Health check</span>
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD wget -qO- http://localhost:8080/actuator/health || exit 1
+
+EXPOSE 8080
+
+<span class="cm"># JVM tuning for containers</span>
+ENV JAVA_OPTS="-XX:+UseContainerSupport \
+               -XX:MaxRAMPercentage=75.0 \
+               -XX:+UseG1GC \
+               -Djava.security.egd=file:/dev/./urandom"
+
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">DOCKERFILE – Node.js React App (Production)</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Stage 1: Build</span>
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production=false
+
+COPY . .
+RUN npm run build
+
+<span class="cm"># Stage 2: Serve with Nginx (tiny image!)</span>
+FROM nginx:alpine AS runtime
+
+<span class="cm"># Custom nginx config</span>
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+<span class="cm"># Build output copy karo</span>
+COPY --from=builder /app/build /usr/share/nginx/html
+
+<span class="cm"># Non-root setup</span>
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chown -R nginx:nginx /var/cache/nginx && \
+    touch /var/run/nginx.pid && \
+    chown nginx:nginx /var/run/nginx.pid
+
+USER nginx
+
+EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=5s \
+  CMD wget -qO- http://localhost:80 || exit 1
+
+CMD ["nginx", "-g", "daemon off;"]</code></pre>
+    </div>
+
+    <h4>Complete Jenkins + Docker Pipeline</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Complete Docker CI/CD Pipeline</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent { label 'docker-enabled-agent' }
+
+  environment {
+    REGISTRY       = 'registry.hub.docker.com'
+    REGISTRY_CREDS = credentials('docker-hub-creds')
+    IMAGE_NAME     = "mycompany/java-ecommerce"
+    IMAGE_TAG      = "${env.BUILD_NUMBER}"
+    FULL_IMAGE     = "${IMAGE_NAME}:${IMAGE_TAG}"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+        script {
+          <span class="cm">// Git commit hash bhi tag mein use karo</span>
+          env.GIT_COMMIT_SHORT = sh(
+            script: 'git rev-parse --short HEAD',
+            returnStdout: true
+          ).trim()
+          env.IMAGE_TAG_FULL = "${IMAGE_TAG}-${env.GIT_COMMIT_SHORT}"
+        }
+      }
+    }
+
+    stage('Build & Test') {
+      steps {
+        sh 'mvn clean verify --batch-mode'
+      }
+      post {
+        always {
+          junit 'target/surefire-reports/*.xml'
+        }
+      }
+    }
+
+    stage('Docker Build') {
+      steps {
+        script {
+          <span class="cm">// Build karo</span>
+          docker.build("${IMAGE_NAME}:${IMAGE_TAG_FULL}", """
+            --build-arg BUILD_DATE=\$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+            --build-arg GIT_COMMIT=${env.GIT_COMMIT_SHORT} \
+            --build-arg VERSION=${IMAGE_TAG_FULL} \
+            --label git-commit=${env.GIT_COMMIT_SHORT} \
+            --label build-number=${IMAGE_TAG} \
+            .
+          """)
+
+          <span class="cm">// Image scan karo security ke liye (Trivy)</span>
+          sh """
+            trivy image \
+              --exit-code 1 \
+              --severity HIGH,CRITICAL \
+              --no-progress \
+              ${IMAGE_NAME}:${IMAGE_TAG_FULL}
+          """
+        }
+      }
+    }
+
+    stage('Push to Registry') {
+      steps {
+        script {
+          docker.withRegistry("https://${REGISTRY}", 'docker-hub-creds') {
+            def img = docker.image("${IMAGE_NAME}:${IMAGE_TAG_FULL}")
+            img.push()                            <span class="cm">// Push with build+commit tag</span>
+            img.push('latest')                    <span class="cm">// Push latest tag too</span>
+
+            if (env.BRANCH_NAME == 'main') {
+              img.push('stable')                  <span class="cm">// main branch = stable</span>
+            }
+          }
+        }
+      }
+    }
+
+    stage('Deploy to Staging') {
+      when { branch 'develop' }
+      steps {
+        sh """
+          ssh -o StrictHostKeyChecking=no deploy@staging.company.com '
+            docker compose -f /opt/apps/docker-compose.yml pull
+            docker compose -f /opt/apps/docker-compose.yml up -d --no-build
+            docker compose -f /opt/apps/docker-compose.yml ps
+          '
+        """
+      }
+    }
+
+    stage('Smoke Test') {
+      when { branch 'develop' }
+      steps {
+        sh """
+          sleep 30  <span class="cm"># Container warm-up time</span>
+          curl -f https://staging.company.com/actuator/health | \
+            python3 -c "import sys,json; d=json.load(sys.stdin); sys.exit(0 if d['status']=='UP' else 1)"
+          echo "Smoke test passed!"
+        """
+      }
+    }
+
+    stage('Deploy Production') {
+      when { branch 'main' }
+      steps {
+        timeout(time: 1, unit: 'HOURS') {
+          input message: "Production deploy approved?",
+                submitter: 'tech-lead,devops-team'
+        }
+        <span class="cm">// Blue-Green Deployment</span>
+        sh """
+          ssh deploy@prod.company.com '
+            CURRENT_COLOR=\$(docker inspect --format="{{ .Name }}" app-blue 2>/dev/null | grep -c blue || echo "0")
+            
+            if [ "\$CURRENT_COLOR" = "1" ]; then
+              NEW_COLOR="green"; OLD_COLOR="blue"
+            else
+              NEW_COLOR="blue";  OLD_COLOR="green"
+            fi
+            
+            echo "Deploying to \$NEW_COLOR..."
+            docker run -d \
+              --name "app-\$NEW_COLOR" \
+              -p 8081:8080 \
+              --restart unless-stopped \
+              ${IMAGE_NAME}:${IMAGE_TAG_FULL}
+            
+            sleep 30
+            curl -f http://localhost:8081/actuator/health
+            
+            echo "Switching traffic to \$NEW_COLOR..."
+            nginx-switch-upstream.sh \$NEW_COLOR
+            
+            sleep 10
+            docker stop "app-\$OLD_COLOR" || true
+            docker rm "app-\$OLD_COLOR"   || true
+            
+            echo "Blue-Green deployment complete!"
+          '
+        """
+      }
+    }
+  }
+
+  post {
+    always {
+      sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG_FULL} || true"
+      cleanWs()
+    }
+    success {
+      slackSend color: 'good',
+                message: "✅ Deployed ${IMAGE_NAME}:${IMAGE_TAG_FULL} successfully!"
+    }
+    failure {
+      slackSend color: 'danger',
+                message: "❌ Deployment FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="callout danger">
+      <div class="callout-icon">🔴</div>
+      <div><strong>Common Mistake – Image Tag:</strong> Kabhi bhi sirf <code class="inline-code">:latest</code> tag use mat karo production mein! Agar koi cheez galat deploy ho gayi toh rollback kaise karoge? Hamesha build number ya git commit hash tag karo: <code class="inline-code">myapp:42-abc1234</code>. Specific version = easy rollback.</div>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 6</h4>
+      <div class="interview-q">
+        <strong>Q: Multi-stage Docker build kyun use karte hain?</strong>
+        Final image chota hota hai (only runtime dependencies, not build tools). Builder stage mein Maven 300MB, final runtime image mein sirf JRE = much smaller. Smaller image = faster pulls, less attack surface, less storage cost. Practical example: Spring Boot app – builder 800MB, final image 150MB.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Blue-Green deployment kya hai?</strong>
+        Do identical production environments: Blue (current live) aur Green (new version). Deploy to Green, test karo, phir traffic switch karo Blue se Green pe. Agar koi issue hai toh instantly Blue pe wapas switch karo. Zero downtime deployment + instant rollback capability.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Docker image security best practices kya hain?</strong>
+        (1) Non-root user use karo (2) Specific base image version pin karo (3) Multi-stage build se attack surface kam karo (4) Trivy/Snyk se vulnerability scan karo (5) .dockerignore file use karo (6) Secrets kabhi image mein mat daalte – env vars ya secrets manager use karo.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 6</h4>
+    <ol>
+      <li>Ek simple Spring Boot ya Node.js app banao</li>
+      <li>Multi-stage Dockerfile likho</li>
+      <li>Docker Hub pe free account banao aur repository create karo</li>
+      <li>Jenkins pipeline banao jo: build kare → Docker image banaye → Docker Hub pe push kare</li>
+      <li>BONUS: Trivy install karo aur pipeline mein security scan add karo</li>
+      <li>ADVANCED: Blue-Green deployment script likho aur pipeline mein use karo</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 7 – Distributed Builds & Scaling
+==================================================== -->
+<section class="phase-section" id="phase7">
+  <div class="phase-header">
+    <div class="phase-icon">⚡</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 7</div>
+      <h2>Distributed Builds & Scaling</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 data-icon="🌐">Jenkins Scaling – Jab Ek Server Kaafi Na Ho</h3>
+
+    <p>Startup pe ek Jenkins server kaafi hota hai. Lekin jab company grow kare, 50 developers ho jaayein, 100 builds per day ho jaayein – tab ek server se kaam nahi chalega. Scaling ki zaroorat padti hai.</p>
+
+    <div class="diagram">
+<pre>
+╔═══════════════════════════════════════════════════════════════════════╗
+║              JENKINS DISTRIBUTED BUILD ARCHITECTURE                   ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+                     ┌────────────────────────┐
+                     │   JENKINS CONTROLLER   │
+                     │   (t3.large on AWS)    │
+                     │   8080 (UI + API)      │
+                     │   50000 (JNLP)         │
+                     └────────────┬───────────┘
+                                  │
+          ┌───────────────────────┼───────────────────────┐
+          │                       │                       │
+          ▼                       ▼                       ▼
+┌──────────────────┐   ┌──────────────────┐   ┌──────────────────┐
+│  AGENT POOL 1    │   │  AGENT POOL 2    │   │  AGENT POOL 3    │
+│  Java/Maven      │   │  Node.js/React   │   │  Android/Mobile  │
+│  (3x t3.medium)  │   │  (2x t3.medium)  │   │  (1x t3.large)   │
+│                  │   │                  │   │                  │
+│  Label: java     │   │  Label: nodejs   │   │  Label: android  │
+│  Executors: 4    │   │  Executors: 4    │   │  Executors: 2    │
+└──────────────────┘   └──────────────────┘   └──────────────────┘
+          │                                             │
+          ▼                                             ▼
+┌──────────────────┐                       ┌──────────────────────┐
+│  DOCKER AGENTS   │                       │  CLOUD AGENTS (ECS)  │
+│  (Dynamic)       │                       │  Auto-scaling        │
+│  On-demand       │                       │  Spot Instances      │
+└──────────────────┘                       └──────────────────────┘
+</pre>
+    </div>
+
+    <h4>Agent Ko Connect Karne Ke Tarike</h4>
+
+    <h4>Method 1: SSH Connection</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – SSH Agent Setup on Ubuntu</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Agent machine pe Java install karo</span>
+sudo apt update && sudo apt install -y openjdk-21-jdk
+
+<span class="cm"># Jenkins user banao agent pe</span>
+sudo useradd -m -d /home/jenkins -s /bin/bash jenkins
+
+<span class="cm"># Jenkins home directory banao</span>
+sudo mkdir -p /opt/jenkins-agent
+sudo chown jenkins:jenkins /opt/jenkins-agent
+
+<span class="cm"># Controller se SSH key agent pe copy karo</span>
+<span class="cm"># (Pehle controller pe SSH key pair banao)</span>
+ssh-keygen -t ed25519 -C "jenkins-controller" -f ~/.ssh/jenkins_agent
+ssh-copy-id -i ~/.ssh/jenkins_agent.pub jenkins@AGENT_IP
+
+<span class="cm"># Jenkins UI mein Agent configure karo:
+# Manage Jenkins → Nodes → New Node
+# Name: java-agent-01
+# Type: Permanent Agent
+# Remote root directory: /opt/jenkins-agent
+# Labels: java linux maven
+# Launch method: Launch agents via SSH
+# Host: AGENT_IP
+# Credentials: (SSH private key add karo)
+# Host Key Verification: Known hosts</span></code></pre>
+    </div>
+
+    <h4>Method 2: Docker-based Dynamic Agents</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Docker Agent (Per-Build Containers)</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent none  <span class="cm">// Controller pe kuch nahi chalega</span>
+
+  stages {
+    stage('Maven Build') {
+      agent {
+        docker {
+          image 'maven:3.9-eclipse-temurin-21-alpine'
+          label 'docker-host'
+          args  '-v $HOME/.m2:/root/.m2'  <span class="cm">// Maven cache mount</span>
+        }
+      }
+      steps {
+        sh 'mvn clean package -DskipTests'
+      }
+    }
+
+    stage('Node Build') {
+      agent {
+        docker {
+          image 'node:20-alpine'
+          label 'docker-host'
+        }
+      }
+      steps {
+        sh 'npm ci && npm run build'
+      }
+    }
+
+    stage('Security Scan') {
+      agent {
+        docker {
+          image 'aquasec/trivy:latest'
+          label 'docker-host'
+          args  '--entrypoint=""'
+        }
+      }
+      steps {
+        sh 'trivy fs . --exit-code 1 --severity HIGH,CRITICAL'
+      }
+    }
+  }
+}
+<span class="cm">// Har stage ke liye fresh Docker container!
+// Clean environment, no pollution between builds
+// Parallel stages different containers pe chalsakte hain</span></code></pre>
+    </div>
+
+    <h4>Method 3: Kubernetes-based Auto-scaling Agents</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Kubernetes Pod Agent</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent {
+    kubernetes {
+      label 'k8s-build-pod'
+      defaultContainer 'maven'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: maven
+    image: maven:3.9-eclipse-temurin-21
+    command: ['sleep']
+    args: ['infinity']
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "2Gi"
+        cpu: "1000m"
+    volumeMounts:
+    - name: maven-cache
+      mountPath: /root/.m2
+
+  - name: docker
+    image: docker:24-dind
+    securityContext:
+      privileged: true
+    env:
+    - name: DOCKER_TLS_CERTDIR
+      value: ""
+
+  volumes:
+  - name: maven-cache
+    persistentVolumeClaim:
+      claimName: maven-cache-pvc
+"""
+    }
+  }
+
+  stages {
+    stage('Build') {
+      container('maven') {
+        sh 'mvn clean package'
+      }
+    }
+    stage('Docker Build') {
+      container('docker') {
+        sh 'docker build -t myapp:latest .'
+      }
+    }
+  }
+}
+<span class="cm">// K8s pe: Build khatam → Pod automatically delete ho jaata hai
+// Next build pe: Fresh pod create hota hai
+// Auto-scaling: 0 builds = 0 pods, 10 builds = 10 pods!</span></code></pre>
+    </div>
+
+    <h4>Scaling Best Practices</h4>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Strategy</th><th>Best For</th><th>Complexity</th><th>Cost</th></tr>
+        <tr><td>Static Agents</td><td>Small teams, consistent load</td><td>Low</td><td>Fixed</td></tr>
+        <tr><td>Docker Agents</td><td>Medium teams, varying tech stacks</td><td>Medium</td><td>Fixed</td></tr>
+        <tr><td>K8s Auto-scaling</td><td>Large teams, variable load</td><td>High</td><td>Pay per use</td></tr>
+        <tr><td>Cloud (EC2/GCE)</td><td>Burst workloads, cost sensitive</td><td>Medium</td><td>Variable</td></tr>
+      </table>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">📊</div>
+      <div><strong>Resource Planning:</strong> General guideline – ek Java build ke liye minimum 2 CPU cores aur 2GB RAM. Production mein queue time monitor karo (average wait < 5 min hona chahiye). Queue consistently high hai toh agents badhao.</div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 7</h4>
+    <ol>
+      <li>Ek dusra VM ya EC2 instance banao</li>
+      <li>SSH method se ise Jenkins agent ke roop mein add karo</li>
+      <li>Agent pe label "docker-agent" set karo</li>
+      <li>Ek pipeline likho jo specifically "docker-agent" label use kare</li>
+      <li>Build karo aur verify karo ki build agent pe chal rahi hai (Controller pe nahi)</li>
+      <li>BONUS: Docker Cloud Plugin configure karo dynamic agents ke liye</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 8 – Security & Production Hardening
+==================================================== -->
+<section class="phase-section" id="phase8">
+  <div class="phase-header">
+    <div class="phase-icon">🔒</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 8</div>
+      <h2>Security & Production Hardening</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 data-icon="🛡️">Jenkins Security – Hacking Se Bachao</h3>
+
+    <p>Jenkins ek powerful system hai jo production deployments karta hai. Agar kisi ne access le liya, toh poora infrastructure compromise ho sakta hai. Security ek afterthought nahi, <strong>pehle se plan karna chahiye</strong>.</p>
+
+    <h4>1. Authentication – Sirf Sahi Log Andar Aayein</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">SECURITY – Authentication Options</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Option 1: Jenkins own user database (small teams ke liye)</span>
+<span class="cm"># Manage Jenkins → Security → Authentication → Jenkins own database</span>
+
+<span class="cm"># Option 2: LDAP/Active Directory (Enterprise standard)</span>
+<span class="cm"># LDAP Plugin install karo</span>
+<span class="cm"># Manage Jenkins → Configure Global Security → LDAP</span>
+<span class="cm"># Server: ldap://your-company-ldap:389</span>
+<span class="cm"># Root DN: dc=yourcompany,dc=com</span>
+
+<span class="cm"># Option 3: SSO with OAuth2 (GitHub/Google/Okta)</span>
+<span class="cm"># GitHub OAuth Plugin use karo</span>
+<span class="cm"># Create GitHub OAuth App: github.com/settings/developers</span>
+<span class="cm"># Configure in: Manage Jenkins → Configure Global Security → GitHub OAuth</span>
+
+<span class="cm"># Option 4: SAML (Okta, Azure AD)</span>
+<span class="cm"># SAML Plugin install karo</span>
+<span class="cm"># Okta application banao, metadata configure karo</span></code></pre>
+    </div>
+
+    <h4>2. Authorization – RBAC (Role-Based Access Control)</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINS – Role Strategy Plugin Configuration</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Role Strategy Plugin install karo pehle</span>
+<span class="cm"># Manage Jenkins → Security → Authorization → Role-Based Strategy</span>
+
+<span class="cm"># Global Roles:
+# ─────────────────────────────────────────────────────
+# Role: admin
+#   - Users: devops-lead, jenkins-admin
+#   - Permissions: ALL
+#
+# Role: developer  
+#   - Users: dev-team group (LDAP)
+#   - Permissions: Read, Build, Cancel Build
+#   - NO: Manage Jenkins, Configure credentials
+#
+# Role: viewer
+#   - Users: management, qa-team
+#   - Permissions: Read ONLY (no build trigger)
+#
+# Project Roles (per-job permissions):
+# ─────────────────────────────────────────────────────
+# Role: backend-developer
+#   - Pattern: backend-.*   (regex for job names)
+#   - Users: backend team
+#   - Permissions: Build, Read, Workspace
+#
+# Role: frontend-developer
+#   - Pattern: frontend-.*
+#   - Users: frontend team
+#   - Same permissions</span></code></pre>
+    </div>
+
+    <h4>3. Credentials Management – Secrets Ko Safe Rakho</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Credentials Safely Use Karna</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm">// ❌ GALAT TARIKA – Secrets ko hardcode mat karo!</span>
+environment {
+  DB_PASSWORD = 'SuperSecret123'  <span class="cm">// NEVER DO THIS</span>
+  API_KEY     = 'sk-1234567890'   <span class="cm">// NEVER DO THIS</span>
+}
+
+<span class="cm">// ✅ SAHI TARIKA – Jenkins Credentials Store use karo</span>
+environment {
+  <span class="cm">// Username+Password credential</span>
+  DB_CREDS    = credentials('prod-database-credentials')
+  <span class="cm">// DB_CREDS_USR = username, DB_CREDS_PSW = password (auto-set)</span>
+
+  <span class="cm">// Secret text (API keys, tokens)</span>
+  API_KEY     = credentials('payment-gateway-api-key')
+  <span class="cm">// Logs mein *** se replace hoga automatically</span>
+
+  <span class="cm">// Secret file (certificates, JSON keys)</span>
+  GCP_KEY     = credentials('gcp-service-account-json')
+  <span class="cm">// Ek temporary file banata hai, path env var mein aata hai</span>
+}
+
+steps {
+  sh '''
+    echo "Connecting to DB as ${DB_CREDS_USR}..."
+    <span class="cm"># Password log mein never print karo:</span>
+    mysql -u ${DB_CREDS_USR} -p${DB_CREDS_PSW} mydb -e "SELECT 1"
+    <span class="cm"># Logs mein dikhega: Connecting to DB as admin...</span>
+    <span class="cm"># Password ke jagah *** dikhega</span>
+  '''
+  withCredentials([
+    file(credentialsId: 'gcp-service-account-json', variable: 'GOOGLE_APPLICATION_CREDENTIALS')
+  ]) {
+    sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
+  }
+}
+
+<span class="cm">// Masked variables - even if you accidentally print, logs show ***
+// sh "echo ${API_KEY}"  → Output: ***</span></code></pre>
+    </div>
+
+    <h4>4. Network Security</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Firewall Rules for Jenkins</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># UFW rules for Jenkins server</span>
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+<span class="cm"># SSH access sirf VPN/office IP se</span>
+sudo ufw allow from 10.0.0.0/8 to any port 22
+
+<span class="cm"># Jenkins UI sirf internal network se (Nginx handle karega public access)</span>
+sudo ufw deny 8080
+
+<span class="cm"># Agent JNLP port</span>
+sudo ufw allow from 10.0.0.0/8 to any port 50000
+
+<span class="cm"># HTTP/HTTPS Nginx ke liye (public OK – it handles auth)</span>
+sudo ufw allow 80
+sudo ufw allow 443
+
+sudo ufw enable
+sudo ufw status verbose</code></pre>
+    </div>
+
+    <h4>5. Jenkins Configuration as Code (JCasC) – Security + Automation</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">YAML – jenkins.yaml (JCasC Configuration)</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># jenkins.yaml - Version controlled Jenkins config</span>
+jenkins:
+  systemMessage: "Production Jenkins - Authorized Users Only"
+  numExecutors: 0      <span class="cm"># Controller pe 0 executors!</span>
+  
+  securityRealm:
+    ldap:
+      configurations:
+        - server: "ldap://company-ldap:389"
+          rootDN: "dc=company,dc=com"
+          userSearchBase: "ou=people"
+          groupSearchBase: "ou=groups"
+  
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "devops-lead"
+          - name: "developer"
+            permissions:
+              - "Overall/Read"
+              - "Job/Build"
+              - "Job/Read"
+            assignments:
+              - "dev-team"
+
+  globalNodeProperties:
+    - envVars:
+        env:
+          - key: "COMPANY_MAVEN_REPO"
+            value: "https://nexus.company.com/repository/maven-public"
+
+security:
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true    <span class="cm"># Script approval required</span>
+  
+  scriptApproval:
+    approvedSignatures:
+      - "method java.lang.String trim"   <span class="cm"># Safe methods only</span>
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "docker-hub-creds"
+              username: "${DOCKER_USER}"       <span class="cm"># From env vars</span>
+              password: "${DOCKER_PASSWORD}"   <span class="cm"># From secrets manager</span>
+              description: "Docker Hub Credentials"</code></pre>
+    </div>
+
+    <h4>Security Hardening Checklist</h4>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Item</th><th>Action</th><th>Priority</th></tr>
+        <tr><td>Controller executors</td><td>Set to 0</td><td>🔴 Critical</td></tr>
+        <tr><td>HTTPS</td><td>Nginx + Let's Encrypt</td><td>🔴 Critical</td></tr>
+        <tr><td>Authentication</td><td>SSO/LDAP, no anonymous</td><td>🔴 Critical</td></tr>
+        <tr><td>RBAC</td><td>Role Strategy Plugin</td><td>🔴 Critical</td></tr>
+        <tr><td>Credentials</td><td>Jenkins Credential Store only</td><td>🔴 Critical</td></tr>
+        <tr><td>Plugin updates</td><td>Weekly update schedule</td><td>🟡 High</td></tr>
+        <tr><td>Audit logging</td><td>Audit Trail Plugin</td><td>🟡 High</td></tr>
+        <tr><td>Agent isolation</td><td>Each project separate agent</td><td>🟡 High</td></tr>
+        <tr><td>Script security</td><td>Enable script approval</td><td>🟡 High</td></tr>
+        <tr><td>JCasC</td><td>Config in Git, no manual changes</td><td>🟢 Good</td></tr>
+      </table>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 8</h4>
+      <div class="interview-q">
+        <strong>Q: Jenkins mein secrets manage karne ka best practice kya hai?</strong>
+        (1) Jenkins Credential Store use karo – never hardcode (2) Production secrets ke liye HashiCorp Vault ya AWS Secrets Manager integrate karo (3) Credentials ko logs mein print mat hone do – Jenkins automatically mask karta hai (4) Least privilege – sirf woh secrets jo job ko chahiye (5) Credentials rotate karo regularly.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Jenkins audit kaise karte hain?</strong>
+        Audit Trail Plugin install karo – who logged in, who triggered build, who changed config. SIEM system (Splunk/ELK) ko Jenkins logs bhejo. Jenkins logs: /var/log/jenkins/jenkins.log. Docker: docker logs jenkins. Kubernetes: kubectl logs -n jenkins jenkins-pod.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 8</h4>
+    <ol>
+      <li>Jenkins mein ek new user banao (non-admin) aur role set karo sirf "Read + Build"</li>
+      <li>Ek dummy secret credential add karo (Secret text type)</li>
+      <li>Pipeline mein wo credential use karo aur verify karo logs mein *** se mask ho raha hai</li>
+      <li>Audit Trail Plugin install karo aur test karo</li>
+      <li>BONUS: JCasC Plugin install karo aur current config export karo YAML mein</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     PHASE 9 – Advanced Jenkins
+==================================================== -->
+<section class="phase-section" id="phase9">
+  <div class="phase-header">
+    <div class="phase-icon">🚀</div>
+    <div class="phase-title">
+      <div class="phase-label">Phase 9</div>
+      <h2>Advanced Jenkins – Shared Libraries, Parallel, Kubernetes</h2>
+    </div>
+  </div>
+
+  <!-- 9.1 Shared Libraries -->
+  <div class="card">
+    <h3 data-icon="📚">Shared Libraries – Code Reuse Ka Master Key</h3>
+
+    <p>Agar tumhare paas 20 microservices hain aur har ek ke Jenkinsfile mein same Docker build code hai, kya tum 20 jagah change karoge? <strong>Nahi!</strong> Shared Library mein ek jagah code rakho, sabse reuse karo.</p>
+
+    <div class="analogy-box">
+      <h4>📦 Analogy – npm Package</h4>
+      <p>Jaise npm package likhe jaate hain aur <code class="inline-code">npm install</code> se sab use karte hain, waise hi Jenkins Shared Library ek "Jenkins npm package" hai. Ek jagah maintain karo, hazaar jagah use karo.</p>
+    </div>
+
+    <h4>Shared Library Structure</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">DIRECTORY STRUCTURE – Jenkins Shared Library</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>jenkins-shared-library/                <span class="cm"># Git repo yeh hai</span>
+├── vars/                              <span class="cm"># Global functions (Jenkinsfile mein directly call)</span>
+│   ├── buildMavenApp.groovy           <span class="cm"># Maven app build function</span>
+│   ├── buildDockerImage.groovy        <span class="cm"># Docker build + push function</span>
+│   ├── deployToKubernetes.groovy      <span class="cm"># K8s deploy function</span>
+│   ├── sendSlackNotification.groovy   <span class="cm"># Slack notify function</span>
+│   └── runSecurityScan.groovy         <span class="cm"># Trivy scan function</span>
+│
+├── src/                               <span class="cm"># Groovy classes (complex logic)</span>
+│   └── com/
+│       └── mycompany/
+│           ├── DockerHelper.groovy
+│           ├── KubernetesHelper.groovy
+│           └── NotificationService.groovy
+│
+└── resources/                         <span class="cm"># Non-Groovy files (templates, scripts)</span>
+    ├── deployment.yaml.template
+    └── docker-compose.template.yml</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">GROOVY – vars/buildDockerImage.groovy</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm">/**
+ * Docker image build aur push karne ka reusable function
+ * Usage: buildDockerImage(imageName: 'myapp', registry: 'docker.io/myco')
+ */</span>
+def call(Map config = [:]) {
+  <span class="cm">// Default values with overrides</span>
+  def imageName  = config.imageName  ?: error("imageName required!")
+  def registry   = config.registry   ?: 'registry.hub.docker.com'
+  def credId     = config.credId     ?: 'docker-hub-creds'
+  def dockerfile = config.dockerfile ?: 'Dockerfile'
+  def buildArgs  = config.buildArgs  ?: [:]
+  def tags       = config.tags       ?: ['latest', env.BUILD_NUMBER]
+
+  def fullImageName = "${registry}/${imageName}"
+
+  pipeline.stage("Docker Build: ${imageName}") {
+    script {
+      <span class="cm">// Build args string banana</span>
+      def buildArgsStr = buildArgs.collect { k, v ->
+        "--build-arg ${k}=${v}"
+      }.join(' ')
+
+      def buildTag = "${fullImageName}:${env.BUILD_NUMBER}"
+
+      sh """
+        docker build \
+          -f ${dockerfile} \
+          ${buildArgsStr} \
+          -t ${buildTag} \
+          --label git-commit=${env.GIT_COMMIT} \
+          --label build-date=\$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+          .
+      """
+
+      docker.withRegistry("https://${registry}", credId) {
+        def img = docker.image(buildTag)
+        tags.each { tag ->
+          img.push(tag)
+          echo "Pushed: ${fullImageName}:${tag}"
+        }
+      }
+
+      env.DOCKER_IMAGE_FULL = "${fullImageName}:${env.BUILD_NUMBER}"
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">GROOVY – vars/sendSlackNotification.groovy</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>def call(Map config = [:]) {
+  def channel = config.channel ?: '#deployments'
+  def status  = config.status  ?: currentBuild.currentResult
+  def msg     = config.message ?: "Build ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+
+  def colors = [
+    SUCCESS:  '#36a64f',
+    FAILURE:  '#cc0000',
+    UNSTABLE: '#f7a925',
+    ABORTED:  '#808080'
+  ]
+
+  def emojis = [
+    SUCCESS:  '✅',
+    FAILURE:  '❌',
+    UNSTABLE: '⚠️',
+    ABORTED:  '🚫'
+  ]
+
+  slackSend(
+    channel: channel,
+    color:   colors[status] ?: '#808080',
+    message: """
+${emojis[status] ?: '⚙️'} *${status}* – ${env.JOB_NAME} #${env.BUILD_NUMBER}
+> Branch: `${env.BRANCH_NAME ?: 'N/A'}`
+> Duration: ${currentBuild.durationString}
+> ${msg}
+<${env.BUILD_URL}|🔗 View Build>
+    """
+  )
+}
+</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Shared Library Use Karna</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm">// @Library declare karo – versioned!</span>
+@Library('jenkins-shared-library@v2.3.0') _
+
+<span class="cm">// Ab simple clean Jenkinsfile!</span>
+pipeline {
+  agent { label 'docker-agent' }
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'mvn clean package -DskipTests'
+      }
+    }
+
+    stage('Docker') {
+      steps {
+        <span class="cm">// Ek line mein build + push!</span>
+        buildDockerImage(
+          imageName:  'my-microservice',
+          registry:   'docker.io/mycompany',
+          credId:     'docker-hub-creds',
+          tags:       ['latest', env.BUILD_NUMBER, env.GIT_COMMIT_SHORT]
+        )
+      }
+    }
+  }
+
+  post {
+    always {
+      <span class="cm">// Ek line notification!</span>
+      sendSlackNotification(channel: '#team-deployments')
+    }
+  }
+}
+<span class="cm">// Sab microservices ka Jenkinsfile ab itna hi simple rahega!
+// Logic ek jagah, maintenance ek jagah</span></code></pre>
+    </div>
+
+    <h4>Shared Library Configure in Jenkins</h4>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINS CONFIG – Shared Library Setup</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Manage Jenkins → Configure System → Global Pipeline Libraries
+# Name: jenkins-shared-library
+# Default version: main (ya specific tag/branch)
+# Allow default version to be overridden: Yes
+# Retrieval method: Modern SCM
+# Source Code Management: GitHub
+# Repository URL: https://github.com/your-org/jenkins-shared-library.git
+# Credentials: github-credentials</span></code></pre>
+    </div>
+  </div>
+
+  <!-- 9.2 Kubernetes Integration -->
+  <div class="card">
+    <h3 data-icon="☸️">Jenkins + Kubernetes – Modern Cloud-Native CI/CD</h3>
+
+    <div class="diagram">
+<pre>
+╔═══════════════════════════════════════════════════════════════════════╗
+║              JENKINS ON KUBERNETES ARCHITECTURE                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+Kubernetes Cluster (EKS/GKE/AKS)
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  Namespace: jenkins                                             │
+  │                                                                 │
+  │  ┌──────────────────────────────────┐                           │
+  │  │  Jenkins Controller              │                           │
+  │  │  (StatefulSet, 1 replica)        │                           │
+  │  │  Resources: 2CPU, 4GB RAM        │                           │
+  │  │  Persistent Volume: 50GB         │ ◄── jenkins-data PVC      │
+  │  └──────────────────────────────────┘                           │
+  │                    │ Creates on-demand pods                     │
+  │                    ▼                                            │
+  │  ┌──────────────────────────────────────────────────────────┐   │
+  │  │ Build Namespace (jenkins-builds)                         │   │
+  │  │                                                          │   │
+  │  │  [Build Pod 1]   [Build Pod 2]   [Build Pod 3]           │   │
+  │  │  ┌──────────┐    ┌──────────┐    ┌──────────┐            │   │
+  │  │  │ jnlp     │    │ jnlp     │    │ jnlp     │            │   │
+  │  │  │ maven    │    │ node     │    │ maven    │            │   │
+  │  │  │ docker   │    │ docker   │    │ trivy    │            │   │
+  │  │  └──────────┘    └──────────┘    └──────────┘            │   │
+  │  │                                                          │   │
+  │  │  Build complete → Pod auto-deleted!                      │   │
+  │  └──────────────────────────────────────────────────────────┘   │
+  │                                                                 │
+  └─────────────────────────────────────────────────────────────────┘
+
+Benefits:
+  ✅ Auto-scaling: 0 builds = 0 agent pods
+  ✅ Resource isolation per build
+  ✅ Fresh environment every build
+  ✅ Cost efficient (Spot instances!)
+  ✅ No agent maintenance
+</pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">YAML – Jenkins Controller on Kubernetes</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  serviceName: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      serviceAccountName: jenkins   <span class="cm"># K8s API access ke liye</span>
+      securityContext:
+        fsGroup: 1000               <span class="cm"># Jenkins group</span>
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts-jdk21
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: jnlp
+          containerPort: 50000
+        resources:
+          requests:
+            cpu:    "500m"
+            memory: "2Gi"
+          limits:
+            cpu:    "2000m"
+            memory: "4Gi"
+        env:
+        - name: JAVA_OPTS
+          value: "-Xmx3g -Xms1g -XX:+UseG1GC -Djenkins.install.runSetupWizard=false"
+        - name: CASC_JENKINS_CONFIG   <span class="cm"># JCasC config location</span>
+          value: "/var/jenkins_home/casc_configs"
+        volumeMounts:
+        - name: jenkins-data
+          mountPath: /var/jenkins_home
+        - name: jenkins-casc
+          mountPath: /var/jenkins_home/casc_configs
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 90
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 5
+      volumes:
+      - name: jenkins-casc
+        configMap:
+          name: jenkins-casc-config
+  volumeClaimTemplates:
+  - metadata:
+      name: jenkins-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: "gp3"
+      resources:
+        requests:
+          storage: 50Gi
+</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Kubernetes Pod Template Advanced</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent {
+    kubernetes {
+      label "build-${UUID.randomUUID().toString()[0..7]}"
+      defaultContainer 'maven'
+      retries 2
+      yaml '''
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: jenkins-build
+spec:
+  nodeSelector:
+    workload-type: build    # Dedicated build nodes
+
+  tolerations:
+  - key: "build-only"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+
+  containers:
+
+  # JNLP Agent (Required – Jenkins communication)
+  - name: jnlp
+    image: jenkins/inbound-agent:latest-jdk21
+    resources:
+      requests: { memory: "256Mi", cpu: "100m" }
+      limits:   { memory: "512Mi", cpu: "200m" }
+
+  # Maven Build Container
+  - name: maven
+    image: maven:3.9-eclipse-temurin-21-alpine
+    command: [sleep]
+    args: [infinity]
+    resources:
+      requests: { memory: "1Gi",  cpu: "500m"  }
+      limits:   { memory: "2Gi",  cpu: "1000m" }
+    volumeMounts:
+    - name: maven-cache
+      mountPath: /root/.m2
+
+  # Docker Build Container (DinD)
+  - name: docker
+    image: docker:24-dind
+    securityContext:
+      privileged: true
+    env:
+    - name: DOCKER_TLS_CERTDIR
+      value: ""
+    resources:
+      requests: { memory: "512Mi", cpu: "500m" }
+      limits:   { memory: "2Gi",   cpu: "1000m"}
+
+  # Kubernetes CLI
+  - name: kubectl
+    image: bitnami/kubectl:latest
+    command: [sleep]
+    args: [infinity]
+
+  volumes:
+  - name: maven-cache
+    persistentVolumeClaim:
+      claimName: maven-cache-pvc
+'''
+    }
+  }
+
+  stages {
+    stage('Build') {
+      steps {
+        container('maven') {
+          sh 'mvn clean package -DskipTests --batch-mode'
+        }
+      }
+    }
+
+    stage('Docker Build & Push') {
+      steps {
+        container('docker') {
+          withCredentials([usernamePassword(
+            credentialsId: 'docker-registry',
+            usernameVariable: 'DOCKER_USER',
+            passwordVariable: 'DOCKER_PASS'
+          )]) {
+            sh '''
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker build -t myapp:${BUILD_NUMBER} .
+              docker push myapp:${BUILD_NUMBER}
+            '''
+          }
+        }
+      }
+    }
+
+    stage('K8s Deploy') {
+      steps {
+        container('kubectl') {
+          withKubeConfig([credentialsId: 'k8s-prod-config']) {
+            sh """
+              kubectl set image deployment/myapp \
+                myapp=myapp:${BUILD_NUMBER} \
+                -n production
+
+              kubectl rollout status deployment/myapp \
+                -n production \
+                --timeout=5m
+
+              echo "Deployment successful!"
+              kubectl get pods -n production -l app=myapp
+            """
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+  </div>
+
+  <!-- 9.3 Advanced Groovy -->
+  <div class="card">
+    <h3 data-icon="⚙️">Advanced Groovy in Pipelines</h3>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">GROOVY – Advanced Pipeline Scripting</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>pipeline {
+  agent any
+
+  stages {
+    stage('Dynamic Parallel Testing') {
+      steps {
+        script {
+          <span class="cm">// Dynamically generate parallel stages!</span>
+          def testSuites = [
+            'UserServiceTests',
+            'OrderServiceTests',
+            'PaymentServiceTests',
+            'InventoryTests',
+            'NotificationTests'
+          ]
+
+          def parallelTests = [:]
+          testSuites.each { suite ->
+            def suiteName = suite  <span class="cm">// Closure capture – local copy!</span>
+            parallelTests[suiteName] = {
+              node('java-agent') {
+                checkout scm
+                sh """
+                  mvn test \
+                    -Dtest=${suiteName} \
+                    -Dsurefire.reportNameSuffix=${suiteName} \
+                    --batch-mode
+                """
+                junit "target/surefire-reports/*${suiteName}*.xml"
+              }
+            }
+          }
+
+          parallel parallelTests
+        }
+      }
+    }
+
+    stage('Conditional Deploy') {
+      steps {
+        script {
+          <span class="cm">// Git tag se version nikalo</span>
+          def gitTag = sh(
+            script: 'git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"',
+            returnStdout: true
+          ).trim()
+
+          def version = gitTag.replace('v', '')
+          def isRelease = gitTag =~ /^v\d+\.\d+\.\d+$/
+
+          echo "Version: ${version}, Is Release: ${isRelease}"
+
+          if (isRelease) {
+            echo "Release version detected – deploying to production!"
+            sh "./deploy.sh production ${version}"
+          } else {
+            echo "Development version – deploying to staging only"
+            sh "./deploy.sh staging ${version}"
+          }
+
+          <span class="cm">// Slack notification with version info</span>
+          slackSend message: "Deployed ${isRelease ? '🚀 PRODUCTION' : '🔧 STAGING'}: v${version}"
+        }
+      }
+    }
+
+    stage('Matrix Build') {
+      matrix {
+        <span class="cm">// Multiple OS aur Java versions pe build!</span>
+        axes {
+          axis {
+            name 'PLATFORM'
+            values 'linux', 'windows'
+          }
+          axis {
+            name 'JAVA_VERSION'
+            values '17', '21'
+          }
+        }
+        excludes {
+          exclude {
+            axis { name 'PLATFORM'; values 'windows' }
+            axis { name 'JAVA_VERSION'; values '17' }
+          }
+        }
+        stages {
+          stage('Build on Platform') {
+            steps {
+              echo "Building on ${PLATFORM} with Java ${JAVA_VERSION}"
+              sh "mvn test -Djava.version=${JAVA_VERSION}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="interview-box">
+      <h4>💼 Interview Questions – Phase 9</h4>
+      <div class="interview-q">
+        <strong>Q: Shared Library Jenkinsfile se better kyun hai?</strong>
+        DRY principle – Don't Repeat Yourself. 50 microservices = 50 Jenkinsfile. Common code ek jagah update = sab update. Version tagging se shared library bhi change-controlled hoti hai. Testing easier – Shared Library ki unit tests likhna possible hai.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Jenkins on Kubernetes vs Traditional Jenkins Setup?</strong>
+        K8s: Auto-scaling agents, ephemeral builds, declarative infrastructure, better resource utilization, cloud-native. Traditional: Simpler setup, no K8s expertise needed, better for small teams. Enterprise: Mostly K8s kyunki scalability aur cost benefits significant hain.
+      </div>
+      <div class="interview-q">
+        <strong>Q: Jenkins pipeline mein Groovy script security kyun important hai?</strong>
+        Groovy scripts Jenkins JVM mein chalte hain – full system access. Malicious scripts data delete kar sakte hain, credentials chura sakte hain, network attacks kar sakte hain. Script Security Plugin har unapproved method ko block karta hai. Script Approval required – admin manually approve karta hai.
+      </div>
+    </div>
+  </div>
+
+  <div class="task-box">
+    <h4>🎯 Mini Practical Task – Phase 9</h4>
+    <ol>
+      <li>GitHub pe "jenkins-shared-library" repository banao required structure ke saath</li>
+      <li>Ek simple vars/sayHello.groovy function likho</li>
+      <li>Jenkins mein Shared Library configure karo</li>
+      <li>Kisi pipeline mein @Library se import karo aur use karo</li>
+      <li>BONUS: buildDockerImage function banao shared library mein</li>
+      <li>ADVANCED: Minikube ya kind se local K8s setup karo, Jenkins deploy karo</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     FINAL PROJECT
+==================================================== -->
+<section class="phase-section" id="final">
+  <div class="phase-header">
+    <div class="phase-icon">🏆</div>
+    <div class="phase-title">
+      <div class="phase-label">Final Project</div>
+      <h2>Complete Production CI/CD Pipeline</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 data-icon="🎯">Project Overview – Resume Mein Likhne Layak!</h3>
+
+    <p>Yeh final project ek <strong>complete, production-grade CI/CD pipeline</strong> hai jisme sab phases ka use hoga. Yeh project interview mein confidently explain kar sako – yahi hamare masterclass ka goal hai.</p>
+
+    <div class="callout success">
+      <div class="callout-icon">💼</div>
+      <div><strong>Resume Description (ready to use):</strong><br>
+      "Designed and implemented an end-to-end CI/CD pipeline using Jenkins for a microservices e-commerce application. Pipeline included automated testing (unit + integration), SonarQube code quality gates, Docker containerization, vulnerability scanning with Trivy, and Blue-Green deployments to Kubernetes. Reduced deployment time from 4 hours to 12 minutes and achieved 99.5% deployment success rate."</div>
+    </div>
+
+    <h4>Project Architecture</h4>
+
+    <div class="diagram">
+<pre>
+╔═══════════════════════════════════════════════════════════════════════╗
+║         FINAL PROJECT: E-COMMERCE MICROSERVICES CI/CD                 ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+GitHub Repository (Monorepo)
+  ├── services/user-service      (Spring Boot)
+  ├── services/order-service     (Spring Boot)
+  ├── services/product-service   (Node.js)
+  └── services/api-gateway       (Spring Cloud)
+
+Developer pushes code
+        │
+        ▼
+GitHub Webhook ──────────────────────► Jenkins Multibranch Pipeline
+                                               │
+                              ┌────────────────▼────────────────┐
+                              │         SHARED LIBRARY          │
+                              │  buildMavenApp()                │
+                              │  runTests()                     │
+                              │  buildDockerImage()             │
+                              │  deployToK8s()                  │
+                              │  sendSlackNotification()        │
+                              └────────────────┬────────────────┘
+                                               │
+              ┌────────────────────────────────│ ──────────────────────────┐
+              │                                │                           │
+              ▼              ▼                 ▼               ▼           ▼
+         [CHECKOUT]      [BUILD]          [PARALLEL TEST]  [QUALITY]   [SECURITY]
+         git pull       mvn package      Unit Tests        SonarQube   Trivy Scan
+                                         Integration       Quality      OWASP Dep
+                                         Tests             Gate         Check
+              │
+              ▼
+         [DOCKER]
+         Build Image
+         Scan Image
+         Push to ECR
+              │
+              ├──────────── Branch: develop
+              │                 │
+              │                 ▼
+              │          [DEPLOY STAGING]
+              │          Blue-Green Deploy
+              │          Smoke Tests
+              │          Performance Tests
+              │
+              └──────────── Branch: main
+                                │
+                                ▼
+                         [APPROVAL GATE]
+                         Tech Lead Approval
+                         (via Slack/Email)
+                                │
+                                ▼
+                         [DEPLOY PRODUCTION]
+                         K8s Rolling Update
+                         Health Check
+                         Monitoring Alert
+                                │
+                                ▼
+                         [NOTIFY]
+                         Slack: #deployments
+                         Email: stakeholders
+                         JIRA: auto-close ticket
+
+Metrics Tracked:
+  📊 Build success rate
+  ⏱️  Pipeline duration
+  🐛  Failed tests trend
+  🔒  Security vulnerabilities
+  📦  Image size trend
+</pre>
+    </div>
+  </div>
+
+  <!-- Final Jenkinsfile -->
+  <div class="card">
+    <h3 data-icon="📜">Complete Final Jenkinsfile</h3>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JENKINSFILE – Production Complete Pipeline (Final Project)</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code>@Library('company-jenkins-library@v3.0.0') _
+
+pipeline {
+  agent { label 'k8s-build-agent' }
+
+  environment {
+    SERVICE_NAME   = 'order-service'
+    DOCKER_REGISTRY= 'your-account.dkr.ecr.ap-south-1.amazonaws.com'
+    DOCKER_IMAGE   = "${DOCKER_REGISTRY}/${SERVICE_NAME}"
+    K8S_NAMESPACE  = 'ecommerce'
+    SONAR_PROJECT  = "ecommerce-${SERVICE_NAME}"
+    AWS_REGION     = 'ap-south-1'
+    JIRA_PROJECT   = 'EC'
+  }
+
+  options {
+    timestamps()
+    ansiColor('xterm')
+    buildDiscarder(logRotator(numToKeepStr: '15', artifactNumToKeepStr: '5'))
+    timeout(time: 60, unit: 'MINUTES')
+    disableConcurrentBuilds(abortPrevious: true)
+  }
+
+  parameters {
+    booleanParam(name: 'FORCE_DEPLOY_PROD', defaultValue: false,
+                 description: 'Force production deploy without tests?')
+    string(name: 'IMAGE_TAG_OVERRIDE', defaultValue: '',
+           description: 'Override image tag (for rollback)')
+  }
+
+  stages {
+    stage('🔍 Checkout & Setup') {
+      steps {
+        checkout scm
+        script {
+          env.GIT_COMMIT_SHORT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+          env.IMAGE_TAG = params.IMAGE_TAG_OVERRIDE ?: "${env.BUILD_NUMBER}-${env.GIT_COMMIT_SHORT}"
+          env.FULL_IMAGE = "${DOCKER_IMAGE}:${env.IMAGE_TAG}"
+          env.IS_RELEASE = (env.BRANCH_NAME =~ /^main$/).asBoolean()
+
+          sh """
+            echo "Service:    ${SERVICE_NAME}"
+            echo "Branch:     ${env.BRANCH_NAME}"
+            echo "Commit:     ${env.GIT_COMMIT_SHORT}"
+            echo "Image:      ${env.FULL_IMAGE}"
+            echo "Is Release: ${env.IS_RELEASE}"
+          """
+        }
+      }
+    }
+
+    stage('🔨 Build') {
+      steps {
+        sh '''
+          mvn clean package \
+            -DskipTests=true \
+            -Dmaven.compiler.source=21 \
+            -Dmaven.compiler.target=21 \
+            --batch-mode \
+            --no-transfer-progress
+        '''
+        archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+      }
+    }
+
+    stage('🧪 Parallel Testing') {
+      parallel {
+        stage('Unit Tests') {
+          steps {
+            sh 'mvn test -Dtest="*Unit*" --batch-mode'
+          }
+          post {
+            always {
+              junit 'target/surefire-reports/*Unit*.xml'
+            }
+          }
+        }
+        stage('Integration Tests') {
+          steps {
+            sh '''
+              mvn verify \
+                -Dtest="*Integration*" \
+                -Dspring.profiles.active=test \
+                --batch-mode
+            '''
+          }
+          post {
+            always {
+              junit 'target/failsafe-reports/*.xml'
+            }
+          }
+        }
+        stage('Code Coverage') {
+          steps {
+            sh '''
+              mvn test jacoco:report --batch-mode
+              awk '/Total/{print "Coverage: " $NF}' target/site/jacoco/index.html
+            '''
+          }
+          post {
+            success {
+              publishHTML([
+                reportDir: 'target/site/jacoco',
+                reportFiles: 'index.html',
+                reportName: 'JaCoCo Coverage'
+              ])
+            }
+          }
+        }
+      }
+    }
+
+    stage('📊 Code Quality Gate') {
+      when { not { expression { params.FORCE_DEPLOY_PROD } } }
+      steps {
+        withSonarQubeEnv('SonarQube') {
+          sh """
+            mvn sonar:sonar \
+              -Dsonar.projectKey=${SONAR_PROJECT} \
+              -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+              --batch-mode
+          """
+        }
+        timeout(time: 5, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+      }
+    }
+
+    stage('🐳 Docker Build & Scan') {
+      steps {
+        script {
+          withAWS(credentials: 'aws-ecr-credentials', region: AWS_REGION) {
+            sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${DOCKER_REGISTRY}'
+          }
+
+          sh "docker build -t ${env.FULL_IMAGE} --build-arg VERSION=${env.IMAGE_TAG} ."
+
+          <span class="cm">// Security Scan</span>
+          sh """
+            trivy image \
+              --exit-code 0 \
+              --severity HIGH,CRITICAL \
+              --format table \
+              --output trivy-report.txt \
+              ${env.FULL_IMAGE}
+            cat trivy-report.txt
+          """
+
+          <span class="cm">// Push karo</span>
+          sh """
+            docker push ${env.FULL_IMAGE}
+            docker tag ${env.FULL_IMAGE} ${DOCKER_IMAGE}:latest
+            docker push ${DOCKER_IMAGE}:latest
+          """
+
+          archiveArtifacts 'trivy-report.txt'
+        }
+      }
+    }
+
+    stage('🚀 Deploy Staging') {
+      when {
+        anyOf {
+          branch 'develop'
+          branch 'release/*'
+        }
+      }
+      steps {
+        script {
+          deployToK8s(
+            namespace:   "${K8S_NAMESPACE}-staging",
+            service:     SERVICE_NAME,
+            imageTag:    env.IMAGE_TAG,
+            kubeConfig:  'k8s-staging-config',
+            strategy:    'RollingUpdate'
+          )
+
+          <span class="cm">// Smoke tests</span>
+          sh """
+            sleep 30
+            for i in 1 2 3 4 5; do
+              STATUS=\$(curl -sf https://staging-api.company.com/${SERVICE_NAME}/actuator/health | python3 -c "import sys,json; print(json.load(sys.stdin)['status'])" 2>/dev/null)
+              if [ "\$STATUS" = "UP" ]; then
+                echo "✅ Smoke test passed after \$i attempts!"
+                exit 0
+              fi
+              echo "Attempt \$i: Service not ready, waiting..."
+              sleep 10
+            done
+            echo "❌ Smoke test FAILED!"
+            exit 1
+          """
+        }
+      }
+    }
+
+    stage('✅ Production Approval') {
+      when {
+        allOf {
+          branch 'main'
+          not { expression { params.FORCE_DEPLOY_PROD } }
+        }
+      }
+      steps {
+        script {
+          sendSlackNotification(
+            channel: '#deployments',
+            message: "🔔 *Production Deploy Pending Approval*\nService: `${SERVICE_NAME}:${env.IMAGE_TAG}`\n<${env.BUILD_URL}input|Click to Approve or Reject>"
+          )
+
+          def approver = input(
+            message: "Deploy ${SERVICE_NAME}:${env.IMAGE_TAG} to PRODUCTION?",
+            ok: 'Deploy to Production',
+            submitter: 'tech-lead,devops-team',
+            submitterParameter: 'APPROVED_BY'
+          )
+          echo "Approved by: ${approver}"
+          env.APPROVER = approver
+        }
+      }
+    }
+
+    stage('🌍 Deploy Production') {
+      when {
+        anyOf {
+          branch 'main'
+          expression { params.FORCE_DEPLOY_PROD }
+        }
+      }
+      steps {
+        script {
+          deployToK8s(
+            namespace:  K8S_NAMESPACE,
+            service:    SERVICE_NAME,
+            imageTag:   env.IMAGE_TAG,
+            kubeConfig: 'k8s-prod-config',
+            strategy:   'BlueGreen'
+          )
+
+          <span class="cm">// Post-deploy verification</span>
+          sh """
+            echo "Verifying deployment..."
+            kubectl rollout status deployment/${SERVICE_NAME} \
+              -n ${K8S_NAMESPACE} \
+              --timeout=5m
+            
+            kubectl get pods -n ${K8S_NAMESPACE} \
+              -l app=${SERVICE_NAME} \
+              --no-headers | awk '{print "Pod: " \$1 " Status: " \$3}'
+          """
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      script {
+        <span class="cm">// Metrics publish (Prometheus/Grafana ke liye)</span>
+        def duration = currentBuild.duration
+        def result   = currentBuild.currentResult
+
+        sh """
+          curl -s -X POST http://metrics-collector:9091/metrics/job/jenkins_build \
+            -H "Content-Type: text/plain" \
+            -d 'jenkins_build_duration_ms{job="${SERVICE_NAME}",branch="${env.BRANCH_NAME}",result="${result}"} ${duration}'
+        """ || true
+
+        <span class="cm">// Docker cleanup</span>
+        sh "docker rmi ${env.FULL_IMAGE} || true"
+
+        <span class="cm">// Workspace cleanup</span>
+        cleanWs()
+      }
+    }
+
+    success {
+      script {
+        sendSlackNotification(
+          channel: '#deployments',
+          status:  'SUCCESS',
+          message: "Deployed `${SERVICE_NAME}:${env.IMAGE_TAG}` to ${env.IS_RELEASE ? 'PRODUCTION 🚀' : 'STAGING 🔧'}"
+        )
+
+        if (env.IS_RELEASE) {
+          <span class="cm">// JIRA ticket auto-close</span>
+          jiraComment(
+            site: 'company-jira',
+            issueKey: "EC-${env.BUILD_NUMBER}",
+            body: "✅ Successfully deployed to production. Version: ${env.IMAGE_TAG}"
+          )
+        }
+      }
+    }
+
+    failure {
+      script {
+        sendSlackNotification(
+          channel: '#deployments',
+          status:  'FAILURE',
+          message: "Build FAILED for `${SERVICE_NAME}`. Check: ${env.BUILD_URL}"
+        )
+
+        emailext(
+          subject: "❌ BUILD FAILED: ${SERVICE_NAME} #${env.BUILD_NUMBER}",
+          body: """
+Build failed for ${SERVICE_NAME} on branch ${env.BRANCH_NAME}.
+Build URL: ${env.BUILD_URL}
+Git Commit: ${env.GIT_COMMIT_SHORT}
+Duration: ${currentBuild.durationString}
+          """,
+          to: 'dev-team@company.com,devops@company.com'
+        )
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+  </div>
+
+  <!-- Interview Prep -->
+  <div class="card">
+    <h3 data-icon="🎤">Final Interview Preparation – Top 20 Questions</h3>
+
+    <div class="interview-box">
+      <h4>💼 Must-Know Jenkins Interview Questions</h4>
+
+      <div class="interview-q">
+        <strong>Q1: Jenkins kya hai aur kyun use karte hain?</strong>
+        Jenkins ek open-source automation server hai jo CI/CD pipelines ko automate karta hai. Code commit se production deployment tak ka poora process automate hota hai – build, test, security scan, deploy. Manual steps eliminate hote hain, speed badhti hai, errors kam hote hain.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q2: Declarative vs Scripted Pipeline – kab kaunsa use karo?</strong>
+        Declarative: Standard choice, readable, validation built-in, shared libraries ke saath best. Scripted: Jab complex Groovy logic chahiye jo Declarative mein possible nahi. Modern teams: Declarative pipeline with script{} blocks for complex logic.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q3: Jenkins pipeline fail ho gayi – troubleshoot kaise karo?</strong>
+        (1) Build logs padho – error message dhundho (2) Stage level mein kahan fail hua (3) Agent pe workspace dekho (4) Environment variables verify karo (5) Credentials expiry check karo (6) Network connectivity test karo (7) Replay feature se debug karo.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q4: Jenkins High Availability kaise achieve karte hain?</strong>
+        Active-passive: JENKINS_HOME shared NFS/EBS pe, secondary controller ready. Active-active: Kubernetes pe Jenkins, multiple replicas (experimental). Best: Jenkins on K8s with PVC for data persistence. RPO < 1 hour, RTO < 15 min achievable.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q5: Credentials Jenkins mein securely kaise manage karte hain?</strong>
+        (1) Jenkins Credential Store – encrypted at rest with master.key (2) HashiCorp Vault integration for enterprise (3) AWS Secrets Manager / GCP Secret Manager (4) Never in code or environment plaintext (5) Rotation strategy (6) Least privilege principle.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q6: Pipeline speed kaise improve karte hain?</strong>
+        (1) Parallel stages for independent tasks (2) Docker layer caching (3) Maven/npm dependency caching (4) Incremental builds where possible (5) Artifact caching between stages (6) Faster agents (SSD, more RAM) (7) Optimize test suites (slow tests identify karo).
+      </div>
+
+      <div class="interview-q">
+        <strong>Q7: Shared Library ke benefits kya hain?</strong>
+        DRY principle – code reuse. Single place maintenance. Version controlled. Team-wide standards enforce. Easier testing of pipeline code. Faster onboarding for new services.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q8: Jenkins agent kaise add karte hain aur kab add karte hain?</strong>
+        Add karte hain jab: Controller load high ho, specialized build environment chahiye (Windows, Android, GPU), parallel builds badhani ho. SSH ya JNLP method. Labels se pipeline mein specific agent target karo.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q9: Pipeline mein rollback kaise implement karte hain?</strong>
+        Docker tags: Previous image tag use karo. K8s: kubectl rollout undo. Blue-Green: Traffic switch back to old color. Database migrations: Reversible migrations, snapshot restore. Canary: Traffic weight revert. Speed of rollback = critical metric.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q10: Jenkins on Kubernetes ke advantages?</strong>
+        Auto-scaling agents (0-infinity), ephemeral builds (fresh environment always), declarative infrastructure, Helm charts se easy deploy, cost efficient with spot instances, no agent maintenance, cloud-native approach.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q11: Pipeline as Code kyun zaroori hai?</strong>
+        Version history: kab kya change hua track karo. Code review: Pipeline changes bhi PR se jaayein. Reproducibility: Naye server pe same pipeline. Disaster recovery: Git se restore karo. Collaboration: Team pipeline improve kar sake.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q12: Jenkins Plugin kya hota hai aur kaise manage karte hain?</strong>
+        Plugin Jenkins functionality extend karta hai. Management: Manage Jenkins → Plugin Manager. Production: Auto-update disable karo – test environment mein test karo pehle, phir production. JCasC se plugin versions pin karo.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q13: Build kab fail karna chahiye aur kab unstable?</strong>
+        FAILURE: Compile error, critical test fail, deployment fail. UNSTABLE: Non-critical test fail, low coverage (warning not blocker). SUCCESS: Sab pass. Unstable code merge block karo, sirf failure se.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q14: Webhook aur polling mein se kaunsa prefer karo aur kyun?</strong>
+        Webhook prefer karo: instant trigger, no polling overhead, exact event-based. Polling fallback (pollSCM) use karo jab Jenkins private network mein ho. Best practice: both configure karo redundancy ke liye.
+      </div>
+
+      <div class="interview-q">
+        <strong>Q15: Security scan pipeline mein kaise include karte hain?</strong>
+        SAST: SonarQube, Checkmarx. Dependency scan: OWASP Dependency Check. Container scan: Trivy, Snyk, Clair. Secrets scan: truffleHog, detect-secrets. API security: OWASP ZAP. DAST staging pe. Fail pipeline on HIGH/CRITICAL findings.
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume Project -->
+  <div class="card">
+    <h3 data-icon="📄">Resume-Ready Project Description</h3>
+
+    <div class="callout success">
+      <div class="callout-icon">✅</div>
+      <div>
+        <strong>Project: Enterprise CI/CD Pipeline – E-Commerce Microservices Platform</strong><br><br>
+        <strong>Short Description (for resume bullet point):</strong><br>
+        Architected and implemented end-to-end CI/CD pipeline using Jenkins for 4 Spring Boot microservices, reducing deployment time by 83% (4hr → 40min) and achieving 99.2% pipeline reliability.<br><br>
+        <strong>Long Description (for LinkedIn / detailed resume):</strong><br>
+        Led the design and implementation of a production-grade CI/CD platform using Jenkins (Declarative Pipelines) for a microservices-based e-commerce system. Key achievements:<br>
+        • Designed Jenkins Controller-Agent architecture on Kubernetes (EKS) with auto-scaling build pods<br>
+        • Implemented Shared Library framework reducing per-service Jenkinsfile code by 70%<br>
+        • Integrated SonarQube quality gates, OWASP Dependency Check, and Trivy container scanning<br>
+        • Achieved zero-downtime deployments using Blue-Green strategy on Kubernetes<br>
+        • Configured GitHub Webhooks with multibranch pipeline strategy for automated PR validation<br>
+        • Secured Jenkins with LDAP auth, RBAC, HashiCorp Vault for secrets management, and Nginx+SSL<br>
+        • Reduced MTTR from 2 hours to 15 minutes with automated rollback capability<br><br>
+        <strong>Tech Stack:</strong> Jenkins, Kubernetes (EKS), Docker, GitHub, SonarQube, HashiCorp Vault, Nginx, Terraform, AWS ECR, Trivy, Slack API, Groovy
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ====================================================
+     QUICK REFERENCE
+==================================================== -->
+<section class="phase-section">
+  <div class="card">
+    <h3 data-icon="⚡">Quick Reference – Cheat Sheet</h3>
+
+    <h4>Essential Jenkins CLI Commands</h4>
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">BASH – Jenkins CLI & Management Commands</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm"># Jenkins service management</span>
+sudo systemctl start   jenkins
+sudo systemctl stop    jenkins
+sudo systemctl restart jenkins
+sudo systemctl status  jenkins
+
+<span class="cm"># Jenkins logs dekhna</span>
+sudo journalctl -u jenkins -n 100 -f
+
+<span class="cm"># Jenkins version check</span>
+java -jar /usr/share/jenkins/jenkins.war --version
+
+<span class="cm"># Safe restart (current builds finish hone ke baad)</span>
+curl -X POST http://admin:TOKEN@localhost:8080/safeRestart
+
+<span class="cm"># Reload configuration</span>
+curl -X POST http://admin:TOKEN@localhost:8080/reload
+
+<span class="cm"># Jenkins CLI jar use karna</span>
+java -jar jenkins-cli.jar -s http://localhost:8080 \
+  -auth admin:API_TOKEN \
+  list-jobs
+
+<span class="cm"># Build trigger via CLI</span>
+java -jar jenkins-cli.jar -s http://localhost:8080 \
+  -auth admin:API_TOKEN \
+  build my-pipeline-job -s -v
+
+<span class="cm"># Job enable/disable</span>
+java -jar jenkins-cli.jar -s http://localhost:8080 \
+  -auth admin:API_TOKEN \
+  enable-job my-job
+
+<span class="cm"># Plugin install via CLI</span>
+java -jar jenkins-cli.jar -s http://localhost:8080 \
+  -auth admin:API_TOKEN \
+  install-plugin git github docker-workflow pipeline-utility-steps</code></pre>
+    </div>
+
+    <h4>Useful Groovy Snippets</h4>
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">GROOVY – Common Snippets for Jenkinsfiles</span>
+        <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+      </div>
+      <pre><code><span class="cm">// 1. Command output capture</span>
+def version = sh(script: 'cat package.json | jq -r .version', returnStdout: true).trim()
+echo "App version: ${version}"
+
+<span class="cm">// 2. Environment check</span>
+def isProd = env.BRANCH_NAME == 'main'
+def isFeature = env.BRANCH_NAME.startsWith('feature/')
+
+<span class="cm">// 3. Try-catch error handling</span>
+try {
+  sh 'risky-command.sh'
+} catch (Exception e) {
+  echo "Command failed: ${e.message}"
+  currentBuild.result = 'UNSTABLE'
+}
+
+<span class="cm">// 4. File operations</span>
+def content = readFile 'config.json'
+writeFile file: 'output.txt', text: "Build: ${env.BUILD_NUMBER}"
+
+<span class="cm">// 5. Date/time</span>
+def timestamp = new Date().format('yyyy-MM-dd_HH-mm', TimeZone.getTimeZone('IST'))
+
+<span class="cm">// 6. JSON parsing</span>
+def response = sh(script: 'curl -s api.example.com/health', returnStdout: true)
+def parsed = readJSON text: response
+echo "Status: ${parsed.status}"
+
+<span class="cm">// 7. Conditional archiving</span>
+if (fileExists('target/reports')) {
+  archiveArtifacts artifacts: 'target/reports/**'
+}
+
+<span class="cm">// 8. Multiple credential types</span>
+withCredentials([
+  usernamePassword(credentialsId: 'db-creds', usernameVariable: 'DB_USER', passwordVariable: 'DB_PASS'),
+  string(credentialsId: 'slack-token', variable: 'SLACK_TOKEN'),
+  file(credentialsId: 'gcp-json', variable: 'GCP_CREDENTIALS')
+]) {
+  sh 'deploy-script.sh'
+}</code></pre>
+    </div>
+
+    <h4>Jenkins Troubleshooting Guide</h4>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Problem</th><th>Likely Cause</th><th>Solution</th></tr>
+        <tr><td>Build queue mein stuck</td><td>No available agent</td><td>Agent status check karo, executors badhao</td></tr>
+        <tr><td>OutOfMemoryError</td><td>JVM heap full</td><td>-Xmx badhao, old builds delete karo</td></tr>
+        <tr><td>GitHub webhook 404</td><td>Wrong Jenkins URL</td><td>Jenkins URL configure karo, GitHub plugin check</td></tr>
+        <tr><td>SSH agent connection fail</td><td>Key ya network issue</td><td>SSH key verify karo, firewall check karo</td></tr>
+        <tr><td>Docker permission denied</td><td>Jenkins user docker group mein nahi</td><td>usermod -aG docker jenkins</td></tr>
+        <tr><td>Plugin update ke baad issue</td><td>Incompatible plugin</td><td>Plugin rollback karo, compatibility check karo</td></tr>
+        <tr><td>Credential not found</td><td>Wrong ID ya scope</td><td>Credential ID verify karo, scope check karo</td></tr>
+        <tr><td>Build slow</td><td>No caching, slow agent</td><td>Dependency cache add karo, faster hardware</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div><!-- .wrapper -->
+
+<!-- FOOTER -->
+<div class="course-footer">
+  <div style="font-size: 32px; margin-bottom: 12px;">🎓</div>
+  <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; margin-bottom: 8px;">Jenkins Masterclass Complete!</h2>
+  <p>Yeh course complete karne ke baad tum production-ready DevOps engineer ho. Keep building, keep learning!</p>
+  <p style="margin-top: 20px; font-size: 13px; color: #64748B;">
+    Theme: Enterprise Clean DevOps | Hinglish DevOps Training Material | Beginner to Advanced
+  </p>
+  <div style="margin-top: 24px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 13px; color: #94A3B8;">Phase 1-9 Complete</span>
+    <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 13px; color: #94A3B8;">50+ Code Examples</span>
+    <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 13px; color: #94A3B8;">Interview Ready</span>
+    <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 13px; color: #94A3B8;">Production Grade</span>
+  </div>
+</div>
+
+</body>
+</html>

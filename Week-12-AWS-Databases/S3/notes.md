@@ -38,6 +38,8 @@ graph LR
 - **Key:** The full "path" (e.g., `uploads/2024/image.png`).
 - **Value:** The actual data (up to 5TB).
 - **Metadata:** System metadata (Content-Type) or custom tags.
+- **Tags:** Unicode key-value pairs (up to 10) for security/lifecycle.
+- **Large Files:** Must use **Multi-part Upload** for files > 5GB (Max size 5TB).
 
 ---
 
@@ -77,7 +79,11 @@ S3 is private by default. Access is managed through layers of defense.
 | **IAM Policy** | JSON attached to user | Controls "Who" can access "What". |
 | **Bucket Policy** | JSON attached to bucket | Controls "Public" or "Cross-Account" access. |
 | **Block Public Access** | AWS Console Toggle | Hard override to prevent data exposure. |
-| **SSE-KMS** | Encryption | Protects data at rest using server-side keys. |
+| **Object ACLs** | XML-based (Legacy) | Fine-grained access for individual objects. |
+| **SSE-S3** | Encryption | Managed by AWS (Default). |
+| **SSE-KMS** | Encryption | Managed by KMS Service (Audit Trail). |
+| **SSE-C** | Encryption | Customer-provided keys (Advanced). |
+| **CORS** | Browser Mechanism | Allows requests to other domains/origins. |
 
 ---
 
@@ -87,8 +93,10 @@ S3 is private by default. Access is managed through layers of defense.
 |---|---|
 | **Versioning** | Protects against accidental deletes by keeping a history of objects. |
 | **Replication** | CRR (Cross-Region) used for DR; SRR (Same-Region) for log aggregation. |
-| **S3 Website** | High-performance hosting for SPAs (React/Vue/Angular) without servers. |
-| **Consistency** | Strong read-after-write consistency for all new objects and overwrites. |
+| **Pre-signed URLs** | Temporary access for non-IAM users (e.g., private video link). |
+| **Vault Lock** | WORM model (Write Once Read Many) for compliance; impossible to delete. |
+| **Object Lambda** | Transform data on-the-fly (e.g., resizing images during GET). |
+| **Access Points** | Dedicated hostnames for bucket access within a VPC. |
 
 ---
 

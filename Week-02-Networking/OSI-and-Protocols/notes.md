@@ -27,6 +27,36 @@ graph TD
     L1["Layer 1: Physical (Fiber, Ethernet cables)"]:::hardware
 ```
 
+---
+
+## ✦ 2. End-to-End Request Flow
+> **Contributor Insights:** Tracing the request flow step-by-step is the fastest way to debug connectivity issues in production.
+
+```mermaid
+graph LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef user fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
+    
+    Browser["User Browser"]:::user --> DNS["DNS Resolution"]
+    DNS --> LB["Load Balancer"]
+    LB --> Web["Web Server (Nginx)"]
+    Web --> App["Application Server"]
+    App --> DB["Database Server"]
+```
+
+---
+
+## ✦ 3. Ports & Services Reference
+Common ports defined in industrial networking:
+
+| Service | Port | Protocol |
+|---|---|---|
+| **SSH** | 22 | TCP |
+| **HTTP** | 80 | TCP |
+| **HTTPS** | 443 | TCP |
+| **Node.js/Spring** | 3000 / 8080 | TCP |
+| **MySQL / Postgres** | 3306 / 5432 | TCP |
+
 > [!NOTE]
 > As a DevOps/Cloud Engineer, you will spend 90% of your time troubleshooting network drops at **Layer 3 (IP/Routing)**, **Layer 4 (Ports/TCP)**, and **Layer 7 (Application/HTTP)**!
 
@@ -51,6 +81,16 @@ In modern cloud architecture, you emulate these topologies using Virtual Private
 
 - **Star Topology** — Every server connects to a localized switch. Failure of one node doesn't drop the rest.
 - **Mesh Topology** — Complete interconnection. Critical for zero-downtime microservices communicating internally.
+
+---
+
+## ✦ 5. Cloud Networking Basics
+In cloud platforms like AWS, traditional networking is abstracted into **Software Defined Networking (SDN)**.
+
+- **VPC (Virtual Private Cloud)**: Isolated virtual network for your resources.
+- **Public Subnet**: Reachable from the internet (via Internet Gateway). Usually hosts Load Balancers.
+- **Private Subnet**: No direct internet route. Hosts sensitive App servers and Databases.
+- **CIDR**: Defines the IP range size (e.g., `/16` = 65,536 IPs, `/24` = 256 IPs).
 
 ---
 
