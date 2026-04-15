@@ -45,6 +45,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **DevSecOps Integration** | SonarQube static analysis, OWASP mitigation, Trivy vulnerability scanning |
 | **Pipeline Automation Logic** | Dynamic Pipelines, Branch-aware executions, Automated artifact builds |
 | **Cloud Computing** | IAM, VPC, EC2, EBS, ELB, ASG, RDS, Aurora, S3, Route 53 |
+| **Messaging & Global** | SQS, SNS, Kinesis, CloudFront, Global Accelerator |
+| **Container Orchestration** | ECS (Fargate/EC2), ECR, Task Definitions, Services |
+| **Migration & Storage** | Snowball, FSx, Storage Gateway, Hybrid Storage |
 | **Infrastructure Scaling** | Auto-Scaling Groups, Multi-AZ High Availability, Read Replicas |
 
 ---
@@ -69,7 +72,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 ### Phase 4: Cloud Ingress
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 10** (Apr 02 – Apr 08) | **AWS Fundamentals & IAM**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 11** (Apr 09 – Apr 15) | **AWS Compute & Storage**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 12** (Apr 16 – Present) | **AWS Databases & Services**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 12** (Apr 16 – Apr 22) | **AWS Databases & Services**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Present) | **Messaging, Global Content & Containers**
 
 <br/>
 
@@ -77,7 +81,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 |---|---|---|---|
 | **Week 10** | Apr 02 – Apr 08 | AWS Fundamentals & IAM | Complete |
 | **Week 11** | Apr 09 – Apr 15 | AWS Compute & Storage | Complete |
-| **Week 12** | Apr 16 – Present | AWS Databases & Services | In Progress |
+| **Week 12** | Apr 16 – Apr 22 | AWS Databases & Services | Complete |
+| **Week 13** | Apr 23 – Present | Messaging & Containers | In Progress |
 
 ---
 
@@ -102,7 +107,7 @@ flowchart TD
     end
 
     subgraph P4 [Phase 4: AWS Cloud]
-        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"]:::active
+        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"]:::active
     end
 
     P1 -.-> P2
@@ -119,7 +124,8 @@ flowchart TD
 ### ✦ Phase 4: Cloud Ingress (Active)
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
-- [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
+- [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
+- [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — Linux Basics, Networking, Apache/Nginx.
