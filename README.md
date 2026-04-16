@@ -128,9 +128,9 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
-- [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — Linux Basics, Networking, Apache/Nginx.
-- [![Folder](https://img.shields.io/badge/DIR-Phase--2-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — Git, Docker, Jenkins Orchestration.
-- [![Folder](https://img.shields.io/badge/DIR-Phase--3-00E5FF?style=flat-square&labelColor=0A0A0A)](#) — DevSecOps, Dynamic Pipelines.
+- [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
+- [![Folder](https://img.shields.io/badge/DIR-Phase--2-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-05-Git-Version-Control/) — Git, Docker, Jenkins Orchestration.
+- [![Folder](https://img.shields.io/badge/DIR-Phase--3-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — DevSecOps, Dynamic Pipelines.
 
 ---
 
