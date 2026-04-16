@@ -28,7 +28,8 @@ graph TD
     classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
     classDef active fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF,rx:5px,ry:5px;
     
-    Root["/ (Root System)"]    Root --> Home["/home<br>(User Data)"]
+    Root["/ (Root System)"]
+    Root --> Home["/home<br>(User Data)"]
     Root --> Etc["/etc<br>(Configuration)"]:::active
     Root --> Var["/var<br>(Variable Data)"]:::active
     Root --> Usr["/usr<br>(User Binaries)"]
