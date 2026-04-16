@@ -12,48 +12,49 @@
 
 ## ✦ Why Global Content Delivery?
 
-In modern DevOps, "Latency is the Enemy." If your origin server is in Virginia but your user is in Mumbai, the round-trip time (RTT) will be high. **Content Delivery Networks (CDNs)** solve this by caching content as close to the user as possible (the "Edge").
+In modern DevOps, "Latency is the Enemy." If your origin server is in Virginia but your user is in Mumbai, the round-trip time (RTT) will be high. **Content Delivery Networks (CDNs)** solve this by caching content as close to the user as possible (the "Edge") and optimizing the route to the origin.
 
 ---
 
 ## ✦ 1. Amazon CloudFront (CDN)
 
-CloudFront is a fast content delivery network service that securely delivers data, videos, applications, and APIs to customers globally with low latency.
+CloudFront is a fast content delivery network service that securely delivers data, videos, applications, and APIs to customers globally.
 
-### ⚡ Key Concepts
-- **Edge Location:** Small points of presence globally where content is cached.
-- **Origin:** The source of your content (S3 bucket, EC2, ALB, or Custom HTTP server).
-- **Distribution:** A "Link" between Edge locations and your Origin.
+### ⚡ Advanced Caching Logic
+- **Cache Behaviors:** Allow you to configure different settings for different URL patterns (e.g., `/api/*` goes to ALB with no caching, while `/images/*` goes to S3 with 1-year caching).
+- **TTL (Time To Live):** 
+    - **Min/Max/Default TTL:** Controlled by CloudFront settings or `Cache-Control` headers from the origin.
+- **Cache Keys:** Determine what makes a request "unique" in the cache (e.g., URL + Query Strings + Specific Headers).
 
-### ⚡ Architecture: S3 as an Origin
+### ⚡ Origin Resilience
+- **Origin Groups:** Define a Primary and a Secondary origin. If the Primary returns a specific error code (e.g., 504), CloudFront automatically fails over to the Secondary.
+- **OAC (Origin Access Control):** The modern way to secure S3 origins. It ensures S3 buckets are private and only accessible via CloudFront.
+
 ```mermaid
 graph LR
     classDef user fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF;
     classDef edge fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF;
     classDef origin fill:#0A0A0A,stroke:#39FF14,stroke-width:2px,color:#FFFFFF;
 
-    U[User in Europe]:::user -- "Request" --> E[Edge Location: London]:::edge
-    E -- "Cache Miss?" --> O[S3 Origin: US-East-1]:::origin
-    O -- "Fetch Content" --> E
-    E -- "Cache & Return" --> U
+    U[User]:::user -- "Request" --> E[Edge Location]:::edge
+    E -- "Failover" --> O1[Primary Origin]:::origin
+    E -- "If O1 Fails" --> O2[Secondary Origin]:::origin
 ```
-
-### ⚡ Cache Invalidations
-If you update an image on S3, users might still see the old version because it's cached.
-- **CloudFront Invalidation:** Forcefully clearing the cache for a specific path (e.g., `/*` or `/images/*`).
 
 ---
 
 ## ✦ 2. AWS Global Accelerator
 
-Global Accelerator uses the **AWS Global Network** to route traffic to yours applications, improving availability and performance.
+Improves availability and performance of your local or global applications by using the **AWS Global Network**.
 
-### ⚡ Anycast IP
-Unlike CloudFront (which uses DNS to point to Edge locations), Global Accelerator provides **2 Static Anycast IPs**. These IPs point to the nearest AWS Edge location, which then tunnels the traffic through the AWS internal private network to your application.
+### ⚡ Technical Mechanics
+- **Unicast IP:** A specific server has a specific IP. Traffic is routed via the public internet.
+- **Anycast IP:** Multiple servers (at the Edge) share the same IP. Traffic is routed to the nearest Edge location and then via the private AWS network.
+- **Static IPs:** Global Accelerator provides 2 static Anycast IPs that never change, shielding your application from DNS propagation delays.
 
-### ⚡ Use Cases
-- **Non-HTTP Use Cases:** Gaming (UDP), VoIP, IoT (MQTT).
-- **Deterministic Routing:** When you need static IPs that don't change.
+### ⚡ Performance Benefits
+- **TCP Termination:** Handshake happens at the Edge location closest to the user, reducing the time to establish a connection.
+- **Congestion Avoidance:** Uses AWS's dedicated fiber optic network instead of the crowded public internet.
 
 ---
 
@@ -62,14 +63,19 @@ Unlike CloudFront (which uses DNS to point to Edge locations), Global Accelerato
 | Property | Amazon CloudFront | AWS Global Accelerator |
 |---|---|---|
 | **Layer** | Layer 7 (HTTP/HTTPS) | Layer 3/4 (TCP/UDP) |
-| **Primary Goal** | Caching content (Images, Video) | Improving Network Performance / Stability |
+| **Primary Goal** | Caching content & reducing load | Improving Network Path & Stability |
 | **IP Address** | Dynamic (DNS based) | **Static Anycast IPs** |
 | **Caching?** | ✅ Yes | ❌ No |
-| **Edge Use** | Serves content from Edge | Entry point to AWS Private Network |
+| **Encryption** | SSL/TLS at Edge | Pass-through to Origin |
 
 ---
 
-## ✦ 🌐 Personal Notes
+## ✦ 🌐 Personal Notes & Interview Tips
 
-- **CloudFront Geo-Restriction:** Use this to Allow/Block specific countries from accessing your content (useful for licensing/compliance).
-- **OAC (Origin Access Control):** Always use OAC to ensure users can ONLY access your S3 content via CloudFront, preventing them from bypassing your CDN security.
+- **CloudFront Functions vs. Lambda@Edge:**
+    - **CloudFront Functions:** Ultra-fast, lightweight JS for header manipulation/URL rewrites. Scale to millions of requests.
+    - **Lambda@Edge:** Full Node.js/Python power. Use for complex logic like image resizing or A/B testing.
+- **Field Level Encryption:** Use this when you need to encrypt specific sensitive data fields (like Credit Card numbers) at the Edge before they even reach your origin.
+- **Custom Error Pages:** Always configure these to provide a branded 404/500 experience instead of a raw AWS error.
+- **Shield & WAF:** CloudFront is the first line of defense. Always integrate with **AWS WAF** (Layer 7) and **AWS Shield** (DDoS) for industrial security.
+

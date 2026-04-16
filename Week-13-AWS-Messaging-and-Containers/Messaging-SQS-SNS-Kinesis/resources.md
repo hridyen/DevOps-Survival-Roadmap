@@ -2,17 +2,35 @@
 
 ---
 
-# 📚 Messaging Resources
+# 📚 Messaging & Streaming Resources
 
-| Resource | Description | Link |
-|---|---|---|
-| **AWS SQS Documentation** | Official developer guide for SQS | [Official Docs](https://docs.aws.amazon.com/sqs/) |
-| **SNS Pub/Sub Patterns** | Understanding communication patterns | [AWS Blog](https://aws.amazon.com/getting-started/hands-on/send-fan-out-notifications-sns-sqs/) |
-| **Kinesis vs SQS** | In-depth comparison of streaming vs queuing | [Article](https://aws.amazon.com/sqs/faqs/) |
-| **AWS SDK for Python (Boto3)** | Using Messaging services in scripts | [Boto3 Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) |
+| Category | Resource | Type | Level | Link |
+|---|---|---|---|---|
+| **Documentation** | SQS Developer Guide | Docs | Beginner | [Visit](https://docs.aws.amazon.com/sqs/) |
+| **Patterns** | SNS Fan-out Architectures | Guide | Intermediate | [Visit](https://aws.amazon.com/getting-started/hands-on/send-fan-out-notifications-sns-sqs/) |
+| **Deep Dive** | Kinesis Scaling & Sharding | Technical | Advanced | [Visit](https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html) |
+| **Comparison** | SQS vs SNS vs Kinesis | Article | All Levels | [Visit](https://aws.amazon.com/sqs/faqs/) |
+| **Automation** | Boto3 Messaging Client | SDK | Intermediate | [Visit](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sqs.html) |
 
 ---
 
-## ✦ Recommended Labs
-1. **Fan-Out Pattern:** Create an SNS topic and subscribe two SQS queues. Publish a message to the topic and verify it arrives in both queues.
-2. **Dead Letter Queue:** Create an SQS queue with a retry limit of 2. Send a message, "receive" it but don't delete it (multiple times), and watch it move to the DLQ.
+## ✦ Industrial Labs & Challenges
+
+### 🧪 Lab 1: Reliable Event Processor (Fan-Out)
+- **Goal:** Build a system where an image upload triggers both a thumbnail generator and an analytics tracker.
+- **Workflow:** S3 Event → SNS Topic → (SQS Queue 1 & SQS Queue 2).
+- **Validation:** Upload a file and verify two separate messages appear in the respective queues.
+
+### 🧪 Lab 2: The "Chaos" Consumer (DLQ Logic)
+- **Goal:** Test error handling and message persistence.
+- **Workflow:** 
+    1. Create a "Source Queue" and a "Dead Letter Queue."
+    2. Configure a Redrive Policy (Max Receive Count: 3).
+    3. Use the CLI to receive a message without deleting it 3 times.
+- **Validation:** Verify the message automatically moves to the DLQ on the 4th attempt.
+
+### 🧪 Lab 3: Kinesis Real-time Log Stream
+- **Goal:** Ingest simulated web logs into S3 using Kinesis Data Firehose.
+- **Workflow:** KDS → Firehose → S3.
+- **Validation:** Use the Kinesis Data Generator to pump data and check S3 for partitioned output.
+

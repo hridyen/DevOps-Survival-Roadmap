@@ -6,55 +6,76 @@
 
 ## ✦ 1. Amazon SQS Commands
 
-### ✦ Create a Standard Queue
+### ✦ Queue Management
 ```bash
+# Create a Standard Queue
 aws sqs create-queue --queue-name devops-roadmap-queue
+
+# Create a FIFO Queue (Must end in .fifo)
+aws sqs create-queue --queue-name orders.fifo --attributes FifoQueue=true,ContentBasedDeduplication=true
+
+# Get Queue URL
+aws sqs get-queue-url --queue-name devops-roadmap-queue
 ```
 
-### ✦ Send a Message
+### ✦ Message Operations
 ```bash
-aws sqs send-message --queue-url <QUEUE_URL> --message-body "Deploy Version 2.0"
-```
+# Send a Message with Attributes
+aws sqs send-message --queue-url <URL> --message-body "Deploy V2" --message-attributes '{"Priority": { "DataType": "Number", "StringValue": "1" }}'
 
-### ✦ Receive a Message
-```bash
-aws sqs receive-message --queue-url <QUEUE_URL>
-```
+# Receive Message (Long Polling)
+aws sqs receive-message --queue-url <URL> --wait-time-seconds 20
 
-### ✦ Delete a Message (Process complete)
-```bash
-aws sqs delete-message --queue-url <QUEUE_URL> --receipt-handle <HANDLE_FROM_RECEIVE>
+# Change Message Visibility (Extend processing time)
+aws sqs change-message-visibility --queue-url <URL> --receipt-handle <HANDLE> --visibility-timeout 60
+
+# Purge a Queue (Delete all messages)
+aws sqs purge-queue --queue-url <URL>
 ```
 
 ---
 
 ## ✦ 2. Amazon SNS Commands
 
-### ✦ Create a Topic
+### ✦ Topic & Subscription
 ```bash
-aws sns create-topic --name production-alerts
+# Create SNS Topic
+aws sns create-topic --name prod-alerts
+
+# Subscribe SQS Queue to SNS (Fan-out)
+aws sns subscribe --topic-arn <TOPIC_ARN> --protocol sqs --notification-endpoint <SQS_ARN>
+
+# Set Subscription Filter Policy (Only receive high priority)
+aws sns set-subscription-attributes --subscription-arn <SUB_ARN> --attribute-name FilterPolicy --attribute-value '{"priority": ["high"]}'
 ```
 
-### ✦ Subscribe an Email to Topic
+### ✦ Publishing
 ```bash
-aws sns subscribe --topic-arn <TOPIC_ARN> --protocol email --notification-endpoint yourname@example.com
-```
-
-### ✦ Publish a Message
-```bash
-aws sns publish --topic-arn <TOPIC_ARN> --message "Build Successful! Deploying to Staging..."
+# Publish Message to Topic
+aws sns publish --topic-arn <TOPIC_ARN> --message "CRITICAL: Server Down" --subject "Urgent Alert"
 ```
 
 ---
 
 ## ✦ 3. Amazon Kinesis Commands
 
-### ✦ Create a Stream
+### ✦ Stream Operations
 ```bash
-aws kinesis create-stream --stream-name server-logs --shard-count 1
+# Create Stream with 2 Shards
+aws kinesis create-stream --stream-name web-traffic --shard-count 2
+
+# List Streams
+aws kinesis list-streams
+
+# Put Record into Stream
+aws kinesis put-record --stream-name web-traffic --partition-key user_1 --data "user_clicked_home"
 ```
 
-### ✦ Describe Stream
+### ✦ Reading Data
 ```bash
-aws kinesis describe-stream --stream-name server-logs
+# Get Shard Iterator
+aws kinesis get-shard-iterator --stream-name web-traffic --shard-id shardId-000000000000 --shard-iterator-type TRIM_HORIZON
+
+# Get Records using Iterator
+aws kinesis get-records --shard-iterator <ITERATOR_ID>
 ```

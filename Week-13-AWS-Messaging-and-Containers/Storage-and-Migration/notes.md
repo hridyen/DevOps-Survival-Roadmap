@@ -12,40 +12,43 @@
 
 ## ✦ Why Specialized Storage?
 
-Not all data fits in S3. Legacy apps need Windows shares (SMB), sub-millisecond latency (Lustre), or a way to move Petabytes of data physically because internet bandwidth is too slow.
+Not all data fits in S3. Legacy apps need Windows shares (SMB), sub-millisecond latency (Lustre), or a way to move Petabytes of data physically because internet bandwidth is too slow. AWS provides specialized services for **Hybrid Cloud** and **Mass Migration**.
 
 ---
 
 ## ✦ 1. AWS Snow Family
 
-The Snow family consists of physical hardware devices used for data migration and edge computing.
+The Snow family consists of physical hardware devices used for data migration and edge computing in remote environments.
 
-### ⚡ Migration Decision Matrix
+### ⚡ Technical Capabilities
+- **Snowcone:** 8 TB of usable storage. Can be powered by battery. Supports AWS IoT Greengrass.
+- **Snowball Edge:** 
+    - **Storage Optimized:** 80 TB HDD or 210 TB NVMe for data-heavy migrations.
+    - **Compute Optimized:** 104 vCPUs, 416 GB RAM, and optional GPU for real-time Edge AI/ML.
+- **Snowmobile:** A 45-foot long ruggedized shipping container. 100 PB capacity. Ideal for moving entire data centers.
+
 ```mermaid
 graph TD
     classDef snow fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF;
     classDef mobile fill:#0A0A0A,stroke:#FF0055,stroke-width:3px,color:#FFFFFF;
 
-    A[How much data?] --> B{Under 80 TB?}
-    B -- "Yes" --> S[Snowball Edge]:::snow
-    B -- "No: Petabytes" --> M[Snowmobile]:::mobile
+    A[Data Volume?] --> B{Under 10 PB?}
+    B -- "Yes" --> S[Snowball Edge Cluster]:::snow
+    B -- "No" --> M[Snowmobile]:::mobile
 ```
-
-- **Snowcone:** Tiny, portable, 8TB.
-- **Snowball Edge:** 80TB capacity, including compute (EC2-compatible).
-- **Snowmobile:** A literal truck capacity for Exabyte-scale migrations.
 
 ---
 
 ## ✦ 2. Amazon FSx: Managed File Systems
 
-FSx provides fully managed, high-performance file systems for specific protocols.
+FSx provides fully managed, high-performance file systems for specific industry-standard protocols.
 
-### ⚡ Technical Variants
-- **FSx for Windows File Server:** Native Windows SMB support, Active Directory integration.
-- **FSx for Lustre:** High-performance computing (HPC), machine learning.
-- **FSx for NetApp ONTAP:** Easy migration from on-prem NetApp arrays.
-- **FSx for OpenZFS:** High throughput, low latency ZFS.
+| Variant | Best For | Protocol | Key Feature |
+|---|---|---|---|
+| **FSx for Windows** | Enterprise Apps | SMB | Active Directory Integration |
+| **FSx for Lustre** | HPC, ML, Video | Lustre | Sub-millisecond latency |
+| **FSx for ONTAP** | NetApp Migration | NFS/SMB/iSCSI | Multi-protocol, SnapMirror support |
+| **FSx for OpenZFS** | Specialized ZFS | NFS | High throughput, ZFS features |
 
 ---
 
@@ -53,27 +56,30 @@ FSx provides fully managed, high-performance file systems for specific protocols
 
 Bridge between your on-premises data and AWS cloud storage.
 
-- **File Gateway:** SMB/NFS access to S3.
-- **Volume Gateway:** iSCSI blocks backed by S3 (Cached or Stored).
-- **Tape Gateway:** "Virtual Tape Library" to replace physical tape backups.
+- **S3 File Gateway:** Maps S3 buckets to an NFS or SMB share. Good for backups or "cloud tiering."
+- **FSx File Gateway:** Low-latency access to FSx for Windows File Server from on-prem.
+- **Volume Gateway:** iSCSI block storage.
+    - **Cached Volumes:** Frequently accessed data is kept locally, all data is in S3.
+    - **Stored Volumes:** All data is kept locally, backed up to S3 as EBS snapshots.
+- **Tape Gateway:** Virtual Tape Library (VTL). Replaces physical tapes with S3/Glacier.
 
 ---
 
-## ✦ 📦 Master Storage Comparison
+## ✦ Migration & Transfer Masters
 
-| Storage Type | AWS Service | Access Protocol | Multiple Instances? |
-|---|---|---|---|
-| **Object** | **S3** | HTTP API | ✅ Worldwide |
-| **Archival** | **S3 Glacier**| HTTP API | ✅ Worldwide |
-| **Block** | **EBS** | iSCSI / Network | ❌ One instance (mostly) |
-| **File (Linux)** | **EFS** | NFS | ✅ Multiple (Region) |
-| **File (Win)** | **FSx Win** | SMB | ✅ Multiple (Region) |
-| **High Speed** | **FSx Lustre**| Lustre | ✅ Multiple (Region) |
+- **AWS DataSync:** Optimized network transfer. 10x faster than open-source tools. Syncs data from on-prem (NFS/SMB/HDFS) to S3, EFS, or FSx.
+- **AWS Transfer Family:** Managed **SFTP, FTPS, and FTP** directly into S3 or EFS. Eliminates the need to manage FTP servers.
 
 ---
 
-## ✦ 📦 Personal Notes
+## ✦ 📦 Personal Notes & Interview Tips
 
-- **Snowball Ingestion:** Remember that Snowball cannot import to Glacier directly. You must import to **S3 first**, then use a lifecycle policy to move to Glacier.
-- **EFS vs EBS:** EBS is a "stick" (one instance), EFS is a "server" (many instances).
-- **Storage Gateway:** Always use "Cached Volumes" if you want to store almost all data in S3 but keep a small, frequently accessed part on-site.
+- **Snowball Ingestion:** Since Snowball cannot import to Glacier directly, you must import to **S3 Standard first**, then use a lifecycle policy to transition to Glacier.
+- **EFS vs. EBS vs. Instance Store:**
+    - **EFS:** Networked, multi-instance, Region-wide.
+    - **EBS:** Networked, single-instance (mostly), AZ-specific.
+    - **Instance Store:** Physical, ephemeral (loss on stop), ultra-high IOPS.
+- **Storage Gateway vs. DataSync:**
+    - **Storage Gateway:** Persistent "bridge" for ongoing hybrid access.
+    - **DataSync:** One-time or scheduled "migration" tool for large datasets.
+

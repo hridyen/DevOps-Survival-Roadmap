@@ -6,35 +6,67 @@
 
 ## ✦ 1. AWS Snowball Commands
 
-### ✦ List Jobs
+### ✦ Job Management
 ```bash
+# List Snowball Jobs
 aws snowball list-jobs
-```
 
-### ✦ Get Job Details
-```bash
+# Describe a specific Job
 aws snowball describe-job --job-id <JOB_ID>
+
+# Get the Unlock Code for a Snowball Device
+aws snowball get-job-unlock-code --job-id <JOB_ID>
 ```
 
 ---
 
-## ✦ 2. Amazon FSx Commands
+## ✦ 2. Amazon FSx & Storage Gateway
 
-### ✦ List File Systems
+### ✦ FSx Operations
 ```bash
+# List all File Systems
 aws fsx describe-file-systems
+
+# Create a Backup (Snapshot)
+aws fsx create-backup --file-system-id <FS_ID>
+
+# Update File System Storage Capacity
+aws fsx update-file-system --file-system-id <FS_ID> --storage-capacity 1024
 ```
 
-### ✦ Create Snapshot (Backups)
+### ✦ Storage Gateway
 ```bash
-aws fsx create-snapshot --file-system-id <FS_ID>
+# List all Gateways
+aws storagegateway list-gateways
+
+# Describe a Gateway's status
+aws storagegateway describe-gateway-information --gateway-arn <GW_ARN>
+
+# List SMB/NFS File Shares
+aws storagegateway list-file-shares
 ```
 
 ---
 
-## ✦ 3. DataSync Commands
-DataSync is often used in combination with migration tasks.
+## ✦ 3. DataSync & Transfer Family
+
+### ✦ DataSync Automation
 ```bash
+# List DataSync Tasks
 aws datasync list-tasks
+
+# Start a DataSync Task
 aws datasync start-task-execution --task-arn <TASK_ARN>
+
+# Monitor Task Execution
+aws datasync describe-task-execution --task-execution-arn <EXEC_ARN>
+```
+
+### ✦ Transfer Family (SFTP/FTP)
+```bash
+# List SFTP Servers
+aws transfer list-servers
+
+# List Users on a specific Server
+aws transfer list-users --server-id <SERVER_ID>
 ```
