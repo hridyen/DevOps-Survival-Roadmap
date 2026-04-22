@@ -48,7 +48,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Messaging & Global** | SQS, SNS, Kinesis, CloudFront, Global Accelerator |
 | **Container Orchestration** | ECS (Fargate/EC2), ECR, Task Definitions, Services |
 | **Migration & Storage** | Snowball, FSx, Storage Gateway, Hybrid Storage |
-| **Infrastructure Scaling** | Auto-Scaling Groups, Multi-AZ High Availability, Read Replicas |
+| **Infrastructure Scaling** | ASG, Multi-AZ High Availability, Read Replicas |
+| **Serverless Architecture** | Lambda, API Gateway, DynamoDB, Cognito, Serverless Framework |
+| **Web Performance** | CloudFront Functions, Lambda@Edge, RDS Proxy |
 
 ---
 
@@ -73,7 +75,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 10** (Apr 02 – Apr 08) | **AWS Fundamentals & IAM**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 11** (Apr 09 – Apr 15) | **AWS Compute & Storage**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 12** (Apr 16 – Apr 22) | **AWS Databases & Services**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Present) | **Messaging, Global Content & Containers**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Apr 29) | **Messaging & Containers**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – Present) | **Serverless Architecture (Lambda & API Gateway)**
 
 <br/>
 
@@ -82,7 +85,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 10** | Apr 02 – Apr 08 | AWS Fundamentals & IAM | Complete |
 | **Week 11** | Apr 09 – Apr 15 | AWS Compute & Storage | Complete |
 | **Week 12** | Apr 16 – Apr 22 | AWS Databases & Services | Complete |
-| **Week 13** | Apr 23 – Present | Messaging & Containers | In Progress |
+| **Week 13** | Apr 23 – Apr 29 | Messaging & Containers | Complete |
+| **Week 14** | Apr 30 – Present | Serverless Architecture | In Progress |
 
 ---
 
@@ -107,7 +111,7 @@ flowchart TD
     end
 
     subgraph P4 [Phase 4: AWS Cloud]
-        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"]:::active
+        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"]:::active
     end
 
     P1 -.-> P2
@@ -125,7 +129,8 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
 - [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
-- [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
+- [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
+- [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
@@ -150,6 +155,9 @@ flowchart TD
 | RDS & Aurora Ops | [commands.md](./Week-12-AWS-Databases/RDS-Aurora-ElastiCache/commands.md) |
 | S3 & Route 53 Ops | [commands.md](./Week-12-AWS-Databases/S3/commands.md) |
 | EC2 Compute Access | [commands.md](./Week-11-AWS-Compute-and-Storage/EC2/commands.md) |
+| Serverless Ops | [commands.md](./Week-14-Serverless-Architecture/Lambda-Fundamentals/commands.md) |
+| NoSQL Operations | [commands.md](./Week-14-Serverless-Architecture/DynamoDB-Serverless-NoSQL/commands.md) |
+| API Gateway | [commands.md](./Week-14-Serverless-Architecture/API-Gateway-and-Cognito/commands.md) |
 | Cloud Architecture | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
 
 ---
