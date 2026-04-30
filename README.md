@@ -51,6 +51,7 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Infrastructure Scaling** | ASG, Multi-AZ High Availability, Read Replicas |
 | **Serverless Architecture** | Lambda, API Gateway, DynamoDB, Cognito, Serverless Framework |
 | **Web Performance** | CloudFront Functions, Lambda@Edge, RDS Proxy |
+| **Infrastructure as Code** | CloudFormation, Nested Stacks, StackSets, cfn-guard |
 
 ---
 
@@ -76,7 +77,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 11** (Apr 09 – Apr 15) | **AWS Compute & Storage**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 12** (Apr 16 – Apr 22) | **AWS Databases & Services**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Apr 29) | **Messaging & Containers**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – Present) | **Serverless Architecture (Lambda & API Gateway)**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – May 06) | **Serverless Architecture**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 15** (May 07 – Present) | **Infrastructure as Code & Secure Architecture**
 
 <br/>
 
@@ -86,7 +88,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 11** | Apr 09 – Apr 15 | AWS Compute & Storage | Complete |
 | **Week 12** | Apr 16 – Apr 22 | AWS Databases & Services | Complete |
 | **Week 13** | Apr 23 – Apr 29 | Messaging & Containers | Complete |
-| **Week 14** | Apr 30 – Present | Serverless Architecture | In Progress |
+| **Week 14** | Apr 30 – May 06 | Serverless Architecture | Complete |
+| **Week 15** | May 07 – Present | IaC & Secure Architecture | In Progress |
 
 ---
 
@@ -111,7 +114,7 @@ flowchart TD
     end
 
     subgraph P4 [Phase 4: AWS Cloud]
-        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"]:::active
+        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"] --> O["[15] IaC & Secure ECS"]:::active
     end
 
     P1 -.-> P2
@@ -130,7 +133,8 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
 - [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
 - [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
-- [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
+- [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
+- [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***IaC & Secure Projects*** (CloudFormation, Private Networking, Event-Driven Architectures)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
@@ -159,6 +163,7 @@ flowchart TD
 | NoSQL Operations | [commands.md](./Week-14-Serverless-Architecture/DynamoDB-Serverless-NoSQL/commands.md) |
 | API Gateway | [commands.md](./Week-14-Serverless-Architecture/API-Gateway-and-Cognito/commands.md) |
 | Cloud Architecture | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
+| CloudFormation IaC | [commands.md](./Week-15-Infrastructure-as-Code/CloudFormation-Basics/commands.md) |
 
 ---
 
