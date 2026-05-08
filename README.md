@@ -78,7 +78,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 12** (Apr 16 – Apr 22) | **AWS Databases & Services**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Apr 29) | **Messaging & Containers**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – May 06) | **Serverless Architecture**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 15** (May 07 – Present) | **Infrastructure as Code & Secure Architecture**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 15** (May 07 – May 13) | **Infrastructure as Code & Secure Architecture**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – Present) | **Terraform Infrastructure as Code**
 
 <br/>
 
@@ -89,7 +90,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 12** | Apr 16 – Apr 22 | AWS Databases & Services | Complete |
 | **Week 13** | Apr 23 – Apr 29 | Messaging & Containers | Complete |
 | **Week 14** | Apr 30 – May 06 | Serverless Architecture | Complete |
-| **Week 15** | May 07 – Present | IaC & Secure Architecture | In Progress |
+| **Week 15** | May 07 – May 13 | IaC & Secure Architecture | Complete |
+| **Week 16** | May 14 – Present | Terraform IaC | In Progress |
 
 ---
 
@@ -114,7 +116,7 @@ flowchart TD
     end
 
     subgraph P4 [Phase 4: AWS Cloud]
-        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"] --> O["[15] IaC & Secure ECS"]:::active
+        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"] --> O["[15] IaC & Secure ECS"] --> P["[16] Terraform IaC"]:::active
     end
 
     P1 -.-> P2
@@ -134,7 +136,8 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
 - [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
 - [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
-- [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***IaC & Secure Projects*** (CloudFormation, Private Networking, Event-Driven Architectures)
+- [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***Infrastructure as Code*** (CloudFormation, StackSets, cfn-guard)
+- [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
@@ -164,6 +167,7 @@ flowchart TD
 | API Gateway | [commands.md](./Week-14-Serverless-Architecture/API-Gateway-and-Cognito/commands.md) |
 | Cloud Architecture | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
 | CloudFormation IaC | [commands.md](./Week-15-Infrastructure-as-Code/CloudFormation-Basics/commands.md) |
+| Terraform IaC | [commands.md](./Week-16-Terraform/Terraform-Basics/commands.md) |
 
 ---
 
