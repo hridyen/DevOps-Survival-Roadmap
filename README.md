@@ -79,8 +79,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Apr 29) | **Messaging & Containers**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – May 06) | **Serverless Architecture**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 15** (May 07 – May 13) | **Infrastructure as Code & Secure Architecture**
-- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – May 20) | **Terraform Infrastructure as Code**
-- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – May 20) | **Terraform Infrastructure as Code**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
 - ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – Present) | **Terraform Data & Modules**
 
 <br/>
@@ -93,8 +93,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 13** | Apr 23 – Apr 29 | Messaging & Containers | Complete |
 | **Week 14** | Apr 30 – May 06 | Serverless Architecture | Complete |
 | **Week 15** | May 07 – May 13 | IaC & Secure Architecture | Complete |
-| **Week 16** | May 14 – May 20 | Terraform IaC | Complete |
-| **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | Complete |
+| **Week 16** | May 14 – May 20 | Terraform IaC | In Progress |
+| **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | In Progress |
 | **Week 18** | May 28 – Present | Terraform Data & Modules | In Progress |
 
 ---
