@@ -25,6 +25,24 @@ data "provider_type" "local_name" {
 2. **Dynamic Queries:** Hardcoding an Amazon Machine Image (AMI) ID is dangerous because AWS frequently updates them. A data source dynamically finds the latest AMI.
 3. **Safety:** Data sources are strictly **read-only**. They will never create, update, or delete infrastructure.
 
+```mermaid
+flowchart LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#39FF14,stroke-width:2px,color:#39FF14,rx:5px,ry:5px;
+    
+    subgraph Network_Workspace ["Networking Workspace"]
+        VPC["aws_vpc (Created)"]:::highlight
+    end
+    
+    subgraph App_Workspace ["Application Workspace"]
+        Data["data.aws_vpc (Queried)"]:::default
+        EC2["aws_instance (Created)"]:::highlight
+    end
+
+    VPC -->|Read via Data Source| Data
+    Data -->|Used by| EC2
+```
+
 ---
 
 ## ✦ Common AWS Data Source Examples

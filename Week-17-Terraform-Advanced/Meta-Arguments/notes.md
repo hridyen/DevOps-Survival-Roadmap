@@ -138,6 +138,23 @@ The `lifecycle` block allows you to customize the creation and destruction behav
 ### `create_before_destroy`
 By default, Terraform destroys a resource before creating its replacement. Setting this to `true` reverses the order (creates the new one, then destroys the old one) to ensure zero downtime.
 
+```mermaid
+flowchart TD
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#39FF14,stroke-width:2px,color:#39FF14,rx:5px,ry:5px;
+    classDef fail fill:#0A0A0A,stroke:#FF0055,stroke-width:2px,color:#FF0055,rx:5px,ry:5px;
+
+    subgraph Default ["Default (Downtime)"]
+        direction LR
+        A[Destroy Old]:::fail --> B[Create New]:::highlight
+    end
+
+    subgraph Lifecycle ["create_before_destroy = true (Zero Downtime)"]
+        direction LR
+        C[Create New]:::highlight --> D[Destroy Old]:::fail
+    end
+```
+
 ```hcl
 resource "aws_launch_configuration" "example" {
   image_id      = "ami-123"

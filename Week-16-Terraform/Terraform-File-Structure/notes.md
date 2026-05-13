@@ -102,4 +102,26 @@ infrastructure/
 │       ├── variables.tf
 │       └── prod.tfvars
 ```
+
+```mermaid
+flowchart LR
+    classDef default fill:#0A0A0A,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:5px,ry:5px;
+    classDef highlight fill:#0A0A0A,stroke:#39FF14,stroke-width:2px,color:#39FF14,rx:5px,ry:5px;
+
+    subgraph Environments
+        Dev["dev/main.tf"]:::default
+        Prod["prod/main.tf"]:::default
+    end
+
+    subgraph Modules
+        VPC["modules/vpc"]:::highlight
+        Web["modules/web_server"]:::highlight
+    end
+
+    Dev -->|Calls| VPC
+    Dev -->|Calls| Web
+    Prod -->|Calls| VPC
+    Prod -->|Calls| Web
+```
+
 *Best for:* When prod and dev have structural differences, and to blast-radius isolate environments.
