@@ -79,7 +79,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 13** (Apr 23 – Apr 29) | **Messaging & Containers**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – May 06) | **Serverless Architecture**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 15** (May 07 – May 13) | **Infrastructure as Code & Secure Architecture**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – Present) | **Terraform Infrastructure as Code**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – May 20) | **Terraform Infrastructure as Code**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – Present) | **Terraform Data & Modules**
 
 <br/>
 
@@ -91,7 +93,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 13** | Apr 23 – Apr 29 | Messaging & Containers | Complete |
 | **Week 14** | Apr 30 – May 06 | Serverless Architecture | Complete |
 | **Week 15** | May 07 – May 13 | IaC & Secure Architecture | Complete |
-| **Week 16** | May 14 – Present | Terraform IaC | In Progress |
+| **Week 16** | May 14 – May 20 | Terraform IaC | Complete |
+| **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | Complete |
+| **Week 18** | May 28 – Present | Terraform Data & Modules | In Progress |
 
 ---
 
@@ -116,7 +120,7 @@ flowchart TD
     end
 
     subgraph P4 [Phase 4: AWS Cloud]
-        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"] --> O["[15] IaC & Secure ECS"] --> P["[16] Terraform IaC"]:::active
+        J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"] --> O["[15] IaC & Secure ECS"] --> P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"]:::active
     end
 
     P1 -.-> P2
@@ -137,7 +141,9 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
 - [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
 - [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***Infrastructure as Code*** (CloudFormation, StackSets, cfn-guard)
-- [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
+- [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
+- [![Folder](https://img.shields.io/badge/DIR-Week--17--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-17-Terraform-Advanced/) — ***Terraform Advanced*** (Meta-Arguments, Lifecycle, Functions)
+- [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
@@ -168,6 +174,8 @@ flowchart TD
 | Cloud Architecture | [concepts.md](./Week-10-AWS-Cloud-Computing/Cloud-Computing-Introduction/concepts.md) |
 | CloudFormation IaC | [commands.md](./Week-15-Infrastructure-as-Code/CloudFormation-Basics/commands.md) |
 | Terraform IaC | [commands.md](./Week-16-Terraform/Terraform-Basics/commands.md) |
+| Terraform Advanced | [commands.md](./Week-17-Terraform-Advanced/Functions/commands.md) |
+| Terraform Data Sources | [commands.md](./Week-18-Terraform-Data/Data-Sources/commands.md) |
 
 ---
 

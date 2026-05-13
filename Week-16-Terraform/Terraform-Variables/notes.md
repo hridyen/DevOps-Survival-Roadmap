@@ -138,6 +138,44 @@ variable "server_config" {
 # Usage: var.server_config.instance_type
 ```
 
+### Tuple
+A **fixed-length** list where each element can have a **different type**.
+
+```hcl
+variable "server_spec" {
+  type    = tuple([string, number, bool])
+  default = ["t2.micro", 20, true]
+}
+```
+
+### Any
+A wildcard type. Terraform will infer the type based on the input, but it's generally discouraged in production as it bypasses type safety.
+
+```hcl
+variable "flexible_input" {
+  type    = any
+  default = "could be anything"
+}
+```
+
+### Optional Attributes in Objects (Terraform 1.3+)
+You can mark specific attributes within an `object` as optional, providing a default value if omitted.
+
+```hcl
+variable "server_config" {
+  type = object({
+    instance_type = string
+    disk_size_gb  = optional(number, 20)
+    enable_backup = optional(bool, true)
+  })
+  default = {
+    instance_type = "t2.micro"
+    # disk_size_gb and enable_backup will fallback to their optional defaults
+  }
+}
+# Usage: var.server_config.disk_size_gb
+```
+
 ### Set
 An **unordered** collection of **unique** values of the same type. No duplicates, no index access.
 
