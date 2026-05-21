@@ -1,4 +1,4 @@
-# ✦ Terraform IaC Scenario-Based Interview Questions
+﻿# ✦ Terraform IaC Scenario-Based Interview Questions
 
 This section compiles **100 scenario-based interview questions and answers** covering Infrastructure as Code (IaC) with Terraform, State Management, Resource Lifecycles, Modules, Troubleshooting, and Enterprise Best Practices.
 
@@ -913,4 +913,588 @@ Run:
 rm -rf .terraform/ .terraform.lock.hcl terraform.tfstate*
 ```
 This deletes provider cache, dependency locks, and local state files, returning the directory to a clean slate.
+</details>
+
+---
+
+## Week 16: Terraform IaC Basics
+
+This document compiles **10 advanced, scenario-based interview questions and answers** on Terraform core concepts, backend configurations, state locking, variable structures, and workflows.
+
+<details>
+<summary><b>Q101: Scenario: You are setting up Terraform for a team of 10 engineers. How do you configure a secure remote backend using Amazon S3 for state storage and DynamoDB for state locking? Provide HCL configuration examples.</b></summary>
+<b>Answer:</b>
+1. **S3 Bucket:** Stores the `terraform.tfstate` file. You must enable versioning (to recover from accidental corruption) and KMS encryption (since tfstate contains plaintext secrets).
+2. **DynamoDB Table:** Handles state locking. The table must have a primary partition key named `LockID` of type String.
+3. **HCL Configuration:**
+   ```hcl
+   terraform {
+     backend "s3" {
+       bucket         = "my-company-terraform-state-bucket"
+       key            = "production/infrastructure.tfstate"
+       region         = "us-east-1"
+       encrypt        = true
+       dynamodb_table = "terraform-state-locking-table"
+     }
+   }
+   ```
+4. **Operation:** When an engineer runs `terraform apply`, Terraform writes an entry containing their execution details into the DynamoDB table. If another engineer tries to run a plan/apply simultaneously, Terraform detects the lock and blocks execution, preventing state file corruption.
+</details>
+
+<details>
+<summary><b>Q102: Scenario: An engineer's local machine lost internet connectivity halfway through running a `terraform apply`. The next time team members attempt to run a plan, they get a "State Lock Error" pointing to a DynamoDB lock ID. How do you resolve this?</b></summary>
+<b>Answer:</b>
+When an apply fails abruptly, Terraform fails to release the lock in DynamoDB.
+- **Resolution Steps:**
+  1. **Identify Lock Info:** The error message will display a **Lock ID** (a long UUID).
+  2. **Verify Process Status:** Ensure that the original apply run has indeed stopped and is not still running in a CI/CD agent or background terminal (otherwise, forcing a release will corrupt the state).
+  3. **Force Unlock:** Run the `force-unlock` command passing the Lock ID:
+     ```bash
+     terraform force-unlock <LOCK_ID>
+     ```
+  4. **Alternative manual fix:** If the CLI command fails, navigate to the DynamoDB console, search for the lock entry in the locking table matching the Lock ID, and delete the row.
+</details>
+
+<details>
+<summary><b>Q103: Scenario: Terraform state files often contain sensitive information in plaintext (such as database master passwords or API tokens). How do you secure the state file, and what are the best practices for secret management in Terraform?</b></summary>
+<b>Answer:</b>
+- **State Security:**
+  1. **Access Control:** Restrict access to the S3 remote backend bucket using bucket policies, ensuring only administrators and CI/CD IAM roles have access.
+  2. **Encryption:** Enforce KMS encryption on the S3 bucket using a Customer Managed Key (CMK), allowing access auditing via CloudTrail.
+- **Secret Management Best Practices:**
+  1. **Never Hardcode:** Do not hardcode credentials in `.tf` files.
+  2. **SSM/Secrets Manager Integration:** Reference secrets dynamically from AWS Secrets Manager or SSM Parameter Store using data sources:
+     ```hcl
+     data "aws_secretsmanager_secret_version" "db_password" {
+       secret_id = "prod-db-credentials"
+     }
+     ```
+  3. **Mark as Sensitive:** Mark inputs variables containing secrets as `sensitive = true`. This prevents Terraform from outputting them in plaintext to the console terminal during plans/applies.
+</details>
+
+<details>
+<summary><b>Q104: Scenario: You have variables defined in multiple locations: a default value in `variables.tf`, a setting in `terraform.tfvars`, an environment variable (`TF_VAR_db_pass`), and a command-line flag `-var="db_pass=xyz"`. What is the evaluation order (precedence) of these values?</b></summary>
+<b>Answer:</b>
+Terraform evaluates input variables in the following order of precedence (from **lowest to highest**; later values override earlier ones):
+1. **Environment variables** (e.g. `TF_VAR_variable_name`).
+2. **The `terraform.tfvars` file**.
+3. **The `terraform.tfvars.json` file**.
+4. **Any `*.auto.tfvars` or `*.auto.tfvars.json` files**, evaluated in alphabetical order of their filenames.
+5. **Command-line flags** `-var` or `-var-file` (in the order they are specified).
+
+*In this scenario, the value provided via the command-line flag `-var="db_pass=xyz"` has the highest precedence and will be used.*
+</details>
+
+<details>
+<summary><b>Q105: Scenario: You want to ensure that developers only pass valid inputs to your Terraform variables. For instance, the `environment` variable must only accept "dev", "stage", or "prod", and the `ami_id` variable must start with "ami-". How do you enforce this?</b></summary>
+<b>Answer:</b>
+Use **Variable Validation Blocks** with HCL custom conditions:
+```hcl
+variable "environment" {
+  type        = string
+  description = "Target deployment environment"
+  
+  validation {
+    condition     = contains(["dev", "stage", "prod"], var.environment)
+    error_message = "The environment variable must be one of: dev, stage, or prod."
+  }
+}
+
+variable "ami_id" {
+  type        = string
+  description = "The target AWS AMI ID"
+
+  validation {
+    condition     = can(regex("^ami-[a-f0-9]+$", var.ami_id))
+    error_message = "The ami_id value must start with 'ami-' followed by a valid hexadecimal hash."
+  }
+}
+```
+If a developer runs `terraform plan` with an invalid parameter, Terraform throws the `error_message` immediately before modifying or assessing infrastructure.
+</details>
+
+<details>
+<summary><b>Q106: Scenario: How do HCL Local Values (`locals`) differ from standard Input Variables (`variable`)? In what architectural scenarios would you choose one over the other?</b></summary>
+<b>Answer:</b>
+- **Input Variables (`variable`):**
+  - Act as parameters or arguments for a module. They allow users to customize the behavior of the configurations dynamically (from command-line, files, or environment).
+  - *When to use:* For any setting that changes depending on the environment (e.g., region, instance count, database name).
+- **Local Values (`locals`):**
+  - Act as local temporary variables or constants inside the module. They are defined internally and cannot be set or overridden from outside the module.
+  - They can contain complex expressions or string interpolations combining variables, data sources, and resources.
+  - *When to use:* To avoid repeating the same complex expression multiple times (DRY principle), or for naming conventions:
+    ```hcl
+    locals {
+      resource_prefix = "${var.project}-${var.environment}"
+    }
+    ```
+</details>
+
+<details>
+<summary><b>Q107: Scenario: Your CI/CD server runs in an offline environment with no access to the public internet. Running `terraform init` fails because it cannot fetch the AWS provider from the HashiCorp registry. How do you configure Terraform to handle this?</b></summary>
+<b>Answer:</b>
+Configure a **Provider Mirror** or **Local Provider Cache**:
+1. **Download Providers:** Pre-download the required provider zip files for your target OS from a machine with internet access.
+2. **Provider Directory:** Place them in a shared directory on the CI/CD agent (e.g. `/opt/terraform/providers/`).
+3. **Configure CLI config (`.terraformrc`):** Create a configuration file on the CI/CD agent's user directory (`~/.terraformrc` or `%APPDATA%\terraform.rc` on Windows) telling the Terraform CLI to look in the local filesystem mirror instead of the registry:
+   ```hcl
+   provider_installation {
+     filesystem_mirror {
+       path    = "/opt/terraform/providers"
+       include = ["registry.terraform.io/*/*"]
+     }
+     direct {
+       exclude = ["*"]
+     }
+   }
+   ```
+4. Running `terraform init` will now pull the providers from the filesystem location.
+</details>
+
+<details>
+<summary><b>Q108: Scenario: You have a database resource defined in your HCL code. You want to remove this database from Terraform's tracking and management so that running `terraform destroy` will not delete it from AWS. How do you do this?</b></summary>
+<b>Answer:</b>
+Use the **`terraform state rm`** command:
+1. **Locate resource address:** Run `terraform state list` to get the HCL address of the resource (e.g., `aws_db_instance.prod_mysql`).
+2. **Remove from state:** Run the state removal command:
+   ```bash
+   terraform state rm aws_db_instance.prod_mysql
+   ```
+3. **Outcome:** This command modifies the remote `.tfstate` file, deleting the tracking record for the database.
+4. **Code cleanup:** You must now manually delete the corresponding `resource "aws_db_instance" "prod_mysql"` block from your `.tf` files. If you do not delete the code, the next `terraform plan` will treat the database as a brand new resource and attempt to recreate it.
+</details>
+
+<details>
+<summary><b>Q109: Scenario: Why is it critical to commit the `.terraform.lock.hcl` file to your Git repository? What happens if you add it to your `.gitignore`?</b></summary>
+<b>Answer:</b>
+- **What is the lock file:** The `.terraform.lock.hcl` file (Dependency Lock File) locks the exact provider versions and their cryptographic checksums used in your project.
+- **Why commit it:** Committing it guarantees **reproducibility**. When other developers or CI/CD pipelines run `terraform init`, they will download the exact same provider versions, preventing unexpected breaking changes caused by automatic updates to minor or major provider releases.
+- **If ignored:** If ignored, different developers might initialize with different provider versions, causing compilation errors or unintended modifications to state schemas.
+</details>
+
+<details>
+<summary><b>Q110: Scenario: Describe the best practice directory file structure for separating "Development", "Staging", and "Production" environments in Terraform. Why is using Terraform Workspaces not recommended for separating distinct environments?</b></summary>
+<b>Answer:</b>
+- **Best Practice (Directory Isolation):** Create separate folders for each environment, referencing common modules:
+  ```
+  ├── modules/
+  │   ├── vpc/
+  │   └── web_app/
+  └── environments/
+      ├── dev/
+      │   ├── main.tf (calls modules, uses dev backend.tfvars)
+      │   └── variables.tf
+      └── prod/
+          ├── main.tf (calls modules, uses prod backend.tfvars)
+          └── variables.tf
+  ```
+  - *Why Directory Isolation:* Provides complete separation of state files, credentials, configurations, and permissions. You can test new module updates in `dev` without affecting `prod`.
+- **Why Workspaces are not recommended for environment isolation:**
+  - Workspaces share the same backend, the same variable configurations, and the same root code files.
+  - It is easy to accidentally run `terraform destroy` on the wrong workspace (e.g. thinking you are in `dev` but actually in `prod`).
+  - Workspaces are best suited for testing temporary feature branches, not for managing distinct environments with different configurations.
+</details>
+
+---
+
+## Week 17: Terraform Advanced Concepts
+
+This document compiles **10 advanced, scenario-based interview questions and answers** on Terraform loops (`count` vs `for_each`), lifecycle attributes, dynamic blocks, provisioners, and HCL debugging.
+
+<details>
+<summary><b>Q111: Scenario: You need to deploy 3 subnets in AWS. A developer suggests using `count` with a list of CIDR blocks: `["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]`. What happens if you remove the second CIDR block (`10.0.2.0/24`) from the list later, and why is `for_each` a safer choice?</b></summary>
+<b>Answer:</b>
+- **What happens with `count`:**
+  - Terraform maps resources created with `count` as an array indexed by integer (e.g. `aws_subnet.my_subnet[0]`, `aws_subnet.my_subnet[1]`, `aws_subnet.my_subnet[2]`).
+  - If you remove the second element, the list becomes `["10.0.1.0/24", "10.0.3.0/24"]`.
+  - The subnet at index `0` remains unchanged.
+  - The subnet at index `1` (previously `10.0.2.0/24`) is modified to `10.0.3.0/24`, causing Terraform to **destroy and recreate** it.
+  - The subnet at index `2` (previously `10.0.3.0/24`) is deleted.
+  - This causes accidental downtime for resources running in subnet index 1.
+- **Why `for_each` is safer:**
+  - `for_each` maps resources to unique string keys (e.g. `aws_subnet.my_subnet["10.0.2.0/24"]`).
+  - If you remove `"10.0.2.0/24"` from the map, Terraform only deletes that specific resource without affecting the others, ensuring stability.
+</details>
+
+<details>
+<summary><b>Q112: Scenario: You updated the Launch Template for an Auto Scaling Group in Terraform. When you run `terraform apply`, it fails with a dependency error: the Launch Template cannot be deleted because it is currently in use by the ASG. How do you resolve this using Lifecycle rules?</b></summary>
+<b>Answer:</b>
+By default, Terraform destroys the old resource before creating the replacement. If another resource depends on it (like an ASG depending on a Launch Template), the deletion fails.
+- **Resolution:**
+  Use the **`create_before_destroy`** lifecycle setting within the Launch Template resource block:
+  ```hcl
+  resource "aws_launch_template" "my_app" {
+    name_prefix = "app-template-"
+    # ... configurations ...
+
+    lifecycle {
+      create_before_destroy = true
+    }
+  }
+  ```
+- **How it works:** Terraform will first create the new Launch Template version, update the ASG to point to the new version, and then safely delete the old Launch Template without causing dependency locks or application downtime.
+</details>
+
+<details>
+<summary><b>Q113: Scenario: You need to create a Security Group where the inbound rules are highly dynamic. Developers should be able to pass a list of port mappings (e.g. `[{port = 80, cidr = "0.0.0.0/0"}, {port = 443, cidr = "192.168.1.0/24"}]`), and the Security Group should render the corresponding ingress blocks automatically. How do you write this in HCL?</b></summary>
+<b>Answer:</b>
+Use **Dynamic Blocks** (`dynamic`):
+```hcl
+variable "ingress_rules" {
+  type = list(object({
+    port = number
+    cidr = string
+  }))
+}
+
+resource "aws_security_group" "dynamic_sg" {
+  name        = "app-sg"
+  description = "Dynamic security group"
+  vpc_id      = var.vpc_id
+
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content {
+      from_port   = ingress.value.port
+      to_port     = ingress.value.port
+      protocol    = "tcp"
+      cidr_blocks = [ingress.value.cidr]
+    }
+  }
+}
+```
+The `dynamic "ingress"` block iterates over the list in `var.ingress_rules`, generating a separate `ingress` block for each item in the array at runtime.
+</details>
+
+<details>
+<summary><b>Q114: Scenario: An engineer has written a `remote-exec` provisioner to SSH into a newly created EC2 instance and run `apt-get install nginx` to configure the web server. Why is this considered a Terraform anti-pattern, and what are the recommended alternatives?</b></summary>
+<b>Answer:</b>
+- **Why it is an anti-pattern:**
+  1. **Lack of State Tracking:** Terraform does not track the state of the software installed by provisioners. If Nginx is uninstalled manually, `terraform plan` will not detect it.
+  2. **Brittleness:** Provisioners rely on network availability, SSH key configurations, and OS state. If SSH fails, the entire resource creation fails.
+  3. **Tightly Coupled:** It violates the separation of concerns. Terraform is an *Infrastructure Provisioning* tool, not a *Configuration Management* tool.
+- **Alternatives:**
+  1. **User Data (Cloud-init):** Pass shell scripts to the `user_data` parameter of the EC2 instance to let the OS boot script install software.
+  2. **Image Baking (Packer):** Pre-bake the virtual machine image with Nginx installed using HashiCorp Packer, and deploy that custom AMI using Terraform.
+  3. **Configuration Management:** Use Terraform to boot the raw instance, and trigger **Ansible**, Chef, or Puppet to configure the OS software.
+</details>
+
+<details>
+<summary><b>Q115: Scenario: You have an Auto Scaling Group configured in Terraform. Outside of Terraform, an AWS Auto Scaling policy dynamically adjusts the `desired_capacity` of the group between 2 and 10 instances depending on CPU load. Every time you run `terraform apply`, Terraform attempts to revert the `desired_capacity` back to 2 (the initial template value). How do you prevent this?</b></summary>
+<b>Answer:</b>
+Use the **`ignore_changes`** lifecycle meta-argument:
+```hcl
+resource "aws_autoscaling_group" "my_asg" {
+  name             = "app-asg"
+  min_size         = 2
+  max_size         = 10
+  desired_capacity = 2
+
+  # ... configuration details ...
+
+  lifecycle {
+    ignore_changes = [
+      desired_capacity
+    ]
+  }
+}
+```
+- **How it works:** This tells Terraform to ignore any modifications made to the `desired_capacity` attribute during plans and applies, allowing the external AWS Auto Scaling policies to manage the group scaling without state conflicts.
+</details>
+
+<details>
+<summary><b>Q116: Scenario: How do you protect a critical storage resource (such as a production RDS database or an S3 bucket containing financial audits) from being accidentally destroyed if someone runs `terraform destroy` or makes a code change that forces a resource replacement?</b></summary>
+<b>Answer:</b>
+Use the **`prevent_destroy`** lifecycle setting:
+```hcl
+resource "aws_db_instance" "prod_database" {
+  allocated_storage = 100
+  engine            = "mysql"
+  # ... configuration details ...
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+```
+- **How it works:** If anyone runs `terraform destroy` or runs `terraform apply` with changes that require a resource replacement (recreation), Terraform will immediately throw an error and abort the execution, saving the resource from destruction.
+- *Caveat:* This only blocks destruction triggered via Terraform. It does not protect the resource from being deleted manually in the AWS Console (use AWS IAM restrictions or RDS Deletion Protection for that).
+</details>
+
+<details>
+<summary><b>Q117: Scenario: Your Terraform code has a map of AMIs per region: `{"us-east-1" = "ami-01", "us-west-2" = "ami-02"}`. How do you write an expression that automatically selects the correct AMI based on the active provider region, and falls back to a default AMI if the region is not found?</b></summary>
+<b>Answer:</b>
+Use the **`lookup`** built-in function:
+```hcl
+variable "ami_map" {
+  type = map(string)
+  default = {
+    "us-east-1" = "ami-01"
+    "us-west-2" = "ami-02"
+  }
+}
+
+variable "default_ami" {
+  type    = string
+  default = "ami-fallback"
+}
+
+resource "aws_instance" "my_server" {
+  # aws_region data source provides the current region name
+  ami           = lookup(var.ami_map, data.aws_region.current.name, var.default_ami)
+  instance_type = "t3.micro"
+}
+```
+- **How it works:** `lookup(map, key, default)` queries the map using the active region key. If the key exists, it returns the mapped AMI ID. If the key is missing (e.g. `eu-west-1`), it returns the third parameter (`var.default_ami`).
+</details>
+
+<details>
+<summary><b>Q118: Scenario: You want to run a local python script (`cleanup.py`) on your CI/CD runner *only* when a configuration template file (`config.tpl`) changes. Since the script is not an AWS resource, how do you model this in Terraform?</b></summary>
+<b>Answer:</b>
+Use a **`null_resource`** (or the modern `terraform_data` resource) combined with a **`local-exec` provisioner** and **`triggers`**:
+```hcl
+resource "null_resource" "run_cleanup" {
+  triggers = {
+    # Re-run the script if the md5 hash of the template file changes
+    template_hash = filemd5("${path.module}/config.tpl")
+  }
+
+  provisioner "local-exec" {
+    command = "python3 ${path.module}/cleanup.py"
+  }
+}
+```
+- **How it works:** The `triggers` block takes a map of arbitrary values. If any value in the triggers map changes (in this case, the file hash), Terraform treats the `null_resource` as needing replacement. It destroys the old resource, creates a new one, and re-executes the provisioner.
+</details>
+
+<details>
+<summary><b>Q119: Scenario: When running complex HCL functions, you want to test and dry-run your string interpolations and map merges without waiting for a full `terraform plan`. How do you do this?</b></summary>
+<b>Answer:</b>
+Use the **`terraform console`** command:
+1. Open your terminal in the directory containing your Terraform files.
+2. Run `terraform console`. This opens an interactive CLI wrapper.
+3. Type any HCL expression, variable name, or built-in function to evaluate it immediately:
+   ```hcl
+   > merge({a="b"}, {c="d"})
+   {
+     "a" = "b"
+     "c" = "d"
+   }
+   > keys(var.ami_map)
+   [
+     "us-east-1",
+     "us-west-2",
+   ]
+   ```
+4. This is highly useful for validating complex data manipulations before applying them to resources.
+</details>
+
+<details>
+<summary><b>Q120: Scenario: Your Terraform apply is failing with a generic error from the AWS API, but the error message lacks details. How do you enable verbose debugging to see the raw HTTP request/response payloads sent to AWS?</b></summary>
+<b>Answer:</b>
+Use the **`TF_LOG`** environment variable:
+1. Set the log level to `DEBUG` or `TRACE` (options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`):
+   - **Linux/macOS:** `export TF_LOG=DEBUG`
+   - **Windows PowerShell:** `$env:TF_LOG="DEBUG"`
+2. Set a path to write the logs to a file:
+   - **Linux/macOS:** `export TF_LOG_PATH=terraform-debug.log`
+   - **Windows:** `$env:TF_LOG_PATH="terraform-debug.log"`
+3. Run `terraform apply`. Terraform will output highly detailed logs, including raw JSON payloads sent to and received from the AWS endpoints, allowing you to trace permission errors or API validation faults.
+</details>
+
+---
+
+## Week 18: Terraform Data and Modules
+
+This document compiles **10 advanced, scenario-based interview questions and answers** on Terraform data sources, custom modules, state refactoring (`moved` blocks), resources import, and dependency graphs.
+
+<details>
+<summary><b>Q121: Scenario: You want to deploy an EC2 instance, but you do not want to hardcode the AMI ID. You want Terraform to automatically fetch the latest active Amazon Linux 2 AMI ID owned by Amazon in the target region. How do you write this?</b></summary>
+<b>Answer:</b>
+Use the **`aws_ami` Data Source**:
+```hcl
+data "aws_ami" "latest_amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
+resource "aws_instance" "my_server" {
+  ami           = data.aws_ami.latest_amazon_linux.id
+  instance_type = "t3.micro"
+}
+```
+- **How it works:** Data sources query the cloud provider API during the `plan` stage. The `data.aws_ami` block filters Amazon's AMIs, picks the matching record with the latest date, and exposes its ID. This guarantees that your configuration always launches the newest patched OS image.
+</details>
+
+<details>
+<summary><b>Q122: Scenario: You refactored your Terraform code to group resources. You moved a resource `aws_instance.web` from the root directory into a new child module named `web_server` (so its new address is `module.web_server.aws_instance.web`). If you run `terraform apply`, Terraform will destroy the running server and create a new one. How do you prevent this?</b></summary>
+<b>Answer:</b>
+Use a **`moved` block** (available in Terraform 1.1+):
+1. **Declare the Moved block:** In your root `.tf` files, add a `moved` statement mapping the old resource address to the new address:
+   ```hcl
+   moved {
+     from = aws_instance.web
+     to   = module.web_server.aws_instance.web
+   }
+   ```
+2. **Execute plan:** Run `terraform plan`.
+3. **Outcome:** Instead of showing 1 deletion and 1 creation, Terraform reads the moved block and shifts the resource inside the state file without touching the physical server in AWS. This allows zero-downtime refactoring of your codebase.
+</details>
+
+<details>
+<summary><b>Q123: Scenario: An engineer manually launched an S3 bucket named `prod-billing-reports-2026` via the AWS Console. You want to bring this existing bucket under Terraform's management without destroying it. Walk through the steps to import it.</b></summary>
+<b>Answer:</b>
+To perform a **`terraform import`**:
+1. **Declare Code:** Write the corresponding resource block in your `.tf` files matching the configuration of the bucket:
+   ```hcl
+   resource "aws_s3_bucket" "billing_bucket" {
+     bucket = "prod-billing-reports-2026"
+   }
+   ```
+2. **Execute Import Command:** Run the import command, passing the HCL resource address and the real-world resource identifier (in this case, the S3 bucket name):
+   ```bash
+   terraform import aws_s3_bucket.billing_bucket prod-billing-reports-2026
+   ```
+3. **Verify Configuration:** Run `terraform plan`. If there are configuration differences, Terraform will show them. Update your HCL attributes (e.g. tags, versioning) until the plan outputs: `No changes. Infrastructure is up-to-date.`
+4. *(Optional) Modern import block (TF 1.5+):* Declare an `import` block directly in HCL:
+   ```hcl
+   import {
+     to = aws_s3_bucket.billing_bucket
+     id = "prod-billing-reports-2026"
+   }
+   ```
+   Then run `terraform plan -generate-config-out=generated.tf` to generate code templates automatically.
+</details>
+
+<details>
+<summary><b>Q124: Scenario: Describe the design principles of building a reusable Terraform Module. What files are required, and how do you version-lock modules for different environments?</b></summary>
+<b>Answer:</b>
+- **Directory Layout:** A standard module requires:
+  - `variables.tf`: Declares input arguments (parameters for customization).
+  - `outputs.tf`: Declares return values (allowing other resources to consume its values).
+  - `main.tf`: The primary HCL declarations.
+  - `README.md`: Explaining usage, requirements, and configurations.
+- **Design Principles:**
+  - **Encapsulation:** Hide internal details. Do not expose internal provider variables; keep input variables simple.
+  - **Idempotence & Reusability:** Ensure variables have defaults where appropriate to simplify usage.
+- **Module Versioning:** Source modules using a Git repository registry, specifying a tag/version constraint:
+  ```hcl
+  module "vpc" {
+    source = "git::git@github.com:company/tf-modules.git//vpc?ref=v2.1.0"
+    # input variables here
+  }
+  ```
+  This prevents changes made to the module repository from breaking active configurations until the application team updates the `ref` tag.
+</details>
+
+<details>
+<summary><b>Q125: Scenario: You have a database module (`modules/rds`) and an application module (`modules/ecs`). The application module needs the database endpoint to start. How do you pass output parameters between these modules in your root directory?</b></summary>
+<b>Answer:</b>
+Use **Module Output Chaining**:
+1. **Define Output in RDS Module (`modules/rds/outputs.tf`):**
+   ```hcl
+   output "db_address" {
+     value       = aws_db_instance.db.address
+     description = "The database endpoint URL"
+   }
+   ```
+2. **Define Variable in ECS Module (`modules/ecs/variables.tf`):**
+   ```hcl
+   variable "database_host" {
+     type        = string
+     description = "Database server endpoint"
+   }
+   ```
+3. **Chain in Root Module (`main.tf`):**
+   ```hcl
+   module "database" {
+     source = "./modules/rds"
+     # variables
+   }
+
+   module "application" {
+     source        = "./modules/ecs"
+     database_host = module.database.db_address # Chaining output to input
+   }
+   ```
+</details>
+
+<details>
+<summary><b>Q126: Scenario: An engineer runs a plan, and it is taking over 15 minutes to complete due to complex dependency trees. How do you generate and visualize the resource dependency graph in Terraform to find bottlenecks?</b></summary>
+<b>Answer:</b>
+1. **Generate Dot Code:** Run the `terraform graph` command. This parses your configuration and outputs a Graphviz DOT format representation of the dependency tree:
+   ```bash
+   terraform graph > graph.dot
+   ```
+2. **Convert to Image:** Use **Graphviz** utility to convert the dot file to an image (PNG/SVG):
+   ```bash
+   dot -Tpng graph.dot -o graph.png
+   ```
+3. **Analyze:** Open `graph.png`. Look for:
+   - **Circular references** (preventing compilation).
+   - **Unnecessary serialization** (where resources wait on each other due to implicit dependencies like using `depends_on` when not needed). Removing explicit `depends_on` blocks allowing Terraform to build unrelated resources concurrently.
+</details>
+
+<details>
+<summary><b>Q127: Scenario: Your remote S3 state file has become corrupted due to a manual edit, and you need to perform raw edits to repair a resource address. What is the safe workflow to edit the raw state?</b></summary>
+<b>Answer:</b>
+Never download the state file and edit it manually via file editor without locking. Follow this safe workflow:
+1. **Pull State:** Export the latest state from the remote backend to a local file:
+   ```bash
+   terraform state pull > backup.tfstate
+   ```
+2. **Create Backup:** Make a copy of `backup.tfstate` as a fallback.
+3. **Modify Local State:** Edit `backup.tfstate` using a text editor to fix the corrupted properties.
+4. **Increment Serial:** In the JSON structure of the `.tfstate` file, increment the `"serial"` number by 1 (or more) to ensure the remote backend recognizes it as a newer state revision.
+5. **Push State:** Upload the repaired state back to the remote S3 backend:
+   ```bash
+   terraform state push backup.tfstate
+   ```
+</details>
+
+<details>
+<summary><b>Q128: Scenario: When and why would you use the `-target` flag during a `terraform apply`? What are the operational dangers of using it in production?</b></summary>
+<b>Answer:</b>
+- **Why use it:** The `-target=resource_address` flag limits Terraform's execution to a specific resource and its dependencies, ignoring changes to all other resources. It is used in disaster recovery to fix a specific degraded resource without triggering modifications on unrelated changes.
+- **Operational Dangers:**
+  1. **State Divergence:** It bypasses the holistic model of infrastructure, potentially leading to configuration drift or state inconsistency.
+  2. **Implicit Dependency Corruption:** If target resource A depends on resource B, and B was modified in code but not applied, targeting A might force updates to B that you did not want to apply yet.
+  3. **Technical Debt:** It leaves the workspace in a "partially applied" state, complicating future pipeline runs.
+</details>
+
+<details>
+<summary><b>Q129: Scenario: You run `terraform init` and notice that a third-party module from the registry has a bug. You want to modify a small portion of the module's code locally without hosting a private registry. How do you achieve this?</b></summary>
+<b>Answer:</b>
+1. **Fork/Copy locally:** Copy the module source code into a local folder in your repository (e.g. `./local_modules/thirdparty-module`).
+2. **Update Source Path:** Change the `source` parameter in your root `module` block to point to the local filesystem path instead of the public registry:
+   ```hcl
+   module "thirdparty" {
+     source = "./local_modules/thirdparty-module"
+     # variables...
+   }
+   ```
+3. **Apply modifications:** Edit the local files directly. Run `terraform init` to let Terraform register the new local source configuration.
+</details>
+
+<details>
+<summary><b>Q130: Scenario: You are migrating your Terraform remote backend from an old AWS Account S3 bucket to a new AWS Account S3 bucket. What is the process to migrate the state safely without losing resource tracking?</b></summary>
+<b>Answer:</b>
+1. **Initialize Old Backend:** Ensure the current code is initialized with the old backend and there are no pending changes (`terraform plan` shows no changes).
+2. **Update Backend Configuration:** Modify the `backend "s3"` block in your HCL code to point to the new bucket name, new key location, or new account region.
+3. **Re-initialize:** Run the initialization command:
+   ```bash
+   terraform init -migrate-state
+   ```
+4. **Confirm Migration:** Terraform will detect the change in backend configuration and ask: *"Do you want to copy existing state to the new backend?"*. Type `yes`.
+5. **Verify:** Run `terraform plan` to confirm that the new state file matches the live resources with zero modifications shown.
 </details>
