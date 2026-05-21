@@ -157,10 +157,22 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
 - [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
 
+### ✦ DevOps Interview Q&A Hub [NEW]
+- [![Folder](https://img.shields.io/badge/DIR-Interview--Questions-00E5FF?style=flat-square&labelColor=0A0A0A)](./Interview-Questions-and-Answers/) — ***Scenario-Based Q&A Bank*** (100 questions per tool, collapsible details format)
+  - [01-Linux-and-Networking](./Interview-Questions-and-Answers/01-Linux-and-Networking/) — Linux System Administration & Performance Tuning
+  - [02-Git-and-GitHub](./Interview-Questions-and-Answers/02-Git-and-GitHub/) — Version Control, Branching & Workflows
+  - [03-Docker-and-Containers](./Interview-Questions-and-Answers/03-Docker-and-Containers/) — Containerization, Build Optimization & Scaling
+  - [04-Jenkins-and-CICD](./Interview-Questions-and-Answers/04-Jenkins-and-CICD/) — Jenkins Agents, Pipelines & Automation
+  - [05-AWS-Cloud-Infrastructure](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/) — Cloud Ingress, Databases, Messaging & Serverless
+  - [06-Terraform-IaC](./Interview-Questions-and-Answers/06-Terraform-IaC/) — Infrastructure as Code, State Management & Refactoring
+  - [07-Ansible-Automation](./Interview-Questions-and-Answers/07-Ansible-Automation/) — Playbooks, Inventory & Vault-based Configs
+  - [08-DevSecOps-and-Web-Servers](./Interview-Questions-and-Answers/08-DevSecOps-and-Web-Servers/) — Nginx/Apache config, Certificates & Security Scans
+
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
 - [![Folder](https://img.shields.io/badge/DIR-Phase--2-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-05-Git-Version-Control/) — Git, Docker, Jenkins Orchestration.
 - [![Folder](https://img.shields.io/badge/DIR-Phase--3-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — DevSecOps, Dynamic Pipelines.
+
 
 ---
 
