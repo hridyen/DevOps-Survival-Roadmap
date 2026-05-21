@@ -42,3 +42,9 @@ Ansible Vault is a feature that allows encrypting sensitive files (such as datab
 
 ### **Q: What is a handler?**
 A handler is a special task that only runs when notified (`notify`) by another task that has registered a state change (`changed`). Handlers are commonly used to restart a service (like Nginx or Apache) only after its config file has been successfully updated on disk.
+
+---
+
+### **Q: What is the difference between Static and Dynamic Inventory?**
+*   **Static Inventory:** A manually maintained text file (usually in INI format, like `hosts.ini`) containing a hardcoded list of server IP addresses, hostnames, and group allocations. Any infrastructure change requires manually updating this file.
+*   **Dynamic Inventory:** Automatically queries external sources of truth—such as cloud provider APIs (like AWS EC2 using `amazon.aws` inventory plugins or scripts), virtualization platforms, or CMDB tools—to generate a live list of managed hosts at runtime. This ensures configurations adjust automatically as virtual instances scale.

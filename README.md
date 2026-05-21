@@ -155,7 +155,7 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
 - [![Folder](https://img.shields.io/badge/DIR-Week--17--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-17-Terraform-Advanced/) — ***Terraform Advanced*** (Meta-Arguments, Lifecycle, Functions)
 - [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
-- [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Container/CI-CD Integration, System Provisioning, Q&A)
+- [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning, Q&A)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
@@ -188,6 +188,7 @@ flowchart TD
 | Terraform IaC | [commands.md](./Week-16-Terraform/Terraform-Basics/commands.md) |
 | Terraform Advanced | [commands.md](./Week-17-Terraform-Advanced/Functions/commands.md) |
 | Terraform Data Sources | [commands.md](./Week-18-Terraform-Data/Data-Sources/commands.md) |
+| Ansible Ad-hoc & Setup | [commands.md](./Week-19-Ansible-Automation/Ansible-Introduction/commands.md) |
 | Ansible Container Automation | [commands.md](./Week-19-Ansible-Automation/Container-Automation/commands.md) |
 | Ansible CI/CD & SSL | [commands.md](./Week-19-Ansible-Automation/CI-CD-SSL-Automation/commands.md) |
 | Ansible System Provisioning | [commands.md](./Week-19-Ansible-Automation/System-Provisioning/commands.md) |
