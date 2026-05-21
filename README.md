@@ -8,10 +8,10 @@
 <div align="center">
 
 [![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Duration](https://img.shields.io/badge/Duration-12_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-19_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Status](https://img.shields.io/badge/Status-In_Progress-39FF14?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Phase](https://img.shields.io/badge/Active_Phase-AWS_Cloud-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Phase](https://img.shields.io/badge/Active_Phase-Ansible_Automation-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
 
 </div>
 
@@ -80,10 +80,11 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 14** (Apr 30 – May 06) | **Serverless Architecture**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 15** (May 07 – May 13) | **Infrastructure as Code & Secure Architecture**
 
-### Phase 5: Infrastructure as Code
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – May 20) | **Terraform Infrastructure as Code**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – Present) | **Terraform Data & Modules**
+### Phase 5: Infrastructure as Code & Automation
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – May 20) | **Terraform Infrastructure as Code**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – June 03) | **Terraform Data & Modules**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – Present) | **Ansible Automation & Use Cases**
 
 <br/>
 
@@ -95,9 +96,10 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 13** | Apr 23 – Apr 29 | Messaging & Containers | Complete |
 | **Week 14** | Apr 30 – May 06 | Serverless Architecture | Complete |
 | **Week 15** | May 07 – May 13 | IaC & Secure Architecture | Complete |
-| **Week 16** | May 14 – May 20 | Terraform IaC | In Progress |
-| **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | In Progress |
-| **Week 18** | May 28 – Present | Terraform Data & Modules | In Progress |
+| **Week 16** | May 14 – May 20 | Terraform IaC | Complete |
+| **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | Complete |
+| **Week 18** | May 28 – June 03 | Terraform Data & Modules | Complete |
+| **Week 19** | June 04 – Present | Ansible Automation & Use Cases | In Progress |
 
 ---
 
@@ -125,8 +127,8 @@ flowchart TD
         J["[10] AWS Core & IAM"] --> K["[11] EC2 & Storage"] --> L["[12] Databases & DNS"] --> M["[13] Messaging & Containers"] --> N["[14] Serverless Logic"] --> O["[15] IaC & Secure ECS"]
     end
 
-    subgraph P5 [Phase 5: Infrastructure as Code]
-        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"]:::active
+    subgraph P5 [Phase 5: Infrastructure as Code & Automation]
+        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"]:::active
     end
 
     P1 -.-> P2
@@ -149,10 +151,11 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
 - [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***Infrastructure as Code*** (CloudFormation, StackSets, cfn-guard)
 
-### ✦ Phase 5: Infrastructure as Code (Active)
+### ✦ Phase 5: Infrastructure as Code & Automation (Active)
 - [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
 - [![Folder](https://img.shields.io/badge/DIR-Week--17--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-17-Terraform-Advanced/) — ***Terraform Advanced*** (Meta-Arguments, Lifecycle, Functions)
-- [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
+- [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
+- [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Container/CI-CD Integration, System Provisioning, Q&A)
 
 ### ✦ Phase 1-3: Foundations & CI/CD
 - [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
@@ -185,6 +188,9 @@ flowchart TD
 | Terraform IaC | [commands.md](./Week-16-Terraform/Terraform-Basics/commands.md) |
 | Terraform Advanced | [commands.md](./Week-17-Terraform-Advanced/Functions/commands.md) |
 | Terraform Data Sources | [commands.md](./Week-18-Terraform-Data/Data-Sources/commands.md) |
+| Ansible Container Automation | [commands.md](./Week-19-Ansible-Automation/Container-Automation/commands.md) |
+| Ansible CI/CD & SSL | [commands.md](./Week-19-Ansible-Automation/CI-CD-SSL-Automation/commands.md) |
+| Ansible System Provisioning | [commands.md](./Week-19-Ansible-Automation/System-Provisioning/commands.md) |
 
 ---
 
