@@ -153,20 +153,31 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--07--Jenkins-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-07-Jenkins-CI-CD/) — ***Jenkins CI/CD Pipelines*** (Declarative/Scripted Groovy Pipelines, Distributed Agents)
 - [![Folder](https://img.shields.io/badge/DIR-Week--08--DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — ***DevSecOps Integrations*** (SonarQube, Trivy, OWASP Security Mitigations)
 - [![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic__CI__CD-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-09-Dynamic-Jenkins-Pipelines/) — ***Dynamic CI/CD Automation*** (Branch-aware Groovy Executions, Shared Libraries)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-09-Dynamic-Jenkins-Pipelines/interview-questions.md)
 
 ### ✦ Phase 4: Cloud Ingress
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-10-AWS-Cloud-Computing/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-11-AWS-Compute-and-Storage/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-12-AWS-Databases/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-13-AWS-Messaging-and-Containers/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-14-Serverless-Architecture/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***Infrastructure as Code*** (CloudFormation, StackSets, cfn-guard)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-15-Infrastructure-as-Code/interview-questions.md)
 
 ### ✦ Phase 5: Infrastructure as Code & Automation (Active)
 - [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-16-Terraform/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--17--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-17-Terraform-Advanced/) — ***Terraform Advanced*** (Meta-Arguments, Lifecycle, Functions)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-17-Terraform-Advanced/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-18-Terraform-Data/interview-questions.md)
 - [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Week-19-Ansible-Automation/interview-questions.md)
 
 ### ✦ DevOps Interview Q&A Hub
 - [![Folder](https://img.shields.io/badge/DIR-Interview--Questions-00E5FF?style=flat-square&labelColor=0A0A0A)](./Interview-Questions-and-Answers/) — ***Scenario-Based Q&A Bank*** (100 questions per tool, collapsible details format)
