@@ -143,6 +143,17 @@ flowchart TD
 
 ## ✦ Repository File Architecture
 
+### ✦ Phase 1-3: Foundations, CI/CD & Security
+- [![Folder](https://img.shields.io/badge/DIR-Week--01--Linux-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — ***Linux Fundamentals*** (File systems, Permissions, Shell Scripting)
+- [![Folder](https://img.shields.io/badge/DIR-Week--02--Networking-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-02-Networking/) — ***Networking Architecture*** (OSI Model, IPv4/Subnetting, TCP/UDP)
+- [![Folder](https://img.shields.io/badge/DIR-Week--03--Servers-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-03-Internet-and-Server-Setup/) — ***Internet & Server Setup*** (Apache/Nginx, HTTP, PHP Configuration)
+- [![Folder](https://img.shields.io/badge/DIR-Week--04--Advanced__Linux-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-04-Advanced-Linux/) — ***Advanced Linux Control*** (ACLs, Cron, SUID/SGID, Log Management)
+- [![Folder](https://img.shields.io/badge/DIR-Week--05--Git-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-05-Git-Version-Control/) — ***Git & Version Control*** (Rebasing, Branch Strategies, Hooks)
+- [![Folder](https://img.shields.io/badge/DIR-Week--06--Docker-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-06-Docker-Containerization/) — ***Docker Container Ecosystems*** (Dockerfiles, Volumes, Compose, Swarm)
+- [![Folder](https://img.shields.io/badge/DIR-Week--07--Jenkins-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-07-Jenkins-CI-CD/) — ***Jenkins CI/CD Pipelines*** (Declarative/Scripted Groovy Pipelines, Distributed Agents)
+- [![Folder](https://img.shields.io/badge/DIR-Week--08--DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — ***DevSecOps Integrations*** (SonarQube, Trivy, OWASP Security Mitigations)
+- [![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic__CI__CD-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-09-Dynamic-Jenkins-Pipelines/) — ***Dynamic CI/CD Automation*** (Branch-aware Groovy Executions, Shared Libraries)
+
 ### ✦ Phase 4: Cloud Ingress
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
@@ -157,7 +168,7 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
 - [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
 
-### ✦ DevOps Interview Q&A Hub [NEW]
+### ✦ DevOps Interview Q&A Hub
 - [![Folder](https://img.shields.io/badge/DIR-Interview--Questions-00E5FF?style=flat-square&labelColor=0A0A0A)](./Interview-Questions-and-Answers/) — ***Scenario-Based Q&A Bank*** (100 questions per tool, collapsible details format)
   - [01-Linux-and-Networking](./Interview-Questions-and-Answers/01-Linux-and-Networking/) — Linux System Administration & Performance Tuning
   - [02-Git-and-GitHub](./Interview-Questions-and-Answers/02-Git-and-GitHub/) — Version Control, Branching & Workflows
@@ -167,11 +178,6 @@ flowchart TD
   - [06-Terraform-IaC](./Interview-Questions-and-Answers/06-Terraform-IaC/) — Infrastructure as Code, State Management & Refactoring
   - [07-Ansible-Automation](./Interview-Questions-and-Answers/07-Ansible-Automation/) — Playbooks, Inventory & Vault-based Configs
   - [08-DevSecOps-and-Web-Servers](./Interview-Questions-and-Answers/08-DevSecOps-and-Web-Servers/) — Nginx/Apache config, Certificates & Security Scans
-
-### ✦ Phase 1-3: Foundations & CI/CD
-- [![Folder](https://img.shields.io/badge/DIR-Phase--1-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-01-Linux-Fundamentals/) — Linux Basics, Networking, Apache/Nginx.
-- [![Folder](https://img.shields.io/badge/DIR-Phase--2-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-05-Git-Version-Control/) — Git, Docker, Jenkins Orchestration.
-- [![Folder](https://img.shields.io/badge/DIR-Phase--3-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — DevSecOps, Dynamic Pipelines.
 
 
 ---
