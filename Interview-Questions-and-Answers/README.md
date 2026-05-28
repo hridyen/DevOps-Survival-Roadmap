@@ -18,6 +18,8 @@ Click on any link below to access the full 100 scenario-based questions for that
 | **06** | **Terraform IaC** | State locking, refactoring, HCL loops, multi-cloud | [06-Terraform-IaC](./06-Terraform-IaC/README.md) |
 | **07** | **Ansible Automation** | Playbooks, Inventory, Vault-encrypted vars, Roles | [07-Ansible-Automation](./07-Ansible-Automation/README.md) |
 | **08** | **DevSecOps & Web Servers** | Nginx/Apache, SSL/TLS, Certbot, Trivy, Semgrep | [08-DevSecOps-and-Web-Servers](./08-DevSecOps-and-Web-Servers/README.md) |
+| **09** | **Kubernetes Orchestration** | Architecture, Pods, Deployments, Services, Storage, Security & Scaling | [09-Kubernetes-Orchestration](./09-Kubernetes-Orchestration/README.md) |
+
 
 ---
 

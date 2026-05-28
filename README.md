@@ -1,4 +1,4 @@
-﻿# ⚡ DevOps Industrial Training Roadmap
+# ⚡ DevOps Industrial Training Roadmap
 
 > **A comprehensive and structured roadmap documenting my industrial training journey.** 
 > Built for technical clarity, detailed tracking, and enterprise-level skill demonstration.
@@ -8,10 +8,10 @@
 <div align="center">
 
 [![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Duration](https://img.shields.io/badge/Duration-19_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-20_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Status](https://img.shields.io/badge/Status-In_Progress-39FF14?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Phase](https://img.shields.io/badge/Active_Phase-Ansible_Automation-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Phase](https://img.shields.io/badge/Active_Phase-Kubernetes_Orchestration-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
 
 </div>
 
@@ -84,7 +84,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 16** (May 14 – May 20) | **Terraform Infrastructure as Code**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – June 03) | **Terraform Data & Modules**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – Present) | **Ansible Automation & Use Cases**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – June 10) | **Ansible Automation & Use Cases**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 20** (June 11 – Present) | **Kubernetes Fundamentals & Beginner Concepts**
 
 <br/>
 
@@ -99,7 +100,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 16** | May 14 – May 20 | Terraform IaC | Complete |
 | **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | Complete |
 | **Week 18** | May 28 – June 03 | Terraform Data & Modules | Complete |
-| **Week 19** | June 04 – Present | Ansible Automation & Use Cases | In Progress |
+| **Week 19** | June 04 – June 10 | Ansible Automation & Use Cases | Complete |
+| **Week 20** | June 11 – Present | Kubernetes Fundamentals & Beginner Concepts | In Progress |
 
 ---
 
@@ -128,7 +130,7 @@ flowchart TD
     end
 
     subgraph P5 [Phase 5: Infrastructure as Code & Automation]
-        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"]:::active
+        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] Kubernetes Beginner"]:::active
     end
 
     P1 -.-> P2
@@ -153,31 +155,33 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--07--Jenkins-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-07-Jenkins-CI-CD/) — ***Jenkins CI/CD Pipelines*** (Declarative/Scripted Groovy Pipelines, Distributed Agents)
 - [![Folder](https://img.shields.io/badge/DIR-Week--08--DevSecOps-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-08-DevSecOps/) — ***DevSecOps Integrations*** (SonarQube, Trivy, OWASP Security Mitigations)
 - [![Folder](https://img.shields.io/badge/DIR-Week--09--Dynamic__CI__CD-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-09-Dynamic-Jenkins-Pipelines/) — ***Dynamic CI/CD Automation*** (Branch-aware Groovy Executions, Shared Libraries)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/04-Jenkins-and-CICD/README.md#week-09-dynamic-jenkins-pipelines)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/04-Jenkins-and-CICD/README.md#week-09-dynamic-jenkins-pipelines)
 
 ### ✦ Phase 4: Cloud Ingress
 - [![Folder](https://img.shields.io/badge/DIR-Week--10--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-10-AWS-Cloud-Computing/) — ***Cloud Fundamentals*** (IAM, Global Infrastructure)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-10-aws-fundamentals-and-iam)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-10-aws-fundamentals-and-iam)
 - [![Folder](https://img.shields.io/badge/DIR-Week--11--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-11-AWS-Compute-and-Storage/) — ***Compute & Distribution*** (EC2, EBS, Load Balancers)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-11-aws-compute-and-storage)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-11-aws-compute-and-storage)
 - [![Folder](https://img.shields.io/badge/DIR-Week--12--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-12-AWS-Databases/) — ***Databases & Advanced Services*** (RDS, Route 53, S3, ASG)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-12-aws-databases-and-services)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-12-aws-databases-and-services)
 - [![Folder](https://img.shields.io/badge/DIR-Week--13--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-13-AWS-Messaging-and-Containers/) — ***Messaging & Containers*** (SQS, SNS, ECS, ECR, CloudFront)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-13-aws-messaging-and-containers)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-13-aws-messaging-and-containers)
 - [![Folder](https://img.shields.io/badge/DIR-Week--14--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-14-Serverless-Architecture/) — ***Serverless & NoSQL*** (Lambda, API Gateway, DynamoDB, Cognito)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-14-serverless-architecture)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-14-serverless-architecture)
 - [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***Infrastructure as Code*** (CloudFormation, StackSets, cfn-guard)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-15-infrastructure-as-code)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-15-infrastructure-as-code)
 
 ### ✦ Phase 5: Infrastructure as Code & Automation (Active)
 - [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-16-terraform-iac-basics)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-16-terraform-iac-basics)
 - [![Folder](https://img.shields.io/badge/DIR-Week--17--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-17-Terraform-Advanced/) — ***Terraform Advanced*** (Meta-Arguments, Lifecycle, Functions)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-17-terraform-advanced-concepts)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-17-terraform-advanced-concepts)
 - [![Folder](https://img.shields.io/badge/DIR-Week--18--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-18-Terraform-Data/) — ***Terraform Data & Modules*** (Data Sources)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-18-terraform-data-and-modules)
-- [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/Interview-Questions-and-Answers/07-Ansible-Automation/README.md#week-19-ansible-automation)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-18-terraform-data-and-modules)
+- [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/07-Ansible-Automation/README.md#week-19-ansible-automation)
+- [![Folder](https://img.shields.io/badge/DIR-Week--20--Kubernetes-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-20-Kubernetes-Beginner/) — ***Kubernetes Beginner*** (Architecture, Pods & Deployments, Services & Networking, Storage & Configuration)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md)
 
 ### ✦ DevOps Interview Q&A Hub
 - [![Folder](https://img.shields.io/badge/DIR-Interview--Questions-00E5FF?style=flat-square&labelColor=0A0A0A)](./Interview-Questions-and-Answers/) — ***Scenario-Based Q&A Bank*** (100 questions per tool, collapsible details format)
