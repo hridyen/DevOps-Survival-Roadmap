@@ -93,7 +93,7 @@ flowchart TD
     
     Pod1[Pod: frontend-abcde-1]:::pod
     Pod2[Pod: frontend-abcde-2]:::pod
-    PodOld[Pod: frontend-12345-1 (Terminating)]:::pod
+    PodOld["Pod: frontend-12345-1 (Terminating)"]:::pod
 
     Deploy -->|Manages active release| RS_Active
     Deploy -->|Maintains history / scales down| RS_Old
