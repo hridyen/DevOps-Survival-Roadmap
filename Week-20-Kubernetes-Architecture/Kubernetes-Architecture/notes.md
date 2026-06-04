@@ -78,51 +78,55 @@ flowchart TD
 
 ---
 
-## ✦ Control Plane Components
+## ✦ Control Plane Components (Deep-Dive)
 
 The Control Plane manages the cluster's state. It consists of four main processes:
 
 ### 1. `kube-apiserver` (The Gateway)
 *   **Function:** Exposes the Kubernetes API. It is the front end of the control plane.
 *   **Role:** All administrative operations (via `kubectl` CLI, dashboards, or internal components) communicate through the API server. It validates and configures data for objects such as Pods, Services, and Deployments.
-*   **Characteristics:** Scalable horizontally (can run multiple instances to balance load).
+*   **Key Fact:** Stateless; stores nothing itself. It can run multiple instances to balance load. Every `kubectl` command hits the API Server first.
 
 ### 2. `etcd` (The Backing Store)
 *   **Function:** Consistent, highly-available, distributed key-value store.
-*   **Role:** Serves as the single source of truth for the cluster, storing all configuration data and the real-time state of every Kubernetes object.
-*   **Key Features:**
-    *   *Fully Replicated:* Every node in the etcd cluster has access to the full state.
-    *   *Secure:* Automatically supports TLS for encrypted communications.
-    *   *Fast:* Benchmarked at over 10,000 writes per second.
+*   **Role:** Serves as the single source of truth for the cluster, storing all configuration data and the real-time state of every Kubernetes object (Pods, Deployments, Services, ConfigMaps, Secrets, Nodes, Namespaces).
+*   **Key Fact:** Losing ETCD = losing all cluster knowledge. It must be backed up regularly.
 
 ### 3. `kube-scheduler` (The Orchestrator)
 *   **Function:** Watches for newly created Pods that have no node assigned, and selects a worker node for them to run on.
-*   **Role:** Evaluates node resource capacity, hardware constraints, quality of service requirements, and policy definitions (affinity, taints, tolerations) to make optimal placement decisions.
+*   **Role:** Evaluates node resource capacity, hardware constraints, taints, tolerations, and affinity rules to make optimal placement decisions.
 
 ### 4. `kube-controller-manager` (The Enforcer)
 *   **Function:** Runs controller processes in the background to regulate the state of the cluster.
-*   **Role:** Constantly compares the actual cluster state (e.g., how many replicas are running) with the desired state (e.g., how many replicas were requested). It contains:
+*   **Role:** Constantly compares the actual cluster state with the desired state (reconciliation loop). It contains:
     *   **Node Controller:** Monitors worker nodes, detecting when they stop responding.
-    *   **Route Controller:** Configures networking routes in the cloud/infrastructure.
-    *   **Service Controller:** Creates cloud provider load balancers for exposed services.
+    *   **ReplicaSet Controller:** Spawns/recreates Pods to maintain the desired count if a Pod dies.
+    *   **Route Controller:** Configures networking routes in the infrastructure.
     *   **Volume Controller:** Manages mounting/detaching storage volumes.
 
 ---
 
-## ✦ Worker Node Components
+## ✦ Worker Node & Node-Level Components
 
-Worker Nodes host the containers that form the application workloads. Each node runs three critical services:
+Worker Nodes host the containers that form the application workloads. Each node runs critical services:
 
 ### 1. `kubelet` (The Node Agent)
 *   **Function:** An agent that runs on every worker node in the cluster.
 *   **Role:** Ensures that containers are running in a Pod according to the PodSpecs (Pod Specifications) sent by the API Server. It monitors container health and reports success/failure metrics back to the Control Plane.
-*   **Ports:** Communicates primarily on port `10250` (read-only queries on `10255`).
 
 ### 2. Container Runtime (CRI)
 *   **Function:** The engine responsible for running containers.
-*   **Role:** Pulls container images from registries (like Docker Hub or AWS ECR), allocates resources, and manages container startup, execution, and termination.
-*   **Examples:** `containerd`, `CRI-O`, Docker Engine (using `cri-dockerd`).
+*   **Role:** Pulls container images from registries, allocates resources, and manages container startup, execution, and termination.
+*   **Examples:** `containerd`, `CRI-O`, Docker Engine.
 
 ### 3. `kube-proxy` (The Network Router)
 *   **Function:** A network proxy that runs on each node in the cluster.
-*   **Role:** Maintains network rules on nodes. These rules allow network communication to Pods from sessions inside or outside the cluster. It maps the virtual IP addresses (VIPs) of Kubernetes Services to target Pod IPs, load-balancing traffic statefully (using iptables or IPVS).
+*   **Role:** Maintains network rules on nodes (iptables/IPVS) to route traffic destined for a Service to the correct backend Pods, enabling load balancing.
+
+### 4. `KindNet` (CNI Plugin)
+*   **Function:** Container Network Interface (CNI) provider.
+*   **Role:** Handles Pod-to-Pod network communication across the cluster virtual network.
+
+### 5. `CoreDNS` (DNS Server)
+*   **Function:** DNS server inside the cluster.
+*   **Role:** Automatically registers and resolves service names to their respective virtual cluster IP addresses.

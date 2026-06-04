@@ -72,6 +72,12 @@ minikube addons enable ingress
 kubectl get pods -n ingress-nginx
 ```
 
+### Setup Ingress Controller on Kind
+To use Ingress in a Kind cluster, the cluster must be created with port mapping configurations. If configured, you can apply the ingress controller using:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+```
+
 ### Apply and Inspect Ingress Rules
 ```bash
 # Apply ingress YAML manifest
@@ -87,7 +93,7 @@ kubectl describe ingress main-ingress
 ### Test Ingress Local Routing
 Add the host definitions to your local `/etc/hosts` (Linux/macOS) or `C:\Windows\System32\drivers\etc\hosts` (Windows):
 ```text
-# Replace with your minikube IP address
+# Replace with your local cluster node IP address
 192.168.49.2 app.example.com
 ```
 Now perform a request using curl:

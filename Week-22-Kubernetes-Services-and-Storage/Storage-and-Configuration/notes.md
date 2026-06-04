@@ -8,7 +8,7 @@
 
 By default, container filesystems are ephemeral. If a container crashes, the container agent (Kubelet) restarts it, but all data written to the container's disk is lost. 
 
-Kubernetes solves this using **Volumes**. A Volume is a storage directory associated with a Pod:
+To solve this, Kubernetes uses **Volumes**. A Volume is a storage directory associated with a Pod:
 *   It is defined at the Pod level and can be mounted into any container in that Pod.
 *   It outlives individual container restarts; however, standard volumes are deleted when the Pod itself is terminated.
 
@@ -88,7 +88,7 @@ spec:
 
 ## ✦ 4. Decoupling Configuration: ConfigMaps & Secrets
 
-Applications require configuration settings (ports, URLs) and credentials (passwords, API keys). decouping these parameters from container images ensures portability.
+Applications require configuration settings (ports, URLs) and credentials (passwords, API keys). Decoupling these parameters from container images ensures portability.
 
 ### ConfigMaps
 Stores non-sensitive configuration parameters as key-value pairs. They can be injected into containers as environment variables, command-line arguments, or mounted as files.

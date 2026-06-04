@@ -8,7 +8,7 @@
 <div align="center">
 
 [![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Duration](https://img.shields.io/badge/Duration-20_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-22_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Status](https://img.shields.io/badge/Status-In_Progress-39FF14?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Phase](https://img.shields.io/badge/Active_Phase-Kubernetes_Orchestration-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
@@ -85,7 +85,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – June 03) | **Terraform Data & Modules**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – June 10) | **Ansible Automation & Use Cases**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 20** (June 11 – Present) | **Kubernetes Fundamentals & Beginner Concepts**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 20** (June 11 – June 17) | **Kubernetes Architecture & Cluster Setup**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 21** (June 18 – June 24) | **Kubernetes Workloads & Pod Management**
+- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 22** (June 25 – Present) | **Kubernetes Services & Storage Configuration**
 
 <br/>
 
@@ -101,7 +103,9 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 17** | May 21 – May 27 | Terraform Advanced Concepts | Complete |
 | **Week 18** | May 28 – June 03 | Terraform Data & Modules | Complete |
 | **Week 19** | June 04 – June 10 | Ansible Automation & Use Cases | Complete |
-| **Week 20** | June 11 – Present | Kubernetes Fundamentals & Beginner Concepts | In Progress |
+| **Week 20** | June 11 – June 17 | Kubernetes Architecture & Cluster Setup | Complete |
+| **Week 21** | June 18 – June 24 | Kubernetes Workloads & Pod Management | Complete |
+| **Week 22** | June 25 – Present | Kubernetes Services & Storage Configuration | In Progress |
 
 ---
 
@@ -130,7 +134,7 @@ flowchart TD
     end
 
     subgraph P5 [Phase 5: Infrastructure as Code & Automation]
-        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] Kubernetes Beginner"]:::active
+        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"]:::active
     end
 
     P1 -.-> P2
@@ -180,8 +184,14 @@ flowchart TD
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-18-terraform-data-and-modules)
 - [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/07-Ansible-Automation/README.md#week-19-ansible-automation)
-- [![Folder](https://img.shields.io/badge/DIR-Week--20--Kubernetes-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-20-Kubernetes-Beginner/) — ***Kubernetes Beginner*** (Architecture, Pods & Deployments, Services & Networking, Storage & Configuration)
-  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md)
+- [![Folder](https://img.shields.io/badge/DIR-Week--20--K8s-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-20-Kubernetes-Architecture/) — ***Kubernetes Architecture*** (Control Plane, Node-Level Components, Cluster Setup via Kind)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-20-kubernetes-architecture--core-components-questions-1-20)
+- [![Folder](https://img.shields.io/badge/DIR-Week--21--K8s-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-21-Kubernetes-Workloads/) — ***Kubernetes Workloads*** (Pods, ReplicaSets, Deployments, Lifecycle, Self-Healing)
+  - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-21-workload-management-pods-replicasets--deployments-questions-21-40)
+- [![Folder](https://img.shields.io/badge/DIR-Week--22--K8s-FF0055?style=flat-square&labelColor=0A0A0A)](./Week-22-Kubernetes-Services-and-Storage/) — ***Kubernetes Services & Storage*** (Services, Networking, Ingress, PV/PVC, ConfigMaps, Secrets)
+  - ⚡ [Weekly Scenario-Based Q&A Prep (Services)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-3-services-networking--traffic-routing-questions-41-60)
+  - ⚡ [Weekly Scenario-Based Q&A Prep (Storage)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-4-configmaps-secrets-namespaces--storage-questions-61-80)
+  - ⚡ [Weekly Scenario-Based Q&A Prep (Security & Auto-scaling)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-5-security-troubleshooting--advanced-auto-scaling-questions-81-100)
 
 ### ✦ DevOps Interview Q&A Hub
 - [![Folder](https://img.shields.io/badge/DIR-Interview--Questions-00E5FF?style=flat-square&labelColor=0A0A0A)](./Interview-Questions-and-Answers/) — ***Scenario-Based Q&A Bank*** (100 questions per tool, collapsible details format)
@@ -225,6 +235,10 @@ flowchart TD
 | Ansible Container Automation | [commands.md](./Week-19-Ansible-Automation/Container-Automation/commands.md) |
 | Ansible CI/CD & SSL | [commands.md](./Week-19-Ansible-Automation/CI-CD-SSL-Automation/commands.md) |
 | Ansible System Provisioning | [commands.md](./Week-19-Ansible-Automation/System-Provisioning/commands.md) |
+| K8s Architecture | [commands.md](./Week-20-Kubernetes-Architecture/Kubernetes-Architecture/commands.md) |
+| K8s Workloads | [commands.md](./Week-21-Kubernetes-Workloads/Pods-and-Deployments/commands.md) |
+| K8s Services & Networking | [commands.md](./Week-22-Kubernetes-Services-and-Storage/Services-and-Networking/commands.md) |
+| K8s Storage & Config | [commands.md](./Week-22-Kubernetes-Services-and-Storage/Storage-and-Configuration/commands.md) |
 
 ---
 

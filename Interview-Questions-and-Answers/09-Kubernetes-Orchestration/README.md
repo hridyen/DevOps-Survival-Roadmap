@@ -4,7 +4,7 @@ This section compiles **100 scenario-based interview questions and answers** cov
 
 ---
 
-## ✦ Section 1: Kubernetes Architecture & Core Components (Questions 1-20)
+## ✦ Week 20: Kubernetes Architecture & Core Components (Questions 1-20)
 
 <details>
 <summary><b>Q1: Scenario: Your Kubernetes cluster is experiencing a massive spike in API requests. How does the API Server scale to handle this load, and how does its stateless design facilitate this?</b></summary>
@@ -245,7 +245,7 @@ Only this final **Allocatable** resource pool is available for Pod scheduling.
 
 ---
 
-## ✦ Section 2: Workload Management: Pods, ReplicaSets & Deployments (Questions 21-40)
+## ✦ Week 21: Workload Management: Pods, ReplicaSets & Deployments (Questions 21-40)
 
 <details>
 <summary><b>Q21: Scenario: Your firm is experiencing frequent downtimes. How would you leverage Kubernetes to achieve high availability for your applications?</b></summary>
@@ -525,7 +525,7 @@ securityContext:
 
 ---
 
-## ✦ Section 3: Services, Networking & Traffic Routing (Questions 41-60)
+## ✦ Week 22 (Section 3): Services, Networking & Traffic Routing (Questions 41-60)
 
 <details>
 <summary><b>Q41: Scenario: You have deployed a frontend Pod and a backend Pod. The frontend fails to connect to the backend IP. How do you troubleshoot the virtual network paths across different nodes?</b></summary>
@@ -831,7 +831,7 @@ This forces `kube-proxy` to only route NodePort traffic arriving on IP addresses
 
 ---
 
-## ✦ Section 4: ConfigMaps, Secrets, Namespaces & Storage (Questions 61-80)
+## ✦ Week 22 (Section 4): ConfigMaps, Secrets, Namespaces & Storage (Questions 61-80)
 
 <details>
 <summary><b>Q61: Scenario: Your firm relies heavily on Kubernetes applications, and it's crucial to perform regular backups to prevent data loss. How would you design a comprehensive backup strategy? What tools and practices would you use?</b></summary>
@@ -1069,7 +1069,7 @@ volumes:
 
 ---
 
-## ✦ Section 5: Security, Troubleshooting & Advanced Auto-scaling (Questions 81-100)
+## ✦ Week 22 (Section 5): Security, Troubleshooting & Advanced Auto-scaling (Questions 81-100)
 
 <details>
 <summary><b>Q81: Scenario: Your firm wants to optimize resource utilization. How would you use Kubernetes to manage resources efficiently?</b></summary>
