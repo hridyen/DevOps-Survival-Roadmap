@@ -3,15 +3,21 @@
 > **A comprehensive and structured roadmap documenting my industrial training journey.** 
 > Built for technical clarity, detailed tracking, and enterprise-level skill demonstration.
 
+> [!IMPORTANT]
+> ### 🎓 Internship Completed — Journey Continues!
+> **This internship has officially concluded.** However, I will keep updating this repository with new topics, advanced concepts, and my ongoing DevOps journey!
+>
+> *Self-Study & Self-Paced Project Implementation:* Please note that everything documented and built in this repository was completed entirely at my own pace and through self-study. I learned all the concepts and implemented these projects independently by myself (not under internship hours/supervision).
+
 ---
 
 <div align="center">
 
 [![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Duration](https://img.shields.io/badge/Duration-22_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Status](https://img.shields.io/badge/Status-In_Progress-39FF14?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Status](https://img.shields.io/badge/Status-Internship_Completed-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Phase](https://img.shields.io/badge/Active_Phase-Kubernetes_Orchestration-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Phase](https://img.shields.io/badge/Active_Phase-Self_Study_&_Updates-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 
 </div>
 
@@ -87,7 +93,7 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – June 10) | **Ansible Automation & Use Cases**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 20** (June 11 – June 17) | **Kubernetes Architecture & Cluster Setup**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 21** (June 18 – June 24) | **Kubernetes Workloads & Pod Management**
-- ![ACTIVE](https://img.shields.io/badge/ACTIVE-FF0055?style=flat-square&labelColor=0A0A0A) **Week 22** (June 25 – Present) | **Kubernetes Services & Storage Configuration**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 22** (June 25 – Present) | **Kubernetes Services & Storage Configuration**
 
 <br/>
 
@@ -105,7 +111,7 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 19** | June 04 – June 10 | Ansible Automation & Use Cases | Complete |
 | **Week 20** | June 11 – June 17 | Kubernetes Architecture & Cluster Setup | Complete |
 | **Week 21** | June 18 – June 24 | Kubernetes Workloads & Pod Management | Complete |
-| **Week 22** | June 25 – Present | Kubernetes Services & Storage Configuration | In Progress |
+| **Week 22** | June 25 – Present | Kubernetes Services & Storage Configuration | Complete |
 
 ---
 
@@ -134,7 +140,7 @@ flowchart TD
     end
 
     subgraph P5 [Phase 5: Infrastructure as Code & Automation]
-        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"]:::active
+        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"]
     end
 
     P1 -.-> P2
@@ -244,7 +250,7 @@ flowchart TD
 
 ## ✦ Engineer Data
 
-- **Designation:** DevOps Industrial Training Candidate
+- **Designation:** Self-Learning DevOps Engineer (Internship Completed)
 - **Commencement Date:** January 2026
 - **Procedural Model:** Foundation Systems -> CI/CD Execution -> DevSecOps Assurance -> Cloud Management
 - **Source Control Profile:** [hridyen](https://github.com/hridyen)
