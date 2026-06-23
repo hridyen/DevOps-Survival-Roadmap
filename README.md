@@ -7,6 +7,8 @@
 > ### 🎓 Internship Completed — Journey Continues!
 > **This internship has officially concluded.** However, I will keep updating this repository with new topics, advanced concepts, and my ongoing DevOps journey!
 >
+> ⚠️ **Current Status:** Updates and active work on this repository are temporarily **paused** due to some urgency. I will resume sharing my learning journey here as soon as possible.
+>
 > *Self-Study & Self-Paced Project Implementation:* Please note that everything documented and built in this repository was completed entirely at my own pace and through self-study. I learned all the concepts and implemented these projects independently by myself (not under internship hours/supervision).
 
 ---
@@ -17,7 +19,7 @@
 [![Duration](https://img.shields.io/badge/Duration-22_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Status](https://img.shields.io/badge/Status-Internship_Completed-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Phase](https://img.shields.io/badge/Active_Phase-Self_Study_&_Updates-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Phase](https://img.shields.io/badge/Active_Phase-Paused_Temporarily-orange?style=for-the-badge&labelColor=0A0A0A)](#)
 
 </div>
 
