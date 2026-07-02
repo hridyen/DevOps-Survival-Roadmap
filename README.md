@@ -16,7 +16,7 @@
 <div align="center">
 
 [![Track](https://img.shields.io/badge/Course_Track-DevOps_Training-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
-[![Duration](https://img.shields.io/badge/Duration-22_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
+[![Duration](https://img.shields.io/badge/Duration-23_Weeks-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Status](https://img.shields.io/badge/Status-Internship_Completed-FF0055?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Init](https://img.shields.io/badge/Init-January_2026-00E5FF?style=for-the-badge&labelColor=0A0A0A)](#)
 [![Phase](https://img.shields.io/badge/Active_Phase-Paused_Temporarily-orange?style=for-the-badge&labelColor=0A0A0A)](#)
@@ -95,7 +95,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – June 10) | **Ansible Automation & Use Cases**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 20** (June 11 – June 17) | **Kubernetes Architecture & Cluster Setup**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 21** (June 18 – June 24) | **Kubernetes Workloads & Pod Management**
-- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 22** (June 25 – Present) | **Kubernetes Services & Storage Configuration**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 22** (June 25 – July 01) | **Kubernetes Services & Storage Configuration**
+- ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 23** (July 02 – Present) | **Kubernetes Namespaces, Resource Management & Health Probes**
 
 <br/>
 
@@ -113,7 +114,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 | **Week 19** | June 04 – June 10 | Ansible Automation & Use Cases | Complete |
 | **Week 20** | June 11 – June 17 | Kubernetes Architecture & Cluster Setup | Complete |
 | **Week 21** | June 18 – June 24 | Kubernetes Workloads & Pod Management | Complete |
-| **Week 22** | June 25 – Present | Kubernetes Services & Storage Configuration | Complete |
+| **Week 22** | June 25 – July 01 | Kubernetes Services & Storage Configuration | Complete |
+| **Week 23** | July 02 – Present | Kubernetes Namespaces, Resource Management & Health Probes | Complete |
 
 ---
 
@@ -142,7 +144,7 @@ flowchart TD
     end
 
     subgraph P5 [Phase 5: Infrastructure as Code & Automation]
-        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"]
+        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"] --> W["[23] Namespaces & Probes"]
     end
 
     P1 -.-> P2
@@ -200,6 +202,9 @@ flowchart TD
   - ⚡ [Weekly Scenario-Based Q&A Prep (Services)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-3-services-networking--traffic-routing-questions-41-60)
   - ⚡ [Weekly Scenario-Based Q&A Prep (Storage)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-4-configmaps-secrets-namespaces--storage-questions-61-80)
   - ⚡ [Weekly Scenario-Based Q&A Prep (Security & Auto-scaling)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-5-security-troubleshooting--advanced-auto-scaling-questions-81-100)
+- [![Folder](https://img.shields.io/badge/DIR-Week--23--K8s-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-23-Kubernetes-Namespaces-and-Resource-Management/) — ***Kubernetes Namespaces & Resource Management*** (Namespaces, Resource Requests/Limits, Health Probes)
+  - ⚡ [Weekly Scenario-Based Q&A Prep (Namespaces & Limits)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-4-configmaps-secrets-namespaces--storage-questions-61-80)
+  - ⚡ [Weekly Scenario-Based Q&A Prep (Probes & Troubleshooting)](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-22-section-5-security-troubleshooting--advanced-auto-scaling-questions-81-100)
 
 ### ✦ DevOps Interview Q&A Hub
 - [![Folder](https://img.shields.io/badge/DIR-Interview--Questions-00E5FF?style=flat-square&labelColor=0A0A0A)](./Interview-Questions-and-Answers/) — ***Scenario-Based Q&A Bank*** (100 questions per tool, collapsible details format)
@@ -247,6 +252,7 @@ flowchart TD
 | K8s Workloads | [commands.md](./Week-21-Kubernetes-Workloads/Pods-and-Deployments/commands.md) |
 | K8s Services & Networking | [commands.md](./Week-22-Kubernetes-Services-and-Storage/Services-and-Networking/commands.md) |
 | K8s Storage & Config | [commands.md](./Week-22-Kubernetes-Services-and-Storage/Storage-and-Configuration/commands.md) |
+| K8s Namespaces & Resource Management | [commands.md](./Week-23-Kubernetes-Namespaces-and-Resource-Management/Namespaces-and-Resource-Management/commands.md) |
 
 ---
 
