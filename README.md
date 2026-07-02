@@ -93,6 +93,8 @@ The infrastructure is broken down into weekly, discrete learning modules. It sca
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 17** (May 21 – May 27) | **Terraform Advanced Concepts**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 18** (May 28 – June 03) | **Terraform Data & Modules**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 19** (June 04 – June 10) | **Ansible Automation & Use Cases**
+
+### Phase 6: Kubernetes Container Orchestration (Active)
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 20** (June 11 – June 17) | **Kubernetes Architecture & Cluster Setup**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 21** (June 18 – June 24) | **Kubernetes Workloads & Pod Management**
 - ![DONE](https://img.shields.io/badge/DONE-00E5FF?style=flat-square&labelColor=0A0A0A) **Week 22** (June 25 – July 01) | **Kubernetes Services & Storage Configuration**
@@ -144,15 +146,20 @@ flowchart TD
     end
 
     subgraph P5 [Phase 5: Infrastructure as Code & Automation]
-        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"] --> T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"] --> W["[23] Namespaces & Probes"]
+        P["[16] Terraform IaC"] --> Q["[17] Terraform Advanced"] --> R["[18] Terraform Data"] --> S["[19] Ansible Automation"]
+    end
+
+    subgraph P6 [Phase 6: Kubernetes Container Orchestration]
+        T["[20] K8s Architecture"] --> U["[21] K8s Workloads"] --> V["[22] K8s Services & Storage"] --> W["[23] Namespaces & Probes"]
     end
 
     P1 -.-> P2
     P2 -.-> P3
     P3 -.-> P4
     P4 -.-> P5
+    P5 -.-> P6
     
-    class P1,P2,P3,P4,P5 phase;
+    class P1,P2,P3,P4,P5,P6 phase;
 ```
 
 ---
@@ -185,7 +192,7 @@ flowchart TD
 - [![Folder](https://img.shields.io/badge/DIR-Week--15--AWS-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-15-Infrastructure-as-Code/) — ***Infrastructure as Code*** (CloudFormation, StackSets, cfn-guard)
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/05-AWS-Cloud-Infrastructure/README.md#week-15-infrastructure-as-code)
 
-### ✦ Phase 5: Infrastructure as Code & Automation (Active)
+### ✦ Phase 5: Infrastructure as Code & Automation
 - [![Folder](https://img.shields.io/badge/DIR-Week--16--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-16-Terraform/) — ***Terraform IaC*** (HCL, Providers, State Management)
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-16-terraform-iac-basics)
 - [![Folder](https://img.shields.io/badge/DIR-Week--17--Terraform-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-17-Terraform-Advanced/) — ***Terraform Advanced*** (Meta-Arguments, Lifecycle, Functions)
@@ -194,6 +201,8 @@ flowchart TD
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/06-Terraform-IaC/README.md#week-18-terraform-data-and-modules)
 - [![Folder](https://img.shields.io/badge/DIR-Week--19--Ansible-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-19-Ansible-Automation/) — ***Ansible Automation*** (Introduction, Container/CI-CD Integration, System Provisioning)
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/07-Ansible-Automation/README.md#week-19-ansible-automation)
+
+### ✦ Phase 6: Kubernetes Container Orchestration (Active)
 - [![Folder](https://img.shields.io/badge/DIR-Week--20--K8s-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-20-Kubernetes-Architecture/) — ***Kubernetes Architecture*** (Control Plane, Node-Level Components, Cluster Setup via Kind)
   - ⚡ [Weekly Scenario-Based Q&A Prep](./Interview-Questions-and-Answers/09-Kubernetes-Orchestration/README.md#week-20-kubernetes-architecture--core-components-questions-1-20)
 - [![Folder](https://img.shields.io/badge/DIR-Week--21--K8s-00E5FF?style=flat-square&labelColor=0A0A0A)](./Week-21-Kubernetes-Workloads/) — ***Kubernetes Workloads*** (Pods, ReplicaSets, Deployments, Lifecycle, Self-Healing)
